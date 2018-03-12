@@ -438,7 +438,7 @@ Windows
 Mac/Linux
 ```
 $ ./gradlew clean allTests
-``` 
+```
 
 [NOTE]
 See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using Gradle.
@@ -447,7 +447,7 @@ See <<UsingGradle#, UsingGradle.adoc>> for more info on how to run tests using G
 
 Thanks to the https://github.com/TestFX/TestFX[TestFX] library we use, our GUI tests can be run in _headless_ mode. In headless mode, GUI tests do not show up on the screen. That means the developer can do other things on their computer while the tests are running.
 
-To run tests in headless mode, open a console and run the following command: 
+To run tests in headless mode, open a console and run the following command:
 
 Windows
 ```
@@ -456,7 +456,7 @@ Windows
 Mac/Linux
 ```
 $ ./gradlew clean headless allTests
-``` 
+```
 
 [TIP]
 The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
