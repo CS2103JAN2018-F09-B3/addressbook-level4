@@ -39,7 +39,7 @@ task fixWhitespace(type: Copy) {
     include '**/*.adoc'
     include '**/*.css'
     filter { String line ->
-        line.replaceAll(/\s+$/, '')
+        line.replaceAll(/ +$/, '')
     }
 }
 
