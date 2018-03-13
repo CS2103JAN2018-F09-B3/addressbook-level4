@@ -4,6 +4,7 @@ matrix:
     - jdk: oraclejdk8
 
 script: >-
+    ./gradlew fixWhitespace
     ./config/travis/run-checks.sh &&
     travis_retry ./gradlew clean checkstyleMain checkstyleTest headless allTests coverage coveralls asciidoctor copyDummySearchPage
 
