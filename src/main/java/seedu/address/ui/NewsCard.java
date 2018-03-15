@@ -32,13 +32,13 @@ public class NewsCard extends UiPart<Region> {
     @FXML
     private Label headline;
     @FXML
-    private Label pubdate;
+    private Label pubDate;
     private String url;
 
     public NewsCard(String title, String date, String url) {
         super(FXML);
         this.headline.setText(title);
-        this.pubdate.setText(date);
+        this.pubDate.setText(date);
         this.url = url;
     }
 
@@ -57,7 +57,7 @@ public class NewsCard extends UiPart<Region> {
         // state check
         NewsCard card = (NewsCard) other;
         return this.headline.equals(card.headline)
-                && this.pubdate.equals(card.pubdate)
+                && this.pubDate.equals(card.pubDate)
                 && this.url.equals(card.url);
     }
 
@@ -66,7 +66,7 @@ public class NewsCard extends UiPart<Region> {
      */
     @FXML
     private void handleMouseClick(MouseEvent mouseEvent) {
-        if (mouseEvent.isStillSincePress()) {
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
             logger.fine("User has clicked on " + this.getClass().getName() + " which contains URL '" + this.url + "'");
             raise(new NewsCardClickedEvent(this.url));
         }
