@@ -31,6 +31,10 @@ public class NewsListPanel extends UiPart<Region> {
         newsListView.setCellFactory(listView -> new NewsListViewCell());
     }
 
+    /**
+     * Loads a dummy news list with fake article links
+     * @return an observable NewsCard list
+     */
     private ObservableList<NewsCard> loadNewsList() {
         ArrayList<NewsCard> al = new ArrayList<NewsCard>();
         al.add(new NewsCard("Newegg new accepts Bitcoin BCH through Bitpay!", "15 Mar 2018",

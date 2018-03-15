@@ -9,7 +9,9 @@ public class NewsCardClickedEvent extends BaseEvent {
 
     public final String url;
 
-    public NewsCardClickedEvent(String url) { this.url = url; }
+    public NewsCardClickedEvent(String url) {
+        this.url = url;
+    }
 
     @Override
     public String toString() {
