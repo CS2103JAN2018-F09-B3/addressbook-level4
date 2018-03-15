@@ -19,6 +19,14 @@ public class Person {
     private final Phone phone;
     private final Email email;
     private final Address address;
+    //private final Code code;
+    //private double amountHeld;
+    //private double currentPrice;
+    //private double amountBought;
+    //private double amountSold;
+    //private double twentyfourhourHigh;
+    //private double twentyfourhourLow;
+
 
     private final UniqueTagList tags;
 
@@ -26,11 +34,19 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        //this.code = code;
+        //this.amountHeld = amountHeld;
+        //this.currentPrice = currentPrice;
+        //this.amountBought = amountBought;
+        //this.amountSold = amountSold;
+        //this.twentyfourhourHigh = twentyfourhourHigh;
+        //this.twentyfourhourLow = twentyfourhourLow;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
     }
@@ -51,6 +67,36 @@ public class Person {
         return address;
     }
 
+    /*
+    public Code code() {
+        return code;
+    }
+
+
+    public double getAmountHeld() {
+        return amountHeld;
+    }
+
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public double getAmountBought() {
+        return amountBought;
+    }
+
+    public double getAmountSold() {
+        return amountSold;
+    }
+
+    public double getTwentyfourhourHigh() {
+        return twentyfourhourHigh;
+    }
+
+    public double getTwentyfourhourLow() {
+        return twentyfourhourLow;
+    }
+    */
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -74,6 +120,13 @@ public class Person {
                 && otherPerson.getPhone().equals(this.getPhone())
                 && otherPerson.getEmail().equals(this.getEmail())
                 && otherPerson.getAddress().equals(this.getAddress());
+                //&& otherPerson.getCode().equals(this.getCode())
+                //&& otherPerson.getAmountHeld().equals(this.amountHeld)
+                //&& otherPerson.getCurrentPrice().equals(this.currentPrice)
+                //&& otherPerson.getAmountBought().equals(this.amountBought)
+                //&& otherPerson.getAmountSold().equals(this.getAmountSold())
+                //&& otherPerson.getTwentyfourhourHigh().equals(this.twentyfourhourHigh)
+                //&& otherPerson.getTwentyfourhourLow().equals(this.twentyfourhourLow);
     }
 
     @Override
