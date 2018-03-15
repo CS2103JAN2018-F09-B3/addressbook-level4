@@ -27,17 +27,14 @@ public class NewsListPanel extends UiPart<Region> {
 
     private void setConnections(ObservableList<NewsCard> ol) {
 
-        /*ObservableList<NewsCard> mappedList = EasyBind.map(
-                ol, (news) -> new NewsCard(news.getHeadline(), news.getPubDate(), news.getURL()));
-        */
         newsListView.setItems(ol);
         newsListView.setCellFactory(listView -> new NewsListViewCell());
     }
 
     private ObservableList<NewsCard> loadNewsList() {
-        //Parse file
         ArrayList<NewsCard> al = new ArrayList<NewsCard>();
-        al.add(new NewsCard("Newegg new accepts Bitcoin BCH through Bitpay!", "15 Mar 2018","https://cryptopanic.com/news/1378058/Newegg-new-accepts-Bitcoin-BCH-through-Bitpay-0-Fees"));
+        al.add(new NewsCard("Newegg new accepts Bitcoin BCH through Bitpay!", "15 Mar 2018",
+                "https://cryptopanic.com/news/1378058/Newegg-new-accepts-Bitcoin-BCH-through-Bitpay-0-Fees"));
         al.add(new NewsCard("Test2", "22 Feb 2018", "https://www.google.com"));
         return FXCollections.observableArrayList(al);
     }
