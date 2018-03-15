@@ -175,7 +175,7 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the browser window.
      */
     @Subscribe
-    private void handleDataSavingExceptionEvent(NewsCardClickedEvent event) {
+    private void handleNewsCardClickedEvent(NewsCardClickedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         BrowserWindow browserWindow = new BrowserWindow(event.url);
         browserWindow.show();
