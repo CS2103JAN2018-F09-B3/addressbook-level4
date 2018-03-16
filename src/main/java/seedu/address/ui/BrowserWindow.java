@@ -34,7 +34,7 @@ public class BrowserWindow extends UiPart<Stage> {
     public BrowserWindow(Stage root, String url) {
         super(FXML, root);
         String loadUrl;
-        setBrowserIcon(url);
+        setBrowserTopBar(url);
         browser.getEngine().load(getBrowserUrl(url));
     }
 
@@ -69,32 +69,22 @@ public class BrowserWindow extends UiPart<Stage> {
     }
 
     /**
-     * Sets the browser window icon based on the url
+     * Sets the the top bar of the BrowserWindow based on the URL
      * @param url input link
      */
-    private void setBrowserIcon(String url) {
+    private void setBrowserTopBar(String url) {
         if (url == USERGUIDE_FILE_PATH) {
             this.getRoot().getIcons().add(ICON_INDEX, HELP_ICON);
-        } else {
-            this.getRoot().getIcons().add(ICON_INDEX, BROWSER_ICON);
-        }
-    }
-
-    /**
-     * Sets the browser window title based on the url
-     * @param url input link
-     */
-    private void setBrowserTitle(String url) {
-        if (url == USERGUIDE_FILE_PATH) {
             this.getRoot().setTitle(HELP_TITLE);
         } else {
+            this.getRoot().getIcons().add(ICON_INDEX, BROWSER_ICON);
             this.getRoot().setTitle(BROWSER_TITLE);
         }
     }
 
     /**
      * @param url input link
-     * @return the url link that the browser should open
+     * @return The URL link that the browser should open
      */
     private String getBrowserUrl(String url) {
         if (url == USERGUIDE_FILE_PATH) {
