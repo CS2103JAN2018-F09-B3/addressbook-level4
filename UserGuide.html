@@ -29,19 +29,22 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code-code-code">3.1. Viewing help : <code>help</code> / <code>?</code></a></li>
-<li><a href="#adding-a-person-code-add-code-code-a-code">3.2. Adding a person: <code>add</code> / <code>a</code></a></li>
-<li><a href="#listing-all-persons-code-list-code-code-l-code">3.3. Listing all persons : <code>list</code> / <code>l</code></a></li>
-<li><a href="#editing-a-person-code-edit-code-code-e-code">3.4. Editing a person : <code>edit</code> / <code>e</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code-code-f-code">3.5. Locating persons by name: <code>find</code> / <code>f</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code-code-d-code">3.6. Deleting a person : <code>delete</code> / <code>d</code></a></li>
-<li><a href="#selecting-a-person-code-select-code-code-s-code">3.7. Selecting a person : <code>select</code> / <code>s</code></a></li>
+<li><a href="#adding-a-coin-account-code-add-code-code-a-code">3.2. Adding a Coin account: <code>add</code> / <code>a</code></a></li>
+<li><a href="#buying-coin-for-an-account-code-buy-code-code-b-code">3.3. Buying Coin for an account: <code>buy</code> / <code>b</code></a></li>
+<li><a href="#selling-coin-from-an-account-code-sell-code-code-se-code">3.4. Selling Coin from an account: <code>sell</code> / <code>se</code></a></li>
+<li><a href="#listing-all-coin-accounts-code-list-code-code-l-code">3.5. Listing all Coin accounts : <code>list</code> / <code>l</code></a></li>
+<li><a href="#locating-coin-accounts-code-find-code-code-f-code">3.6. Locating Coin accounts: <code>find</code> / <code>f</code></a></li>
+<li><a href="#selecting-an-account-code-select-code-code-s-code">3.7. Selecting an account : <code>select</code> / <code>s</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code-code-h-code">3.8. Listing entered commands : <code>history</code> / <code>h</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code-code-u-code">3.9. Undoing previous command : <code>undo</code> / <code>u</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code-code-r-code">3.10. Redoing the previously undone command : <code>redo</code> / <code>r</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code-code-c-code">3.11. Clearing all entries : <code>clear</code> / <code>c</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code-code-q-code">3.12. Exiting the program : <code>exit</code> / <code>q</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#tagging-an-entry-code-tag-code-code-t-code">3.12. Tagging an entry : <code>tag</code> / <code>t</code></a></li>
+<li><a href="#setting-up-notifications-code-notifyme-code-code-n-code">3.13. Setting up notifications : <code>notifyme</code> / <code>n</code></a></li>
+<li><a href="#updating-the-information-code-update-code-code-u-code">3.14. Updating the information : <code>update</code> / <code>u</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code-code-q-code">3.15. Exiting the program : <code>exit</code> / <code>q</code></a></li>
+<li><a href="#saving-the-data">3.16. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -53,7 +56,9 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 4 (AB4) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB4 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>CoinBook is a desktop application that is made for users who prefer to work on a mouse-free, command line platform with minimal graphical user interface (GUI) support.
+Our program allows you to store a portfolio of your cryptocurrency purchases as well as track the latest price trends and news, in addition to allowing for many
+operations to simplify and expedite your management process such as profit calculation.</p>
 </div>
 </div>
 </div>
@@ -82,7 +87,7 @@ This app will not work with earlier versions of Java 8.
 <p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103JAN2018-F09-B3/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your CoinBook.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -101,13 +106,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>list</code></strong> : lists all Coins</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/BTC a/100</code> : adds a Coin account named <code>BTC</code> to the CoinBook with an initial amount of 100 coins.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>buy</code></strong><code>BTC 3</code> : adds 3 coins into the BTC account.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -120,10 +125,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>l</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>d</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>l</code></strong> : lists all accounts</p>
 </li>
 </ul>
 </div>
@@ -146,16 +148,20 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user. e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/ETH</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional. e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/BTC t/fav</code> or as <code>n/BTC</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times. e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/cheap</code>, <code>t/active t/fav</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order. e.g. if the command specifies <code>n/NAME a/VALUE</code>, <code>a/VALUE n/NAME</code> is also acceptable.</p>
+</li>
+<li>
+<p>Items in curly braces indicate multiple possibilities. e.g. <code>buy {NAME, TAG} AMOUNT</code>, is a command where the first parameter can either be a NAME or a TAG.<br>
+[!] Bear in mind that if multiple items are tagged, then the command will be applied to all accounts under the same tag.</p>
 </li>
 </ul>
 </div>
@@ -168,10 +174,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code-code-a-code"><a class="link" href="#adding-a-person-code-add-code-code-a-code">3.2. Adding a person: <code>add</code> / <code>a</code></a></h3>
+<h3 id="adding-a-coin-account-code-add-code-code-a-code"><a class="link" href="#adding-a-coin-account-code-add-code-code-a-code">3.2. Adding a Coin account: <code>add</code> / <code>a</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Adds a Coin account to the address book<br>
+Format: <code>add n/NAME a/AMOUNT [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -180,7 +186,7 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;<
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+A Coin account can have any number of tags (including 0)
 </td>
 </tr>
 </table>
@@ -191,45 +197,101 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add n/BTC a/50.50</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add n/ETH a/1000 t/fav</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code-code-l-code"><a class="link" href="#listing-all-persons-code-list-code-code-l-code">3.3. Listing all persons : <code>list</code> / <code>l</code></a></h3>
+<h3 id="buying-coin-for-an-account-code-buy-code-code-b-code"><a class="link" href="#buying-coin-for-an-account-code-buy-code-code-b-code">3.3. Buying Coin for an account: <code>buy</code> / <code>b</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
+<p>Adds value into a given Coin account.<br>
+Format: <code>buy {INDEX, NAME, TAG} VALUE</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+* <code>buy BTC 0.5</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selling-coin-from-an-account-code-sell-code-code-se-code"><a class="link" href="#selling-coin-from-an-account-code-sell-code-code-se-code">3.4. Selling Coin from an account: <code>sell</code> / <code>se</code></a></h3>
+<div class="paragraph">
+<p>Removes value from a given Coin account.<br>
+Format: <code>sell {INDEX, NAME, TAG} VALUE</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+* <code>sell BTC 0.5</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-coin-accounts-code-list-code-code-l-code"><a class="link" href="#listing-all-coin-accounts-code-list-code-code-l-code">3.5. Listing all Coin accounts : <code>list</code> / <code>l</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of all Coin accounts in the CoinBook.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code-code-e-code"><a class="link" href="#editing-a-person-code-edit-code-code-e-code">3.4. Editing a person : <code>edit</code> / <code>e</code></a></h3>
+<h3 id="locating-coin-accounts-code-find-code-code-f-code"><a class="link" href="#locating-coin-accounts-code-find-code-code-f-code">3.6. Locating Coin accounts: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Finds coin accounts whose details satisfy the query.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find QUERY [LOGICAL_OPERATORS QUERY]&#8230;&#8203;</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>List of logical operators include:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>AND</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
+<p>OR</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>NOT</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>List of possible queries include:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>name NAME: Name of the Coin account</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>tag TAGNAME: Tag attribute of the Coin account</p>
+</li>
+<li>
+<p>price &gt; VALUE : The current price any Coin exceeding &lt;VALUE&gt;</p>
+</li>
+<li>
+<p>price &lt; VALUE : The current price any Coin less than &lt;VALUE&gt;</p>
+</li>
+<li>
+<p>profit &gt; VALUE : The total profits derived from selling a Coin exceeding &lt;VALUE&gt;</p>
+</li>
+<li>
+<p>profit &lt; VALUE : The total profits derived from selling a Coin less than &lt;VALUE&gt;</p>
+</li>
+<li>
+<p>amount &lt; VALUE : The amount held in a Coin exceeding &lt;VALUE&gt;</p>
+</li>
+<li>
+<p>amount &gt; VALUE : The amount held in Coin less than &lt;VALUE&gt;</p>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
@@ -241,106 +303,25 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>find BTC</code><br>
+Returns the account named BTC.<br></p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>find tag fav</code><br>
+Returns any accounts with the "fav" tag.<br></p>
+</li>
+<li>
+<p><code>find (price &gt; 500 AND tag fav) OR amount &lt; 20</code><br>
+Returns any accounts that either currently cost more than 500 dollars and was previously tagged as FAV,
+or which the the account has less than 20 Coins left.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code-code-f-code"><a class="link" href="#locating-persons-by-name-code-find-code-code-f-code">3.5. Locating persons by name: <code>find</code> / <code>f</code></a></h3>
+<h3 id="selecting-an-account-code-select-code-code-s-code"><a class="link" href="#selecting-an-account-code-select-code-code-s-code">3.7. Selecting an account : <code>select</code> / <code>s</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code-code-d-code"><a class="link" href="#deleting-a-person-code-delete-code-code-d-code">3.6. Deleting a person : <code>delete</code> / <code>d</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-person-code-select-code-code-s-code"><a class="link" href="#selecting-a-person-code-select-code-code-s-code">3.7. Selecting a person : <code>select</code> / <code>s</code></a></h3>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
+<p>Selects the account identified by the index number used in the most recent listing.<br>
 Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -348,7 +329,23 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>Selects the account and loads the relevant information related to the account at the specified <code>INDEX</code>. The information includes:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Amount spent in dollars to purchase the amount of current coin.</p>
+</li>
+<li>
+<p>Amount earned based on past sales of the current coin.</p>
+</li>
+<li>
+<p>Amount of possible profit if coin amount was sold at that point.</p>
+</li>
+<li>
+<p>A chart depicting the price history of that coin account.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -368,12 +365,12 @@ Format: <code>select INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+Selects the 2nd Coin account in the address book.</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
+<p><code>find BTC</code><br>
 <code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+Selects the 1st Coin account in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
@@ -425,9 +422,9 @@ Format: <code>undo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
+<p><code>buy BTC 10</code><br>
 <code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> (reverses the <code>buy BTC 10</code> command)<br></p>
 </li>
 <li>
 <p><code>select 1</code><br>
@@ -436,10 +433,10 @@ Format: <code>undo</code></p>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>sell BTC 10</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> (reverses the <code>sell BTC 10</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -456,21 +453,21 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<p><code>buy BTC 10</code><br>
+<code>undo</code> (reverses the <code>buy BTC 10</code> command)<br>
+<code>redo</code> (reapplies the <code>buy BTC 10</code> command)<br></p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>list</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>sell BTC 10</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>undo</code> (reverses the <code>sell BTC 10</code> command)<br>
+<code>redo</code> (reapplies the <code>sell BTC 10</code> command)<br>
 <code>redo</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
@@ -479,26 +476,114 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-code-c-code">3.11. Clearing all entries : <code>clear</code> / <code>c</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
+<p>Clears all entries from the CoinBook.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-code-q-code"><a class="link" href="#exiting-the-program-code-exit-code-code-q-code">3.12. Exiting the program : <code>exit</code> / <code>q</code></a></h3>
+<h3 id="tagging-an-entry-code-tag-code-code-t-code"><a class="link" href="#tagging-an-entry-code-tag-code-code-t-code">3.12. Tagging an entry : <code>tag</code> / <code>t</code></a></h3>
+<div class="paragraph">
+<p>Adds a tag attribute to an entry in the CoinBook, so that they can be grouped for other commands.<br>
+Format: <code>tag {INDEX, NAME} TAG_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag 1 fav</code><br>
+<code>tag 3 fav</code><br>
+<code>tag 5 fav</code><br>
+The first, third, and fifth entry in the list is now tagged with the <code>fav</code> attribute.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-notifications-code-notifyme-code-code-n-code"><a class="link" href="#setting-up-notifications-code-notifyme-code-code-n-code">3.13. Setting up notifications : <code>notifyme</code> / <code>n</code></a></h3>
+<div class="paragraph">
+<p>Sets a condition that triggers a desktop notification when met.<br>
+Format: <code>notifyme {INDEX, NAME, TAG} CONDITION [LOGICAL_OPERATOR CONDITION]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Logical operators indlude:<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>AND</p>
+</li>
+<li>
+<p>OR</p>
+</li>
+<li>
+<p>NOT</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The list of conditions include:<br></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the price exceeds AMOUNT: price &gt; AMOUNT</p>
+</li>
+<li>
+<p>When the price has drops below AMOUNT: price &lt; AMOUNT</p>
+</li>
+<li>
+<p>When the profitability exceeds AMOUNT: profit &gt; AMOUNT</p>
+</li>
+<li>
+<p>When the profitability drops below AMOUNT: profit &lt; AMOUNT</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>notifyme 1 price &gt; 50</code><br>
+When the price of the first entry has exceeded 50 dollars, a desktop notification will be triggered.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="updating-the-information-code-update-code-code-u-code"><a class="link" href="#updating-the-information-code-update-code-code-u-code">3.14. Updating the information : <code>update</code> / <code>u</code></a></h3>
+<div class="paragraph">
+<p>Obtains the latest prices and refreshes the news feed using the Internet.
+Format: <code>update</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code-code-q-code"><a class="link" href="#exiting-the-program-code-exit-code-code-q-code">3.15. Exiting the program : <code>exit</code> / <code>q</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>CoinBook data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -520,42 +605,43 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> : <code>add n/NAME a/AMOUNT [t/TAG]&#8230;&#8203;</code><br></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Buy</strong> : <code>buy {INDEX, NAME, TAG} VALUE</code><br></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><strong>Sell</strong> : <code>sell {INDEX, NAME, TAG} VALUE</code><br></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><strong>List</strong> : <code>list</code><br></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Find</strong> : <code>find QUERY [LOGICAL_OPERATORS QUERY]&#8230;&#8203;</code><br></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>Select</strong> : <code>select INDEX</code><br></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><strong>History</strong> : <code>history</code><br></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
+<p><strong>Undo</strong> : <code>undo</code><br></p>
 </li>
 <li>
-<p><strong>History</strong> : <code>history</code></p>
+<p><strong>Redo</strong> : <code>redo</code><br></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code></p>
+<p><strong>Clear</strong> : <code>clear</code><br></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code></p>
+<p><strong>Notifyme</strong> : <code>notifyme {INDEX, NAME, TAG} CONDITION [LOGICAL_OPERATOR CONDITION]&#8230;&#8203;</code><br></p>
+</li>
+<li>
+<p><strong>Update</strong> : <code>update</code><br></p>
+</li>
+<li>
+<p><strong>Exit</strong> :  <code>exit</code><br></p>
 </li>
 </ul>
 </div>
@@ -564,7 +650,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-15 23:28:55 UTC
+Last updated 2018-03-16 01:05:10 UTC
 </div>
 </div>
 </body>
