@@ -811,8 +811,10 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 *Value proposition*: manage cryptocurrencies faster than a typical mouse/GUI driven app
 
 *Feature contribution*:
-1. Search enhancement (Major): Adding SQL-like queries with logical operators as well as additional search specificiers besides name, such as tags and price.
-2. Fetch news: Fetches news related to crypto currencies from sources such as RSS feeds.
+
+1. Search enhancement (Major): Adding SQL-like queries with logical operators as well as additional search specificiers besides name, such as tags and price. +
+
+2. Fetch news (Minor): Fetches news related to crypto currencies from sources such as RSS feeds. +
 
 [appendix]
 == User Stories
