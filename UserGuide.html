@@ -5,123 +5,65 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>CoinBook - User Guide</title>
+<title>AddressBook Level 4 - User Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>CoinBook - User Guide</h1>
+<h1>AddressBook Level 4 - User Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team CS2103JAN2018-F09-B3</code> Since: <code>Feb 2018</code> Licence: <code>MIT</code></p>
+<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#how-to-use-this-guide">1. How to Use this Guide</a></li>
-<li><a href="#introduction">2. Introduction</a></li>
-<li><a href="#quick-start">3. Quick Start</a></li>
-<li><a href="#Features">4. Features</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#quick-start">2. Quick Start</a></li>
+<li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code-code-code">4.1. Viewing help : <code>help</code> / <code>?</code></a></li>
-<li><a href="#buying-coin-for-an-account-code-buy-code-code-b-code">4.2. Buying Coin for an account: <code>buy</code> / <code>b</code></a></li>
-<li><a href="#selling-coin-from-an-account-code-sell-code-code-s-code">4.3. Selling Coin from an account: <code>sell</code> / <code>s</code></a></li>
-<li><a href="#listing-all-coin-accounts-code-list-code-code-l-code">4.4. Listing all Coin accounts : <code>list</code> / <code>l</code></a></li>
-<li><a href="#locating-coin-accounts-code-find-code-code-f-code">4.5. Locating Coin accounts: <code>find</code> / <code>f</code></a></li>
-<li><a href="#viewing-details-of-an-account-code-view-code-code-v-code">4.6. Viewing details of an account : <code>view</code> / <code>v</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code-code-h-code">4.7. Listing entered commands : <code>history</code> / <code>h</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code-code-u-code">4.8. Undoing previous command : <code>undo</code> / <code>u</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code-code-r-code">4.9. Redoing the previously undone command : <code>redo</code> / <code>r</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code-code-c-code">4.10. Clearing all entries : <code>clear</code> / <code>c</code></a></li>
-<li><a href="#tagging-an-entry-code-tag-code-code-t-code">4.11. Tagging an entry : <code>tag</code> / <code>t</code></a></li>
-<li><a href="#setting-up-notifications-code-notifyme-code-code-n-code">4.12. Setting up notifications : <code>notifyme</code> / <code>n</code></a></li>
-<li><a href="#updating-the-information-code-update-code-code-u-code">4.13. Updating the information : <code>update</code> / <code>u</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code-code-q-code">4.14. Exiting the program : <code>exit</code> / <code>q</code></a></li>
-<li><a href="#saving-the-data">4.15. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">4.16. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#viewing-help-code-help-code-code-code">3.1. Viewing help : <code>help</code> / <code>?</code></a></li>
+<li><a href="#adding-a-coin-account-code-add-code-code-a-code">3.2. Adding a Coin account: <code>add</code> / <code>a</code></a></li>
+<li><a href="#buying-coin-for-an-account-code-buy-code-code-b-code">3.3. Buying Coin for an account: <code>buy</code> / <code>b</code></a></li>
+<li><a href="#selling-coin-from-an-account-code-sell-code-code-se-code">3.4. Selling Coin from an account: <code>sell</code> / <code>se</code></a></li>
+<li><a href="#listing-all-coin-accounts-code-list-code-code-l-code">3.5. Listing all Coin accounts : <code>list</code> / <code>l</code></a></li>
+<li><a href="#locating-coin-accounts-code-find-code-code-f-code">3.6. Locating Coin accounts: <code>find</code> / <code>f</code></a></li>
+<li><a href="#selecting-an-account-code-select-code-code-s-code">3.7. Selecting an account : <code>select</code> / <code>s</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code-code-h-code">3.8. Listing entered commands : <code>history</code> / <code>h</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code-code-u-code">3.9. Undoing previous command : <code>undo</code> / <code>u</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code-code-r-code">3.10. Redoing the previously undone command : <code>redo</code> / <code>r</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code-code-c-code">3.11. Clearing all entries : <code>clear</code> / <code>c</code></a></li>
+<li><a href="#tagging-an-entry-code-tag-code-code-t-code">3.12. Tagging an entry : <code>tag</code> / <code>t</code></a></li>
+<li><a href="#setting-up-notifications-code-notifyme-code-code-n-code">3.13. Setting up notifications : <code>notifyme</code> / <code>n</code></a></li>
+<li><a href="#updating-the-information-code-update-code-code-u-code">3.14. Updating the information : <code>update</code> / <code>u</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code-code-q-code">3.15. Exiting the program : <code>exit</code> / <code>q</code></a></li>
+<li><a href="#saving-the-data">3.16. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
-<li><a href="#glossary">Appendix A: Glossary</a></li>
+<li><a href="#faq">4. FAQ</a></li>
+<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-to-use-this-guide"><a class="link" href="#how-to-use-this-guide">1. How to Use this Guide</a></h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Markup</dt>
-<dd>
-<p>Text with special meaning look different. Here are the various types:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Commands, filenames, and other miscellaneous keywords are <code>monospaced for emphasis</code></p>
-</li>
-<li>
-<p>Glossary terms have a <span class="gloss">dotted underline</span></p>
-</li>
-<li>
-<p>Keyboard keys are marked like <kbd>this</kbd></p>
-<div class="ulist">
-<ul>
-<li>
-<p><kbd>Q</kbd> means to press the <code>Q</code> key</p>
-</li>
-<li>
-<p><kbd>Ctrl</kbd>+<kbd>Q</kbd> means to hold down the <code>Ctrl</code> key and then press the <code>Q</code> key</p>
-</li>
-<li>
-<p><kbd>Ctrl</kbd><kbd>Q</kbd><kbd>E</kbd> means to press the <code>Ctrl</code> key, then press the <code>Q</code> key, followed by the <code>E</code> key; holding down is not required</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Links are marked <a href="javascript:void(0);">blue with underline</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Cross-ref links bring you to another part of the document, and look like <a href="javascript:void(0);">this</a></p>
-</li>
-<li>
-<p>External cross-ref links bring you to another document, and look like <span class="exref"><a href="javascript:void(0);">this</a></span></p>
-</li>
-<li>
-<p>External links bring you to another website, and look like <span class="ext"><a href="javascript:void(0);">this</a></span></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">2. Introduction</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CoinBook is a desktop application that is made for users who prefer to work on a mouse-free, command line platform with minimal <span class="gloss"><a href="#gui">graphical user interface (GUI)</a></span> dependence.</p>
-</div>
-<div class="paragraph">
-<p>Coinbook allows you to store a portfolio of your cryptocurrency purchases as well as track the latest price trends and news, in addition to providing various
-tools to simplify and expedite your management process such as profit calculation.</p>
+<p>CoinBook is a desktop application that is made for users who prefer to work on a mouse-free, command line platform with minimal graphical user interface (GUI) support.
+Our program allows you to store a portfolio of your cryptocurrency purchases as well as track the latest price trends and news, in addition to allowing for many
+operations to simplify and expedite your management process such as profit calculation.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
+<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -135,8 +77,7 @@ tools to simplify and expedite your management process such as profit calculatio
 </td>
 <td class="content">
 Having any Java 8 version is not enough.<br>
-This app will not work with earlier versions of Java 8.<br>
-You can obtain the latest version <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a> (Download JRE).
+This app will not work with earlier versions of Java 8.
 </td>
 </tr>
 </table>
@@ -149,16 +90,15 @@ You can obtain the latest version <a href="http://www.oracle.com/technetwork/jav
 <p>Copy the file to the folder you want to use as the home folder for your CoinBook.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds. (Fig. 1)</p>
+<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
-<div class="title">Figure 1. Startup Window</div>
 </div>
 </li>
 <li>
-<p>Type your commands in the command box and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
@@ -169,10 +109,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all Coins</p>
 </li>
 <li>
-<p><strong><code>buy</code></strong><code>BTC 3</code> : adds 3 coins to the BTC account</p>
+<p><strong><code>add</code></strong><code>n/BTC a/100</code> : adds a Coin account named <code>BTC</code> to the CoinBook with an initial amount of 100 coins.</p>
 </li>
 <li>
-<p><strong><code>view</code></strong><code>BTC</code> : view the details of the BTC account</p>
+<p><strong><code>buy</code></strong><code>BTC 3</code> : adds 3 coins into the BTC account.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -191,74 +131,93 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for details of each command. Command aliases are specified after the <code>/</code> symbol.</p>
+<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command. Command aliases are specified after the <code>/</code> symbol.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
-<div class="sidebarblock">
+<div class="exampleblock">
 <div class="content">
-<div class="title">Command Format</div>
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user. e.g. in <code>find NAME</code>, <code>NAME</code> is a parameter wh1ich can be used as <code>find ETH</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user. e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/ETH</code>.</p>
 </li>
 <li>
-<p>Options in square brackets are optional. e.g <code>NAME [t/TAG]</code> can be used as <code>BTC t/fav</code> or as <code>BTC</code>.</p>
+<p>Items in square brackets are optional. e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/BTC t/fav</code> or as <code>n/BTC</code>.</p>
 </li>
 <li>
-<p>Options with <code>&#8230;&#8203;</code> after them can be used multiple times including zero times. e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/cheap</code>, <code>t/active t/fav</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times. e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/cheap</code>, <code>t/active t/fav</code> etc.</p>
 </li>
 <li>
-<p>If an option without <code>&#8230;&#8203;</code> is used multiple times, only the latest one will be used.</p>
+<p>Parameters can be in any order. e.g. if the command specifies <code>n/NAME a/VALUE</code>, <code>a/VALUE n/NAME</code> is also acceptable.</p>
 </li>
 <li>
-<p>Parameters can be in any order. e.g. if the command specifies <code>t/TAG a/VALUE</code>, <code>a/VALUE t/TAG</code> is also acceptable.</p>
-</li>
-<li>
-<p>Items in curly braces indicate multiple possibilities. e.g. <code>buy {NAME, TAG} AMOUNT</code>, is a command where the first parameter can either be a NAME or a TAG.</p>
+<p>Items in curly braces indicate multiple possibilities. e.g. <code>buy {NAME, TAG} AMOUNT</code>, is a command where the first parameter can either be a NAME or a TAG.<br>
+[!] Bear in mind that if multiple items are tagged, then the command will be applied to all accounts under the same tag.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code-code-code"><a class="link" href="#viewing-help-code-help-code-code-code">4.1. Viewing help : <code>help</code> / <code>?</code></a></h3>
-<div class="listingblock">
-<div class="title">Format</div>
-<div class="content">
-<pre>help</pre>
-</div>
-</div>
+<h3 id="viewing-help-code-help-code-code-code"><a class="link" href="#viewing-help-code-help-code-code-code">3.1. Viewing help : <code>help</code> / <code>?</code></a></h3>
 <div class="paragraph">
-<p>Opens the help window.</p>
+<p>Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="buying-coin-for-an-account-code-buy-code-code-b-code"><a class="link" href="#buying-coin-for-an-account-code-buy-code-code-b-code">4.2. Buying Coin for an account: <code>buy</code> / <code>b</code></a></h3>
-<div class="listingblock">
-<div class="title">Format</div>
-<div class="content">
-<pre>buy {INDEX, NAME, CODE} VALUE</pre>
+<h3 id="adding-a-coin-account-code-add-code-code-a-code"><a class="link" href="#adding-a-coin-account-code-add-code-code-a-code">3.2. Adding a Coin account: <code>add</code> / <code>a</code></a></h3>
+<div class="paragraph">
+<p>Adds a Coin account to the address book<br>
+Format: <code>add n/NAME a/AMOUNT [t/TAG]&#8230;&#8203;</code></p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A Coin account can have any number of tags (including 0)
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Adds value into the specified Coin account.</p>
+<p>Examples:</p>
 </div>
-<div class="listingblock">
-<div class="title">Example</div>
-<div class="content">
-<pre>buy BTC 0.5</pre>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/BTC a/50.50</code></p>
+</li>
+<li>
+<p><code>add n/ETH a/1000 t/fav</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selling-coin-from-an-account-code-sell-code-code-s-code"><a class="link" href="#selling-coin-from-an-account-code-sell-code-code-s-code">4.3. Selling Coin from an account: <code>sell</code> / <code>s</code></a></h3>
+<h3 id="buying-coin-for-an-account-code-buy-code-code-b-code"><a class="link" href="#buying-coin-for-an-account-code-buy-code-code-b-code">3.3. Buying Coin for an account: <code>buy</code> / <code>b</code></a></h3>
+<div class="paragraph">
+<p>Adds value into a given Coin account.<br>
+Format: <code>buy {INDEX, NAME, TAG} VALUE</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+* <code>buy BTC 0.5</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selling-coin-from-an-account-code-sell-code-code-se-code"><a class="link" href="#selling-coin-from-an-account-code-sell-code-code-se-code">3.4. Selling Coin from an account: <code>sell</code> / <code>se</code></a></h3>
 <div class="paragraph">
 <p>Removes value from a given Coin account.<br>
 Format: <code>sell {INDEX, NAME, TAG} VALUE</code></p>
@@ -269,14 +228,14 @@ Format: <code>sell {INDEX, NAME, TAG} VALUE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-coin-accounts-code-list-code-code-l-code"><a class="link" href="#listing-all-coin-accounts-code-list-code-code-l-code">4.4. Listing all Coin accounts : <code>list</code> / <code>l</code></a></h3>
+<h3 id="listing-all-coin-accounts-code-list-code-code-l-code"><a class="link" href="#listing-all-coin-accounts-code-list-code-code-l-code">3.5. Listing all Coin accounts : <code>list</code> / <code>l</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all Coin accounts in the CoinBook.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-coin-accounts-code-find-code-code-f-code"><a class="link" href="#locating-coin-accounts-code-find-code-code-f-code">4.5. Locating Coin accounts: <code>find</code> / <code>f</code></a></h3>
+<h3 id="locating-coin-accounts-code-find-code-code-f-code"><a class="link" href="#locating-coin-accounts-code-find-code-code-f-code">3.6. Locating Coin accounts: <code>find</code> / <code>f</code></a></h3>
 <div class="paragraph">
 <p>Finds coin accounts whose details satisfy the query.<br></p>
 </div>
@@ -360,10 +319,10 @@ or which the the account has less than 20 Coins left.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-details-of-an-account-code-view-code-code-v-code"><a class="link" href="#viewing-details-of-an-account-code-view-code-code-v-code">4.6. Viewing details of an account : <code>view</code> / <code>v</code></a></h3>
+<h3 id="selecting-an-account-code-select-code-code-s-code"><a class="link" href="#selecting-an-account-code-select-code-code-s-code">3.7. Selecting an account : <code>select</code> / <code>s</code></a></h3>
 <div class="paragraph">
 <p>Selects the account identified by the index number used in the most recent listing.<br>
-Format: <code>view INDEX</code></p>
+Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -417,7 +376,7 @@ Selects the 1st Coin account in the results of the <code>find</code> command.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code-code-h-code"><a class="link" href="#listing-entered-commands-code-history-code-code-h-code">4.7. Listing entered commands : <code>history</code> / <code>h</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code-code-h-code"><a class="link" href="#listing-entered-commands-code-history-code-code-h-code">3.8. Listing entered commands : <code>history</code> / <code>h</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -438,7 +397,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code-code-u-code"><a class="link" href="#undoing-previous-command-code-undo-code-code-u-code">4.8. Undoing previous command : <code>undo</code> / <code>u</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code-code-u-code"><a class="link" href="#undoing-previous-command-code-undo-code-code-u-code">3.9. Undoing previous command : <code>undo</code> / <code>u</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -483,7 +442,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-code-r-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-code-r-code">4.9. Redoing the previously undone command : <code>redo</code> / <code>r</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code-code-r-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-code-r-code">3.10. Redoing the previously undone command : <code>redo</code> / <code>r</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -515,56 +474,34 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-code-c-code">4.10. Clearing all entries : <code>clear</code> / <code>c</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-code-c-code">3.11. Clearing all entries : <code>clear</code> / <code>c</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the CoinBook.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tagging-an-entry-code-tag-code-code-t-code"><a class="link" href="#tagging-an-entry-code-tag-code-code-t-code">4.11. Tagging an entry : <code>tag</code> / <code>t</code></a></h3>
+<h3 id="tagging-an-entry-code-tag-code-code-t-code"><a class="link" href="#tagging-an-entry-code-tag-code-code-t-code">3.12. Tagging an entry : <code>tag</code> / <code>t</code></a></h3>
 <div class="paragraph">
 <p>Adds a tag attribute to an entry in the CoinBook, so that they can be grouped for other commands.<br>
 Format: <code>tag {INDEX, NAME} TAG_NAME</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-
-</div>
-</div>
 <div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p><code>tag 1 fav</code><br>
 <code>tag 3 fav</code><br>
 <code>tag 5 fav</code><br>
 The first, third, and fifth entry in the list is now tagged with the <code>fav</code> attribute.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A Coin account can have any number of tags (including 0)
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-    Bear in mind that if multiple items are tagged, then the command will be applied to all accounts under the same tag.
-</td>
-</tr>
-</table>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-notifications-code-notifyme-code-code-n-code"><a class="link" href="#setting-up-notifications-code-notifyme-code-code-n-code">4.12. Setting up notifications : <code>notifyme</code> / <code>n</code></a></h3>
+<h3 id="setting-up-notifications-code-notifyme-code-code-n-code"><a class="link" href="#setting-up-notifications-code-notifyme-code-code-n-code">3.13. Setting up notifications : <code>notifyme</code> / <code>n</code></a></h3>
 <div class="paragraph">
 <p>Sets a condition that triggers a desktop notification when met.<br>
 Format: <code>notifyme {INDEX, NAME, TAG} CONDITION [LOGICAL_OPERATOR CONDITION]&#8230;&#8203;</code></p>
@@ -625,28 +562,28 @@ When the price of the first entry has exceeded 50 dollars, a desktop notificatio
 </div>
 </div>
 <div class="sect2">
-<h3 id="updating-the-information-code-update-code-code-u-code"><a class="link" href="#updating-the-information-code-update-code-code-u-code">4.13. Updating the information : <code>update</code> / <code>u</code></a></h3>
+<h3 id="updating-the-information-code-update-code-code-u-code"><a class="link" href="#updating-the-information-code-update-code-code-u-code">3.14. Updating the information : <code>update</code> / <code>u</code></a></h3>
 <div class="paragraph">
 <p>Obtains the latest prices and refreshes the news feed using the Internet.
 Format: <code>update</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-code-q-code"><a class="link" href="#exiting-the-program-code-exit-code-code-q-code">4.14. Exiting the program : <code>exit</code> / <code>q</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code-code-q-code"><a class="link" href="#exiting-the-program-code-exit-code-code-q-code">3.15. Exiting the program : <code>exit</code> / <code>q</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>CoinBook data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -654,7 +591,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -663,7 +600,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -710,71 +647,10 @@ There is no need to save manually.</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix A: Glossary</a></h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a id="alias"></a> Alias</dt>
-<dd>
-<p>Alternate names for commands.</p>
-</dd>
-<dt class="hdlist1"><a id="coinmarketcap"></a> Coinmarketcap</dt>
-<dd>
-<p>A website that hosts Cryptocurrency information, including cap rankings, prices, volumes and circulating supplies.</p>
-</dd>
-<dt class="hdlist1"><a id="cryptopanic"></a> Cryptopanic</dt>
-<dd>
-<p>An online news platform for cryptocurrencies.</p>
-</dd>
-<dt class="hdlist1"><a id="exponential-moving-average"></a> Exponential moving average</dt>
-<dd>
-<p>A moving average window of closing prices over a past period that places more weight on the more recent days considered. Since cryptocurrencies do not have a closing price, this defaults to their price at 23:59:59 at the timezone of the exchange.</p>
-</dd>
-<dt class="hdlist1"><a id="gui"></a> Graphical User Interface</dt>
-<dd>
-<p>A type of user interface that lets users interact with the app through visual indicators, icons, mouse actions, etc. as compared to typed commands.</p>
-</dd>
-<dt class="hdlist1"><a id="MACD"></a> Moving Average Convergence Divergence (MACD)</dt>
-<dd>
-<p>Moving Average Convergence Divergence is an indicator that is the difference between two moving averages.</p>
-</dd>
-<dt class="hdlist1"><a id="macros"></a> Macros</dt>
-<dd>
-<p>A set of commands that can be executed under a single custom command is a macro. For example, if a user wishes to only view coins of a specific tag in a certain sorted order, he can set create a custom macro (e.g. <code>sortfavourites</code>) such that upon entering it at a command, the program will internally first call the <code>search</code> command on the user set tags, then call the <code>sort</code> command.</p>
-</dd>
-<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
-<dd>
-<p>Windows, Linux, Unix, OS-X</p>
-</dd>
-<dt class="hdlist1"><a id="resistance-lines"></a> Resistance Lines</dt>
-<dd>
-<p>When the price of a coin has risen to a certain amount, the price may eventually sustain its value at this point for a period of time. This is when it obtains "resistance".</p>
-</dd>
-<dt class="hdlist1"><a id="RSI"></a> Relative Strength Index</dt>
-<dd>
-<p>Relative Strength Index is used as an indicator to compare the current strength of cryptocurrency versus its historical strength. The strength is calculated based on the closing prices over a period of time.</p>
-</dd>
-<dt class="hdlist1"><a id="sensitive-data"></a> Sensitive Data</dt>
-<dd>
-<p>Refers to data that is not meant to be shared with others.</p>
-</dd>
-<dt class="hdlist1"><a id="simple-moving-average"></a> Simple Moving Average</dt>
-<dd>
-<p>A moving average window of closing prices over a past period that places equal weight on all days considered. Since cryptocurrencies do not have a closing price, this defaults to their price at 23:59:59 at the timezone of the exchange.</p>
-</dd>
-<dt class="hdlist1"><a id="support-lines"></a> Support lines</dt>
-<dd>
-<p>When the price of a coin has fallen to a certain amount, the price may eventually sustain its value at this point for a period of time. This is when it obtains "support".</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 02:04:00 UTC
+Last updated 2018-03-20 02:03:29 UTC
 </div>
 </div>
 </body>
