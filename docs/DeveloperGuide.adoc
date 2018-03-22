@@ -245,53 +245,155 @@ This section describes some noteworthy details on how certain features are imple
 === Condition Parser feature
 
 ==== Current implementation
-The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely the `Lexer`, `SyntaxParser`, `SemanticParser`, and a `ConditionGenerator`, while using classes such as `Condition`, `Token`, `TokenType`, `TokenStack` to model the data that is to be operated on throughout the process. Below is the UML describing their classes.
+The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely
+the `Lexer`, `SyntaxParser`, `SemanticParser`, and a `ConditionGenerator`, while using classes such as `Condition`,
+`Token`, `TokenType`, `TokenStack` to model the data that is to be operated on throughout the process. Their tasks are
+delegated as follows:
+
+* `Lexer` : Lexically analyzes the input string, then creates a list of tokens.
+* `SyntaxParser` : Parses the input by matching the tokens versus a list of rules to ensure they fit the desired
+structure.
+* `SemanticParser` : Parses the input by matching the tokens versus a list of rules to ensure their meaning is semantically valid
+* `ConditionGenerator` : Uses the list of tokens to create the equivalent lambda function to evaluate `Coin` objects against.
+
+[NOTE]
+The distinction between the SyntaxParser and the Semantic Parser is that the syntax parser is oblivious as to what the
+input actually means, and only cares whether the structure is correct, whereas the semantic parser verifies the meaning behind the
+input. For example, `n/BTC AND OR p/>500` would not even be valid syntatically, whereas `n/BTC or p/>BTC` would be valid syntatically
+but not semantically, since it would not make sense to search for `Coin` objects whose price attribute was more than
+"BTC" since a price cannot be compared to a name.
+
+Below is the UML
+describing the classes and their relationships.
 
 .Class UML diagram for the Condition Parser
 image::ParserClassDiagram.png[]
 
-The general flow of the parser is very linear in nature, an input string is first broken up into reasonable sections by the lexer based on their possible meaning, then the syntax and sematic parser ensure that the input follows the structure required and then finally a condition objects is generated representing the statement that can be used to evaluate Coin objects.
+The general flow of the parser is very linear in nature, an input string is first broken up into reasonable sections by
+the lexer based on their possible meaning, then the syntax and semantic parser ensure that the input follows the
+structure required and then finally a condition objects is generated representing the statement that can be used to
+evaluate Coin objects.
 
-As an example, consider the following argument:
+.Sequence diagram for the `ConditionParser` class on correct inputs
+image::mainSequence.png[width=800]
+
+We will illustrate the flow of the CommandParser on an example input:
 ```
 > n/BTC OR ( t/fav AND p/>100 )
 ```
-
+===== Lexer
 Firstly, the lexer would tokenize this into:
 
 ```
 > [n/,OPTION][BTC,STRING][OR,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][>,COMPARATOR][100,NUMBER][),RIGHTPAREN]
 ```
-Notice how the whitespace has now been discarded, since it is not used for the purposes of parsing.
+Notice how the whitespace has now been discarded, since it is not used for the purposes of parsing. Also each section of
+the input has now been grouped with a type.
 
-Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid. This is done by matching the tokens off based on the following rules, expressed in Backus Naur form:
+Below is a sequence diagram describing the behaviour of `Lexer` on the input:
 
-1. `EXPRESSION` := `TERM` | `TERM` `BINARYOP` `EXPRESSION`
-2. `TERM` := `LEFTPAREN` `EXPRESSION` `RIGHTPAREN` | `UNARYOP` `TERM` | `CONDITION`
-3. `CONDITION` := `OPTION` `COMPARATOR` `NUM` | `OPTION` `STRING`
+.Sequence diagram for the `Lexer` class
+image::Lexer.png[]
 
-Using our example, we can sequentially express the argument as:
 
-1. `EXPRESSION`
-2. `TERM` `BINARYOP` `EXPRESSION`
-3. `CONDITION` `BINARYOP` `EXPRESSION`
-4. n/BTC `BINARYOP` `EXPRESSION`
-5. n/BTC OR `EXPRESSION`
-6. n/BTC OR `TERM`
-7. n/BTC OR ( `EXPRESSION` )
-8. n/BTC OR ( `TERM` `BINARYOP` `EXPRESSION` )
-9. n/BTC OR ( `CONDITION` `BINARYOP` `EXPRESSION` )
-10. n/BTC OR ( t/fav `BINARYOP` `EXPRESSION` )
-10. n/BTC OR ( t/fav AND `EXPRESSION` )
-11. n/BTC OR ( t/fav AND `TERM` )
-12. n/BTC OR ( t/fav AND `CONDITION` )
-13. n/BTC OR ( t/fav AND p/>100 )
+===== Syntax Parser
 
-then talk about generating the condition class based on this
+Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
+This is done by matching the tokens off based on the following rules, expressed in Backus Naur form:
 
-Then sequence diagram
+. `EXPRESSION` := `TERM` | `TERM` `BINARYOP` `EXPRESSION`
+. `TERM` := `LEFTPAREN` `EXPRESSION` `RIGHTPAREN` | `UNARYOP` `TERM` | `CONDITION`
+. `CONDITION` := `OPTION` `COMPARATOR` `NUM` | `OPTION` `STRING`
 
-Then alternative implementations
+
+Using our example, we will illustrate how we can sequentially express the argument based on the provided rules:
+
+. `EXPRESSION`
+. `TERM` `BINARYOP` `EXPRESSION`
+. `CONDITION` `BINARYOP` `EXPRESSION`
+. `OPTION` `STRING` `BINARYOP` `EXPRESSION`
+. n/`STRING` `BINARYOP` `EXPRESSION`
+. n/BTC `BINARYOP` `EXPRESSION`
+. n/BTC OR `EXPRESSION`
+. n/BTC OR `TERM`
+. n/BTC OR ( `EXPRESSION` )
+. n/BTC OR ( `TERM` `BINARYOP` `EXPRESSION` )
+. n/BTC OR ( `CONDITION` `BINARYOP` `EXPRESSION` )
+. n/BTC OR ( `OPTION` `STRING` `BINARYOP` `EXPRESSION` )
+. n/BTC OR ( t/ `STRING` `BINARYOP` `EXPRESSION` )
+. n/BTC OR ( t/fav `BINARYOP` `EXPRESSION` )
+. n/BTC OR ( t/fav AND `EXPRESSION` )
+. n/BTC OR ( t/fav AND `TERM` )
+. n/BTC OR ( t/fav AND `CONDITION` )
+. n/BTC OR ( t/fav AND `OPTION` `COMPARATOR` `NUM` )
+. n/BTC OR ( t/fav AND p/ `COMPARATOR` `NUM` )
+. n/BTC OR ( t/fav AND p/ > `NUM` )
+. n/BTC OR ( t/fav AND p/>100 )
+
+The recursive methods `Expression`, `Term`, `Condition` in the syntax parser class will match their own respective tokens
+as necessary. In fact the method calls in the parser are exactly the same as the matches made in the previously stated sequence.
+For example, here is the implementation for `EXPRESSION`.
+
+[source,java]
+----
+boolean expression() {
+    if (!term()) {
+        return false;
+    }
+    while (tokenStack.matchAndPopTokenType(TokenType.BINARYBOOL)) {
+        if (!term()) {
+            return false;
+        }
+    }
+    return true;
+}
+----
+
+Visually we can represent it with the following parse tree, which also serves as the recursion tree:
+
+.Parse and recursion tree for the example input
+image::parsetree.png[]
+
+===== Semantic Parser
+
+Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
+type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
+This can be done by checking the corresponding option class versus the type of token that follows.
+
+===== Condition Generator
+
+Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
+condition based on the binary operators encounters up the recursion tree.
+
+==== Error handling
+On syntactically invalid inputs, the `ConditionParser` will retrieve the expected and actual type of Token that were not a math
+during the parsing phase from the `TokenStack` and raise an exception before returning.
+
+Below is the sequence diagram depicting the `ConditionParser` control flow when the `SyntaxParser` has identified an error in the input.
+Since the `SemanticParser` has similar structure, the sequence diagram would look very similar the the one below.
+
+.Sequence diagram for the `ConditionParser` class on erroneous inputs
+image::failSequence.png[]
+
+==== Design Considerations
+
+===== Aspect: Specification of syntax
+
+* **Alternative 1 (current choice):** Have the structure of the methods reflect exactly the syntax.
+** Pros: Since the syntax is apparent, any subsequent changes can be easily done by having the code reflect the new syntax.
+** Cons: Cumbersome to have to alter the code every time there is a change in syntax.
+* **Alternative 2:** Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.
+** Pros: Requires 0 code change whenever the syntax has to be modified.
+** Cons: The code to support this would be very complicated and not apparent to developers immediately.
+
+===== Aspect: Implementation of `SyntaxParser`, `SemanticParser`, `ConditionGenerator`
+
+* **Alternative 1 (current choice):** Have separate classes that have the same structure but with different return values.
+** Pros: Maintains SRP.
+** Cons: A change in syntax requires change across 3 classes. It is also very redundant having similar code.
+* **Alternative 2:** Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.
+** Pros: Removal of redundant code.
+** Cons: Clearly violates SRP.
 
 // tag::undoredo[]
 === Undo/Redo feature
