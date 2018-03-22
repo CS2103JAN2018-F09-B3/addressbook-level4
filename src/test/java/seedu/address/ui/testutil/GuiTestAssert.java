@@ -19,10 +19,9 @@ public class GuiTestAssert {
      */
     public static void assertCardEquals(CoinCardHandle expectedCard, CoinCardHandle actualCard) {
         assertEquals(expectedCard.getId(), actualCard.getId());
-        assertEquals(expectedCard.getAddress(), actualCard.getAddress());
-        assertEquals(expectedCard.getEmail(), actualCard.getEmail());
+        assertEquals(expectedCard.getAmount(), actualCard.getAmount());
+        assertEquals(expectedCard.getPrice(), actualCard.getPrice());
         assertEquals(expectedCard.getName(), actualCard.getName());
-        assertEquals(expectedCard.getPhone(), actualCard.getPhone());
         assertEquals(expectedCard.getTags(), actualCard.getTags());
     }
 
@@ -31,9 +30,8 @@ public class GuiTestAssert {
      */
     public static void assertCardDisplaysCoin(Coin expectedCoin, CoinCardHandle actualCard) {
         assertEquals(expectedCoin.getName().fullName, actualCard.getName());
-        assertEquals(expectedCoin.getPhone().value, actualCard.getPhone());
-        assertEquals(expectedCoin.getEmail().value, actualCard.getEmail());
-        assertEquals(expectedCoin.getAddress().value, actualCard.getAddress());
+        assertEquals(expectedCoin.getAmount().toString(), actualCard.getAmount());
+        assertEquals(expectedCoin.getPrice().toString(), actualCard.getPrice());
         assertEquals(expectedCoin.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
                 actualCard.getTags());
     }

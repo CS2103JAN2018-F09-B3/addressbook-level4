@@ -56,9 +56,13 @@ public class Coin {
         return address;
     }
 
-    public Amount getAmount() { return amount; }
+    public Amount getAmount() {
+        return amount;
+    }
 
-    public Price getPrice() { return price; }
+    public Price getPrice() {
+        return price;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

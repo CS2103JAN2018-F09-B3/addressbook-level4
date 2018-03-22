@@ -42,15 +42,18 @@ public class CoinCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
+    @FXML
+    private Label amount;
+    @FXML
+    private Label price;
 
     public CoinCard(Coin coin, int displayedIndex) {
         super(FXML);
         this.coin = coin;
         id.setText(displayedIndex + ". ");
         name.setText(coin.getName().fullName);
-        phone.setText(coin.getPhone().value);
-        address.setText(coin.getAddress().value);
-        email.setText(coin.getEmail().value);
+        amount.setText(coin.getAmount().getValue().toString());
+        price.setText(coin.getPrice().toString());
         coin.getTags().forEach(tag -> newTag(tag));
     }
 

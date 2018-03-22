@@ -14,7 +14,7 @@ public class Price {
         this.value = 0.0;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 

@@ -32,7 +32,7 @@ public class Amount {
         this.value -= subtractAmount;
     }
 
-    public Double getAmount() {
+    public Double getValue() {
         return this.value;
     }
 
@@ -43,7 +43,7 @@ public class Amount {
                 && this.value.equals(((Amount) other).value)); // state check
     }
 
-    public String toString(Object other) {
+    public String toString() {
         return this.value.toString();
     }
 }
