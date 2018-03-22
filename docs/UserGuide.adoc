@@ -278,6 +278,21 @@ Example:
 * `notifyme 1 price > 50` +
 When the price of the first entry has exceeded 50 dollars, a desktop notification will be triggered.
 
+=== Ordering the information `order` / `o` `[coming in v1.5]`
+
+Orders or sorts the `Coin` listing based on fields such as: name, price, amount held etc. +
+Format: `order OPTION/{a, d}...`
+
+Example:
+
+* `order p/a` +
+The `Coin` listing is now ordered in ascending order based on their prices+
+
+* `order p/d n/a` +
+The `Coin` listing is now ordered in descending order based on their prices first, then if two coins have
+the same price, they will be sorted by name in ascending order. +
+
+
 === Updating the information : `update` / `u` `[coming in v1.5]`
 
 Obtains the latest prices and refreshes the news feed using the Internet.
