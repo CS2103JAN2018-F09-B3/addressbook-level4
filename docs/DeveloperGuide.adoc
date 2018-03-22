@@ -429,12 +429,69 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone; we must remember to skip these commands. This approach violates the Single Responsibility Principle and the Separation of Concerns Principle as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
+// tag::notifications[]
+=== User-Set Notifications
 
-_{Explain here how the data encryption feature will be implemented}_
+==== Current Implementation
 
-// end::dataencryption[]
+The notification system is facilitated by a `RuleBook`, which is located with the `Model` component as part of the App data. `RuleBook` holds a set of rules which define, in this case, conditions to trigger notifications on. A `NotificationManager` also does the work of checking and generating notifications.
+
+Let us walk through the implementation of notifications by considering a typical scenario involving this feature. Suppose the user wants to keep track of a certain coin's price, say `BTC`.
+
+The user adds a new notification using `NotifyCommand`, e.g. `notify BTC p/15000`, which sets a new notification to be triggered for when the price of `BTC` crosses $15000 (from either direction). The corresponding rule is added to the notification `RuleBook`.
+
+Later on, the user may add other notifications. So now, there are a list of different rules stored in _CoinBook_. When the price data is synced with latest data from the web, whether from the regular update or triggered by the user with the `update` command, a `CoinChangedEvent` is sent out for each updated coin.
+
+`NotificationManager` catches these events, and checks against the notifications `RuleBook`. If any match, a notification pops up to alert the user.
+
+The diagram below (Fig. XXX) summarises these interactions:
+
+.Sequence Diagram for Notifications
+image::NotificationsSequenceDiagram.png[]
+
+==== Design Considerations
+
+===== Aspect: Module to put notification handling in
+
+* Alternative 1 (current choice): Make a new package for notifications.
+** Pros: All the notification handling can be encapsulated in its own component.
+** Cons: Notification handling alone seems too narrow a scope for a top-level component.
+
+* Alternative 2: Put it in `Commons`.
+** Pros: No need to make a new module.
+** Cons: Notifications is not an integral component and no other classes depend on it directly so it is not very appropriate to place it here.
+
+* Alternative 3: Put it in `Model` along with the implementation of `RuleBook` itself.
+** Pros: Rules management and notifications management in the same place which has better code readability.
+** Cons: Violates Separation of Concerns and Single Responsibility Principles as `Model` then manages both data, and user interaction / platform features.
+
+[TIP]
+The `RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc. +
+Later on, the `Notification` component may morph into a general "rules execution" component which manages different types of rules and performs their associated actions.
+
+===== Aspect: Which kind of notification to use
+
+* Alternative 1: Platform-side notifications, e.g. system tray.
+** Pros: User can integrate these into their own workflow, such as setting other programs to listen in on system notifications and forward them to their other device, generate emails, take actions, etc. User has some control over how notifications look and behave.
+** Cons: May not work on every platform; heavily dependent on implementation of Java features. For example, some distributions of Linux may not include system trays.
+
+* Alternative 2 (current choice): Application-side notifications.
+** Pros: Uses the same framework which displays the App window itself, so is guaranteed to work alongside the App.
+** Cons: Less flexibility in customisation and availability of integration into user's preferred workflow.
+
+===== Aspect: Undo-ability of `NotifyCommand`
+
+* Alternative 1 (current choice): Not an `UndoableCommand`.
+** Pros: We can keep notification rule data separate from coin data. The basic functionality of `RuleBook` is implemented inside `Model` which deals with data, but the rules are instantiated only in the `Notifications` component itself. A rule manager window will be available for editing or deleting existing notifications.
+** Cons: Not as intuitive as users have to manage coins and rules slightly differently.
+
+* Alternative 2: Undoable just like `add`, `edit`, etc.
+** Pros: Intuitive, single interface for similar operations.
+** Cons: Since the current implementation of `UndoableCommand` requires saving
+the state of `Model`, which is a wrapper for just the coin data, this would
+increase the coupling between the coin data and the rule data parts of `Model`. We want to keep `Model` as an interface for just the coin data itself.
+
+// end::notifications[]
 
 === Logging
 
