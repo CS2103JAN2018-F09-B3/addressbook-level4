@@ -444,10 +444,11 @@ Later on, the user may add other notifications. So now, there are a list of diff
 
 `NotificationManager` catches these events, and checks against the notifications `RuleBook`. If any match, a notification pops up to alert the user.
 
-The diagram below (Fig. XXX) summarises these interactions:
+The diagram below (Fig. 20) summarises these interactions:
 
+image::NotificationsSequenceDiagram1.png[width="800"]
 .Sequence Diagram for Notifications
-image::NotificationsSequenceDiagram.png[]
+image::NotificationsSequenceDiagram2.png[width="800"]
 
 ==== Design Considerations
 
