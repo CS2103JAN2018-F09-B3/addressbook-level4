@@ -21,18 +21,18 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Install the Checkstyle-IDEA plugin by going to <code>File</code> &gt; <code>Settings</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).<br>
+<p>Install the Checkstyle-IDEA plugin by going to <code>File</code> &#8594; <code>Settings</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &#8594; <code>Preferences&#8230;&#8203;</code> (macOS).<br>
 Select <code>Plugins</code>, press <code>Browse Repository</code>, and find the plugin.<br>
 Restart the IDE to complete the installation.</p>
 </li>
 <li>
-<p>Click <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> &gt; <code>Other Settings</code> &gt; <code>Checkstyle</code></p>
+<p>Click <code>File</code> &#8594; <code>Settings&#8230;&#8203;</code> &#8594; <code>Other Settings</code> &#8594; <code>Checkstyle</code>.</p>
 </li>
 <li>
-<p>Set <code>Scan Scope</code>  to <code>Only Java sources (including tests)</code>, so that the plugin will run checkstyle for our test source codes as well</p>
+<p>Set <code>Scan Scope</code>  to <code>Only Java sources (including tests)</code>, so that the plugin will run checkstyle for our test source codes as well.</p>
 </li>
 <li>
-<p>Ensure that the <code>Checkstyle version</code> is set to <code>8.1</code>. This is the same version that we are using inside Gradle, so that you won&#8217;t get any errors due to version incompatibility</p>
+<p>Ensure that the <code>Checkstyle version</code> is set to <code>8.1</code>. Otherwise, set the correct value and click <code>Apply</code>. This is the same version that we are using inside Gradle, so that you won&#8217;t get any errors due to version incompatibility.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/checkstyle-idea-scan-scope.png" alt="checkstyle idea scan scope" width="500">
@@ -40,22 +40,22 @@ Restart the IDE to complete the installation.</p>
 </div>
 </li>
 <li>
-<p>Click the plus sign under <code>Configuration File</code></p>
+<p>Click the plus sign under <code>Configuration File</code>.</p>
 </li>
 <li>
-<p>Enter an arbitrary description e.g. addressbook</p>
+<p>Enter an arbitrary description e.g. addressbook.</p>
 </li>
 <li>
-<p>Select <code>Use a local Checkstyle file</code></p>
+<p>Select <code>Use a local Checkstyle file</code>.</p>
 </li>
 <li>
-<p>Use the checkstyle configuration file found at <code>config/checkstyle/checkstyle.xml</code></p>
+<p>Use the checkstyle configuration file found at <code>config/checkstyle/checkstyle.xml</code>.</p>
 </li>
 <li>
-<p>Click <code>Next</code> &gt; <code>Finish</code></p>
+<p>Click <code>Next</code> &#8594; <code>Finish</code>.</p>
 </li>
 <li>
-<p>Mark <code>Active</code> for the newly imported check configuration</p>
+<p>Mark <code>Active</code> for the newly imported check configuration.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/checkstyle-idea-configuration.png" alt="checkstyle idea configuration" width="700">
@@ -63,7 +63,7 @@ Restart the IDE to complete the installation.</p>
 </div>
 </li>
 <li>
-<p>Click <code>OK</code></p>
+<p>Click <code>OK</code>.</p>
 </li>
 </ol>
 </div>
@@ -81,7 +81,7 @@ Restart the IDE to complete the installation.</p>
 <p>Reason: <code>checkstyle.xml</code> is written for a particular version, but the plugin was not configured to the correct version.</p>
 </li>
 <li>
-<p>Solution: Ensure that you have selected the correct <code>Checkstyle version</code>, that matches the version in <code>build.gradle</code>, as <code>checkstyle.xml</code> is written for Gradle&#8217;s checkstyle.</p>
+<p>Solution: Ensure that you have selected the correct <code>Checkstyle version</code>, that matches the version in <code>build.gradle</code>, as <code>checkstyle.xml</code> is written for Gradle&#8217;s checkstyle. Click <code>Apply</code> to apply the changes before retrying the file load.</p>
 </li>
 </ul>
 </div>
@@ -103,7 +103,7 @@ Restart the IDE to complete the installation.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 02:03:29 UTC
+Last updated 2018-03-22 17:45:00 UTC
 </div>
 </div>
 </body>
