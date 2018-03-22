@@ -20,6 +20,9 @@ public class Coin {
     private final Email email;
     private final Address address;
 
+    private final Amount amount;
+    private final Price price;
+
     private final UniqueTagList tags;
 
     /**
@@ -33,6 +36,8 @@ public class Coin {
         this.address = address;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
+        this.amount = new Amount();
+        this.price = new Price();
     }
 
     public Name getName() {
@@ -50,6 +55,10 @@ public class Coin {
     public Address getAddress() {
         return address;
     }
+
+    public Amount getAmount() { return amount; }
+
+    public Price getPrice() { return price; }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -73,13 +82,15 @@ public class Coin {
         return otherCoin.getName().equals(this.getName())
                 && otherCoin.getPhone().equals(this.getPhone())
                 && otherCoin.getEmail().equals(this.getEmail())
-                && otherCoin.getAddress().equals(this.getAddress());
+                && otherCoin.getAddress().equals(this.getAddress())
+                && otherCoin.getAmount().equals(this.getAmount())
+                && otherCoin.getPrice().equals(this.getPrice());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, amount, price);
     }
 
     @Override
@@ -92,6 +103,10 @@ public class Coin {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Amount: ")
+                .append(getAmount())
+                .append(" Price: ")
+                .append(getPrice())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
