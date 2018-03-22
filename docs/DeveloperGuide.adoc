@@ -207,7 +207,7 @@ image::DeletePersonSdForLogic.png[width="800"]
 [[Design-Model]]
 === Model Component
 
-*API* : 
+*API* :
 [exref]#link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]#
 
 The `Model` component:
@@ -225,7 +225,7 @@ image::ModelClassDiagram.png[width="800"]
 [[Design-Storage]]
 === Storage component
 
-*API* : 
+*API* :
 [exref]#link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]#
 
 The `Storage` component:
@@ -241,6 +241,57 @@ image::StorageClassDiagram.png[width="800"]
 == Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
+
+=== Condition Parser feature
+
+==== Current implementation
+The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely the `Lexer`, `SyntaxParser`, `SemanticParser`, and a `ConditionGenerator`, while using classes such as `Condition`, `Token`, `TokenType`, `TokenStack` to model the data that is to be operated on throughout the process. Below is the UML describing their classes.
+
+.Class UML diagram for the Condition Parser
+image::ParserClassDiagram.png[width="800"]
+
+The general flow of the parser is very linear in nature, an input string is first broken up into reasonable sections by the lexer based on their possible meaning, then the syntax and sematic parser ensure that the input follows the structure required and then finally a condition objects is generated representing the statement that can be used to evaluate Coin objects.
+
+As an example, consider the following argument:
+```
+> n/BTC OR ( t/fav AND p/>100 )
+```
+
+Firstly, the lexer would tokenize this into:
+
+```
+> [n/,OPTION][BTC,STRING][OR,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][>,COMPARATOR][100,NUMBER][),RIGHTPAREN]
+```
+Notice how the whitespace has now been discarded, since it is not used for the purposes of parsing.
+
+Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid. This is done by matching the tokens off based on the following rules, expressed in Backus Naur form:
+
+1. `EXPRESSION` := `TERM` | `TERM` `BINARYOP` `EXPRESSION`
+2. `TERM` := `LEFTPAREN` `EXPRESSION` `RIGHTPAREN` | `UNARYOP` `TERM` | `CONDITION`
+3. `CONDITION` := `OPTION` `COMPARATOR` `NUM` | `OPTION` `STRING`
+
+Using our example, we can sequentially express the argument as:
+
+1. `EXPRESSION`
+2. `TERM` `BINARYOP` `EXPRESSION`
+3. `CONDITION` `BINARYOP` `EXPRESSION`
+4. n/BTC `BINARYOP` `EXPRESSION`
+5. n/BTC OR `EXPRESSION`
+6. n/BTC OR `TERM`
+7. n/BTC OR ( `EXPRESSION` )
+8. n/BTC OR ( `TERM` `BINARYOP` `EXPRESSION` )
+9. n/BTC OR ( `CONDITION` `BINARYOP` `EXPRESSION` )
+10. n/BTC OR ( t/fav `BINARYOP` `EXPRESSION` )
+10. n/BTC OR ( t/fav AND `EXPRESSION` )
+11. n/BTC OR ( t/fav AND `TERM` )
+12. n/BTC OR ( t/fav AND `CONDITION` )
+13. n/BTC OR ( t/fav AND p/>100 )
+
+then talk about generating the condition class based on this
+
+Then sequence diagram
+
+Then alternative implementations
 
 // tag::undoredo[]
 === Undo/Redo feature
@@ -524,7 +575,7 @@ When a pull request has changes to AsciiDoc files, you can use [ext]#https://www
 
 Here are the steps to creating a new release.
 
-.  Update the version number in 
+.  Update the version number in
 [exref]#link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp.java`]#.
 .  Generate a JAR file [exref]#<<UsingGradle#creating-the-jar-file, using Gradle>>#.
 .  Tag the repo with the version number, e.g. `v0.1`.
