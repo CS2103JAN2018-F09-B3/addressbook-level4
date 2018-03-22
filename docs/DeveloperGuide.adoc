@@ -513,6 +513,72 @@ We are using the `java.util.logging` package for logging. The `LogsCenter` class
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file. By default, this is `config.json`.
 
+=== Organisation Features
+
+*Sorting*
+
+The sorting mechanism is facilitated by Collections.sort. It supports sorting of the coins when the unsorted Coin List is passed into the sort method to arrange to coins in a manner that the user chooses.
+
+The way Collections.sort works is that it takes the collection's underlying array and calls its sort method to sort the actual elements. That sorting algorithm used by Java is Timsort.
+
+The method returns void because it sorts the collection in-place and thus it modifies the collection you give it as a parameter by sorting its elements. As a result, a sorted copy need not be returned, thus saving resources.
+
+- Sort by coin value
+
+-- We can use Comparator.comparingDouble() for comparing double value. For our coinbook, we want to order our List of Coins by value, from the highest to the lowest.
+
+-- We can use the reversed function on the Comparator to invert default, to arrange coins from lowest to highest instead.
+
+-- Double is used because coin values have several decimal places and so using comparingInt() would not suffice.
+
+- Sort by string field (Coin Code)
+
+-- If we want to sort our CoinList by Coin code we can use the Comparator.comparing() and pass a function that extracts the 3 letter coin code.
+
+-- One does not have to pass any comparator for the list to be correctly sorted because the 3-letter coin code is a string and String implements the Comparable Interface.
+
+==== Design Considerations
+
+===== Aspect: Implementation of Sort
+
+* Alternative 1 (current choice): Make use of Collections.sort
+
+** Pros: String implements comparable Interface so there is no need to pass any comparator for the coin list.
+
+** Cons: Developer needs to understand the relationship between array lists and collections.
+
+* Alternative 2: Add a new sorting function (e.g. Selection Sort)
+
+** Pros: Possibly allows us to reduce the time required to execute the sorting command.
+
+** Cons: Need more time to incorporate it into the address book since we are not using Java’s in-built sorting method.
+
+*Grouping*
+
+We can use the collectors class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.
+
+The GroupingBy method from the Collectors class is responsible for organising the coin data into groups. In this case the group is defined by the value of the coin. The Collect method from the Stream Class accepts the GroupingBy method as its argument and returns a map containing the results. The results are then displayed.
+
+Using the GroupingBy collector from the Collector class, it takes a single parameter(classifier) that assigns a grouping key to every stream element.
+
+By default, elements with the same key are inserted into List<T>, although this can be changed by specifying a second parameter to GroupingBy.
+
+==== Design Considerations
+
+===== Aspect: Implementation of Sort
+
+* Alternative 1(Current choice): Make use of GroupingBy method
+
+** Pros: User has an additional option where he can view coins based on a specified attribute
+
+** Cons: Developer needs to understand the relationship between Stream Class, ArrayList and Collector class
+
+* Alternative 2: Adding additional tags in lieu of grouping
+
+** Pros: Codebase already has support for tags and so not a lot of changes will be required.
+
+** Cons: Unable to execute commands at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.
+
 == Documentation
 
 We use AsciiDoc for writing documentation.
