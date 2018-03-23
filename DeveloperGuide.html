@@ -92,7 +92,7 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
+<li><a href="#deleting-a-coin">F.2. Deleting a coin</a></li>
 <li><a href="#saving-data">F.3. Saving data</a></li>
 </ul>
 </li>
@@ -488,7 +488,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person) and/or raise events.</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a coin) and/or raise events.</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is then passed back to the UI.</p>
@@ -963,7 +963,7 @@ Since the <code>SemanticParser</code> has similar structure, the sequence diagra
 <div class="title">Figure 17. Undo/Redo Stack Part 1</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to issue more commands, they are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person, resulting in the below picture (Fig. 13):</p>
+<p>As the user continues to issue more commands, they are added into the <code>undoStack</code>. For example, the user may execute <code>add BTC &#8230;&#8203;</code> to add a new coin, resulting in the below picture (Fig. 13):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -984,7 +984,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
+<p>The user now decides that adding the coin was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
 <p>We will pop the most recent command out of the <code>undoStack</code> and push it to the <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 14) illustrates the result:</p>
@@ -1116,7 +1116,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -2468,15 +2468,15 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
+<h3 id="deleting-a-coin"><a class="link" href="#deleting-a-coin">F.2. Deleting a coin</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Deleting a coin while all coins are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all coins using the <code>list</code> command. Multiple coins in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
@@ -2484,7 +2484,7 @@ Expected: First contact is deleted from the list. Details of the deleted contact
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No coin is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
 <p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
@@ -2524,7 +2524,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-23 00:08:45 UTC
+Last updated 2018-03-23 00:42:02 UTC
 </div>
 </div>
 </body>

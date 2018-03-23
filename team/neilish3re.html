@@ -316,7 +316,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="title">Figure 2. Undo/Redo Stack Part 1</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to issue more commands, they are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person, resulting in the below picture (Fig. 13):</p>
+<p>As the user continues to issue more commands, they are added into the <code>undoStack</code>. For example, the user may execute <code>add BTC &#8230;&#8203;</code> to add a new coin, resulting in the below picture (Fig. 13):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -337,7 +337,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
+<p>The user now decides that adding the coin was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
 <p>We will pop the most recent command out of the <code>undoStack</code> and push it to the <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 14) illustrates the result:</p>
@@ -469,7 +469,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -563,7 +563,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-23 00:08:45 UTC
+Last updated 2018-03-23 00:42:02 UTC
 </div>
 </div>
 </body>
