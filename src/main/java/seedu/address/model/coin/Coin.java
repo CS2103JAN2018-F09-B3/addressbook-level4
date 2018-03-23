@@ -20,7 +20,9 @@ public class Coin {
     private final Email email;
     private final Address address;
 
-    private final Amount amount;
+    private final Amount currentAmountHeld;
+    private final Amount totalAmountSold;
+    private final Amount totalAmountBought;
     private final Price price;
 
     private final UniqueTagList tags;
@@ -36,8 +38,10 @@ public class Coin {
         this.address = address;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
-        this.amount = new Amount();
+        this.currentAmountHeld = new Amount();
         this.price = new Price();
+        this.totalAmountSold = new Amount();
+        this.totalAmountBought = new Amount();
     }
 
     public Name getName() {
@@ -56,8 +60,8 @@ public class Coin {
         return address;
     }
 
-    public Amount getAmount() {
-        return amount;
+    public Amount getCurrentAmountHeld() {
+        return currentAmountHeld;
     }
 
     public Price getPrice() {
@@ -87,14 +91,14 @@ public class Coin {
                 && otherCoin.getPhone().equals(this.getPhone())
                 && otherCoin.getEmail().equals(this.getEmail())
                 && otherCoin.getAddress().equals(this.getAddress())
-                && otherCoin.getAmount().equals(this.getAmount())
+                && otherCoin.getCurrentAmountHeld().equals(this.getCurrentAmountHeld())
                 && otherCoin.getPrice().equals(this.getPrice());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, amount, price);
+        return Objects.hash(name, phone, email, address, tags, currentAmountHeld, price);
     }
 
     @Override
@@ -108,7 +112,7 @@ public class Coin {
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Amount: ")
-                .append(getAmount())
+                .append(getCurrentAmountHeld())
                 .append(" Price: ")
                 .append(getPrice())
                 .append(" Tags: ");
@@ -116,4 +120,31 @@ public class Coin {
         return builder.toString();
     }
 
+    public Amount getTotalAmountSold() {
+        return totalAmountSold;
+    }
+
+    public void addTotalAmountSold(Double addAmount) {
+        this.totalAmountSold.addValue(addAmount);
+    }
+
+    public Amount getTotalAmountBought() {
+        return totalAmountBought;
+    }
+
+    public void addTotalAmountBought(Double addAmount) {
+        this.totalAmountBought.addValue(addAmount);
+    }
+
+    public Double getTotalAmountProfit() {
+        return totalAmountSold.getValue() - totalAmountBought.getValue();
+    }
+
+    public Double getDollarsWorth() {
+        return price.getValue() * currentAmountHeld.getValue();
+    }
+
+    public Double getProfitability() {
+        return getDollarsWorth() + ((getProfitability() > 0) ? 0 : getProfitability());
+    }
 }
