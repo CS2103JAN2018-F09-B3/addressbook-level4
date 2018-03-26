@@ -37,7 +37,7 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.model.AddressBook;
+import seedu.address.model.CoinBook;
 import seedu.address.model.Model;
 import seedu.address.testutil.TypicalCoins;
 import seedu.address.ui.BrowserPanel;
@@ -45,7 +45,7 @@ import seedu.address.ui.CommandBox;
 import seedu.address.ui.ResultDisplay;
 
 /**
- * A system test class for AddressBook, which provides access to handles of GUI components and helper methods
+ * A system test class for CoinBook, which provides access to handles of GUI components and helper methods
  * for test verification.
  */
 public abstract class AddressBookSystemTest {
@@ -89,7 +89,7 @@ public abstract class AddressBookSystemTest {
     /**
      * Returns the data to be loaded into the file in {@link #getDataFileLocation()}.
      */
-    protected AddressBook getInitialData() {
+    protected CoinBook getInitialData() {
         return TypicalCoins.getTypicalAddressBook();
     }
 

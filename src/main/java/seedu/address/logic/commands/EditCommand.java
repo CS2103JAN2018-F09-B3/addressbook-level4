@@ -20,10 +20,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.coin.Address;
+import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
-import seedu.address.model.coin.Email;
 import seedu.address.model.coin.Name;
-import seedu.address.model.coin.Phone;
 import seedu.address.model.coin.exceptions.CoinNotFoundException;
 import seedu.address.model.coin.exceptions.DuplicateCoinException;
 import seedu.address.model.tag.Tag;
@@ -104,12 +103,11 @@ public class EditCommand extends UndoableCommand {
         assert coinToEdit != null;
 
         Name updatedName = editCoinDescriptor.getName().orElse(coinToEdit.getName());
-        Phone updatedPhone = editCoinDescriptor.getPhone().orElse(coinToEdit.getPhone());
-        Email updatedEmail = editCoinDescriptor.getEmail().orElse(coinToEdit.getEmail());
+        Code updatedCode = editCoinDescriptor.getCode().orElse(coinToEdit.getCode());
         Address updatedAddress = editCoinDescriptor.getAddress().orElse(coinToEdit.getAddress());
         Set<Tag> updatedTags = editCoinDescriptor.getTags().orElse(coinToEdit.getTags());
 
-        return new Coin(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Coin(updatedName, updatedCode, updatedAddress, updatedTags);
     }
 
     @Override
@@ -137,8 +135,7 @@ public class EditCommand extends UndoableCommand {
      */
     public static class EditCoinDescriptor {
         private Name name;
-        private Phone phone;
-        private Email email;
+        private Code code;
         private Address address;
         private Set<Tag> tags;
 
@@ -150,8 +147,7 @@ public class EditCommand extends UndoableCommand {
          */
         public EditCoinDescriptor(EditCoinDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
+            setCode(toCopy.code);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
@@ -160,7 +156,7 @@ public class EditCommand extends UndoableCommand {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(this.name, this.phone, this.email, this.address, this.tags);
+            return CollectionUtil.isAnyNonNull(this.name, this.code, this.address, this.tags);
         }
 
         public void setName(Name name) {
@@ -171,20 +167,12 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setCode(Code code) {
+            this.code = code;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
-        }
-
-        public void setEmail(Email email) {
-            this.email = email;
-        }
-
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<Code> getCode() {
+            return Optional.ofNullable(code);
         }
 
         public void setAddress(Address address) {
@@ -228,8 +216,7 @@ public class EditCommand extends UndoableCommand {
             EditCoinDescriptor e = (EditCoinDescriptor) other;
 
             return getName().equals(e.getName())
-                    && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
+                    && getCode().equals(e.getCode())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }

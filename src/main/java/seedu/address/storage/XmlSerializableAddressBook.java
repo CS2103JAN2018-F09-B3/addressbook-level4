@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.CoinBook;
+import seedu.address.model.ReadOnlyCoinBook;
 
 /**
- * An Immutable AddressBook that is serializable to XML format
+ * An Immutable CoinBook that is serializable to XML format
  */
 @XmlRootElement(name = "addressbook")
 public class XmlSerializableAddressBook {
@@ -34,20 +34,20 @@ public class XmlSerializableAddressBook {
     /**
      * Conversion
      */
-    public XmlSerializableAddressBook(ReadOnlyAddressBook src) {
+    public XmlSerializableAddressBook(ReadOnlyCoinBook src) {
         this();
         coins.addAll(src.getCoinList().stream().map(XmlAdaptedCoin::new).collect(Collectors.toList()));
         tags.addAll(src.getTagList().stream().map(XmlAdaptedTag::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this addressbook into the model's {@code AddressBook} object.
+     * Converts this addressbook into the model's {@code CoinBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
      * {@code XmlAdaptedCoin} or {@code XmlAdaptedTag}.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public CoinBook toModelType() throws IllegalValueException {
+        CoinBook addressBook = new CoinBook();
         for (XmlAdaptedTag t : tags) {
             addressBook.addTag(t.toModelType());
         }

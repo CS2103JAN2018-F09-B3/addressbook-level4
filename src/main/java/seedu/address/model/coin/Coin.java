@@ -16,8 +16,7 @@ import seedu.address.model.tag.UniqueTagList;
 public class Coin {
 
     private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private final Code code;
     private final Address address;
 
     private final Amount currentAmountHeld;
@@ -30,11 +29,10 @@ public class Coin {
     /**
      * Every field must be present and not null.
      */
-    public Coin(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Coin(Name name, Code code, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, code, address, tags);
         this.name = name;
-        this.phone = phone;
-        this.email = email;
+        this.code = code;
         this.address = address;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
@@ -48,12 +46,8 @@ public class Coin {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public Email getEmail() {
-        return email;
+    public Code getCode() {
+        return code;
     }
 
     public Address getAddress() {
@@ -88,8 +82,7 @@ public class Coin {
 
         Coin otherCoin = (Coin) other;
         return otherCoin.getName().equals(this.getName())
-                && otherCoin.getPhone().equals(this.getPhone())
-                && otherCoin.getEmail().equals(this.getEmail())
+                && otherCoin.getCode().equals(this.getCode())
                 && otherCoin.getAddress().equals(this.getAddress())
                 && otherCoin.getCurrentAmountHeld().equals(this.getCurrentAmountHeld())
                 && otherCoin.getPrice().equals(this.getPrice());
@@ -98,17 +91,15 @@ public class Coin {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, currentAmountHeld, price);
+        return Objects.hash(name, code, address, tags, currentAmountHeld, price);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
+                .append(" Code: ")
+                .append(getCode())
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Amount: ")

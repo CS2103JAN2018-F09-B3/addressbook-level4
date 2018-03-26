@@ -3,46 +3,45 @@ package seedu.address.model.util;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.CoinBook;
+import seedu.address.model.ReadOnlyCoinBook;
 import seedu.address.model.coin.Address;
+import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
-import seedu.address.model.coin.Email;
 import seedu.address.model.coin.Name;
-import seedu.address.model.coin.Phone;
 import seedu.address.model.coin.exceptions.DuplicateCoinException;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code CoinBook} with sample data.
  */
 public class SampleDataUtil {
     public static Coin[] getSampleCoins() {
         return new Coin[] {
-            new Coin(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
+            new Coin(new Name("Alex Yeoh"), new Code("87438807"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 getTagSet("friends")),
-            new Coin(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
+            new Coin(new Name("Bernice Yu"), new Code("99272758"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                 getTagSet("colleagues", "friends")),
-            new Coin(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
+            new Coin(new Name("Charlotte Oliveiro"), new Code("93210283"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
                 getTagSet("neighbours")),
-            new Coin(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
+            new Coin(new Name("David Li"), new Code("91031282"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
                 getTagSet("family")),
-            new Coin(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
+            new Coin(new Name("Irfan Ibrahim"), new Code("92492021"),
                 new Address("Blk 47 Tampines Street 20, #17-35"),
                 getTagSet("classmates")),
-            new Coin(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
+            new Coin(new Name("Roy Balakrishnan"), new Code("92624417"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("colleagues"))
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
+    public static ReadOnlyCoinBook getSampleAddressBook() {
         try {
-            AddressBook sampleAb = new AddressBook();
+            CoinBook sampleAb = new CoinBook();
             for (Coin sampleCoin : getSampleCoins()) {
                 sampleAb.addCoin(sampleCoin);
             }

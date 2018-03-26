@@ -4,10 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.coin.Address;
+import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
-import seedu.address.model.coin.Email;
 import seedu.address.model.coin.Name;
-import seedu.address.model.coin.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -16,22 +15,19 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class CoinBuilder {
 
-    public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "alice@gmail.com";
+    public static final String DEFAULT_NAME = "Test Coin";
+    public static final String DEFAULT_PHONE = "XTC";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TAGS = "friends";
 
     private Name name;
-    private Phone phone;
-    private Email email;
+    private Code code;
     private Address address;
     private Set<Tag> tags;
 
     public CoinBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
+        code = new Code(DEFAULT_PHONE);
         address = new Address(DEFAULT_ADDRESS);
         tags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
     }
@@ -41,8 +37,7 @@ public class CoinBuilder {
      */
     public CoinBuilder(Coin coinToCopy) {
         name = coinToCopy.getName();
-        phone = coinToCopy.getPhone();
-        email = coinToCopy.getEmail();
+        code = coinToCopy.getCode();
         address = coinToCopy.getAddress();
         tags = new HashSet<>(coinToCopy.getTags());
     }
@@ -72,23 +67,15 @@ public class CoinBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Coin} that we are building.
+     * Sets the {@code Code} of the {@code Coin} that we are building.
      */
-    public CoinBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Email} of the {@code Coin} that we are building.
-     */
-    public CoinBuilder withEmail(String email) {
-        this.email = new Email(email);
+    public CoinBuilder withCode(String code) {
+        this.code = new Code(code);
         return this;
     }
 
     public Coin build() {
-        return new Coin(name, phone, email, address, tags);
+        return new Coin(name, code, address, tags);
     }
 
 }
