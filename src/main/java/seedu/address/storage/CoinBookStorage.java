@@ -10,12 +10,12 @@ import seedu.address.model.ReadOnlyCoinBook;
 /**
  * Represents a storage for {@link CoinBook}.
  */
-public interface AddressBookStorage {
+public interface CoinBookStorage {
 
     /**
      * Returns the file path of the data file.
      */
-    String getAddressBookFilePath();
+    String getCoinBookFilePath();
 
     /**
      * Returns CoinBook data as a {@link ReadOnlyCoinBook}.
@@ -23,29 +23,29 @@ public interface AddressBookStorage {
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyCoinBook> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyCoinBook> readCoinBook() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getCoinBookFilePath()
      */
-    Optional<ReadOnlyCoinBook> readAddressBook(String filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyCoinBook> readCoinBook(String filePath) throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyCoinBook} to the storage.
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyCoinBook addressBook) throws IOException;
+    void saveCoinBook(ReadOnlyCoinBook addressBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyCoinBook)
+     * @see #saveCoinBook(ReadOnlyCoinBook)
      */
-    void saveAddressBook(ReadOnlyCoinBook addressBook, String filePath) throws IOException;
+    void saveCoinBook(ReadOnlyCoinBook addressBook, String filePath) throws IOException;
 
     /**
      * Saves the given {@link ReadOnlyCoinBook} to a fixed temporary location.
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void backupAddressBook(ReadOnlyCoinBook addressBook) throws IOException;
+    void backupCoinBook(ReadOnlyCoinBook addressBook) throws IOException;
 }

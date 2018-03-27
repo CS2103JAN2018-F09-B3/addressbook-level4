@@ -17,7 +17,7 @@ import org.junit.rules.ExpectedException;
 import seedu.address.model.CoinBook;
 import seedu.address.storage.XmlAdaptedCoin;
 import seedu.address.storage.XmlAdaptedTag;
-import seedu.address.storage.XmlSerializableAddressBook;
+import seedu.address.storage.XmlSerializableCoinBook;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.CoinBuilder;
 import seedu.address.testutil.TestUtil;
@@ -69,7 +69,7 @@ public class XmlUtilTest {
 
     @Test
     public void getDataFromFile_validFile_validResult() throws Exception {
-        CoinBook dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableAddressBook.class).toModelType();
+        CoinBook dataFromFile = XmlUtil.getDataFromFile(VALID_FILE, XmlSerializableCoinBook.class).toModelType();
         assertEquals(9, dataFromFile.getCoinList().size());
         assertEquals(0, dataFromFile.getTagList().size());
     }
@@ -122,17 +122,17 @@ public class XmlUtilTest {
     @Test
     public void saveDataToFile_validFile_dataSaved() throws Exception {
         TEMP_FILE.createNewFile();
-        XmlSerializableAddressBook dataToWrite = new XmlSerializableAddressBook(new CoinBook());
+        XmlSerializableCoinBook dataToWrite = new XmlSerializableCoinBook(new CoinBook());
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        XmlSerializableAddressBook dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAddressBook.class);
+        XmlSerializableCoinBook dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableCoinBook.class);
         assertEquals(dataToWrite, dataFromFile);
 
         AddressBookBuilder builder = new AddressBookBuilder(new CoinBook());
-        dataToWrite = new XmlSerializableAddressBook(
+        dataToWrite = new XmlSerializableCoinBook(
                 builder.withCoin(new CoinBuilder().build()).withTag("Friends").build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
-        dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableAddressBook.class);
+        dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableCoinBook.class);
         assertEquals(dataToWrite, dataFromFile);
     }
 

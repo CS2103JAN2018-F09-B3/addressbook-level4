@@ -15,7 +15,7 @@ import seedu.address.model.ReadOnlyCoinBook;
  * An Immutable CoinBook that is serializable to XML format
  */
 @XmlRootElement(name = "addressbook")
-public class XmlSerializableAddressBook {
+public class XmlSerializableCoinBook {
 
     @XmlElement
     private List<XmlAdaptedCoin> coins;
@@ -26,7 +26,7 @@ public class XmlSerializableAddressBook {
      * Creates an empty XmlSerializableAddressBook.
      * This empty constructor is required for marshalling.
      */
-    public XmlSerializableAddressBook() {
+    public XmlSerializableCoinBook() {
         coins = new ArrayList<>();
         tags = new ArrayList<>();
     }
@@ -34,7 +34,7 @@ public class XmlSerializableAddressBook {
     /**
      * Conversion
      */
-    public XmlSerializableAddressBook(ReadOnlyCoinBook src) {
+    public XmlSerializableCoinBook(ReadOnlyCoinBook src) {
         this();
         coins.addAll(src.getCoinList().stream().map(XmlAdaptedCoin::new).collect(Collectors.toList()));
         tags.addAll(src.getTagList().stream().map(XmlAdaptedTag::new).collect(Collectors.toList()));
@@ -63,11 +63,11 @@ public class XmlSerializableAddressBook {
             return true;
         }
 
-        if (!(other instanceof XmlSerializableAddressBook)) {
+        if (!(other instanceof XmlSerializableCoinBook)) {
             return false;
         }
 
-        XmlSerializableAddressBook otherAb = (XmlSerializableAddressBook) other;
+        XmlSerializableCoinBook otherAb = (XmlSerializableCoinBook) other;
         return coins.equals(otherAb.coins) && tags.equals(otherAb.tags);
     }
 }
