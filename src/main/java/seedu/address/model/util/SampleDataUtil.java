@@ -18,22 +18,22 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Coin[] getSampleCoins() {
         return new Coin[] {
-            new Coin(new Name("Alex Yeoh"), new Code("87438807"),
+            new Coin(new Name("Alex Yeoh"), new Code("AAA"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 getTagSet("friends")),
-            new Coin(new Name("Bernice Yu"), new Code("99272758"),
+            new Coin(new Name("Bernice Yu"), new Code("BBB"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                 getTagSet("colleagues", "friends")),
-            new Coin(new Name("Charlotte Oliveiro"), new Code("93210283"),
+            new Coin(new Name("Charlotte Oliveiro"), new Code("CCC"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
                 getTagSet("neighbours")),
-            new Coin(new Name("David Li"), new Code("91031282"),
+            new Coin(new Name("David Li"), new Code("DDD"),
                 new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
                 getTagSet("family")),
-            new Coin(new Name("Irfan Ibrahim"), new Code("92492021"),
+            new Coin(new Name("Irfan Ibrahim"), new Code("EEE"),
                 new Address("Blk 47 Tampines Street 20, #17-35"),
                 getTagSet("classmates")),
-            new Coin(new Name("Roy Balakrishnan"), new Code("92624417"),
+            new Coin(new Name("Roy Balakrishnan"), new Code("FFF"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("colleagues"))
         };
