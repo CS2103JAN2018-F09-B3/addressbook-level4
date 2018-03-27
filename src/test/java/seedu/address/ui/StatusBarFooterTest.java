@@ -17,7 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import guitests.guihandles.StatusBarFooterHandle;
-import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.model.CoinBookChangedEvent;
 import seedu.address.model.CoinBook;
 import seedu.address.testutil.TypicalCoins;
 
@@ -26,12 +26,12 @@ public class StatusBarFooterTest extends GuiUnitTest {
     private static final String STUB_SAVE_LOCATION = "Stub";
     private static final String RELATIVE_PATH = "./";
 
-    private static final AddressBookChangedEvent EVENT_STUB = new AddressBookChangedEvent(new CoinBook());
+    private static final CoinBookChangedEvent EVENT_STUB = new CoinBookChangedEvent(new CoinBook());
 
     private static final Clock originalClock = StatusBarFooter.getClock();
     private static final Clock injectedClock = Clock.fixed(Instant.now(), ZoneId.systemDefault());
 
-    private static AddressBookChangedEvent eventADDED;
+    private static CoinBookChangedEvent eventADDED;
 
     private StatusBarFooterHandle statusBarFooterHandle;
 
@@ -56,7 +56,7 @@ public class StatusBarFooterTest extends GuiUnitTest {
 
         CoinBook tempAddressBook = new CoinBook();
         tempAddressBook.addCoin(TypicalCoins.ALICE);
-        eventADDED = new AddressBookChangedEvent(tempAddressBook);
+        eventADDED = new CoinBookChangedEvent(tempAddressBook);
     }
 
     @Test
