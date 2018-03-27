@@ -79,7 +79,7 @@ public class XmlUtilTest {
         XmlAdaptedCoin actualCoin = XmlUtil.getDataFromFile(
                 MISSING_COIN_FIELD_FILE, XmlAdaptedCoinWithRootElement.class);
         XmlAdaptedCoin expectedCoin = new XmlAdaptedCoin(
-                null, VALID_PHONE, VALID_ADDRESS, VALID_TAGS);
+                null, VALID_PHONE, VALID_TAGS);
         assertEquals(expectedCoin, actualCoin);
     }
 
@@ -88,7 +88,7 @@ public class XmlUtilTest {
         XmlAdaptedCoin actualCoin = XmlUtil.getDataFromFile(
                 INVALID_COIN_FIELD_FILE, XmlAdaptedCoinWithRootElement.class);
         XmlAdaptedCoin expectedCoin = new XmlAdaptedCoin(
-                VALID_NAME, INVALID_PHONE, VALID_ADDRESS, VALID_TAGS);
+                VALID_NAME, INVALID_PHONE, VALID_TAGS);
         assertEquals(expectedCoin, actualCoin);
     }
 
@@ -97,7 +97,7 @@ public class XmlUtilTest {
         XmlAdaptedCoin actualCoin = XmlUtil.getDataFromFile(
                 VALID_COIN_FILE, XmlAdaptedCoinWithRootElement.class);
         XmlAdaptedCoin expectedCoin = new XmlAdaptedCoin(
-                VALID_NAME, VALID_PHONE, VALID_ADDRESS, VALID_TAGS);
+                VALID_NAME, VALID_PHONE, VALID_TAGS);
         assertEquals(expectedCoin, actualCoin);
     }
 

@@ -9,10 +9,9 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.coin.Address;
+import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
 import seedu.address.model.coin.Name;
-import seedu.address.model.coin.Code;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -26,8 +25,6 @@ public class XmlAdaptedCoin {
     private String name;
     @XmlElement(required = true)
     private String code;
-    @XmlElement(required = true)
-    private String address;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -41,10 +38,9 @@ public class XmlAdaptedCoin {
     /**
      * Constructs an {@code XmlAdaptedCoin} with the given coin details.
      */
-    public XmlAdaptedCoin(String name, String code, String address, List<XmlAdaptedTag> tagged) {
+    public XmlAdaptedCoin(String name, String code, List<XmlAdaptedTag> tagged) {
         this.name = name;
         this.code = code;
-        this.address = address;
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
         }
@@ -58,7 +54,6 @@ public class XmlAdaptedCoin {
     public XmlAdaptedCoin(Coin source) {
         name = source.getName().fullName;
         code = source.getCode().value;
-        address = source.getAddress().value;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -92,16 +87,8 @@ public class XmlAdaptedCoin {
         }
         final Code code = new Code(this.code);
 
-        if (this.address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(this.address)) {
-            throw new IllegalValueException(Address.MESSAGE_ADDRESS_CONSTRAINTS);
-        }
-        final Address address = new Address(this.address);
-
         final Set<Tag> tags = new HashSet<>(coinTags);
-        return new Coin(name, code, address, tags);
+        return new Coin(name, code, tags);
     }
 
     @Override
@@ -117,7 +104,6 @@ public class XmlAdaptedCoin {
         XmlAdaptedCoin otherCoin = (XmlAdaptedCoin) other;
         return Objects.equals(name, otherCoin.name)
                 && Objects.equals(code, otherCoin.code)
-                && Objects.equals(address, otherCoin.address)
                 && tagged.equals(otherCoin.tagged);
     }
 }

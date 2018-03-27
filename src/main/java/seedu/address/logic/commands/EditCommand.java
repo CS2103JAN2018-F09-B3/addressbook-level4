@@ -19,7 +19,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.coin.Address;
 import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
 import seedu.address.model.coin.Name;
@@ -104,10 +103,9 @@ public class EditCommand extends UndoableCommand {
 
         Name updatedName = editCoinDescriptor.getName().orElse(coinToEdit.getName());
         Code updatedCode = editCoinDescriptor.getCode().orElse(coinToEdit.getCode());
-        Address updatedAddress = editCoinDescriptor.getAddress().orElse(coinToEdit.getAddress());
         Set<Tag> updatedTags = editCoinDescriptor.getTags().orElse(coinToEdit.getTags());
 
-        return new Coin(updatedName, updatedCode, updatedAddress, updatedTags);
+        return new Coin(updatedName, updatedCode, updatedTags);
     }
 
     @Override
@@ -136,7 +134,6 @@ public class EditCommand extends UndoableCommand {
     public static class EditCoinDescriptor {
         private Name name;
         private Code code;
-        private Address address;
         private Set<Tag> tags;
 
         public EditCoinDescriptor() {}
@@ -148,7 +145,6 @@ public class EditCommand extends UndoableCommand {
         public EditCoinDescriptor(EditCoinDescriptor toCopy) {
             setName(toCopy.name);
             setCode(toCopy.code);
-            setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
 
@@ -156,7 +152,7 @@ public class EditCommand extends UndoableCommand {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(this.name, this.code, this.address, this.tags);
+            return CollectionUtil.isAnyNonNull(this.name, this.code, this.tags);
         }
 
         public void setName(Name name) {
@@ -173,14 +169,6 @@ public class EditCommand extends UndoableCommand {
 
         public Optional<Code> getCode() {
             return Optional.ofNullable(code);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
         }
 
         /**
@@ -217,7 +205,6 @@ public class EditCommand extends UndoableCommand {
 
             return getName().equals(e.getName())
                     && getCode().equals(e.getCode())
-                    && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }
     }

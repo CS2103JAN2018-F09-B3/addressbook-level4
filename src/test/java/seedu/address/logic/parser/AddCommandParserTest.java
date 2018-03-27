@@ -29,7 +29,6 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import org.junit.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.coin.Address;
 import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
 import seedu.address.model.coin.Name;
@@ -42,7 +41,7 @@ public class AddCommandParserTest {
     @Test
     public void parse_allFieldsPresent_success() {
         Coin expectedCoin = new CoinBuilder().withName(VALID_NAME_BOB).withCode(VALID_PHONE_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB
@@ -62,7 +61,6 @@ public class AddCommandParserTest {
 
         // multiple tags - all accepted
         Coin expectedCoinMultipleTags = new CoinBuilder().withName(VALID_NAME_BOB).withCode(VALID_PHONE_BOB)
-                .withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + ADDRESS_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedCoinMultipleTags));
@@ -72,7 +70,7 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Coin expectedCoin = new CoinBuilder().withName(VALID_NAME_AMY).withCode(VALID_PHONE_AMY)
-                .withAddress(VALID_ADDRESS_AMY).withTags().build();
+                .withTags().build();
         assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + ADDRESS_DESC_AMY,
                 new AddCommand(expectedCoin));
     }
@@ -107,10 +105,6 @@ public class AddCommandParserTest {
         // invalid phone
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_PHONE_DESC + ADDRESS_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Code.MESSAGE_CODE_CONSTRAINTS);
-
-        // invalid address
-        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_ADDRESS_DESC
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Address.MESSAGE_ADDRESS_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + ADDRESS_DESC_BOB

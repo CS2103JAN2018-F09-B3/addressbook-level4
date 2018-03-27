@@ -34,7 +34,6 @@ public class CoinUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + coin.getName().fullName + " ");
         sb.append(PREFIX_PHONE + coin.getCode().value + " ");
-        sb.append(PREFIX_ADDRESS + coin.getAddress().value + " ");
         coin.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );

@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditCoinDescriptor;
-import seedu.address.model.coin.Address;
 import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
 import seedu.address.model.coin.Name;
@@ -33,7 +32,6 @@ public class EditCoinDescriptorBuilder {
         descriptor = new EditCoinDescriptor();
         descriptor.setName(coin.getName());
         descriptor.setCode(coin.getCode());
-        descriptor.setAddress(coin.getAddress());
         descriptor.setTags(coin.getTags());
     }
 
@@ -50,14 +48,6 @@ public class EditCoinDescriptorBuilder {
      */
     public EditCoinDescriptorBuilder withPhone(String phone) {
         descriptor.setCode(new Code(phone));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code EditCoinDescriptor} that we are building.
-     */
-    public EditCoinDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
         return this;
     }
 

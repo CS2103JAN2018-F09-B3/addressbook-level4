@@ -17,7 +17,6 @@ public class Coin {
 
     private final Name name;
     private final Code code;
-    private final Address address;
 
     private final Amount currentAmountHeld;
     private final Amount totalAmountSold;
@@ -29,11 +28,10 @@ public class Coin {
     /**
      * Every field must be present and not null.
      */
-    public Coin(Name name, Code code, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, code, address, tags);
+    public Coin(Name name, Code code, Set<Tag> tags) {
+        requireAllNonNull(name, code, tags);
         this.name = name;
         this.code = code;
-        this.address = address;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
         this.currentAmountHeld = new Amount();
@@ -48,10 +46,6 @@ public class Coin {
 
     public Code getCode() {
         return code;
-    }
-
-    public Address getAddress() {
-        return address;
     }
 
     public Amount getCurrentAmountHeld() {
@@ -83,7 +77,6 @@ public class Coin {
         Coin otherCoin = (Coin) other;
         return otherCoin.getName().equals(this.getName())
                 && otherCoin.getCode().equals(this.getCode())
-                && otherCoin.getAddress().equals(this.getAddress())
                 && otherCoin.getCurrentAmountHeld().equals(this.getCurrentAmountHeld())
                 && otherCoin.getPrice().equals(this.getPrice());
     }
@@ -91,7 +84,7 @@ public class Coin {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, code, address, tags, currentAmountHeld, price);
+        return Objects.hash(name, code, tags, currentAmountHeld, price);
     }
 
     @Override
@@ -100,8 +93,6 @@ public class Coin {
         builder.append(getName())
                 .append(" Code: ")
                 .append(getCode())
-                .append(" Address: ")
-                .append(getAddress())
                 .append(" Amount: ")
                 .append(getCurrentAmountHeld())
                 .append(" Price: ")

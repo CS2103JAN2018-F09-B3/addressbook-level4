@@ -23,35 +23,26 @@ import seedu.address.model.coin.exceptions.DuplicateCoinException;
 public class TypicalCoins {
 
     public static final Coin ALICE = new CoinBuilder().withName("Alice Pauline")
-            .withAddress("123, Jurong West Ave 6, #08-111")
             .withCode("AAA")
             .withTags("friends").build();
     public static final Coin BENSON = new CoinBuilder().withName("Benson Meier")
-            .withAddress("311, Clementi Ave 2, #02-25")
             .withCode("BBB")
             .withTags("owesMoney", "friends").build();
-    public static final Coin CARL = new CoinBuilder().withName("Carl Kurz").withCode("CCC")
-            .withAddress("wall street").build();
-    public static final Coin DANIEL = new CoinBuilder().withName("Daniel Meier").withCode("DDD")
-            .withAddress("10th street").build();
-    public static final Coin ELLE = new CoinBuilder().withName("Elle Meyer").withCode("EEE")
-            .withAddress("michegan ave").build();
-    public static final Coin FIONA = new CoinBuilder().withName("Fiona Kunz").withCode("FFF")
-            .withAddress("little tokyo").build();
-    public static final Coin GEORGE = new CoinBuilder().withName("George Best").withCode("GGG")
-            .withAddress("4th street").build();
+    public static final Coin CARL = new CoinBuilder().withName("Carl Kurz").withCode("CCC").build();
+    public static final Coin DANIEL = new CoinBuilder().withName("Daniel Meier").withCode("DDD").build();
+    public static final Coin ELLE = new CoinBuilder().withName("Elle Meyer").withCode("EEE").build();
+    public static final Coin FIONA = new CoinBuilder().withName("Fiona Kunz").withCode("FFF").build();
+    public static final Coin GEORGE = new CoinBuilder().withName("George Best").withCode("GGG").build();
 
     // Manually added
-    public static final Coin HOON = new CoinBuilder().withName("Hoon Meier").withCode("HHH")
-            .withAddress("little india").build();
-    public static final Coin IDA = new CoinBuilder().withName("Ida Mueller").withCode("III")
-            .withAddress("chicago ave").build();
+    public static final Coin HOON = new CoinBuilder().withName("Hoon Meier").withCode("HHH").build();
+    public static final Coin IDA = new CoinBuilder().withName("Ida Mueller").withCode("III").build();
 
     // Manually added - Coin's details found in {@code CommandTestUtil}
     public static final Coin AMY = new CoinBuilder().withName(VALID_NAME_AMY).withCode(VALID_PHONE_AMY)
-            .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withTags(VALID_TAG_FRIEND).build();
     public static final Coin BOB = new CoinBuilder().withName(VALID_NAME_BOB).withCode(VALID_PHONE_BOB)
-            .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
