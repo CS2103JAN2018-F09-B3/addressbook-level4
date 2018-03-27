@@ -18,7 +18,7 @@ public interface Model {
     void resetData(ReadOnlyCoinBook newData);
 
     /** Returns the CoinBook */
-    ReadOnlyCoinBook getAddressBook();
+    ReadOnlyCoinBook getCoinBook();
 
     /** Deletes the given coin. */
     void deleteCoin(Coin target) throws CoinNotFoundException;

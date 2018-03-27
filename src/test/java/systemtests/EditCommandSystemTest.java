@@ -105,7 +105,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
          * -> rejected
          */
         showCoinsWithName(KEYWORD_MATCHING_MEIER);
-        int invalidIndex = getModel().getAddressBook().getCoinList().size();
+        int invalidIndex = getModel().getCoinBook().getCoinList().size();
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + invalidIndex + NAME_DESC_BOB,
                 Messages.MESSAGE_INVALID_COIN_DISPLAYED_INDEX);
 
@@ -160,7 +160,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: edit a coin with new values same as another coin's values -> rejected */
         executeCommand(CoinUtil.getAddCommand(BOB));
-        assertTrue(getModel().getAddressBook().getCoinList().contains(BOB));
+        assertTrue(getModel().getCoinBook().getCoinList().contains(BOB));
         index = INDEX_FIRST_COIN;
         assertFalse(getModel().getFilteredCoinList().get(index.getZeroBased()).equals(BOB));
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB

@@ -88,11 +88,11 @@ public class FindCommandTest {
      *     - the {@code CoinBook} in model remains the same after executing the {@code command}
      */
     private void assertCommandSuccess(FindCommand command, String expectedMessage, List<Coin> expectedList) {
-        CoinBook expectedAddressBook = new CoinBook(model.getAddressBook());
+        CoinBook expectedAddressBook = new CoinBook(model.getCoinBook());
         CommandResult commandResult = command.execute();
 
         assertEquals(expectedMessage, commandResult.feedbackToUser);
         assertEquals(expectedList, model.getFilteredCoinList());
-        assertEquals(expectedAddressBook, model.getAddressBook());
+        assertEquals(expectedAddressBook, model.getCoinBook());
     }
 }

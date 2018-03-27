@@ -148,7 +148,7 @@ public abstract class AddressBookSystemTest {
      */
     protected void showAllCoins() {
         executeCommand(ListCommand.COMMAND_WORD);
-        assertEquals(getModel().getAddressBook().getCoinList().size(), getModel().getFilteredCoinList().size());
+        assertEquals(getModel().getCoinBook().getCoinList().size(), getModel().getFilteredCoinList().size());
     }
 
     /**
@@ -156,7 +156,7 @@ public abstract class AddressBookSystemTest {
      */
     protected void showCoinsWithName(String keyword) {
         executeCommand(FindCommand.COMMAND_WORD + " " + keyword);
-        assertTrue(getModel().getFilteredCoinList().size() < getModel().getAddressBook().getCoinList().size());
+        assertTrue(getModel().getFilteredCoinList().size() < getModel().getCoinBook().getCoinList().size());
     }
 
     /**
@@ -172,7 +172,7 @@ public abstract class AddressBookSystemTest {
      */
     protected void deleteAllCoins() {
         executeCommand(ClearCommand.COMMAND_WORD);
-        assertEquals(0, getModel().getAddressBook().getCoinList().size());
+        assertEquals(0, getModel().getCoinBook().getCoinList().size());
     }
 
     /**
@@ -185,7 +185,7 @@ public abstract class AddressBookSystemTest {
         assertEquals(expectedCommandInput, getCommandBox().getInput());
         assertEquals(expectedResultMessage, getResultDisplay().getText());
         assertEquals(expectedModel, getModel());
-        assertEquals(expectedModel.getAddressBook(), testApp.readStorageAddressBook());
+        assertEquals(expectedModel.getCoinBook(), testApp.readStorageAddressBook());
         assertListMatching(getCoinListPanel(), expectedModel.getFilteredCoinList());
     }
 
@@ -289,7 +289,7 @@ public abstract class AddressBookSystemTest {
         String timestamp = new Date(clockRule.getInjectedClock().millis()).toString();
         String expectedSyncStatus = String.format(SYNC_STATUS_UPDATED, timestamp);
         String expectedItemCountStatus = String.format(ITEM_COUNT_STATUS,
-                testApp.getModel().getAddressBook().getCoinList().size());
+                testApp.getModel().getCoinBook().getCoinList().size());
         assertEquals(expectedSyncStatus, handle.getSyncStatus());
         assertEquals(expectedItemCountStatus, handle.getItemCount());
         assertFalse(handle.isSaveLocationChanged());

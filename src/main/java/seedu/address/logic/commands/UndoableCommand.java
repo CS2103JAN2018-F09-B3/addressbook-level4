@@ -21,7 +21,7 @@ public abstract class UndoableCommand extends Command {
      */
     private void saveAddressBookSnapshot() {
         requireNonNull(model);
-        this.previousAddressBook = new CoinBook(model.getAddressBook());
+        this.previousAddressBook = new CoinBook(model.getCoinBook());
     }
 
     /**

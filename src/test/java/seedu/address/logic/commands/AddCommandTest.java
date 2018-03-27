@@ -107,7 +107,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyCoinBook getAddressBook() {
+        public ReadOnlyCoinBook getCoinBook() {
             fail("This method should not be called.");
             return null;
         }
@@ -145,7 +145,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyCoinBook getAddressBook() {
+        public ReadOnlyCoinBook getCoinBook() {
             return new CoinBook();
         }
     }
@@ -163,7 +163,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyCoinBook getAddressBook() {
+        public ReadOnlyCoinBook getCoinBook() {
             return new CoinBook();
         }
     }
