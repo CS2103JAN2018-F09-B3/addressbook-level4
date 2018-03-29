@@ -120,7 +120,7 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         /* Case: find while a coin is selected -> selected card deselected */
         showAllCoins();
         selectCoin(Index.fromOneBased(1));
-        assertFalse(getCoinListPanel().getHandleToSelectedCard().getName().equals(DANIEL.getName().fullName));
+        assertFalse(getCoinListPanel().getHandleToSelectedCard().getName().equals(DANIEL.getCode().fullName));
         command = FindCommand.COMMAND_WORD + " Daniel";
         ModelHelper.setFilteredList(expectedModel, DANIEL);
         assertCommandSuccess(command, expectedModel);
