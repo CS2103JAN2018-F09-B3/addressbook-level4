@@ -7,10 +7,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COIN;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -18,8 +14,6 @@ import org.junit.rules.ExpectedException;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditCoinDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -27,10 +21,11 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.TagCommand;
+import seedu.address.logic.commands.TagCommand.EditCoinDescriptor;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.coin.Coin;
-import seedu.address.model.coin.NameContainsKeywordsPredicate;
 import seedu.address.testutil.CoinBuilder;
 import seedu.address.testutil.CoinUtil;
 import seedu.address.testutil.EditCoinDescriptorBuilder;
@@ -72,12 +67,12 @@ public class AddressBookParserTest {
     public void parseCommand_edit() throws Exception {
         Coin coin = new CoinBuilder().build();
         EditCoinDescriptor descriptor = new EditCoinDescriptorBuilder(coin).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
+        TagCommand command = (TagCommand) parser.parseCommand(TagCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_COIN.getOneBased() + " " + CoinUtil.getCoinDetails(coin));
-        assertEquals(new EditCommand(INDEX_FIRST_COIN, descriptor), command);
-        EditCommand aliasedCommand = (EditCommand) parser.parseCommand(EditCommand.COMMAND_ALIAS + " "
+        assertEquals(new TagCommand(INDEX_FIRST_COIN, descriptor), command);
+        TagCommand aliasedCommand = (TagCommand) parser.parseCommand(TagCommand.COMMAND_ALIAS + " "
                 + INDEX_FIRST_COIN.getOneBased() + " " + CoinUtil.getCoinDetails(coin));
-        assertEquals(new EditCommand(INDEX_FIRST_COIN, descriptor), aliasedCommand);
+        assertEquals(new TagCommand(INDEX_FIRST_COIN, descriptor), aliasedCommand);
     }
 
     @Test
@@ -90,13 +85,9 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
-        FindCommand aliasedCommand = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_ALIAS + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), aliasedCommand);
+                FindCommand.COMMAND_WORD + " n/BTC AND p/>100");
+        assertEquals(new FindCommand(), command);
     }
 
     @Test
