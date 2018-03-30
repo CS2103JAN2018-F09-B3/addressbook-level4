@@ -10,8 +10,13 @@ public enum TokenType {
     LEFTPARENTHESES("\\("),
     RIGHTPARENTHESES("\\)"),
     COMPARATOR("(>|=|<)+"),
-    SPECIFIER("[a-z]/"),
-    NUM("[0-9]+(\\.?[0-9]+)?"),
+    PREFIX_ADDRESS("a/"),
+    PREFIX_NAME("n/"),
+    PREFIX_PHONE("p/"),
+    PREFIX_EMAIL("e/"),
+    PREFIX_TAG("t/"),
+    NUM("[1-9][0-9]*"),
+    DECIMAL("[0-9]+.?[0-9]+"),
     STRING("[A-Za-z]+"),
     SLASH("/"),
     WHITESPACE("\\s"),
@@ -22,5 +27,9 @@ public enum TokenType {
 
     TokenType(final String regex) {
         this.regex = regex;
+    }
+
+    public String toString() {
+        return this.regex;
     }
 }
