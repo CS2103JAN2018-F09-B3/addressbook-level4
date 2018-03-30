@@ -19,7 +19,7 @@ public class AddCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "add";
     public static final String COMMAND_ALIAS = "a";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a coin to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a coin to the coin book. "
             + "Parameters: "
             + PREFIXNAME + "NAME "
             + PREFIXPROFIT + "PHONE "
@@ -35,7 +35,7 @@ public class AddCommand extends UndoableCommand {
             + PREFIXTAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New coin added: %1$s";
-    public static final String MESSAGE_DUPLICATE_COIN = "This coin already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_COIN = "This coin already exists in the coin book";
 
     private final Coin toAdd;
 
