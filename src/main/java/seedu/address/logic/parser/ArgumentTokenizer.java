@@ -23,7 +23,7 @@ public class ArgumentTokenizer {
     private static final String CAPTURING_GROUP_REGEX_PATTERN = "|(?<%s>%s)";
     private static final TokenType[] DEFAULT_TOKEN_TYPES = {
         TokenType.BINARYBOOL, TokenType.UNARYBOOL, TokenType.LEFTPARENTHESES, TokenType.RIGHTPARENTHESES,
-        TokenType.COMPARATOR, TokenType.NUM, TokenType.DECIMAL, TokenType.STRING, TokenType.SLASH,
+        TokenType.COMPARATOR, TokenType.DECIMAL, TokenType.NUM, TokenType.STRING, TokenType.SLASH,
         TokenType.WHITESPACE, TokenType.NEWLINE, TokenType.ELSE
     };
 
