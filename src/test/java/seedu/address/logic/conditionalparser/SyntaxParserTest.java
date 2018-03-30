@@ -8,7 +8,9 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
+import seedu.address.logic.parser.Token;
+import seedu.address.logic.parser.TokenStack;
+import seedu.address.logic.parser.TokenType;
 
 public class SyntaxParserTest {
     private static final Token BINARYBOOL = new Token(TokenType.BINARYBOOL, "");
@@ -16,73 +18,74 @@ public class SyntaxParserTest {
     private static final Token LEFTPARENTHESES = new Token(TokenType.LEFTPARENTHESES, "");
     private static final Token RIGHTPARENTHESES = new Token(TokenType.RIGHTPARENTHESES, "");
     private static final Token COMPARATOR = new Token(TokenType.COMPARATOR, "");
-    private static final Token SPECIFIER = new Token(TokenType.SPECIFIER, "");
+    private static final Token PREFIX_ADDRESS = new Token(TokenType.PREFIXADDRESS, "");
     private static final Token NUM = new Token(TokenType.NUM, "");
     private static final Token STRING = new Token(TokenType.STRING, "");
     private static final Token SLASH = new Token(TokenType.SLASH, "");
     private static final Token WHITESPACE = new Token(TokenType.WHITESPACE, "");
     private static final Token NEWLINE = new Token(TokenType.NEWLINE, "");
     private static final Token ELSE = new Token(TokenType.ELSE, "");
+    private static final Token EOF = new Token(TokenType.EOF, "");
 
     private SyntaxParser syntaxParser;
     private TokenStack tokenStack;
 
 
     private static SyntaxParser initParser(Token... tokens) {
-        return new SyntaxParser(new TokenStack(Lists.reverse(Arrays.asList(tokens))));
+        return new SyntaxParser(Arrays.asList(tokens));
     }
 
     @Test
     public void parseCond() {
-        syntaxParser = initParser(SPECIFIER, STRING);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, EOF);
         assertTrue(syntaxParser.cond());
-        syntaxParser = initParser(SPECIFIER, COMPARATOR, COMPARATOR, NUM);
+        syntaxParser = initParser(PREFIX_ADDRESS, COMPARATOR, COMPARATOR, NUM, EOF);
         assertTrue(syntaxParser.cond());
-        syntaxParser = initParser(SPECIFIER, COMPARATOR, NUM);
+        syntaxParser = initParser(PREFIX_ADDRESS, COMPARATOR, NUM, EOF);
         assertTrue(syntaxParser.cond());
-        syntaxParser = initParser(STRING);
+        syntaxParser = initParser(STRING, EOF);
         assertFalse(syntaxParser.cond());
     }
 
     @Test
     public void term() {
-        syntaxParser = initParser(SPECIFIER, STRING);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, EOF);
         assertTrue(syntaxParser.term());
-        syntaxParser = initParser(UNARYBOOL, SPECIFIER, STRING);
+        syntaxParser = initParser(UNARYBOOL, PREFIX_ADDRESS, STRING, EOF);
         assertTrue(syntaxParser.term());
-        syntaxParser = initParser(LEFTPARENTHESES, SPECIFIER,
-                STRING, RIGHTPARENTHESES);
+        syntaxParser = initParser(LEFTPARENTHESES, PREFIX_ADDRESS,
+                STRING, RIGHTPARENTHESES, EOF);
         assertTrue(syntaxParser.term());
-        syntaxParser = initParser(LEFTPARENTHESES, STRING);
+        syntaxParser = initParser(LEFTPARENTHESES, STRING, EOF);
         assertFalse(syntaxParser.term());
     }
 
     @Test
     public void expression() {
-        syntaxParser = initParser(SPECIFIER, STRING);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(UNARYBOOL, SPECIFIER, STRING);
+        syntaxParser = initParser(UNARYBOOL, PREFIX_ADDRESS, STRING, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(SPECIFIER, STRING, BINARYBOOL, SPECIFIER, STRING);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, PREFIX_ADDRESS, STRING, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(SPECIFIER, STRING, BINARYBOOL, LEFTPARENTHESES,
-                SPECIFIER, STRING, BINARYBOOL, UNARYBOOL, SPECIFIER, STRING,
-                RIGHTPARENTHESES);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, LEFTPARENTHESES,
+                PREFIX_ADDRESS, STRING, BINARYBOOL, UNARYBOOL, PREFIX_ADDRESS, STRING,
+                RIGHTPARENTHESES, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(SPECIFIER, STRING, BINARYBOOL);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, EOF);
         assertFalse(syntaxParser.expression());
     }
 
     @Test
     public void parse() {
-        syntaxParser = initParser(SPECIFIER, STRING, SPECIFIER);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, PREFIX_ADDRESS, EOF);
         assertFalse(syntaxParser.parse());
-        syntaxParser = initParser(SPECIFIER, STRING, BINARYBOOL, LEFTPARENTHESES,
-                SPECIFIER, STRING, BINARYBOOL, UNARYBOOL, SPECIFIER, STRING,
-                RIGHTPARENTHESES, RIGHTPARENTHESES);
+        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, LEFTPARENTHESES,
+                PREFIX_ADDRESS, STRING, BINARYBOOL, UNARYBOOL, PREFIX_ADDRESS, STRING,
+                RIGHTPARENTHESES, RIGHTPARENTHESES, EOF);
         assertFalse(syntaxParser.parse());
-        syntaxParser = initParser(LEFTPARENTHESES, SPECIFIER, STRING, BINARYBOOL,
-                SPECIFIER, COMPARATOR, NUM, RIGHTPARENTHESES, BINARYBOOL, SPECIFIER,
-                COMPARATOR, NUM);
+        syntaxParser = initParser(LEFTPARENTHESES, PREFIX_ADDRESS, STRING, BINARYBOOL,
+                PREFIX_ADDRESS, COMPARATOR, NUM, RIGHTPARENTHESES, BINARYBOOL, PREFIX_ADDRESS,
+                COMPARATOR, NUM, EOF);
     }
 }
