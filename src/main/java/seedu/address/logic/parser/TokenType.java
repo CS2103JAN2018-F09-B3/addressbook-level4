@@ -10,9 +10,9 @@ public enum TokenType {
     LEFTPARENTHESES("\\("),
     RIGHTPARENTHESES("\\)"),
     COMPARATOR("(>|=|<)+"),
-    PREFIXADDRESS("a/"),
+    PREFIXAMOUNT("a/"),
     PREFIXNAME("n/"),
-    PREFIXPHONE("p/"),
+    PREFIXPROFIT("p/"),
     PREFIXEMAIL("e/"),
     PREFIXTAG("t/"),
     DECIMAL("[0-9]+.[0-9]+"),
@@ -39,9 +39,9 @@ public enum TokenType {
      * @param type the type to be checked
      */
     public static boolean isPrefixType(TokenType type) {
-        return type == PREFIXADDRESS
+        return type == PREFIXAMOUNT
                 || type == PREFIXNAME
-                || type == PREFIXPHONE
+                || type == PREFIXPROFIT
                 || type == PREFIXEMAIL
                 || type == PREFIXTAG;
     }

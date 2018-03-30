@@ -18,7 +18,7 @@ public class SyntaxParserTest {
     private static final Token LEFTPARENTHESES = new Token(TokenType.LEFTPARENTHESES, "");
     private static final Token RIGHTPARENTHESES = new Token(TokenType.RIGHTPARENTHESES, "");
     private static final Token COMPARATOR = new Token(TokenType.COMPARATOR, "");
-    private static final Token PREFIX_ADDRESS = new Token(TokenType.PREFIXADDRESS, "");
+    private static final Token PREFIXAMOUNT = new Token(TokenType.PREFIXAMOUNT, "");
     private static final Token NUM = new Token(TokenType.NUM, "");
     private static final Token STRING = new Token(TokenType.STRING, "");
     private static final Token SLASH = new Token(TokenType.SLASH, "");
@@ -37,11 +37,11 @@ public class SyntaxParserTest {
 
     @Test
     public void parseCond() {
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.cond());
-        syntaxParser = initParser(PREFIX_ADDRESS, COMPARATOR, COMPARATOR, NUM, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, COMPARATOR, COMPARATOR, NUM, EOF);
         assertTrue(syntaxParser.cond());
-        syntaxParser = initParser(PREFIX_ADDRESS, COMPARATOR, NUM, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, COMPARATOR, NUM, EOF);
         assertTrue(syntaxParser.cond());
         syntaxParser = initParser(STRING, EOF);
         assertFalse(syntaxParser.cond());
@@ -49,11 +49,11 @@ public class SyntaxParserTest {
 
     @Test
     public void term() {
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.term());
-        syntaxParser = initParser(UNARYBOOL, PREFIX_ADDRESS, STRING, EOF);
+        syntaxParser = initParser(UNARYBOOL, PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.term());
-        syntaxParser = initParser(LEFTPARENTHESES, PREFIX_ADDRESS,
+        syntaxParser = initParser(LEFTPARENTHESES, PREFIXAMOUNT,
                 STRING, RIGHTPARENTHESES, EOF);
         assertTrue(syntaxParser.term());
         syntaxParser = initParser(LEFTPARENTHESES, STRING, EOF);
@@ -62,30 +62,30 @@ public class SyntaxParserTest {
 
     @Test
     public void expression() {
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(UNARYBOOL, PREFIX_ADDRESS, STRING, EOF);
+        syntaxParser = initParser(UNARYBOOL, PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, PREFIX_ADDRESS, STRING, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, BINARYBOOL, PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, LEFTPARENTHESES,
-                PREFIX_ADDRESS, STRING, BINARYBOOL, UNARYBOOL, PREFIX_ADDRESS, STRING,
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, BINARYBOOL, LEFTPARENTHESES,
+                PREFIXAMOUNT, STRING, BINARYBOOL, UNARYBOOL, PREFIXAMOUNT, STRING,
                 RIGHTPARENTHESES, EOF);
         assertTrue(syntaxParser.expression());
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, BINARYBOOL, EOF);
         assertFalse(syntaxParser.expression());
     }
 
     @Test
     public void parse() {
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, PREFIX_ADDRESS, EOF);
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, PREFIXAMOUNT, EOF);
         assertFalse(syntaxParser.parse());
-        syntaxParser = initParser(PREFIX_ADDRESS, STRING, BINARYBOOL, LEFTPARENTHESES,
-                PREFIX_ADDRESS, STRING, BINARYBOOL, UNARYBOOL, PREFIX_ADDRESS, STRING,
+        syntaxParser = initParser(PREFIXAMOUNT, STRING, BINARYBOOL, LEFTPARENTHESES,
+                PREFIXAMOUNT, STRING, BINARYBOOL, UNARYBOOL, PREFIXAMOUNT, STRING,
                 RIGHTPARENTHESES, RIGHTPARENTHESES, EOF);
         assertFalse(syntaxParser.parse());
-        syntaxParser = initParser(LEFTPARENTHESES, PREFIX_ADDRESS, STRING, BINARYBOOL,
-                PREFIX_ADDRESS, COMPARATOR, NUM, RIGHTPARENTHESES, BINARYBOOL, PREFIX_ADDRESS,
+        syntaxParser = initParser(LEFTPARENTHESES, PREFIXAMOUNT, STRING, BINARYBOOL,
+                PREFIXAMOUNT, COMPARATOR, NUM, RIGHTPARENTHESES, BINARYBOOL, PREFIXAMOUNT,
                 COMPARATOR, NUM, EOF);
     }
 }
