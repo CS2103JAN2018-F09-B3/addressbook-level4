@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.TokenType.PREFIXAMOUNT;
 
 import java.util.EmptyStackException;
 import java.util.stream.Stream;
@@ -15,7 +16,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new BuyCommand object
  */
-public class BuyCommandParser {
+public class BuyCommandParser implements Parser<BuyCommand> {
+
+    private static final TokenType[] EXPECTED_TOKEN_TYPES = {
+        PREFIXAMOUNT
+    };
 
     /**
      * Parses the given {@code String} of arguments in the context of the BuyCommand
@@ -24,15 +29,15 @@ public class BuyCommandParser {
      */
     public BuyCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenizeToArgumentMultimap(args, TokenType.PREFIXAMOUNT);
-        if (!arePrefixesPresent(argMultimap, TokenType.PREFIXAMOUNT)
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenizeToArgumentMultimap(args, EXPECTED_TOKEN_TYPES);
+        if (!arePrefixesPresent(argMultimap, PREFIXAMOUNT)
                 || argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, BuyCommand.MESSAGE_USAGE));
         }
 
         try {
             Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
-            double amountToAdd = ParserUtil.parseDouble(argMultimap.getValue(TokenType.PREFIXAMOUNT).get());
+            double amountToAdd = ParserUtil.parseDouble(argMultimap.getValue(PREFIXAMOUNT).get());
             return new BuyCommand(index, amountToAdd);
         } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, BuyCommand.MESSAGE_USAGE));
