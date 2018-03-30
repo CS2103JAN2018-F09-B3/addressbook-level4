@@ -38,7 +38,7 @@ public class TagCommand extends UndoableCommand {
 
     public static final String MESSAGE_EDIT_COIN_SUCCESS = "Tagged Coin: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one tag must be provided.";
-    public static final String MESSAGE_DUPLICATE_COIN = "This coin already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_COIN = "This coin already exists in the coin book.";
 
     private final Index index;
     private final EditCoinDescriptor editCoinDescriptor;
