@@ -15,7 +15,7 @@ public enum TokenType {
     PREFIXPROFIT("p/"),
     PREFIXEMAIL("e/"),
     PREFIXTAG("t/"),
-    DECIMAL("[0-9]+.[0-9]+"),
+    DECIMAL("[0-9]+\\.[0-9]+"),
     NUM("[1-9][0-9]*"),
     STRING("[A-Za-z\\^\\-\\@\\./]+"),
     SLASH("/"),
