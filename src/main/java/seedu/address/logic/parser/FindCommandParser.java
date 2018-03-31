@@ -13,7 +13,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
-    //@@author Eldon-Chung
     private static final TokenType[] EXPECTED_TOKEN_TYPES = {
         TokenType.PREFIXAMOUNT,
         TokenType.PREFIXNAME,
@@ -21,7 +20,6 @@ public class FindCommandParser implements Parser<FindCommand> {
         TokenType.PREFIXEMAIL,
         TokenType.PREFIXTAG
     };
-    //@@author
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
