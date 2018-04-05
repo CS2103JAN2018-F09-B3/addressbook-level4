@@ -990,10 +990,10 @@ Use case resumes at step 1.
 
 *MSS*
 
-1.  User requests to export storage data
-2.  CoinBook requests for the file destination
-3.  User specifies the file destination
-4.  CoinBook exports the file
+1.  User requests to export storage data.
+2.  CoinBook requests for the file destination.
+3.  User specifies the file destination.
+4.  CoinBook exports the file.
 +
 Use case ends.
 
@@ -1011,7 +1011,41 @@ Use case ends.
 +
 Use case resumes at step 2.
 
-_{More to be added}_
+=== Use case: Set notifications
+
+*MSS*
+
+1. User sets the condition under which he/she wishes to be notified.
+2. CoinBook notifies the user the condition has been acknowledged.
++
+Use case ends.
+
+*Extension*
+
+[none]
+* 2a. The condition argument was invalid.
+** 2a1. CoinBook shows an error message.
++
+Use case ends.
+
+=== Use case: Tag items for group commands
+
+*MSS*
+
+1. User finds the coins that he wishes to group using the `Find` command.
+2. CoinBook shows a list of coins.
+3. User tags all the found using the `TagAll` command.
+4. The tags appear on all the coins in the CoinBook.
+5. User then operates on all coins that were tagged. e.g. buy tag 50
+6. CoinBook shows the changes to the User.
+
+*Extension*
+
+[none]
+* 2a. The tag name was invalid.
+** 2a1. CoinBook shows an error message.
++
+Use case ends.
 
 [appendix]
 == Non Functional Requirements
