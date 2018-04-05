@@ -4,7 +4,7 @@ participant ":ParserUtil" as ParserUtil
 participant ":ConditionParser" as ConditionParser
 participant ":SyntaxParser" as SyntaxParser
 participant ":SemanticParser" as SemanticParser
-participant ":ConditionGenerator" as ConditionGenerator 
+participant ":ConditionGenerator" as ConditionGenerator
 
 -> ParserUtil : parseCondition(TokenList)
 activate ParserUtil
@@ -17,7 +17,7 @@ create SyntaxParser
 ConditionParser -> SyntaxParser : new SyntaxParser(TokenList)
 activate SyntaxParser
 SyntaxParser -> ConditionParser
-deactivate SyntaxParser 
+deactivate SyntaxParser
 
 /'Parse the token list'/
 ConditionParser -> SyntaxParser : parse(TokenList)
@@ -29,7 +29,7 @@ deactivate SyntaxParser
 create SemanticParser
 ConditionParser -> SemanticParser : new SemanticParser(TokenList)
 activate SemanticParser
-SemanticParser -> ConditionParser 
+SemanticParser -> ConditionParser
 deactivate SemanticParser
 
 /'Parse the token list'/
@@ -42,7 +42,7 @@ deactivate SemanticParser
 create ConditionGenerator
 ConditionParser -> ConditionGenerator : new ConditionGenerator(TokenList)
 activate ConditionGenerator
-ConditionGenerator -> ConditionParser 
+ConditionGenerator -> ConditionParser
 deactivate ConditionGenerator
 
 /'Generate the Condition'/
