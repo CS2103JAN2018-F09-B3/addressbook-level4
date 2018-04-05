@@ -437,21 +437,21 @@ Subsequent kbd:[Tab] key presses will cycle through the list of suggestions.
 [width="80%",cols="20%,<23%,<25%",options="header",]
 |=======================================================================
 | Command |Format | Description
-| *Help* | `help` | Displays the help page.
-| *Buy* | `buy SPECIFIER AMOUNT` | Adds AMOUNT of coin to the specified account.
-| *Sell* | `sell SPECIFIER AMOUNT` | Subtracts AMOUNT of coin from the specified account.
-| *Tag* | `tag SPECIFIER TAG` | Tags the specified account with TAG name.
-| *List* | `list` | Lists all coin accounts.
-| *Find* | `find CONDITION` | Finds all coin accounts that fit the CONDITION.
-| *View* | `view SPECIFIER` | Views information about the specified account.
-| *Notify* | `notify {SPECIFIER,TAG} CONDITION` | Sets CoinBook to notify the user when the CONDITION has been met.
-| *Sort* | `order OPTION/{a,d}...` | Sorts the coin accounts in the CoinBook based on their OPTION.
-| *History* | `history` | Shows the user a history of previously input commands.
-| *Undo* | `undo` | Reverts the effect of the previous undo-able command.
-| *Redo* | `redo` | Reapplies the previously un-done command.
+| *Buy* | `buy TARGET a/AMOUNT` | Adds AMOUNT of coin to the targeted account.
 | *Clear* | `clear` | Deletes all coin accounts from the CoinBook.
-| *Update* | `update` | Fetches data from online sources to update the prices.
 | *Exit* |  `exit` | Exits the program.
+| *Find* | `find CONDITION` | Finds all coin accounts that fit the CONDITION.
+| *Help* | `help` | Displays the help page.
+| *History* | `history` | Shows the user a history of previously input commands.
+| *List* | `list` | Lists all coin accounts.
+| *Notify* | `notify CONDITION` | Sets CoinBook to notify the user when the CONDITION has been met.
+| *Redo* | `redo` | Reapplies the previously un-done command.
+| *Sell* | `sell TARGET AMOUNT` | Subtracts AMOUNT of coin from the targeted account.
+| *Order* | `order OPTION/{a,d}...` | Sorts the coin accounts in the CoinBook based on their OPTION.
+| *Tag* | `tag TARGET TAG` | Tags the targeted account with TAG name.
+| *Undo* | `undo` | Reverts the effect of the previous undo-able command.
+| *Update* | `update` | Fetches data from online sources to update the prices.
+| *View* | `view TARGET` | Views information about the targeted account.
 |=======================================================================
 
 [appendix]
