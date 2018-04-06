@@ -1,0 +1,29 @@
+package seedu.address.logic.conditions;
+
+import static seedu.address.logic.parser.TokenType.CODE_PREFIX;
+
+import java.util.function.Predicate;
+
+import seedu.address.logic.parser.TokenType;
+import seedu.address.model.coin.Code;
+import seedu.address.model.coin.Coin;
+
+//@@author Eldon-Chung
+/**
+ * Represents a predicate that evaluates to true when a {@Coin} contains the {@Code} specified.
+ */
+public class CodeCondition implements Predicate<Coin> {
+
+    public static final TokenType PREFIX = CODE_PREFIX;
+
+    private Code code;
+
+    public CodeCondition(Code code) {
+        this.code = code;
+    }
+
+    @Override
+    public boolean test(Coin coin) {
+        return coin.getCode().equals(code);
+    }
+}
