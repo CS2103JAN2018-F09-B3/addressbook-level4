@@ -281,10 +281,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>INDEX: Its index number in the current coin listing</p>
 </li>
 <li>
-<p>NAME: The name of the coin, e.g. <code>Bitcoin</code>, and is case-insensitive</p>
+<p>CODE: The trading code of the coin, e.g. <code>BTC</code></p>
 </li>
 <li>
-<p>CODE: The trading code of the coin, e.g. <code>BTC</code></p>
+<p>NAME: The name of the coin, e.g. <code>Bitcoin</code>, and is case-insensitive [Coming in v2.0]</p>
 </li>
 </ul>
 </div>
@@ -367,7 +367,7 @@ can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 <div class="listingblock">
 <div class="title">Example</div>
 <div class="content">
-<pre>buy BTC 0.5</pre>
+<pre>buy BTC a/0.5</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -388,7 +388,7 @@ can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 <div class="listingblock">
 <div class="title">Example</div>
 <div class="content">
-<pre>sell BTC 0.5</pre>
+<pre>sell BTC a/0.5</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -409,13 +409,13 @@ can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 <div class="listingblock">
 <div class="title">Example</div>
 <div class="content">
-<pre>tag 1 fav
-tag 3 fav
-tag BTC watch</pre>
+<pre>tag 1 t/fav
+tag 3 t/fav
+tag BTC t/fav t/watch</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first and third entry in the list is tagged with the <code>fav</code> tag, and <code>BTC</code> is tagged with <code>watch</code>.</p>
+<p>The first and third entry in the list is tagged with the <code>fav</code> tag, and <code>BTC</code> is tagged with <code>fav</code> and <code>watch</code>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -554,8 +554,8 @@ A Coin account can have any number of tags (including 0)
 <div class="listingblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>find BT <i class="conum" data-value="1"></i><b>(1)</b>
-f t/fav <i class="conum" data-value="2"></i><b>(2)</b>
+<pre>find c/BT                    <i class="conum" data-value="1"></i><b>(1)</b>
+find t/fav                   <i class="conum" data-value="2"></i><b>(2)</b>
 find (p/&gt;500 t/fav) OR h/&lt;20 <i class="conum" data-value="3"></i><b>(3)</b></pre>
 </div>
 </div>
@@ -563,7 +563,7 @@ find (p/&gt;500 t/fav) OR h/&lt;20 <i class="conum" data-value="3"></i><b>(3)</b
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Finds accounts with <code>BT</code> in their name, code or index</td>
+<td>Finds accounts with <code>BT</code> in their code</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -611,7 +611,7 @@ find (p/&gt;500 t/fav) OR h/&lt;20 <i class="conum" data-value="3"></i><b>(3)</b
 <div class="content">
 <pre>view BTC     <i class="conum" data-value="1"></i><b>(1)</b>
 view Bitcoin <i class="conum" data-value="2"></i><b>(2)</b>
-v 2          <i class="conum" data-value="3"></i><b>(3)</b></pre>
+view 2       <i class="conum" data-value="3"></i><b>(3)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -636,7 +636,7 @@ v 2          <i class="conum" data-value="3"></i><b>(3)</b></pre>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>notify {TARGET} CONDITION</pre>
+<pre>notify [TARGET] CONDITION</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -673,7 +673,7 @@ v 2          <i class="conum" data-value="3"></i><b>(3)</b></pre>
 <pre>notify h/&gt;0        <i class="conum" data-value="1"></i><b>(1)</b>
 notify 1 w/&gt;50     <i class="conum" data-value="2"></i><b>(2)</b>
 notify 3 w/+&lt;1000  <i class="conum" data-value="3"></i><b>(3)</b>
-notify all p/-&gt;10% <i class="conum" data-value="4"></i><b>(4)</b></pre>
+notify p/-&gt;10%     <i class="conum" data-value="4"></i><b>(4)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -989,7 +989,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notify</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>notify CONDITION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>notify [TARGET] CONDITION</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets CoinBook to notify the user when the CONDITION has been met.</p></td>
 </tr>
 <tr>
@@ -999,7 +999,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sell</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sell TARGET AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sell TARGET a/AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subtracts AMOUNT of coin from the targeted account.</p></td>
 </tr>
 <tr>
@@ -1009,7 +1009,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tag TARGET TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tag TARGET [t/TAG]&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tags the targeted account with TAG name.</p></td>
 </tr>
 <tr>
@@ -1083,7 +1083,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 01:05:59 UTC
+Last updated 2018-04-06 06:54:21 UTC
 </div>
 </div>
 </body>
