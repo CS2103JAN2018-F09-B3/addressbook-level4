@@ -407,11 +407,11 @@ Resets all data in _CoinBook_.
 This command can be reversed with `undo`, but only in the same session. The effect is permanent once _CoinBook_ is closed.
 ====
 
-=== Updating the information : `update` / `u` `[Coming in v1.5]`
+=== Syncs local, outdated data with latest data and information : `sync` / `sy` `[Coming in v1.5]`
 
 .Format
 ----
-update
+sync
 ----
 
 Obtains the latest prices and refreshes the news feed from the Internet.
