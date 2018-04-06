@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.TokenType.PREFIXTAG;
+import static seedu.address.logic.parser.TokenType.TAG_PREFIX;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -29,7 +29,7 @@ public class TagCommandParser implements Parser<TagCommand> {
     public TagCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenizeToArgumentMultimap(args, PREFIXTAG);
+                ArgumentTokenizer.tokenizeToArgumentMultimap(args, TAG_PREFIX);
 
         Index index;
 
@@ -41,7 +41,7 @@ public class TagCommandParser implements Parser<TagCommand> {
 
         EditCoinDescriptor editCoinDescriptor = new EditCoinDescriptor();
         try {
-            parseTagsForEdit(argMultimap.getAllValues(PREFIXTAG)).ifPresent(editCoinDescriptor::setTags);
+            parseTagsForEdit(argMultimap.getAllValues(TAG_PREFIX)).ifPresent(editCoinDescriptor::setTags);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }

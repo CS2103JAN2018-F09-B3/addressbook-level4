@@ -34,9 +34,9 @@ import org.junit.Test;
 
 public class ArgumentTokenizerTest {
 
-    private final TokenType aSlash = TokenType.PREFIXAMOUNT;
-    private final TokenType pSlash = TokenType.PREFIXPROFIT;
-    private final TokenType tSlash = TokenType.PREFIXTAG;
+    private final TokenType aSlash = TokenType.AMOUNT_PREFIX;
+    private final TokenType pSlash = TokenType.PRICE_PREFIX;
+    private final TokenType tSlash = TokenType.TAG_PREFIX;
 
     @Test
     public void tokenizeToArgumentMultimap_emptyArgsString_noValues() {
@@ -197,7 +197,7 @@ public class ArgumentTokenizerTest {
 
         expectedList = new ArrayList<Token>(Arrays.asList(PREFIX_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
-                ArgumentTokenizer.tokenizeToTokenStack(PREFIX_STRING, TokenType.PREFIXAMOUNT).getTokenList());
+                ArgumentTokenizer.tokenizeToTokenStack(PREFIX_STRING, TokenType.AMOUNT_PREFIX).getTokenList());
     }
 
     @Test
@@ -224,13 +224,13 @@ public class ArgumentTokenizerTest {
                 PREFIX_TOKEN, STRING_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
                 ArgumentTokenizer.tokenizeToTokenStack("a/TESTING AND a/TESTING",
-                        TokenType.PREFIXAMOUNT).getTokenList());
+                        TokenType.AMOUNT_PREFIX).getTokenList());
         expectedList = new ArrayList<Token>(Arrays.asList(PREFIX_TOKEN, LESS_TOKEN, NUM_TOKEN,
                 OR_TOKEN, LEFT_PAREN_TOKEN, NOT_TOKEN, PREFIX_TOKEN, GREATER_TOKEN, NUM_TOKEN,
                 AND_TOKEN, PREFIX_TOKEN, STRING_TOKEN, RIGHT_PARENT_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
                 ArgumentTokenizer.tokenizeToTokenStack("a/<999 OR (NOT a/>999 AND a/TESTING)",
-                        TokenType.PREFIXAMOUNT).getTokenList());
+                        TokenType.AMOUNT_PREFIX).getTokenList());
     }
 
 }

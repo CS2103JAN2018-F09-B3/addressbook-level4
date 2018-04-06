@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.TokenType.PREFIXNAME;
-import static seedu.address.logic.parser.TokenType.PREFIXTAG;
+import static seedu.address.logic.parser.TokenType.NAME_PREFIX;
+import static seedu.address.logic.parser.TokenType.TAG_PREFIX;
 
 import java.util.Set;
 
@@ -25,16 +25,16 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenizeToArgumentMultimap(args, PREFIXNAME, PREFIXTAG);
+                ArgumentTokenizer.tokenizeToArgumentMultimap(args, NAME_PREFIX, TAG_PREFIX);
 
-        if (!argMultimap.arePrefixesPresent(PREFIXNAME)
+        if (!argMultimap.arePrefixesPresent(NAME_PREFIX)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         try {
-            Code code = ParserUtil.parseName(argMultimap.getValue(PREFIXNAME)).get();
-            Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIXTAG));
+            Code code = ParserUtil.parseName(argMultimap.getValue(NAME_PREFIX)).get();
+            Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(TAG_PREFIX));
 
             Coin coin = new Coin(code, tagList);
 
