@@ -1,5 +1,5 @@
 //@@author Eldon-Chung
-package seedu.address.logic.conditionalparser;
+package seedu.address.logic.parser;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Test;
-
-import seedu.address.logic.parser.Token;
-import seedu.address.logic.parser.TokenStack;
-import seedu.address.logic.parser.TokenType;
 
 public class SyntaxParserTest {
     private static final Token BINARYBOOL = new Token(TokenType.BINARYBOOL, "");

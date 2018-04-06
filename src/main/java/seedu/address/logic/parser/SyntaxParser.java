@@ -1,8 +1,5 @@
 //@@author Eldon-Chung
-package seedu.address.logic.conditionalparser;
-
-import seedu.address.logic.parser.TokenStack;
-import seedu.address.logic.parser.TokenType;
+package seedu.address.logic.parser;
 
 /**
  * Parses tokenized boolean logic statements to verify correctness
