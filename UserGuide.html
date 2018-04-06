@@ -30,8 +30,8 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#view-help-code-help-code-code-code">4.1. View help <code>help</code> / <code>?</code></a></li>
-<li><a href="#add-coin-to-an-account-code-buy-code-code-b-code-code-coming-in-v1-5-code">4.2. Add coin to an account <code>buy</code> / <code>b</code> <code>[Coming in v1.5]</code></a></li>
-<li><a href="#sell-coin-from-an-account-code-sell-code-code-s-code-code-coming-in-v1-5-code">4.3. Sell coin from an account <code>sell</code> / <code>s</code> <code>[Coming in v1.5]</code></a></li>
+<li><a href="#add-coin-to-an-account-code-buy-code-code-b-code-code-since-v1-4-code">4.2. Add coin to an account <code>buy</code> / <code>b</code> <code>[Since v1.4]</code></a></li>
+<li><a href="#sell-coin-from-an-account-code-sell-code-code-s-code-code-since-v1-4-code">4.3. Sell coin from an account <code>sell</code> / <code>s</code> <code>[Since v1.4]</code></a></li>
 <li><a href="#tag-an-account-code-tag-code-code-t-code">4.4. Tag an account <code>tag</code> / <code>t</code></a></li>
 <li><a href="#list-all-accounts-code-list-code-code-l-code">4.5. List all accounts <code>list</code> / <code>l</code></a></li>
 <li><a href="#search-through-accounts-code-find-code-code-f-code-code-coming-in-v1-5-code">4.6. Search through accounts <code>find</code> / <code>f</code> <code>[Coming in v1.5]</code></a></li>
@@ -42,7 +42,7 @@
 <li><a href="#undo-previous-command-code-undo-code-code-z-code">4.11. Undo previous command <code>undo</code> / <code>z</code></a></li>
 <li><a href="#redo-undone-command-code-redo-code-code-y-code">4.12. Redo undone command <code>redo</code> / <code>y</code></a></li>
 <li><a href="#clear-all-entries-code-clear-code-code-c-code">4.13. Clear all entries <code>clear</code> / <code>c</code></a></li>
-<li><a href="#updating-the-information-code-update-code-code-u-code-code-coming-in-v1-5-code">4.14. Updating the information : <code>update</code> / <code>u</code> <code>[coming in v1.5]</code></a></li>
+<li><a href="#syncs-local-outdated-data-with-latest-data-and-information-code-sync-code-code-sy-code-code-coming-in-v1-5-code">4.14. Syncs local, outdated data with latest data and information : <code>sync</code> / <code>sy</code> <code>[Coming in v1.5]</code></a></li>
 <li><a href="#exit-the-program-code-exit-code-code-q-code">4.15. Exit the program : <code>exit</code> / <code>q</code></a></li>
 <li><a href="#save-data">4.16. Save data</a></li>
 <li><a href="#autocomplete-code-coming-in-v1-5-code">4.17. Autocomplete <code>[Coming in v1.5]</code></a></li>
@@ -60,6 +60,9 @@
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Boxes</dt>
+<dd>
+<p>There are various types of boxes that provide extra information:</p>
+</dd>
 </dl>
 </div>
 <div class="admonitionblock tip">
@@ -104,7 +107,7 @@
 </tr>
 </table>
 </div>
-<div class="dlist">
+<div id="example" class="dlist">
 <dl>
 <dt class="hdlist1">Markup</dt>
 <dd>
@@ -253,7 +256,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Every account action in <em>CoinBook</em> can be done by typing some command, followed by its required and optional <em>parameters</em> and pressing <kbd>Enter</kbd> to execute the action. Please check the boxes below for the conventions used in this guide to refer to command format.</p>
+<p>Every account action in <em>CoinBook</em> can be done by typing some command, followed by its required or optional <em>parameters</em>, then pressing <kbd>Enter</kbd> to execute the action. Please check the boxes below for the conventions used in this guide to refer to command format.</p>
 </div>
 <div class="paragraph">
 <p>Each command listing is usually followed by some examples on usage, with a description of the effect of each example below in the same order as displayed.</p>
@@ -264,11 +267,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div id="spec" class="ulist">
 <ul>
 <li>
-<p>Specifier</p>
+<p>Target</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Refers to an account or group to perform the action upon</p>
+<p>Refers to the account or group to perform the action upon</p>
 </li>
 <li>
 <p>This is used in commands requiring a target coin, and can be any one of the coin&#8217;s:</p>
@@ -300,7 +303,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>These have a letter representing the option, followed by a slash (<code>/</code>), followed by the desired value</p>
 </li>
 <li>
-<p>The value is <span class="underline">underlined</span> and is the meaning of the option it follows (<code><span class="underline">VALUE</span></code> when used generally), e.g. <code>t/<span class="underline">TAG</span></code> indicates the desired value of the tag should be typed after <code>t/</code></p>
+<p>The name of the option follows each letter. You should replace this with the desired value, e.g. <code>t/TAG</code> indicates the desired value of the tag should be typed after <code>t/</code></p>
 </li>
 </ul>
 </div>
@@ -319,20 +322,20 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p>Parts in square brackets are optional, e.g.
-<code>SPECIFIER [t/<span class="underline">TAG</span>]</code>
+<code>TARGET [t/TAG]</code>
 can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 </li>
 <li>
-<p>Parts with <code>&#8230;&#8203;</code> after them can be used zero or more times, e.g. <code>[t/<span class="underline">TAG</span>]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/cheap</code>, <code>t/active t/fav</code>, etc.</p>
+<p>Parts with <code>&#8230;&#8203;</code> after them can be used zero or more times, e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/cheap</code>, <code>t/active t/fav</code>, etc.</p>
 </li>
 <li>
-<p>If an option without <code>&#8230;&#8203;</code> is used multiple times, only the rightmost value entered will be used</p>
+<p>If an option without <code>&#8230;&#8203;</code> is used multiple times, only the rightmost value that you typed will be used</p>
 </li>
 <li>
-<p>Parameters can be in any order, e.g. if the command specifies <code>t/<span class="underline">TAG</span> a/<span class="underline">VALUE</span></code>, then <code>a/<span class="underline">VALUE</span> t/<span class="underline">TAG</span></code> is also acceptable</p>
+<p>Parameters can be in any order, e.g. if the command specifies <code>t/TAG a/VALUE</code>, then <code>a/VALUE t/TAG</code> is also acceptable</p>
 </li>
 <li>
-<p>Parts in curly braces indicate multiple possibilities, e.g. we use <a href="#spec"><code>SPECIFIER</code></a> as shorthand for <code>{INDEX,NAME,CODE}</code></p>
+<p>Parts in curly braces indicate multiple possibilities, e.g. we use <a href="#spec"><code>TARGET</code></a> as shorthand for <code>{INDEX,NAME,CODE}</code></p>
 </li>
 </ul>
 </div>
@@ -351,11 +354,11 @@ can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-coin-to-an-account-code-buy-code-code-b-code-code-coming-in-v1-5-code"><a class="link" href="#add-coin-to-an-account-code-buy-code-code-b-code-code-coming-in-v1-5-code">4.2. Add coin to an account <code>buy</code> / <code>b</code> <code>[Coming in v1.5]</code></a></h3>
+<h3 id="add-coin-to-an-account-code-buy-code-code-b-code-code-since-v1-4-code"><a class="link" href="#add-coin-to-an-account-code-buy-code-code-b-code-code-since-v1-4-code">4.2. Add coin to an account <code>buy</code> / <code>b</code> <code>[Since v1.4]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>buy SPECIFIER AMOUNT</pre>
+<pre>buy TARGET a/AMOUNT</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -372,11 +375,11 @@ can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sell-coin-from-an-account-code-sell-code-code-s-code-code-coming-in-v1-5-code"><a class="link" href="#sell-coin-from-an-account-code-sell-code-code-s-code-code-coming-in-v1-5-code">4.3. Sell coin from an account <code>sell</code> / <code>s</code> <code>[Coming in v1.5]</code></a></h3>
+<h3 id="sell-coin-from-an-account-code-sell-code-code-s-code-code-since-v1-4-code"><a class="link" href="#sell-coin-from-an-account-code-sell-code-code-s-code-code-since-v1-4-code">4.3. Sell coin from an account <code>sell</code> / <code>s</code> <code>[Since v1.4]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>sell SPECIFIER AMOUNT</pre>
+<pre>sell TARGET a/AMOUNT</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -397,7 +400,7 @@ can be used as either <code>BTC t/fav</code> or <code>BTC</code></p>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>tag SPECIFIER TAG</pre>
+<pre>tag TARGET t/TAG...</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -456,7 +459,7 @@ A Coin account can have any number of tags (including 0)
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>find [SPECIFIER] CONDITION</pre>
+<pre>find CONDITION</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -479,31 +482,37 @@ A Coin account can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>t/<span class="underline">TAG</span>&#8230;&#8203;</code>: Tags attached to the account</p>
+<p><code>n/NAME</code>:  Name of the coin</p>
 </li>
 <li>
-<p><code>p/<span class="underline">AMOUNT</span></code>: Current price of the coin</p>
+<p><code>c/CODE</code>: Trading code of the coin</p>
 </li>
 <li>
-<p><code>h/<span class="underline">AMOUNT</span></code>: Current amount held in an account</p>
+<p><code>t/TAG&#8230;&#8203;</code>: Tags attached to the coin</p>
 </li>
 <li>
-<p><code>b/<span class="underline">AMOUNT</span></code>: Total amount in dollars ever bought in the account</p>
+<p><code>p/PRICE</code>: Current price of the coin</p>
 </li>
 <li>
-<p><code>s/<span class="underline">AMOUNT</span></code>: Total amount in dollars ever sold from the account</p>
+<p><code>h/AMOUNT</code>: Current amount held in an account</p>
 </li>
 <li>
-<p><code>m/<span class="underline">AMOUNT</span></code>: Total profit in dollars made from this account so far</p>
+<p><code>b/AMOUNT</code>: Total amount in dollars ever bought in the account</p>
 </li>
 <li>
-<p><code>w/<span class="underline">AMOUNT</span></code>: How much the current amount held is worth at the current price</p>
+<p><code>s/AMOUNT</code>: Total amount in dollars ever sold from the account</p>
+</li>
+<li>
+<p><code>m/MADE</code>: Total profit in dollars made from this account so far</p>
+</li>
+<li>
+<p><code>w/WORTH</code>: How much the current amount held is worth at the current price</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>All <code>AMOUNT</code> s can be preceded with <code>&gt;</code> or <code>&lt;</code> to specify greater or less than respectively, for example:</p>
+<p>You can put <code>&gt;</code> or <code>&lt;</code> to specify amounts greater or less than, for example:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -529,7 +538,7 @@ A Coin account can have any number of tags (including 0)
 <p><code>NOT</code>: Reverses the matching result of the following condition</p>
 </li>
 <li>
-<p><code>(&#160;)</code>: Evaluates conditions inside parentheses first, inside to out</p>
+<p><code>(&#160;)</code>: Evaluates conditions inside parentheses first, starting with the innermost one</p>
 </li>
 </ul>
 </div>
@@ -545,23 +554,26 @@ A Coin account can have any number of tags (including 0)
 <div class="listingblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>find BT
-f t/fav
-find (p/&gt;500 t/fav) OR h/&lt;20</pre>
+<pre>find BT <i class="conum" data-value="1"></i><b>(1)</b>
+f t/fav <i class="conum" data-value="2"></i><b>(2)</b>
+find (p/&gt;500 t/fav) OR h/&lt;20 <i class="conum" data-value="3"></i><b>(3)</b></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Finds accounts with <code>BT</code> in their name, code or index</p>
-</li>
-<li>
-<p>Finds accounts with the <code>fav</code> tag</p>
-</li>
-<li>
-<p>Finds accounts either with current price more than $500 and tagged <code>fav</code>, or with less than 20 Coins left</p>
-</li>
-</ol>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Finds accounts with <code>BT</code> in their name, code or index</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Finds accounts with the <code>fav</code> tag</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Finds accounts either with current price more than $500 and tagged <code>fav</code>, or with less than 20 Coins left</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -569,7 +581,7 @@ find (p/&gt;500 t/fav) OR h/&lt;20</pre>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>view SPECIFIER</pre>
+<pre>view TARGET</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -597,23 +609,26 @@ find (p/&gt;500 t/fav) OR h/&lt;20</pre>
 <div class="listingblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>view BTC
-view Bitcoin
-v 2</pre>
+<pre>view BTC     <i class="conum" data-value="1"></i><b>(1)</b>
+view Bitcoin <i class="conum" data-value="2"></i><b>(2)</b>
+v 2          <i class="conum" data-value="3"></i><b>(3)</b></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>See details for the <code>BTC</code> account</p>
-</li>
-<li>
-<p>See details for the <code>Bitcoin</code> account</p>
-</li>
-<li>
-<p>See details for the 2nd account in the current listing</p>
-</li>
-</ol>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>See details for the <code>BTC</code> account</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>See details for the <code>Bitcoin</code> account</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>See details for the 2nd account in the current listing</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -621,11 +636,11 @@ v 2</pre>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>notify {SPECIFIER,TAG} CONDITION</pre>
+<pre>notify {TARGET} CONDITION</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Sets a condition that triggers a popup notification when a price update is done and the condition matches the new data for a coin. The condition query mostly follows the same format as that used in <a href="#find">find</a>, with additional options specified below. Also, <code>TAG</code> cannot be used as a notification condition.</p>
+<p>Sets a condition that triggers a popup notification when a price update is done and the condition matches the new data for a coin. The condition query mostly follows the same format as that used in <a href="#find">find</a>, with additional options specified below.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -633,10 +648,10 @@ v 2</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Additional specifier <code>all</code> to refer to any account</p>
+<p>If no target is specified, all accounts are checked</p>
 </li>
 <li>
-<p>All <code>AMOUNT</code> s can be preceded with <code>+</code> or <code>-</code> to indicate a change in the detail specified instead of its absolute value, for example:</p>
+<p>You can put <code>+</code> or <code>-</code> before specifying an amount to indicate a change in the property specified instead of its absolute value, for example:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -655,27 +670,31 @@ v 2</pre>
 <div class="listingblock">
 <div class="title">Example</div>
 <div class="content">
-<pre>notify all h/&gt;0
-notify 1 w/&gt;50
-notify 3 w/+&lt;1000
-notify all p/-&gt;10%</pre>
+<pre>notify h/&gt;0        <i class="conum" data-value="1"></i><b>(1)</b>
+notify 1 w/&gt;50     <i class="conum" data-value="2"></i><b>(2)</b>
+notify 3 w/+&lt;1000  <i class="conum" data-value="3"></i><b>(3)</b>
+notify all p/-&gt;10% <i class="conum" data-value="4"></i><b>(4)</b></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Notify when the amount held in an account is more than 0 after the update. This always triggers and is useless on its own but can be combined with other conditions to restrict notifications to a smaller set of accounts</p>
-</li>
-<li>
-<p>Notify when the amount worth in dollars of the first entry exceeds 50 dollars</p>
-</li>
-<li>
-<p>Notify when the amount worth in dollars of the third entry rises by more than 1000 dollars</p>
-</li>
-<li>
-<p>Notify when any coin&#8217;s price falls more than 10%</p>
-</li>
-</ul>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Notify when the amount held in an account is more than 0 after the update. This always triggers and is useless on its own but can be combined with other conditions to restrict notifications to a smaller set of accounts</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Notify when the amount worth in dollars of the first entry exceeds 50 dollars</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Notify when the amount worth in dollars of the third entry rises by more than 1000 dollars</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Notify when any coin&#8217;s price falls more than 10%</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -687,24 +706,29 @@ notify all p/-&gt;10%</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Orders the coin listing based on the specified details such as name, price, amount held, etc. Put <code>a</code> after the option to sort it in ascending order, and <code>d</code> to sort in descending order. The listing is sorted by the leftmost entered option first, then equal values are sorted by the next one, and so on. The default order is alphabetical order of the coin names.</p>
+<p>Orders the coin listing based on the specified details such as name, price, amount held, etc. Use the same letters in <a href="#find">condition queries</a>.</p>
+</div>
+<div class="paragraph">
+<p>Put <code>a</code> after the option to sort it in ascending order, and <code>d</code> to sort in descending order. The listing is sorted by the leftmost entered option first, then equal values are sorted by the next one, and so on. The default order is alphabetical order of the coin names.</p>
 </div>
 <div class="listingblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>order p/a
-order p/d n/d</pre>
+<pre>order p/a     <i class="conum" data-value="1"></i><b>(1)</b>
+order p/d n/d <i class="conum" data-value="2"></i><b>(2)</b></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Sort the listing in ascending order based on current prices</p>
-</li>
-<li>
-<p>Sort the listing in descending order based on the current prices first, then if two coins have the same price, they will be sorted by name in reverse alphabetical order</p>
-</li>
-</ul>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Sort the listing in ascending order based on current prices</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Sort the listing in descending order based on the current prices first, then if two coins have the same price, sort them by name in reverse alphabetical order</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -863,11 +887,11 @@ redo</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="updating-the-information-code-update-code-code-u-code-code-coming-in-v1-5-code"><a class="link" href="#updating-the-information-code-update-code-code-u-code-code-coming-in-v1-5-code">4.14. Updating the information : <code>update</code> / <code>u</code> <code>[coming in v1.5]</code></a></h3>
+<h3 id="syncs-local-outdated-data-with-latest-data-and-information-code-sync-code-code-sy-code-code-coming-in-v1-5-code"><a class="link" href="#syncs-local-outdated-data-with-latest-data-and-information-code-sync-code-code-sy-code-code-coming-in-v1-5-code">4.14. Syncs local, outdated data with latest data and information : <code>sync</code> / <code>sy</code> <code>[Coming in v1.5]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>update</pre>
+<pre>sync</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -914,55 +938,97 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>Buy</strong> : <code>buy SPECIFIER AMOUNT</code></p>
-</li>
-<li>
-<p><strong>Sell</strong> : <code>sell SPECIFIER AMOUNT</code></p>
-</li>
-<li>
-<p><strong>Tag</strong> : <code>tag SPECIFIER TAG</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find [SPECIFIER] CONDITION</code></p>
-</li>
-<li>
-<p><strong>View</strong> : <code>view SPECIFIER</code></p>
-</li>
-<li>
-<p><strong>Notify</strong> : <code>notify {SPECIFIER,TAG} CONDITION</code></p>
-</li>
-<li>
-<p><strong>Sort</strong> : <code>order OPTION/{a,d}&#8230;&#8203;</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Update</strong> : <code>update</code></p>
-</li>
-<li>
-<p><strong>Exit</strong> :  <code>exit</code></p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 29.4117%;">
+<col style="width: 33.8235%;">
+<col style="width: 36.7648%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Buy</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>buy TARGET a/AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds AMOUNT of coin to the targeted account.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clear</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deletes all coin accounts from the CoinBook.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exits the program.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find CONDITION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds all coin accounts that fit the CONDITION.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Help</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Displays the help page.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>History</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows the user a history of previously input commands.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>List</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists all coin accounts.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notify</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>notify CONDITION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets CoinBook to notify the user when the CONDITION has been met.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Redo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reapplies the previously un-done command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sell</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sell TARGET AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subtracts AMOUNT of coin from the targeted account.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Order</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order OPTION/{a,d}&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sorts the coin accounts in the CoinBook based on their OPTION.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tag TARGET TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tags the targeted account with TAG name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Undo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reverts the effect of the previous undo-able command.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Update</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>update</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fetches data from online sources to update the prices.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view TARGET</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Views information about the targeted account.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -1017,7 +1083,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 00:43:13 UTC
+Last updated 2018-04-06 00:52:35 UTC
 </div>
 </div>
 </body>

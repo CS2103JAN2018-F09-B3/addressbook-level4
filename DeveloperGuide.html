@@ -24,10 +24,10 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting Up</a>
+<li><a href="#getting-started-with-coinbook">1. Getting Started with CoinBook</a>
 <ul class="sectlevel2">
-<li><a href="#prerequisites">1.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting Up the Project in Your Computer</a></li>
+<li><a href="#obtaining-prerequisites">1.1. Obtaining Prerequisites</a></li>
+<li><a href="#setting-up">1.2. Setting Up</a></li>
 <li><a href="#verifying-the-setup">1.3. Verifying the Setup</a></li>
 <li><a href="#configurations-to-do-before-writing-code">1.4. Configurations To Do Before Writing Code</a></li>
 </ul>
@@ -43,11 +43,11 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#condition-parser-feature">3.1. Condition Parser feature</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
+<li><a href="#condition-parser-component">3.1. Condition Parser Component</a></li>
+<li><a href="#undo-redo-feature">3.2. Undo/Redo Feature</a></li>
 <li><a href="#user-set-notifications">3.3. User-Set Notifications</a></li>
 <li><a href="#Implementation-Organisation">3.4. Organisation Features</a></li>
-<li><a href="#proposed-autocomplete-feature">3.5. [Proposed] Autocomplete feature</a></li>
+<li><a href="#proposed-autocomplete-feature">3.5. [Proposed] Autocomplete Feature</a></li>
 <li><a href="#logging">3.6. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
@@ -61,12 +61,12 @@
 </li>
 <li><a href="#Testing">5. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#running-tests">5.1. Running Tests</a></li>
-<li><a href="#types-of-tests">5.2. Types of tests</a></li>
+<li><a href="#types-of-tests">5.1. Types of tests</a></li>
+<li><a href="#running-tests">5.2. Running Tests</a></li>
 <li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
 </ul>
 </li>
-<li><a href="#dev-ops">6. Dev Ops</a>
+<li><a href="#devops">6. DevOps</a>
 <ul class="sectlevel2">
 <li><a href="#build-automation">6.1. Build Automation</a></li>
 <li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
@@ -78,13 +78,16 @@
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a>
 <ul class="sectlevel2">
-<li><a href="#feature-contribution">A.1. Feature contribution</a></li>
+<li><a href="#goals">A.1. Goals</a></li>
+<li><a href="#feature-contribution">A.2. Feature contribution</a></li>
 </ul>
 </li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
 <li><a href="#use-case-export-storage-data">C.1. Use case: Export storage data</a></li>
+<li><a href="#use-case-set-notifications">C.2. Use case: Set notifications</a></li>
+<li><a href="#use-case-tag-items-for-group-commands">C.3. Use case: Tag items for group commands</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -100,10 +103,32 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting Up</a></h2>
+<h2 id="getting-started-with-coinbook"><a class="link" href="#getting-started-with-coinbook">1. Getting Started with CoinBook</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Follow the instructions given in this section to get up and running with <em>CoinBook</em>. To summarise:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure you have the prerequisites installed. See <a href="#obtaining-prerequisites">Section 1.1, &#8220;Obtaining Prerequisites&#8221;</a> for details.</p>
+</li>
+<li>
+<p>Clone and import the project. See <a href="#setting-up">Section 1.2, &#8220;Setting Up&#8221;</a> for details.</p>
+</li>
+<li>
+<p>Set up additional requirements before writing your code. See <a href="#configurations-to-do-before-writing-code">Section 1.4, &#8220;Configurations To Do Before Writing Code&#8221;</a> for details.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For the full details, continue reading.</p>
+</div>
 <div class="sect2">
-<h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
+<h3 id="obtaining-prerequisites"><a class="link" href="#obtaining-prerequisites">1.1. Obtaining Prerequisites</a></h3>
+<div class="paragraph">
+<p>The following are required to ensure that <em>CoinBook</em> works well.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -142,7 +167,10 @@ Do not disable them. If you have disabled them, go to <code>File</code> &#8594; 
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">1.2. Setting Up the Project in Your Computer</a></h3>
+<h3 id="setting-up"><a class="link" href="#setting-up">1.2. Setting Up</a></h3>
+<div class="paragraph">
+<p>Follow the steps below to set up the project in your computer.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -185,6 +213,9 @@ This will generate all resources required by the application and tests.</p>
 </div>
 <div class="sect2">
 <h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the Setup</a></h3>
+<div class="paragraph">
+<p>After setting up the project by following the steps in the previous part, do the below to make sure you have everything set up nicely.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -198,6 +229,9 @@ This will generate all resources required by the application and tests.</p>
 </div>
 <div class="sect2">
 <h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations To Do Before Writing Code</a></h3>
+<div class="paragraph">
+<p>Before embarking on your modifications to <em>CoinBook</em>, you should set up the following things to facilitate a smooth development experience.</p>
+</div>
 <div class="sect3">
 <h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the Coding Style</a></h4>
 <div class="paragraph">
@@ -284,6 +318,9 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 <div class="sect1">
 <h2 id="design"><a class="link" href="#design">2. Design</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This chapter offers a high-level overview of the components in <em>CoinBook</em> and how they interact with one another. You should read this first to get some idea of which parts you might want to modify to suit your needs.</p>
+</div>
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
 <div class="paragraph">
@@ -298,45 +335,55 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 <div class="paragraph">
 <p>Following is a quick overview of each component:</p>
 </div>
-<div class="paragraph">
-<p><code><strong>Main</strong></code> has only one class called <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a></span>. It is responsible for:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>(On app launch) Initializing the components in the correct sequence, and connecting them up with one another</p>
+<p><code><strong>Main</strong></code> has only one class called <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a></span>. It is responsible for the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(On app launch) Initializes the components in the correct sequence, and connecting them up with one another</p>
 </li>
 <li>
-<p>(On shut down) Shutting down the components and invoking cleanup methods where necessary</p>
+<p>(On shut down) Shuts down all components and invoking cleanup methods where necessary</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p><code><strong>Commons</strong></code> represents a collection of classes used by multiple other components. Two of these classes play important roles at the architectural level.</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>EventsCenter</code> : This class (written using <span class="ext"><a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a></span>) is used by components to communicate with other components using events (i.e. a form of <a href="#event-driven-design">Event Driven Design</a>)</p>
+<p><code>EventsCenter</code> uses <span class="ext"><a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a></span>, and is used by other components to communicate with one another using events (i.e. a form of <a href="#event-driven-design">Event Driven Design</a>)</p>
 </li>
 <li>
-<p><code>LogsCenter</code> : Used by classes to write log messages to the App&#8217;s log file.</p>
+<p><code>LogsCenter</code> is used by classes to write log messages to the App&#8217;s log file</p>
+</li>
+<li>
+<p>These classes are located in the <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/commons"><code>seedu.address.commons</code></a></span> package</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>These classes are located in the <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/commons"><code>seedu.address.commons</code></a></span> package.</p>
-</div>
-<div class="paragraph">
-<p>The rest of the App consists of four components:<br>
-<a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.<br>
-<a href="#Design-Logic"><strong><code>Logic</code></strong></a>: Executes commands.<br>
-<a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in memory.<br>
-<a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from and writes data to the hard disk.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
+<p>The rest of the App consists of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a> which has the UI components of the App.<br></p>
+</li>
+<li>
+<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a> which processes and executes commands.<br></p>
+</li>
+<li>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a> which holds the data of the App in memory.<br></p>
+</li>
+<li>
+<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a> which reads data from and writes data to the hard disk.</p>
+</li>
+<li>
 <p>Each of these four components:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -347,8 +394,14 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 </li>
 </ul>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>For example, the <code>Logic</code> component (see Fig. 2 below) defines its API in the <code>Logic.java</code> interface and exposes its functionality via the <code>LogicManager.java</code> class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -356,7 +409,10 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 </div>
 <div class="title">Figure 2. Class Diagram of the Logic Component</div>
 </div>
-<h4 id="event-driven-design" class="discrete">Event-Driven nature of the design</h4>
+<div class="paragraph">
+<p>We use event-driven design in order to allow communication between separate components without increasing coupling. The short section below gives a brief introduction to how events are being used in the App.</p>
+</div>
+<h4 id="event-driven-design" class="discrete">Event-driven nature of the design</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below (Fig. 3) shows the interaction between the various components when the user issues the command <code>delete 1</code>.</p>
 </div>
@@ -575,22 +631,22 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
+<p>This chapter describes some noteworthy details on how certain features are implemented. It is highly recommended to read the previous chapter on <a href="#design">Section 2, &#8220;Design&#8221;</a> first so that you have some picture of where these features fit in.</p>
 </div>
 <div class="sect2">
-<h3 id="condition-parser-feature"><a class="link" href="#condition-parser-feature">3.1. Condition Parser feature</a></h3>
+<h3 id="condition-parser-component"><a class="link" href="#condition-parser-component">3.1. Condition Parser Component</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely
-the <code>Lexer</code>, <code>SyntaxParser</code>, <code>SemanticParser</code>, and a <code>ConditionGenerator</code>, while using classes such as <code>Condition</code>,
+the <code>ArgumentTokenizer</code>, <code>SyntaxParser</code>, <code>SemanticParser</code>, and a <code>ConditionGenerator</code>, while using classes such as <code>Condition</code>,
 <code>Token</code>, <code>TokenType</code>, <code>TokenStack</code> to model the data that is to be operated on throughout the process. Their tasks are
 delegated as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Lexer</code> : Lexically analyzes the input string, then creates a list of tokens.</p>
+<p><code>ArgumentTokenizer</code> : Lexically analyzes the input string, then creates a list of tokens.</p>
 </li>
 <li>
 <p><code>SyntaxParser</code> : Parses the input by matching the tokens versus a list of rules to ensure they fit the desired
@@ -621,43 +677,47 @@ but not semantically, since it would not make sense to search for <code>Coin</co
 </table>
 </div>
 <div class="paragraph">
-<p>Below is the UML
-describing the classes and their relationships.</p>
+<p>The following sequence diagram will show how input arguments accompanying the <code>Find</code> command are parsed:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ParserClassDiagram.png" alt="ParserClassDiagram">
+<img src="images/FindCommandSequence.png" alt="FindCommandSequence">
 </div>
-<div class="title">Figure 11. Class UML diagram for the Condition Parser</div>
+<div class="title">Figure 11. Sequence diagram describing how arguments are parsed</div>
 </div>
 <div class="paragraph">
-<p>The general flow of the parser is very linear in nature, an input string is first broken up into reasonable sections by
-the lexer based on their possible meaning, then the syntax and semantic parser ensure that the input follows the
-structure required and then finally a condition objects is generated representing the statement that can be used to
-evaluate Coin objects.</p>
+<p>The <code>SyntaxParser</code>, <code>SemanticParser</code> and <code>ConditionGenerator</code> reside in a separate module that will be called by the
+<code>ParserUtil</code> class during the ParseCondition method.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram expands on the Parse Sequence block in the previous diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/mainSequence.png" alt="mainSequence" width="800">
+<img src="images/ParserUtilSequence.png" alt="ParserUtilSequence">
 </div>
-<div class="title">Figure 12. Sequence diagram for the <code>ConditionParser</code> class on correct inputs</div>
+<div class="title">Figure 12. Sequence diagram describing the sequence of parser operations</div>
 </div>
 <div class="paragraph">
-<p>We will illustrate the flow of the CommandParser on an example input:</p>
+<p>The <code>Condition</code> object that is generated at the end is actually just a <code>Predicate</code> object that evaluates properties of
+the Coin objects and returns a true/false value.</p>
+</div>
+<div class="sect4">
+<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">Argument Tokenizing</a></h5>
+<div class="paragraph">
+<p>We will illustrate the flow of the tokenizing an example input:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>&gt; n/BTC OR ( t/fav AND p/&gt;100 )</code></pre>
 </div>
 </div>
-<div class="sect4">
-<h5 id="lexer"><a class="link" href="#lexer">Lexer</a></h5>
 <div class="paragraph">
-<p>Firstly, the lexer would tokenize this into:</p>
+<p>The Lexer would tokenize this into:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>&gt; [n/,OPTION][BTC,STRING][OR,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][&gt;,COMPARATOR][100,NUMBER][),RIGHTPAREN]</code></pre>
+<pre class="CodeRay highlight"><code>&gt; [n/,OPTION][BTC,STRING][ OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][&gt;,COMPARATOR][100,NUMBER][),RIGHTPAREN]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -665,13 +725,13 @@ evaluate Coin objects.</p>
 the input has now been grouped with a type.</p>
 </div>
 <div class="paragraph">
-<p>Below is a sequence diagram describing the behaviour of <code>Lexer</code> on the input:</p>
+<p>Below is a sequence diagram describing the behaviour of <code>ArgumentTokenizer</code> on the input:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Lexer.png" alt="Lexer">
 </div>
-<div class="title">Figure 13. Sequence diagram for the <code>Lexer</code> class</div>
+<div class="title">Figure 13. Sequence diagram for the <code>ArgumentTokenizer</code> class</div>
 </div>
 </div>
 <div class="sect4">
@@ -694,103 +754,7 @@ This is done by matching the tokens off based on the following rules, expressed 
 </ol>
 </div>
 <div class="paragraph">
-<p>Using our example, we will illustrate how we can sequentially express the argument based on the provided rules:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>EXPRESSION</code></p>
-</li>
-<li>
-<p><code>TERM</code> <code>BINARYOP</code> <code>EXPRESSION</code></p>
-</li>
-<li>
-<p><code>CONDITION</code> <code>BINARYOP</code> <code>EXPRESSION</code></p>
-</li>
-<li>
-<p><code>OPTION</code> <code>STRING</code> <code>BINARYOP</code> <code>EXPRESSION</code></p>
-</li>
-<li>
-<p>n/<code>STRING</code> <code>BINARYOP</code> <code>EXPRESSION</code></p>
-</li>
-<li>
-<p>n/BTC <code>BINARYOP</code> <code>EXPRESSION</code></p>
-</li>
-<li>
-<p>n/BTC OR <code>EXPRESSION</code></p>
-</li>
-<li>
-<p>n/BTC OR <code>TERM</code></p>
-</li>
-<li>
-<p>n/BTC OR ( <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( <code>TERM</code> <code>BINARYOP</code> <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( <code>CONDITION</code> <code>BINARYOP</code> <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( <code>OPTION</code> <code>STRING</code> <code>BINARYOP</code> <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/ <code>STRING</code> <code>BINARYOP</code> <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav <code>BINARYOP</code> <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND <code>EXPRESSION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND <code>TERM</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND <code>CONDITION</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND <code>OPTION</code> <code>COMPARATOR</code> <code>NUM</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND p/ <code>COMPARATOR</code> <code>NUM</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND p/ &gt; <code>NUM</code> )</p>
-</li>
-<li>
-<p>n/BTC OR ( t/fav AND p/&gt;100 )</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The recursive methods <code>Expression</code>, <code>Term</code>, <code>Condition</code> in the syntax parser class will match their own respective tokens
-as necessary. In fact the method calls in the parser are exactly the same as the matches made in the previously stated sequence.
-For example, here is the implementation for <code>EXPRESSION</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">boolean</span> expression() {
-    <span class="keyword">if</span> (!term()) {
-        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
-    }
-    <span class="keyword">while</span> (tokenStack.matchAndPopTokenType(TokenType.BINARYBOOL)) {
-        <span class="keyword">if</span> (!term()) {
-            <span class="keyword">return</span> <span class="predefined-constant">false</span>;
-        }
-    }
-    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Visually we can represent it with the following parse tree, which also serves as the recursion tree:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/parsetree.png" alt="parsetree">
-</div>
-<div class="title">Figure 14. Parse and recursion tree for the example input</div>
+<p>Further details on how this is performed is delved into in the later <a href="#concept-of-parsing">section</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -800,12 +764,19 @@ For example, here is the implementation for <code>EXPRESSION</code>.</p>
 type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
 This can be done by checking the corresponding option class versus the type of token that follows.</p>
 </div>
+<div class="paragraph">
+<p>Thus, the checks that are made are just to ensure every string type option is followed by a string and every number type
+option is followed by a number.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="condition-generator"><a class="link" href="#condition-generator">Condition Generator</a></h5>
 <div class="paragraph">
 <p>Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
 condition based on the binary operators encounters up the recursion tree.</p>
+</div>
+<div class="paragraph">
+<p>Further details on how this is performed is delved into at the later <a href="#generating-the-conditions">section</a>.</p>
 </div>
 </div>
 </div>
@@ -823,7 +794,7 @@ Since the <code>SemanticParser</code> has similar structure, the sequence diagra
 <div class="content">
 <img src="images/failSequence.png" alt="failSequence">
 </div>
-<div class="title">Figure 15. Sequence diagram for the <code>ConditionParser</code> class on erroneous inputs</div>
+<div class="title">Figure 14. Sequence diagram for the <code>ConditionParser</code> class on erroneous inputs</div>
 </div>
 </div>
 <div class="sect3">
@@ -895,9 +866,138 @@ Since the <code>SemanticParser</code> has similar structure, the sequence diagra
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="advanced-details"><a class="link" href="#advanced-details">3.1.4. Advanced details</a></h4>
+<div class="sect4">
+<h5 id="concept-of-parsing"><a class="link" href="#concept-of-parsing">Concept of parsing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>&gt; [n/,OPTION][BTC,STRING][ OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][&gt;,COMPARATOR][100,NUMBER][),RIGHTPAREN]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using our example, we will illustrate how we can sequentially express the above tokenized argument based on the provided rules:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code><strong>TERM</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code><strong>CONDITION</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code><strong>OPTION</strong></code> <code><strong>STRING</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code>n/</code> <code><strong>STRING</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code><strong>EXPRESSION</strong></code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code><strong>TERM</strong></code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code><strong>TERM</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code><strong>CONDITION</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code><strong>OPTION</strong></code> <code><strong>STRING</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code><strong>STRING</strong></code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code><strong>BINARYOP</strong></code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code><strong>EXPRESSION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code><strong>TERM</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code><strong>CONDITION</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code><strong>OPTION</strong></code> <code><strong>COMPARATOR</strong></code> <code><strong>NUM</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code>p/</code> <code><strong>COMPARATOR</strong></code> <code><strong>NUM</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code>p/</code> <code>&gt;</code> <code><strong>NUM</strong></code> <code>)</code></p>
+</li>
+<li>
+<p><code>n/</code> <code>BTC</code> <code>OR</code> <code>(</code> <code>t/</code> <code>fav</code> <code>AND</code> <code>p/</code> <code>&gt;</code> <code>100</code> <code>)</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The recursive methods <code>Expression</code>, <code>Term</code>, <code>Condition</code> in the syntax parser class will match their own respective tokens
+as necessary. In fact the method calls in the parser are exactly the same as the matches made in the previously stated sequence.
+For example, here is the implementation for <code>EXPRESSION</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">boolean</span> expression() {
+    <span class="keyword">if</span> (!term()) {
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="keyword">while</span> (tokenStack.matchAndPopTokenType(TokenType.BINARYBOOL)) {
+        <span class="keyword">if</span> (!term()) {
+            <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        }
+    }
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Visually we can represent it with the following parse tree, which also serves as the recursion tree:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/parsetree.png" alt="parsetree">
+</div>
+<div class="title">Figure 15. Parse and recursion tree for the example input</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="generating-the-conditions"><a class="link" href="#generating-the-conditions">Generating the Conditions</a></h5>
+<div class="paragraph">
+<p>The final <code>Condition</code> object is actually just a composition of many individual <code>Condition</code> objects. This can be done
+as a back call at the end of each recursion tree.</p>
+</div>
+<div class="paragraph">
+<p>For example, consider the following argument:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>p/&gt;100 AND t/fav</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>p/&gt;100</code> is a condition on price whereas the <code>t/fav</code> is a condition on tags, and they can be composed using the <code>Predicate</code>
+method <code>and()</code> to return a logical conjunction of the two conditions.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1494,7 +1594,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-autocomplete-feature"><a class="link" href="#proposed-autocomplete-feature">3.5. [Proposed] Autocomplete feature</a></h3>
+<h3 id="proposed-autocomplete-feature"><a class="link" href="#proposed-autocomplete-feature">3.5. [Proposed] Autocomplete Feature</a></h3>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by a <code>RadixTree</code>, which resides inside <code>LogicManager</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
@@ -1706,7 +1806,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>In Chrome&#8217;s menu, click on the <code>Print</code> option.</p>
 </li>
 <li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 19) below.</p>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 25) below.</p>
 </li>
 </ol>
 </div>
@@ -1722,10 +1822,55 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect1">
 <h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
 <div class="paragraph">
-<p>There are three ways to run tests.</p>
+<p>When developing new features it is always important to write tests so that you can verify whether the features are working as intended, alone or with one another. This chapter introduces the basics of testing.</p>
+</div>
+<div class="sect2">
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.1. Types of tests</a></h3>
+<div class="paragraph">
+<p>We use two types of tests in <em>Coinbook</em>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
+</li>
+<li>
+<p><em>Unit tests</em> that test the individual components. These are in the <code>seedu.address.ui</code> package.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
+e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+</li>
+<li>
+<p><em>Integration tests</em> that check the integration of multiple code units (those code units are assumed to be working).<br>
+e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+</li>
+<li>
+<p>Hybrids of unit and integration tests. These tests check multiple code units as well as the connections between them.<br>
+e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="running-tests"><a class="link" href="#running-tests">5.2. Running Tests</a></h3>
+<div class="paragraph">
+<p>There are three ways to run tests on your computer before sharing your changes to source control.</p>
 </div>
 <div class="paragraph">
 <p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
@@ -1769,7 +1914,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See <span class="exref"><a href="#UsingGradle</span>">UsingGradle.adoc</a># for more info on how to run tests using Gradle.
+See <span class="exref"><a href="UsingGradle.html">UsingGradle.adoc</a></span> for more info on how to run tests using Gradle.
 </td>
 </tr>
 </table>
@@ -1811,51 +1956,24 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </tr>
 </table>
 </div>
-</div>
-<div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
-<div class="paragraph">
-<p>We have two types of tests:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
-</li>
-<li>
-<p><em>Unit tests</em> that test the individual components. These are in the <code>seedu.address.ui</code> package.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>seedu.address.commons.StringUtilTest</code></p>
-</li>
-<li>
-<p><em>Integration tests</em> that check the integration of multiple code units (those code units are assumed to be working).<br>
-e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
-</li>
-<li>
-<p>Hybrids of unit and integration tests. These tests check multiple code units as well as the connections between them.<br>
-e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="#continuous-integration">Section 6.2, &#8220;Continuous Integration&#8221;</a> also automatically runs the tests specified with Gradle, but it is a good habit to test things on your own machine first.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<div class="paragraph">
+<p>Here are some common problems you may face when trying to run tests locally.</p>
+</div>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1873,30 +1991,33 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="devops"><a class="link" href="#devops">6. DevOps</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This chapter introduces various systems we can put in place to unify the tasks of <em>development</em> and <em>operations</em>, or <em>DevOps</em> in short. We are mostly concerned with ways to reduce turnaround time through simple automation, and ways to manage the distribution of the completed App.</p>
+</div>
 <div class="sect2">
 <h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
 <div class="paragraph">
-<p>See <span class="exref"><a href="#UsingGradle</span>">UsingGradle.adoc</a># to learn how to use Gradle for build automation.</p>
+<p>See <span class="exref"><a href="UsingGradle.html">UsingGradle.adoc</a></span> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
 <div class="paragraph">
-<p>We use <span class="ext"><a href="https://travis-ci.org/">Travis CI</a></span> and <span class="ext"><a href="https://www.appveyor.com/">AppVeyor</a></span> to perform <em>Continuous Integration</em> on our projects. See <span class="exref"><a href="#UsingTravis</span>">UsingTravis.adoc</a># and <span class="exref"><a href="#UsingAppVeyor</span>">UsingAppVeyor.adoc</a># for more details.</p>
+<p>We use <span class="ext"><a href="https://travis-ci.org/">Travis CI</a></span> and <span class="ext"><a href="https://www.appveyor.com/">AppVeyor</a></span> to perform <em>Continuous Integration</em> on our projects. See <span class="exref"><a href="UsingTravis.html">UsingTravis.adoc</a></span> and <span class="exref"><a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a></span> for more details.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
 <div class="paragraph">
-<p>We use <span class="ext"><a href="https://coveralls.io/">Coveralls</a></span> to track the code coverage of our projects. See <span class="exref"><a href="#UsingCoveralls</span>">UsingCoveralls.adoc</a># for more details.</p>
+<p>We use <span class="ext"><a href="https://coveralls.io/">Coveralls</a></span> to track the code coverage of our projects. See <span class="exref"><a href="UsingCoveralls.html">UsingCoveralls.adoc</a></span> for more details.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
 <div class="paragraph">
-<p>When a pull request has changes to AsciiDoc files, you can use <span class="ext"><a href="https://www.netlify.com/">Netlify</a></span> to see a preview of the HTML version of those AsciiDoc files when the pull request is merged. See <span class="exref"><a href="#UsingNetlify</span>">UsingNetlify.adoc</a># for more details.</p>
+<p>When a pull request has changes to AsciiDoc files, you can use <span class="ext"><a href="https://www.netlify.com/">Netlify</a></span> to see a preview of the HTML version of those AsciiDoc files when the pull request is merged. See <span class="exref"><a href="UsingNetlify.html">UsingNetlify.adoc</a></span> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1943,6 +2064,8 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect1">
 <h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="goals"><a class="link" href="#goals">A.1. Goals</a></h3>
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
 </div>
@@ -1971,8 +2094,9 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="paragraph">
 <p><strong>Value proposition</strong>: manage cryptocurrencies faster than a typical mouse/GUI driven app</p>
 </div>
+</div>
 <div class="sect2">
-<h3 id="feature-contribution"><a class="link" href="#feature-contribution">A.1. Feature contribution</a></h3>
+<h3 id="feature-contribution"><a class="link" href="#feature-contribution">A.2. Feature contribution</a></h3>
 <div class="paragraph">
 <p><strong>Eldon Chung</strong></p>
 </div>
@@ -2261,16 +2385,16 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to export storage data</p>
+<p>User requests to export storage data.</p>
 </li>
 <li>
-<p>CoinBook requests for the file destination</p>
+<p>CoinBook requests for the file destination.</p>
 </li>
 <li>
-<p>User specifies the file destination</p>
+<p>User specifies the file destination.</p>
 </li>
 <li>
-<p>CoinBook exports the file</p>
+<p>CoinBook exports the file.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2303,8 +2427,92 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="use-case-set-notifications"><a class="link" href="#use-case-set-notifications">C.2. Use case: Set notifications</a></h3>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User sets the condition under which he/she wishes to be notified.</p>
+</li>
+<li>
+<p>CoinBook notifies the user the condition has been acknowledged.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extension</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The condition argument was invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. CoinBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-tag-items-for-group-commands"><a class="link" href="#use-case-tag-items-for-group-commands">C.3. Use case: Tag items for group commands</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User finds the coins that he wishes to group using the <code>Find</code> command.</p>
+</li>
+<li>
+<p>CoinBook shows a list of coins.</p>
+</li>
+<li>
+<p>User tags all the found using the <code>TagAll</code> command.</p>
+</li>
+<li>
+<p>The tags appear on all the coins in the CoinBook.</p>
+</li>
+<li>
+<p>User then operates on all coins that were tagged. e.g. buy tag 50</p>
+</li>
+<li>
+<p>CoinBook shows the changes to the User.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extension</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The tag name was invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. CoinBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2347,7 +2555,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">[[API] API</dt>
+<dt class="hdlist1"><a id="API"></a> API</dt>
 <dd>
 <p>Short for Application-Programmer Interface.</p>
 </dd>
@@ -2415,7 +2623,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Given below are instructions to test the App manually.</p>
+<p>Given below are instructions to test the App manually. This is a way to supplement the automated testing and find bugs through some concerted effort to break the software.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2438,10 +2646,10 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file and copy into an empty folder.</p>
 </li>
 <li>
-<p>Double-click the jar file<br>
+<p>Double-click the jar file.<br>
 Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
 </li>
 </ol>
@@ -2477,23 +2685,34 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First coin is deleted from the list. Details of the deleted entry shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
 Expected: No coin is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size), <code>delete -1</code><br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>Deleting a coin while its details are being displayed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List coins as above. Select the second coin using the <code>view 2</code> command. The detail window should be open on the right side.</p>
+</li>
+<li>
+<p>Test case: <code>delete 2</code><br>
+Expected: The coin is removed from the list. The detail window should return to a blank one, as when no coin is selected.</p>
+</li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -2505,15 +2724,26 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Start the App so that it is ready to run some commands.</p>
+</li>
+<li>
+<p>Navigate to the location of the data file, <code>data/addressbook.xml</code>, and rename or delete it.<br>
+Expected:</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Transferring data files to another computer</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Copy</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 </div>
@@ -2521,7 +2751,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 00:43:13 UTC
+Last updated 2018-04-06 00:52:35 UTC
 </div>
 </div>
 </body>
