@@ -58,6 +58,7 @@ public enum TokenType {
                 || type == PREFIX_NAME
                 || type == PREFIX_PRICE
                 || type == PREFIX_SOLD
-                || type == PREFIX_TAG;
+                || type == PREFIX_TAG
+                || type == PREFIX_WORTH;
     }
 }
