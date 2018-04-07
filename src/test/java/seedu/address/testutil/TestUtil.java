@@ -15,6 +15,7 @@ import seedu.address.model.coin.Coin;
  */
 public class TestUtil {
 
+    //@@author Eldon-Chung
     /**
      * Tokens and strings for ArgumentTokenizer, Parsing and TokenStack testing.
      */
@@ -71,6 +72,20 @@ public class TestUtil {
     public static final Token EOF_TOKEN = new Token(TokenType.EOF, "");
     public static final Token WHITESPACE_TOKEN = new Token(TokenType.WHITESPACE, " ");
 
+    /**
+     * Tokens with all possible combinations of 3 tags, for truth table testing when evaluating composed tag conditions.
+     */
+
+    public static final Coin COIN_0 = new CoinBuilder().withTags().build();
+    public static final Coin COIN_1 = new CoinBuilder().withTags(STRING_THREE_STRING).build();
+    public static final Coin COIN_2 = new CoinBuilder().withTags(STRING_TWO_STRING).build();
+    public static final Coin COIN_3 = new CoinBuilder().withTags(STRING_TWO_STRING, STRING_THREE_STRING).build();
+    public static final Coin COIN_4 = new CoinBuilder().withTags(STRING_ONE_STRING).build();
+    public static final Coin COIN_5 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_THREE_STRING).build();
+    public static final Coin COIN_6 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_TWO_STRING).build();
+    public static final Coin COIN_7 = new CoinBuilder()
+            .withTags(STRING_ONE_STRING, STRING_TWO_STRING, STRING_THREE_STRING).build();
+    //@@author Eldon-Chung
     /**
      * Folder used for temp files created during testing. Ignored by Git.
      */

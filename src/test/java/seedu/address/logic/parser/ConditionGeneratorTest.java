@@ -3,6 +3,14 @@ package seedu.address.logic.parser;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TestUtil.AND_TOKEN;
+import static seedu.address.testutil.TestUtil.COIN_0;
+import static seedu.address.testutil.TestUtil.COIN_1;
+import static seedu.address.testutil.TestUtil.COIN_2;
+import static seedu.address.testutil.TestUtil.COIN_3;
+import static seedu.address.testutil.TestUtil.COIN_4;
+import static seedu.address.testutil.TestUtil.COIN_5;
+import static seedu.address.testutil.TestUtil.COIN_6;
+import static seedu.address.testutil.TestUtil.COIN_7;
 import static seedu.address.testutil.TestUtil.DECIMAL_STRING;
 import static seedu.address.testutil.TestUtil.DECIMAL_TOKEN;
 import static seedu.address.testutil.TestUtil.EOF_TOKEN;
@@ -236,23 +244,14 @@ public class ConditionGeneratorTest {
                 PREFIX_TAG_TOKEN, STRING_TWO_TOKEN, AND_TOKEN, PREFIX_TAG_TOKEN, STRING_THREE_TOKEN, EOF_TOKEN);
         Predicate<Coin> condition = conditionGenerator.generate();
 
-        Coin coin0 = new CoinBuilder().withTags().build();
-        Coin coin1 = new CoinBuilder().withTags(STRING_THREE_STRING).build();
-        Coin coin2 = new CoinBuilder().withTags(STRING_TWO_STRING).build();
-        Coin coin3 = new CoinBuilder().withTags(STRING_TWO_STRING, STRING_THREE_STRING).build();
-        Coin coin4 = new CoinBuilder().withTags(STRING_ONE_STRING).build();
-        Coin coin5 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_THREE_STRING).build();
-        Coin coin6 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_TWO_STRING).build();
-        Coin coin7 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_TWO_STRING, STRING_THREE_STRING).build();
-
-        assertFalse(condition.test(coin0));
-        assertFalse(condition.test(coin1));
-        assertFalse(condition.test(coin2));
-        assertTrue(condition.test(coin3));
-        assertFalse(condition.test(coin4));
-        assertTrue(condition.test(coin5));
-        assertFalse(condition.test(coin6));
-        assertTrue(condition.test(coin7));
+        assertFalse(condition.test(COIN_0));
+        assertFalse(condition.test(COIN_1));
+        assertFalse(condition.test(COIN_2));
+        assertTrue(condition.test(COIN_3));
+        assertFalse(condition.test(COIN_4));
+        assertTrue(condition.test(COIN_5));
+        assertFalse(condition.test(COIN_6));
+        assertTrue(condition.test(COIN_7));
     }
 
     @Test
@@ -263,23 +262,14 @@ public class ConditionGeneratorTest {
                 RIGHT_PAREN_TOKEN, EOF_TOKEN);
         Predicate<Coin> condition = conditionGenerator.generate();
 
-        Coin coin0 = new CoinBuilder().withTags().build();
-        Coin coin1 = new CoinBuilder().withTags(STRING_THREE_STRING).build();
-        Coin coin2 = new CoinBuilder().withTags(STRING_TWO_STRING).build();
-        Coin coin3 = new CoinBuilder().withTags(STRING_TWO_STRING, STRING_THREE_STRING).build();
-        Coin coin4 = new CoinBuilder().withTags(STRING_ONE_STRING).build();
-        Coin coin5 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_THREE_STRING).build();
-        Coin coin6 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_TWO_STRING).build();
-        Coin coin7 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_TWO_STRING, STRING_THREE_STRING).build();
-
-        assertFalse(condition.test(coin0));
-        assertFalse(condition.test(coin1));
-        assertFalse(condition.test(coin2));
-        assertTrue(condition.test(coin3));
-        assertTrue(condition.test(coin4));
-        assertTrue(condition.test(coin5));
-        assertTrue(condition.test(coin6));
-        assertTrue(condition.test(coin7));
+        assertFalse(condition.test(COIN_0));
+        assertFalse(condition.test(COIN_1));
+        assertFalse(condition.test(COIN_2));
+        assertTrue(condition.test(COIN_3));
+        assertTrue(condition.test(COIN_4));
+        assertTrue(condition.test(COIN_5));
+        assertTrue(condition.test(COIN_6));
+        assertTrue(condition.test(COIN_7));
     }
 
     @Test
