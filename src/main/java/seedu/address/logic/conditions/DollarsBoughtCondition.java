@@ -23,6 +23,11 @@ public class DollarsBoughtCondition implements Predicate<Coin> {
     private BiPredicate<Amount, Amount> amountComparator;
     private Amount amount;
 
+    public DollarsBoughtCondition(Amount amount, BiPredicate<Amount, Amount> amountComparator) {
+        this.amount = amount;
+        this.amountComparator = amountComparator;
+    }
+
     @Override
     public boolean test(Coin coin) {
         return amountComparator.test(coin.getTotalAmountBought(), amount);
