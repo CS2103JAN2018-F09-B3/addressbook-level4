@@ -36,8 +36,6 @@ public class SyntaxParserTest {
     public void parseCond() {
         syntaxParser = initParser(PREFIXAMOUNT, STRING, EOF);
         assertTrue(syntaxParser.cond());
-        syntaxParser = initParser(PREFIXAMOUNT, COMPARATOR, COMPARATOR, NUM, EOF);
-        assertTrue(syntaxParser.cond());
         syntaxParser = initParser(PREFIXAMOUNT, COMPARATOR, NUM, EOF);
         assertTrue(syntaxParser.cond());
         syntaxParser = initParser(STRING, EOF);

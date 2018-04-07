@@ -1,7 +1,7 @@
 package seedu.address.logic.conditions;
 
+import static seedu.address.logic.parser.TokenType.PREFIX_TAG;
 import static seedu.address.logic.parser.TokenType.STRING;
-import static seedu.address.logic.parser.TokenType.TAG_PREFIX;
 
 import java.util.function.Predicate;
 
@@ -15,7 +15,7 @@ import seedu.address.model.tag.Tag;
  */
 public class TagCondition implements Predicate<Coin> {
 
-    public static final TokenType PREFIX = TAG_PREFIX;
+    public static final TokenType PREFIX = PREFIX_TAG;
     public static final TokenType PARAMETER_TYPE = STRING;
 
     private Tag tag;

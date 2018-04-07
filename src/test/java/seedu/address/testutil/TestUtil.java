@@ -34,10 +34,16 @@ public class TestUtil {
     public static final Token LESS_TOKEN = new Token(TokenType.COMPARATOR, LESS_STRING);
     public static final String EQUALS_STRING = "=";
     public static final Token EQUALS_TOKEN = new Token(TokenType.COMPARATOR, EQUALS_STRING);
-    public static final String PREFIX_STRING = "a/";
-    public static final Token PREFIX_TOKEN = new Token(TokenType.PREFIX_AMOUNT, PREFIX_STRING);
+    public static final String AMOUNT_PREFIX_STRING = "a/";
+    public static final Token AMOUNT_PREFIX_TOKEN = new Token(TokenType.PREFIX_AMOUNT, AMOUNT_PREFIX_STRING);
+    public static final String PRICE_PREFIX_STRING = "p/";
+    public static final Token PRICE_PREFIX_TOKEN = new Token(TokenType.PREFIX_PRICE, PRICE_PREFIX_STRING);
+    public static final String CODE_PREFIX_STRING = "c/";
+    public static final Token CODE_PREFIX_TOKEN = new Token(TokenType.PREFIX_CODE, CODE_PREFIX_STRING);
     public static final String NUM_STRING = "999";
     public static final Token NUM_TOKEN = new Token(TokenType.NUM, NUM_STRING);
+    public static final String DECIMAL_STRING = "9.99";
+    public static final Token DECIMAL_TOKEN = new Token(TokenType.DECIMAL, DECIMAL_STRING);
     public static final String STRING_STRING = "TESTING";
     public static final Token STRING_TOKEN = new Token(TokenType.STRING, STRING_STRING);
     public static final String SLASH_STRING = "/";

@@ -1,7 +1,7 @@
 package seedu.address.logic.conditions;
 
 import static seedu.address.logic.parser.TokenType.NUM;
-import static seedu.address.logic.parser.TokenType.PRICE_PREFIX;
+import static seedu.address.logic.parser.TokenType.PREFIX_PRICE;
 
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
@@ -17,7 +17,7 @@ import seedu.address.model.coin.Price;
  */
 public class PriceCondition implements Predicate<Coin> {
 
-    public static final TokenType PREFIX = PRICE_PREFIX;
+    public static final TokenType PREFIX = PREFIX_PRICE;
     public static final TokenType PARAMETER_TYPE = NUM;
 
     private BiPredicate<Price, Price> priceComparator;
