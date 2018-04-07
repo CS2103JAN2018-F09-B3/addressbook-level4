@@ -73,7 +73,6 @@ public class ConditionSyntaxParser {
         }
 
         tokenStack.matchAndPopTokenType(TokenType.COMPARATOR);
-        tokenStack.matchAndPopTokenType(TokenType.COMPARATOR);
 
         return (tokenStack.matchAndPopTokenType(TokenType.NUM) || tokenStack.matchAndPopTokenType(TokenType.STRING));
     }
@@ -86,6 +85,8 @@ public class ConditionSyntaxParser {
             tokenStack.popToken();
             return true;
         }
+        // If it was not a PREFIX, we do this to set the last expected type to some PREFIX type.
+        tokenStack.matchTokenType(TokenType.PREFIX_AMOUNT);
         return false;
     }
 

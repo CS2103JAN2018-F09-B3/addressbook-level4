@@ -28,7 +28,7 @@ public enum TokenType {
     WHITESPACE("\\s", "WHITESPACE", "some white space"),
     NEWLINE("\\n", "NEWLINE", "a newline"),
     ELSE(".+", "ELSE", "some unknown character"),
-    EOF("[^\\w\\W]", "EOF", "some unexpected ending");
+    EOF("[^\\w\\W]", "EOF", "some end of the argument");
 
     final String typeName;
     final String regex;
