@@ -29,8 +29,9 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_NUMBER = "Argument is not a valid number.";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
-    public static final String MESSAGE_CONDITION_ARGUMENT_INVALID_SYNTAX = "Structure of the argument is invalid:"
+    public static final String MESSAGE_CONDITION_ARGUMENT_INVALID_SYNTAX = "%s structure of the argument is invalid:"
             + " Expected %s but instead I got %s.";
 
     /**
@@ -97,7 +98,7 @@ public class ParserUtil {
     public static double parseDouble(String value) throws IllegalValueException {
         String trimmedValue = value.trim();
         if (!StringUtil.isValidNumber(trimmedValue)) {
-            throw new IllegalValueException(MESSAGE_INVALID_INDEX);
+            throw new IllegalValueException(MESSAGE_INVALID_NUMBER);
         }
         return Double.parseDouble(trimmedValue);
     }
@@ -147,7 +148,7 @@ public class ParserUtil {
         if (!conditionSyntaxParser.parse()) {
             expectedTokenType = conditionSyntaxParser.getExpectedType();
             actualTokenType = conditionSyntaxParser.getActualType();
-            throw new ParseException(String.format(MESSAGE_CONDITION_ARGUMENT_INVALID_SYNTAX,
+            throw new ParseException(String.format(MESSAGE_CONDITION_ARGUMENT_INVALID_SYNTAX, "Syntactic",
                     expectedTokenType.description, actualTokenType.description));
         }
 
@@ -155,7 +156,7 @@ public class ParserUtil {
         if (!conditionSemanticParser.parse()) {
             expectedTokenType = conditionSemanticParser.getExpectedType();
             actualTokenType = conditionSemanticParser.getActualType();
-            throw new ParseException(String.format(MESSAGE_CONDITION_ARGUMENT_INVALID_SYNTAX,
+            throw new ParseException(String.format(MESSAGE_CONDITION_ARGUMENT_INVALID_SYNTAX, "Semantic",
                     expectedTokenType.description, actualTokenType.description));
         }
 

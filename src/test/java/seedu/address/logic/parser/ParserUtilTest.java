@@ -86,13 +86,6 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseDouble_outOfRangeInput_throwsIllegalValueException() throws Exception {
-        thrown.expect(IllegalValueException.class);
-        thrown.expectMessage(MESSAGE_INVALID_INDEX);
-        ParserUtil.parseDouble("-0.0001");
-    }
-
-    @Test
     public void parseDouble_validInput_success() throws Exception {
         // No whitespaces
         assertEquals(1.2345, ParserUtil.parseDouble("1.2345"), 0.001);
