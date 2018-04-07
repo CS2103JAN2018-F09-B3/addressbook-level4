@@ -31,7 +31,9 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.coin.Amount;
@@ -42,12 +44,16 @@ import seedu.address.testutil.CoinBuilder;
 //@@author Eldon-Chung
 public class ConditionGeneratorTest {
 
+    private static final Token INVALID_TAG_NAME = new Token(TokenType.STRING, "invalid-name");
     private static final double DECIMAL_OFFSET = 1.0;
     private static final double NEW_PRICE = 2.0;
     private static Amount greaterAmount;
     private static Amount lesserAmount;
     private static Price greaterPrice;
     private static Price lesserPrice;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @BeforeClass
     public static void initializeTestValues() throws IllegalValueException {
@@ -274,6 +280,13 @@ public class ConditionGeneratorTest {
         assertTrue(condition.test(coin5));
         assertTrue(condition.test(coin6));
         assertTrue(condition.test(coin7));
+    }
+
+    @Test
+    public void getPredicateFromPrefix_throwsIllegalValueException() throws Exception {
+        thrown.expect(IllegalValueException.class);
+        ConditionGenerator conditionGenerator = initGenerator(PREFIX_TAG_TOKEN, INVALID_TAG_NAME);
+        conditionGenerator.generate();
     }
 
     private static ConditionGenerator initGenerator(Token... tokens) {
