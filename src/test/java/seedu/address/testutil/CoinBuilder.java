@@ -89,6 +89,7 @@ public class CoinBuilder {
      */
     public Coin build() {
         Coin coin = new Coin(code, tags);
+        coin = new Coin(coin, price.getValue());
         coin.addTotalAmountBought(amountBought);
         coin.addTotalAmountSold(amountSold);
         return coin;
