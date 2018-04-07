@@ -5,11 +5,11 @@ package seedu.address.logic.parser;
  * Represents the possible types a token can take, along with the regular expression it is specified by.
  */
 public enum TokenType {
-    BINARYBOOL("( OR | AND )", "BINARYBOOL"),
+    BINARYBOOL(" OR | AND ", "BINARYBOOL"),
     UNARYBOOL("NOT ", "UNARYBOOL"),
     LEFTPARENTHESES("\\(", "LEFTPARENTHESES"),
     RIGHTPARENTHESES("\\)", "RIGHTPARENTHESES"),
-    COMPARATOR("(>|=|<)+", "COMPARATOR"),
+    COMPARATOR(">|=|<", "COMPARATOR"),
     PREFIX_AMOUNT("a/", "APREFIX"),
     PREFIX_BOUGHT("b/", "BPREFIX"),
     PREFIX_CODE("c/", "CPREFIX"),
@@ -21,8 +21,8 @@ public enum TokenType {
     PREFIX_SOLD("s/", "SPREFIX"),
     PREFIX_TAG("t/", "TPREFIX"),
     PREFIX_WORTH("w/", "WPREFIX"),
-    DECIMAL("[0-9]+\\.[0-9]+", "DECIMAL"),
-    NUM("[1-9][0-9]*", "NUM"),
+    DECIMAL("[\\+\\-]?[0-9]+\\.[0-9]+", "DECIMAL"),
+    NUM("[\\+\\-]?[1-9][0-9]*", "NUM"),
     STRING("[A-Za-z\\^\\-\\@\\./]+", "STRING"),
     SLASH("/", "SLASH"),
     WHITESPACE("\\s", "WHITESPACE"),
