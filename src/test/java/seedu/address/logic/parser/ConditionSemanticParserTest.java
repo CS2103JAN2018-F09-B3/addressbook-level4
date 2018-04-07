@@ -7,7 +7,7 @@ import static seedu.address.testutil.TestUtil.GREATER_TOKEN;
 import static seedu.address.testutil.TestUtil.NUM_TOKEN;
 import static seedu.address.testutil.TestUtil.PREFIX_CODE_TOKEN;
 import static seedu.address.testutil.TestUtil.PREFIX_PRICE_TOKEN;
-import static seedu.address.testutil.TestUtil.STRING_TOKEN;
+import static seedu.address.testutil.TestUtil.STRING_ONE_TOKEN;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +31,7 @@ public class ConditionSemanticParserTest {
         assertTrue(conditionSemanticParser.parse());
         conditionSemanticParser = initParser(PREFIX_PRICE_TOKEN, GREATER_TOKEN, DECIMAL_TOKEN);
         assertTrue(conditionSemanticParser.parse());
-        conditionSemanticParser = initParser(PREFIX_CODE_TOKEN, STRING_TOKEN);
+        conditionSemanticParser = initParser(PREFIX_CODE_TOKEN, STRING_ONE_TOKEN);
         assertTrue(conditionSemanticParser.parse());
     }
 
@@ -39,9 +39,9 @@ public class ConditionSemanticParserTest {
     public void parse_returnsFalseOnInvalidInput() throws Exception {
         conditionSemanticParser = initParser(PREFIX_PRICE_TOKEN, NUM_TOKEN);
         assertFalse(conditionSemanticParser.parse());
-        conditionSemanticParser = initParser(PREFIX_PRICE_TOKEN, GREATER_TOKEN, STRING_TOKEN);
+        conditionSemanticParser = initParser(PREFIX_PRICE_TOKEN, GREATER_TOKEN, STRING_ONE_TOKEN);
         assertFalse(conditionSemanticParser.parse());
-        conditionSemanticParser = initParser(PREFIX_CODE_TOKEN, STRING_TOKEN);
+        conditionSemanticParser = initParser(PREFIX_CODE_TOKEN, STRING_ONE_TOKEN);
         assertTrue(conditionSemanticParser.parse());
     }
 

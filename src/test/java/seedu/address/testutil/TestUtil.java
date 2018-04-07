@@ -27,7 +27,7 @@ public class TestUtil {
     public static final String LEFT_PAREN_STRING = "(";
     public static final Token LEFT_PAREN_TOKEN = new Token(TokenType.LEFTPARENTHESES, LEFT_PAREN_STRING);
     public static final String RIGHT_PAREN_STRING = ")";
-    public static final Token RIGHT_PARENT_TOKEN = new Token(TokenType.RIGHTPARENTHESES, RIGHT_PAREN_STRING);
+    public static final Token RIGHT_PAREN_TOKEN = new Token(TokenType.RIGHTPARENTHESES, RIGHT_PAREN_STRING);
     public static final String GREATER_STRING = ">";
     public static final Token GREATER_TOKEN = new Token(TokenType.COMPARATOR, GREATER_STRING);
     public static final String LESS_STRING = "<";
@@ -60,8 +60,12 @@ public class TestUtil {
     public static final Token NUM_TOKEN = new Token(TokenType.NUM, NUM_STRING);
     public static final String DECIMAL_STRING = "9.99";
     public static final Token DECIMAL_TOKEN = new Token(TokenType.DECIMAL, DECIMAL_STRING);
-    public static final String STRING_STRING = "TESTING";
-    public static final Token STRING_TOKEN = new Token(TokenType.STRING, STRING_STRING);
+    public static final String STRING_ONE_STRING = "TESTINGONE";
+    public static final Token STRING_ONE_TOKEN = new Token(TokenType.STRING, STRING_ONE_STRING);
+    public static final String STRING_TWO_STRING = "TESTINGTWO";
+    public static final Token STRING_TWO_TOKEN = new Token(TokenType.STRING, STRING_TWO_STRING);
+    public static final String STRING_THREE_STRING = "TESTINGTHREE";
+    public static final Token STRING_THREE_TOKEN = new Token(TokenType.STRING, STRING_THREE_STRING);
     public static final String SLASH_STRING = "/";
     public static final Token SLASH_TOKEN = new Token(TokenType.SLASH, SLASH_STRING);
     public static final Token EOF_TOKEN = new Token(TokenType.EOF, "");

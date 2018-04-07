@@ -186,7 +186,7 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.parser.TokenType.NUM;
 import static seedu.address.logic.parser.TokenType.STRING;
 import static seedu.address.testutil.TestUtil.NUM_TOKEN;
-import static seedu.address.testutil.TestUtil.STRING_TOKEN;
+import static STRING_ONE_TOKEN;
 import static seedu.address.testutil.TestUtil.WHITESPACE_TOKEN;
 
 import java.util.ArrayList;

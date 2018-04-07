@@ -23,10 +23,10 @@ import static seedu.address.testutil.TestUtil.OR_TOKEN;
 import static seedu.address.testutil.TestUtil.PREFIX_AMOUNT_STRING;
 import static seedu.address.testutil.TestUtil.PREFIX_AMOUNT_TOKEN;
 import static seedu.address.testutil.TestUtil.PREFIX_BOUGHT_STRING;
-import static seedu.address.testutil.TestUtil.RIGHT_PARENT_TOKEN;
 import static seedu.address.testutil.TestUtil.RIGHT_PAREN_STRING;
-import static seedu.address.testutil.TestUtil.STRING_STRING;
-import static seedu.address.testutil.TestUtil.STRING_TOKEN;
+import static seedu.address.testutil.TestUtil.RIGHT_PAREN_TOKEN;
+import static seedu.address.testutil.TestUtil.STRING_ONE_STRING;
+import static seedu.address.testutil.TestUtil.STRING_ONE_TOKEN;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -176,7 +176,7 @@ public class ArgumentTokenizerTest {
     @Test
     public void lexRightParenthesesType() throws Exception {
         ArrayList<Token> expectedList;
-        expectedList = new ArrayList<Token>(Arrays.asList(RIGHT_PARENT_TOKEN, EOF_TOKEN));
+        expectedList = new ArrayList<Token>(Arrays.asList(RIGHT_PAREN_TOKEN, EOF_TOKEN));
         assertEquals(expectedList, ArgumentTokenizer.tokenizeToTokenStack(RIGHT_PAREN_STRING).getTokenList());
     }
 
@@ -213,22 +213,22 @@ public class ArgumentTokenizerTest {
     public void lexStringType() throws Exception {
         ArrayList<Token> expectedList;
 
-        expectedList = new ArrayList<Token>(Arrays.asList(STRING_TOKEN, EOF_TOKEN));
-        assertEquals(expectedList, ArgumentTokenizer.tokenizeToTokenStack(STRING_STRING).getTokenList());
+        expectedList = new ArrayList<Token>(Arrays.asList(STRING_ONE_TOKEN, EOF_TOKEN));
+        assertEquals(expectedList, ArgumentTokenizer.tokenizeToTokenStack(STRING_ONE_STRING).getTokenList());
     }
 
     @Test
     public void lexGenericString() throws Exception {
         ArrayList<Token> expectedList;
 
-        expectedList = new ArrayList<Token>(Arrays.asList(PREFIX_AMOUNT_TOKEN, STRING_TOKEN, AND_TOKEN,
-                PREFIX_AMOUNT_TOKEN, STRING_TOKEN, EOF_TOKEN));
+        expectedList = new ArrayList<Token>(Arrays.asList(PREFIX_AMOUNT_TOKEN, STRING_ONE_TOKEN, AND_TOKEN,
+                PREFIX_AMOUNT_TOKEN, STRING_ONE_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
-                ArgumentTokenizer.tokenizeToTokenStack(PREFIX_AMOUNT_STRING + STRING_STRING + AND_STRING
-                                + PREFIX_AMOUNT_STRING + STRING_STRING, TokenType.PREFIX_AMOUNT).getTokenList());
+                ArgumentTokenizer.tokenizeToTokenStack(PREFIX_AMOUNT_STRING + STRING_ONE_STRING + AND_STRING
+                                + PREFIX_AMOUNT_STRING + STRING_ONE_STRING, TokenType.PREFIX_AMOUNT).getTokenList());
         expectedList = new ArrayList<Token>(Arrays.asList(PREFIX_AMOUNT_TOKEN, LESS_TOKEN, NUM_TOKEN,
                 OR_TOKEN, LEFT_PAREN_TOKEN, NOT_TOKEN, PREFIX_AMOUNT_TOKEN, GREATER_TOKEN, NUM_TOKEN,
-                AND_TOKEN, PREFIX_AMOUNT_TOKEN, STRING_TOKEN, RIGHT_PARENT_TOKEN, EOF_TOKEN));
+                AND_TOKEN, PREFIX_AMOUNT_TOKEN, STRING_ONE_TOKEN, RIGHT_PAREN_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
                 ArgumentTokenizer.tokenizeToTokenStack("a/<999 OR (NOT a/>999 AND a/TESTING)",
                         TokenType.PREFIX_AMOUNT).getTokenList());
