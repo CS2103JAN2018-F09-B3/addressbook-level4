@@ -74,7 +74,9 @@ public class ConditionSyntaxParser {
 
         tokenStack.matchAndPopTokenType(TokenType.COMPARATOR);
 
-        return (tokenStack.matchAndPopTokenType(TokenType.NUM) || tokenStack.matchAndPopTokenType(TokenType.STRING));
+        return tokenStack.matchAndPopTokenType(TokenType.NUM)
+                || tokenStack.matchAndPopTokenType(TokenType.STRING)
+                || tokenStack.matchAndPopTokenType(TokenType.DECIMAL);
     }
 
     /**
