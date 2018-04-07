@@ -76,14 +76,21 @@ public class TestUtil {
      * Tokens with all possible combinations of 3 tags, for truth table testing when evaluating composed tag conditions.
      */
 
-    public static final Coin COIN_0 = new CoinBuilder().withTags().build();
-    public static final Coin COIN_1 = new CoinBuilder().withTags(STRING_THREE_STRING).build();
-    public static final Coin COIN_2 = new CoinBuilder().withTags(STRING_TWO_STRING).build();
-    public static final Coin COIN_3 = new CoinBuilder().withTags(STRING_TWO_STRING, STRING_THREE_STRING).build();
-    public static final Coin COIN_4 = new CoinBuilder().withTags(STRING_ONE_STRING).build();
-    public static final Coin COIN_5 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_THREE_STRING).build();
-    public static final Coin COIN_6 = new CoinBuilder().withTags(STRING_ONE_STRING, STRING_TWO_STRING).build();
-    public static final Coin COIN_7 = new CoinBuilder()
+    public static final Coin COIN_0 = new CoinBuilder().withName("COIN ZERO")
+            .withTags().build();
+    public static final Coin COIN_1 = new CoinBuilder().withName("COIN ONE")
+            .withTags(STRING_THREE_STRING).build();
+    public static final Coin COIN_2 = new CoinBuilder().withName("COIN TWO")
+            .withTags(STRING_TWO_STRING).build();
+    public static final Coin COIN_3 = new CoinBuilder().withName("COIN THREE")
+            .withTags(STRING_TWO_STRING, STRING_THREE_STRING).build();
+    public static final Coin COIN_4 = new CoinBuilder().withName("COIN FOUR")
+            .withTags(STRING_ONE_STRING).build();
+    public static final Coin COIN_5 = new CoinBuilder().withName("COIN FIVE")
+            .withTags(STRING_ONE_STRING, STRING_THREE_STRING).build();
+    public static final Coin COIN_6 = new CoinBuilder().withName("COIN SIX")
+            .withTags(STRING_ONE_STRING, STRING_TWO_STRING).build();
+    public static final Coin COIN_7 = new CoinBuilder().withName("COIN SEVEN")
             .withTags(STRING_ONE_STRING, STRING_TWO_STRING, STRING_THREE_STRING).build();
     //@@author Eldon-Chung
     /**
