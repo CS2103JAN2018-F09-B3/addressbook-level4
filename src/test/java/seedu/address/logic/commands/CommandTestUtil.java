@@ -3,8 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static seedu.address.logic.parser.TokenType.NAME_PREFIX;
-import static seedu.address.logic.parser.TokenType.TAG_PREFIX;
+import static seedu.address.logic.parser.TokenType.PREFIX_NAME;
+import static seedu.address.logic.parser.TokenType.PREFIX_TAG;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,14 +41,14 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
-    public static final String NAME_DESC_AMY = " " + NAME_PREFIX + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + NAME_PREFIX + VALID_NAME_BOB;
-    public static final String NAME_DESC_JOE = " " + NAME_PREFIX + VALID_NAME_JOE;
-    public static final String TAG_DESC_FRIEND = " " + TAG_PREFIX + VALID_TAG_FRIEND;
-    public static final String TAG_DESC_HUSBAND = " " + TAG_PREFIX + VALID_TAG_HUSBAND;
+    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
+    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
+    public static final String NAME_DESC_JOE = " " + PREFIX_NAME + VALID_NAME_JOE;
+    public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
+    public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
-    public static final String INVALID_NAME_DESC = " " + NAME_PREFIX + "James&"; // '&' not allowed in names
-    public static final String INVALID_TAG_DESC = " " + TAG_PREFIX + "hubby*"; // '*' not allowed in tags
+    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

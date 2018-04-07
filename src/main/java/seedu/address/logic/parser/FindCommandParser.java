@@ -12,11 +12,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class FindCommandParser implements Parser<FindCommand> {
 
     private static final TokenType[] EXPECTED_TOKEN_TYPES = {
-        TokenType.AMOUNT_PREFIX,
-        TokenType.NAME_PREFIX,
-        TokenType.PRICE_PREFIX,
-        TokenType.EARNED_PREFIX,
-        TokenType.TAG_PREFIX
+        TokenType.PREFIX_AMOUNT,
+        TokenType.PREFIX_NAME,
+        TokenType.PREFIX_PRICE,
+        TokenType.PREFIX_EARNED,
+        TokenType.PREFIX_TAG
     };
 
     /**

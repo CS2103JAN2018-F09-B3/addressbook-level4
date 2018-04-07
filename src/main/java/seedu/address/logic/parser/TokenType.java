@@ -10,17 +10,17 @@ public enum TokenType {
     LEFTPARENTHESES("\\(", "LEFTPARENTHESES"),
     RIGHTPARENTHESES("\\)", "RIGHTPARENTHESES"),
     COMPARATOR("(>|=|<)+", "COMPARATOR"),
-    AMOUNT_PREFIX("a/", "APREFIX"),
-    BOUGHT_PREFIX("b/", "BPREFIX"),
-    CODE_PREFIX("c/", "CPREFIX"),
-    EARNED_PREFIX("e/", "EPREFIX"),
-    HELD_PREFIX("h/", "HPREFIX"),
-    MADE_PREFIX("m/", "MPREFIX"),
-    NAME_PREFIX("n/", "NPREFIX"),
-    PRICE_PREFIX("p/", "PPREFIX"),
-    SOLD_PREFIX("s/", "SPREFIX"),
-    TAG_PREFIX("t/", "TPREFIX"),
-    WORTH_PREFIX("w/", "WPREFIX"),
+    PREFIX_AMOUNT("a/", "APREFIX"),
+    PREFIX_BOUGHT("b/", "BPREFIX"),
+    PREFIX_CODE("c/", "CPREFIX"),
+    PREFIX_EARNED("e/", "EPREFIX"),
+    PREFIX_HELD("h/", "HPREFIX"),
+    PREFIX_MADE("m/", "MPREFIX"),
+    PREFIX_NAME("n/", "NPREFIX"),
+    PREFIX_PRICE("p/", "PPREFIX"),
+    PREFIX_SOLD("s/", "SPREFIX"),
+    PREFIX_TAG("t/", "TPREFIX"),
+    PREFIX_WORTH("w/", "WPREFIX"),
     DECIMAL("[0-9]+\\.[0-9]+", "DECIMAL"),
     NUM("[1-9][0-9]*", "NUM"),
     STRING("[A-Za-z\\^\\-\\@\\./]+", "STRING"),
@@ -47,10 +47,10 @@ public enum TokenType {
      * @param type the type to be checked
      */
     public static boolean isPrefixType(TokenType type) {
-        return type == AMOUNT_PREFIX
-                || type == NAME_PREFIX
-                || type == PRICE_PREFIX
-                || type == EARNED_PREFIX
-                || type == TAG_PREFIX;
+        return type == PREFIX_AMOUNT
+                || type == PREFIX_NAME
+                || type == PREFIX_PRICE
+                || type == PREFIX_EARNED
+                || type == PREFIX_TAG;
     }
 }
