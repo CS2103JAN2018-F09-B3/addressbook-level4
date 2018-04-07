@@ -41,6 +41,9 @@ public class CoinBuilder {
     public CoinBuilder(Coin coinToCopy) {
         code = coinToCopy.getCode();
         tags = new HashSet<>(coinToCopy.getTags());
+        price = coinToCopy.getPrice();
+        amountSold = coinToCopy.getTotalAmountSold();
+        amountBought = coinToCopy.getTotalAmountBought();
     }
 
     /**
