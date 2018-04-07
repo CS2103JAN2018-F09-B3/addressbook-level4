@@ -4,11 +4,11 @@ package seedu.address.logic.parser;
 /**
  * Parses tokenized boolean logic statements to verify correctness
  */
-public class SyntaxParser {
+public class ConditionSyntaxParser {
 
     private TokenStack tokenStack;
 
-    public SyntaxParser(TokenStack tokenStack) {
+    public ConditionSyntaxParser(TokenStack tokenStack) {
         this.tokenStack = tokenStack;
     }
 

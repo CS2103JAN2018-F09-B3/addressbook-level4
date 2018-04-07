@@ -26,8 +26,8 @@ public class FindCommandParser implements Parser<FindCommand> {
     public FindCommand parse(String args) throws ParseException {
         ArgumentTokenizer lexicalAnalyzer = new ArgumentTokenizer();
         TokenStack tokenList = ArgumentTokenizer.tokenizeToTokenStack(args, EXPECTED_TOKEN_TYPES);
-        SyntaxParser syntaxParser = new SyntaxParser(tokenList);
-        if (!syntaxParser.parse()) {
+        ConditionSyntaxParser conditionSyntaxParser = new ConditionSyntaxParser(tokenList);
+        if (!conditionSyntaxParser.parse()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
