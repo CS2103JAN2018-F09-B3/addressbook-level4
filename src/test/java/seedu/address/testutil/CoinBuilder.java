@@ -91,7 +91,7 @@ public class CoinBuilder {
         Coin coin = new Coin(code, tags);
         coin.addTotalAmountBought(amountBought);
         coin.addTotalAmountSold(amountSold);
-        return new Coin(code, tags);
+        return coin;
     }
     //@@author
 
