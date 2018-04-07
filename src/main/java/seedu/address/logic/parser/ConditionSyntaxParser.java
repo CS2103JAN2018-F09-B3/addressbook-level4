@@ -10,6 +10,7 @@ public class ConditionSyntaxParser {
 
     public ConditionSyntaxParser(TokenStack tokenStack) {
         this.tokenStack = tokenStack;
+        this.tokenStack.resetStack();
     }
 
     public TokenType getExpectedType() {

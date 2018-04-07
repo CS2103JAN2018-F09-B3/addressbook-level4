@@ -27,7 +27,7 @@ public class ConditionGenerator {
 
     public ConditionGenerator(TokenStack tokenStack) {
         this.tokenStack = tokenStack;
-        tokenStack.resetStack();
+        this.tokenStack.resetStack();
     }
 
     /**

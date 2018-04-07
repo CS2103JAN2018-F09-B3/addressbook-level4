@@ -10,7 +10,7 @@ public class ConditionSemanticParser {
 
     public ConditionSemanticParser(TokenStack tokenStack) {
         this.tokenStack = tokenStack;
-        tokenStack.resetStack();
+        this.tokenStack.resetStack();
     }
 
     public TokenType getExpectedType() {
