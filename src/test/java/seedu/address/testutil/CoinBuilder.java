@@ -3,8 +3,10 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.coin.Amount;
 import seedu.address.model.coin.Code;
 import seedu.address.model.coin.Coin;
+import seedu.address.model.coin.Price;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -15,13 +17,22 @@ public class CoinBuilder {
 
     public static final String DEFAULT_NAME = "XTC";
     public static final String DEFAULT_TAGS = "friends";
+    public static final Price DEFAULT_PRICE = new Price(1.0);
+    public static final Amount DEFAULT_AMOUNT_SOLD = new Amount(0.0);
+    public static final Amount DEFAULT_AMOUNT_BOUGHT = new Amount(0.0);
 
     private Code code;
     private Set<Tag> tags;
+    private Price price;
+    private Amount amountSold;
+    private Amount amountBought;
 
     public CoinBuilder() {
         code = new Code(DEFAULT_NAME);
         tags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
+        price = DEFAULT_PRICE;
+        amountSold = DEFAULT_AMOUNT_SOLD;
+        amountBought = DEFAULT_AMOUNT_BOUGHT;
     }
 
     /**
@@ -48,8 +59,40 @@ public class CoinBuilder {
         return this;
     }
 
+    //@@author Eldon-Chung
+    /**
+     * Sets the {@code price} of the {@code Coin} that we are building.
+     */
+    public CoinBuilder withPrice(Price price) {
+        this.price = price;
+        return this;
+    }
+
+    /**
+     * Sets the {@code totalAmountSold} of the {@code Coin} that we are building.
+     */
+    public CoinBuilder withAmountSold(Amount amountSold) {
+        this.amountSold = amountSold;
+        return this;
+    }
+
+    /**
+     * Sets the {@code totalAmountSold} of the {@code Coin} that we are building.
+     */
+    public CoinBuilder withAmountBought(Amount amountBought) {
+        this.amountBought = amountBought;
+        return this;
+    }
+
+    /**
+     * @return a {@Coin} with the set code, tags, and amount sold and bought.
+     */
     public Coin build() {
+        Coin coin = new Coin(code, tags);
+        coin.addTotalAmountBought(amountBought);
+        coin.addTotalAmountSold(amountSold);
         return new Coin(code, tags);
     }
+    //@@author
 
 }
