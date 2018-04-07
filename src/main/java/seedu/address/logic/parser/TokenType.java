@@ -48,9 +48,14 @@ public enum TokenType {
      */
     public static boolean isPrefixType(TokenType type) {
         return type == PREFIX_AMOUNT
+                || type == PREFIX_BOUGHT
+                || type == PREFIX_CODE
+                || type == PREFIX_EARNED
+                || type == PREFIX_HELD
+                || type == PREFIX_MADE
                 || type == PREFIX_NAME
                 || type == PREFIX_PRICE
-                || type == PREFIX_EARNED
+                || type == PREFIX_SOLD
                 || type == PREFIX_TAG;
     }
 }
