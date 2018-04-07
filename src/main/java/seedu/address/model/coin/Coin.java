@@ -187,7 +187,7 @@ public class Coin {
     }
 
     public Amount getTotalProfit() {
-        return new Amount(totalAmountSold.getValue() - totalAmountBought.getValue());
+        return new Amount(totalDollarsSold.getValue() - totalDollarsBought.getValue());
     }
 
     public Amount getDollarsWorth() {
