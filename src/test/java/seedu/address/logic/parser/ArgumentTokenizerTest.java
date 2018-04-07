@@ -22,7 +22,6 @@ import static seedu.address.testutil.TestUtil.OR_STRING;
 import static seedu.address.testutil.TestUtil.OR_TOKEN;
 import static seedu.address.testutil.TestUtil.PREFIX_AMOUNT_STRING;
 import static seedu.address.testutil.TestUtil.PREFIX_AMOUNT_TOKEN;
-import static seedu.address.testutil.TestUtil.PREFIX_BOUGHT_STRING;
 import static seedu.address.testutil.TestUtil.RIGHT_PAREN_STRING;
 import static seedu.address.testutil.TestUtil.RIGHT_PAREN_TOKEN;
 import static seedu.address.testutil.TestUtil.STRING_ONE_STRING;
@@ -198,7 +197,7 @@ public class ArgumentTokenizerTest {
 
         expectedList = new ArrayList<Token>(Arrays.asList(PREFIX_AMOUNT_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
-                ArgumentTokenizer.tokenizeToTokenStack(PREFIX_BOUGHT_STRING, TokenType.PREFIX_AMOUNT).getTokenList());
+                ArgumentTokenizer.tokenizeToTokenStack(PREFIX_AMOUNT_STRING, TokenType.PREFIX_AMOUNT).getTokenList());
     }
 
     @Test
@@ -230,7 +229,7 @@ public class ArgumentTokenizerTest {
                 OR_TOKEN, LEFT_PAREN_TOKEN, NOT_TOKEN, PREFIX_AMOUNT_TOKEN, GREATER_TOKEN, NUM_TOKEN,
                 AND_TOKEN, PREFIX_AMOUNT_TOKEN, STRING_ONE_TOKEN, RIGHT_PAREN_TOKEN, EOF_TOKEN));
         assertEquals(expectedList,
-                ArgumentTokenizer.tokenizeToTokenStack("a/<999 OR (NOT a/>999 AND a/TESTING)",
+                ArgumentTokenizer.tokenizeToTokenStack("a/<999 OR (NOT a/>999 AND a/TESTINGONE)",
                         TokenType.PREFIX_AMOUNT).getTokenList());
     }
 

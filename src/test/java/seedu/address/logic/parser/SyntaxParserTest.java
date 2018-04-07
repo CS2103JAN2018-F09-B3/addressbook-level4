@@ -10,6 +10,11 @@ import java.util.Arrays;
 import org.junit.Test;
 
 public class SyntaxParserTest {
+
+    /*
+    * Do not use the test tokens from ParserUtil because we want to assert that
+    * the SyntaxParser ONLY uses at the TokenType of each token.
+    */
     private static final Token BINARYBOOL = new Token(TokenType.BINARYBOOL, "");
     private static final Token UNARYBOOL = new Token(TokenType.UNARYBOOL, "");
     private static final Token LEFTPARENTHESES = new Token(TokenType.LEFTPARENTHESES, "");
@@ -72,7 +77,7 @@ public class SyntaxParserTest {
     }
 
     @Test
-    public void parse() {
+    public void parse_returnsTrueOnValidInputs() {
         syntaxParser = initParser(PREFIXAMOUNT, STRING, PREFIXAMOUNT, EOF);
         assertFalse(syntaxParser.parse());
         syntaxParser = initParser(PREFIXAMOUNT, STRING, BINARYBOOL, LEFTPARENTHESES,
@@ -82,5 +87,11 @@ public class SyntaxParserTest {
         syntaxParser = initParser(LEFTPARENTHESES, PREFIXAMOUNT, STRING, BINARYBOOL,
                 PREFIXAMOUNT, COMPARATOR, NUM, RIGHTPARENTHESES, BINARYBOOL, PREFIXAMOUNT,
                 COMPARATOR, NUM, EOF);
+    }
+
+    @Test
+    public void parse_returnsFalseOnEmptyInput() {
+        syntaxParser = initParser(EOF);
+        assertFalse(syntaxParser.parse());
     }
 }
