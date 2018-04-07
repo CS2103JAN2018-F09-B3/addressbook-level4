@@ -1,5 +1,6 @@
 package seedu.address.logic.conditions;
 
+import static seedu.address.logic.parser.TokenType.NUM;
 import static seedu.address.logic.parser.TokenType.SOLD_PREFIX;
 
 import java.util.function.BiPredicate;
@@ -17,6 +18,7 @@ import seedu.address.model.coin.Coin;
 public class DollarsSoldCondition implements Predicate<Coin> {
 
     public static final TokenType PREFIX = SOLD_PREFIX;
+    public static final TokenType PARAMETER_TYPE = NUM;
 
     private BiPredicate<Amount, Amount> amountComparator;
     private Amount amount;

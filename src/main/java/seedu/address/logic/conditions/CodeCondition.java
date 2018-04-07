@@ -1,6 +1,7 @@
 package seedu.address.logic.conditions;
 
 import static seedu.address.logic.parser.TokenType.CODE_PREFIX;
+import static seedu.address.logic.parser.TokenType.STRING;
 
 import java.util.function.Predicate;
 
@@ -15,6 +16,7 @@ import seedu.address.model.coin.Coin;
 public class CodeCondition implements Predicate<Coin> {
 
     public static final TokenType PREFIX = CODE_PREFIX;
+    public static final TokenType PARAMETER_TYPE = STRING;
 
     private Code code;
 
