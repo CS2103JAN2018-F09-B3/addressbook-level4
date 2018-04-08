@@ -276,7 +276,9 @@ delegated as follows:
 * `SyntaxParser` : Parses the input by matching the tokens versus a list of rules to ensure they fit the desired
 structure
 * `SemanticParser` : Parses the input by matching the tokens versus a list of rules to ensure their meaning is semantically valid
-* `ConditionGenerator` : Uses the list of tokens to create the equivalent lambda function to evaluate `Coin` objects against
+* `ConditionGenerator` : Uses the list of tokens to create the equivalent lambda function to evaluate `Coin` objects against.
+* `Condition` : Serves as a wrapper/container for the boolean lambdas used to evaluate coins for filtering purposes.
+* `Token` : Serves as a container for the sectioned input strings.
 
 [NOTE]
 The distinction between the Syntax Parser and the Semantic Parser is that the former is oblivious as to what the
@@ -294,68 +296,20 @@ image::FindCommandSequence.png[]
 The `SyntaxParser`, `SemanticParser` and `ConditionGenerator` reside in a separate module that will be called by the
 `ParserUtil` class during the ParseCondition method.
 
-The following sequence diagram (Fig. 12) expands on the Parse Sequence block in the previous diagram.
+The following activity diagram (Fig. 12) expands on the Parse Sequence block in the previous diagram.
 
-.Sequence diagram describing the sequence of parser operations
-image::ParserUtilSequence.png[]
+.Activity diagram describing the sequence of parser operations
+image::FindActivityDiagram.png[]
 
 The `Condition` object that is generated at the end is actually just a `Predicate` object that evaluates properties of
 the Coin objects and returns a true/false value.
 
-===== Argument Tokenizing
-We will illustrate the flow of tokenizing an example input:
-```
-> n/BTC OR ( t/fav AND p/>100 )
-```
-The Lexer would tokenize this into:
-
-```
-> [n/,OPTION][BTC,STRING][OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][>,COMPARATOR][100,NUMBER][),RIGHTPAREN]
-```
-Notice how the whitespace has now been discarded, since it is not used for the purposes of parsing. Also each section of
-the input (i.e. token) has now been grouped with a type.
-
-Below is a sequence diagram (Fig. 13) describing the behaviour of `ArgumentTokenizer` on the input:
-
-.Sequence diagram for the `ArgumentTokenizer` class
-image::Lexer.png[]
-
-===== Syntax Parser
-
-Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
-This is done by matching the tokens off based on the following rules, expressed in Backus Naur form:
-
-. `EXPRESSION` := `TERM` | `TERM` `BINARYOP` `EXPRESSION`
-. `TERM` := `LEFTPAREN` `EXPRESSION` `RIGHTPAREN` | `UNARYOP` `TERM` | `CONDITION`
-. `CONDITION` := `OPTION` `COMPARATOR` `NUM` | `OPTION` `STRING`
-
-Further details on how this is performed is delved into in the later <<Concept of parsing,section>>.
-
-===== Semantic Parser
-
-Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
-type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
-This can be done by checking the corresponding option class versus the type of token that follows.
-
-Thus, the checks that are made are just to ensure every string type option is followed by a string and every number type
-option is followed by a number.
-
-===== Condition Generator
-
-Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
-condition based on the binary operators encounters up the recursion tree.
-
-Further details on how this is performed is delved into at the later <<Generating the Conditions,section>>.
-
 ==== Error handling
-On syntactically invalid inputs, the `ConditionParser` will retrieve the expected and actual type of Token that were not a math
-during the parsing phase from the `TokenStack` and raise an exception before returning.
+On syntactically and semantically invalid inputs, the `ConditionParser` will retrieve the expected and actual type of
+`Token` that were not a match during the parsing phase from the `TokenStack` and raise a `ParseException` before returning.
 
-Below is the sequence diagram depicting the `ConditionParser` control flow when the `SyntaxParser` has identified an error in the input.
-Since the `SemanticParser` has similar structure, the sequence diagram would look very similar the the one below.
-
-.Sequence diagram for the `ConditionParser` class on erroneous inputs
-image::failSequence.png[]
+In the event that strings intended to represent tags or numbers are not valid, an `IllegalValueException` instead,
+as per convention from `ParserUtil`.
 
 ==== Design Considerations
 
@@ -378,7 +332,34 @@ image::failSequence.png[]
 ** Cons: Clearly violates SRP.
 
 ==== Advanced details
-===== Concept of parsing
+
+===== Argument Tokenizing
+We will illustrate the flow of tokenizing an example input:
+```
+> n/BTC OR ( t/fav AND p/>100 )
+```
+The Lexer would tokenize this into:
+
+```
+> [n/,OPTION][BTC,STRING][OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][>,COMPARATOR][100,NUMBER][),RIGHTPAREN]
+```
+Notice how the whitespace has now been discarded, since it is not used for the purposes of parsing. Also each section of
+the input (i.e. token) has now been grouped with a type.
+
+Below is a sequence diagram (Fig. 13) describing the behaviour of `ArgumentTokenizer` on the input:
+
+.Sequence diagram for the `ArgumentTokenizer` class
+image::Lexer.png[]
+
+===== Syntax Parser
+
+Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
+This is done by matching the tokens off based on the following rules, expressed in Backus-Naur form:
+
+. `EXPRESSION` := `TERM` | `TERM` `BINARYOP` `EXPRESSION`
+. `TERM` := `LEFTPAREN` `EXPRESSION` `RIGHTPAREN` | `UNARYOP` `TERM` | `CONDITION`
+. `CONDITION` := `OPTION` `COMPARATOR` `NUM` | `OPTION` `STRING`
+
 
 ```
 > [n/,OPTION][BTC,STRING][ OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][>,COMPARATOR][100,NUMBER][),RIGHTPAREN]
@@ -427,12 +408,24 @@ boolean expression() {
 }
 ----
 
-Visually we can represent it with the following parse tree, which also serves as the recursion tree:
+Visually we can represent sequence of matching with the following parse tree (Fig. 14), which also serves as the recursion tree:
 
 .Parse and recursion tree for the example input
 image::parsetree.png[]
 
-===== Generating the Conditions
+===== Semantic Parser
+
+Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
+type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
+This can be done by checking the corresponding option class versus the type of token that follows.
+
+Thus, the checks that are made are just to ensure every string type option is followed by a string and every number type
+option is followed by a number.
+
+===== Condition Generator
+
+Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
+condition based on the binary operators encounters up the recursion tree.
 
 The final `Condition` object is actually just a composition of many individual `Condition` objects. This can be done
 as a back call at the end of each recursion tree.
@@ -452,7 +445,7 @@ method `and()` to return a logical conjunction of the two conditions.
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports the undoing and redoing of commands that modify the stored data (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
-`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. Here is the inheritance diagram for commands (Fig. 11):
+`UndoRedoStack` only deals with `UndoableCommands`. Commands that cannot be undone will inherit from `Command` instead. Here is the inheritance diagram for commands (Fig. 15):
 
 .Class Diagram for Logic
 image::LogicCommandClassDiagram.png[width="800"]
@@ -492,12 +485,12 @@ public class DeleteCommand extends UndoableCommand {
 
 Suppose that the user has just launched the application. The `UndoRedoStack` is empty at the beginning.
 
-The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th entry. The current state of the App data is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command). Fig. 12 below illustrates this.
+The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th entry. The current state of the App data is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command). Fig. 16 below illustrates this.
 
 .Undo/Redo Stack Part 1
 image::UndoRedoStartingStackDiagram.png[width="800"]
 
-As the user continues to issue more commands, they are added into the `undoStack`. For example, the user may execute `add n/BTC` to add a new coin, resulting in the below picture (Fig. 13):
+As the user continues to issue more commands, they are added into the `undoStack`. For example, the user may execute `add n/BTC` to add a new coin, resulting in the below picture (Fig. 17):
 
 .Undo/Redo Stack Part 2
 image::UndoRedoNewCommand1StackDiagram.png[width="800"]
@@ -552,7 +545,7 @@ Classes that deal with `Command` do not have to know that `executeUndoableComman
 ** Pros: Easier for new developers to understand as it does not involve the template pattern.
 ** Cons: Classes that inherit from `UndoableCommand` must remember to call `super.execute()`, or lose the ability to undo/redo.
 
-===== Aspect: How undo & redo executes
+===== Aspect: Execution of undo & redo
 
 * **Alternative 1 (current choice):** Save the entire state
 ** Pros: Easy to implement.
@@ -565,7 +558,7 @@ Classes that deal with `Command` do not have to know that `executeUndoableComman
 ===== Aspect: Type of commands that can be undone/redone
 
 * **Alternative 1 (current choice):** Include commands that modify the App data (e.g. `add`, `clear`, `edit`) only
-** Pros: Only changes that are hard to do manually can be reverted like this. + 
+** Pros: Only changes that are hard to do manually can be reverted like this. +
 e.g. The view can easily be re-modified as no data is lost, so not undoable with `undo`.
 ** Cons: User might think that undo also applies when the list is modified (filtering for example), only to realize otherwise after executing `undo`.
 * **Alternative 2:** Include all commands
@@ -627,7 +620,7 @@ image::NotificationsSequenceDiagram2.png[width="800"]
 The `RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc. +
 Later on, the `Notification` component may morph into a general "rules execution" component which manages different types of rules and performs their associated actions.
 
-===== Aspect: Which kind of notification to use
+===== Aspect: Type of notification to use
 
 * **Alternative 1:** Use platform-side notifications, e.g. system tray
 ** Pros: User can integrate these into their own workflow, such as setting other programs to listen in on system notifications and forward them to their other device, generate emails, take actions, etc. User has some control over how notifications look and behave.
