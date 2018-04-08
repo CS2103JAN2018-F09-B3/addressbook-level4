@@ -257,7 +257,7 @@ find (p/>500 t/fav) OR h/<20 <3>
 <2> Finds accounts with the `fav` tag
 <3> Finds accounts either with current price more than $500 and tagged `fav`, or with less than 20 Coins left
 
-=== View details of an account `view` | `v`
+=== View details of an account `view` | `v` `[Coming in v1.5]`
 
 .Format
 ----
@@ -361,11 +361,11 @@ Undoable commands: Commands that modify the data (`buy`, `sell`, `tag` and `clea
 
 .Examples
 ----
-buy BTC 10
+buy BTC a/10
 list
 undo
 ----
-This reverses the `buy BTC 10` command.
+This reverses the `buy BTC a/10` command.
 ----
 view 1
 list
@@ -373,7 +373,7 @@ undo
 ----
 The `undo` command fails as there are no undoable commands executed previously.
 ----
-sell BTC 10
+sell BTC a/10
 clear
 undo
 undo
