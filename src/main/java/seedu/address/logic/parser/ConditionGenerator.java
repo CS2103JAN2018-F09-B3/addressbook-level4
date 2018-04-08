@@ -21,6 +21,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Generates the predicate based ont he tokenized boolean logic statements to verify correctness.
  */
+//@@author Eldon-Chung
 public class ConditionGenerator {
 
     private TokenStack tokenStack;

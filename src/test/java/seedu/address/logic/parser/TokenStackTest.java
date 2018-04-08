@@ -1,4 +1,3 @@
-//@@author Eldon-Chung
 package seedu.address.logic.parser;
 
 import static junit.framework.TestCase.assertEquals;
@@ -19,6 +18,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+//@@author Eldon-Chung
 public class TokenStackTest {
 
     @Rule

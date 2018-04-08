@@ -1,9 +1,9 @@
-//@@author Eldon-Chung
 package seedu.address.logic.parser;
 
 /**
  * Parses tokenized boolean logic statements to verify correctness
  */
+//@@author Eldon-Chung
 public class ConditionSyntaxParser {
 
     private TokenStack tokenStack;

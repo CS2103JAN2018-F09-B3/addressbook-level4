@@ -92,7 +92,7 @@ public class TestUtil {
             .withTags(STRING_ONE_STRING, STRING_TWO_STRING).build();
     public static final Coin COIN_7 = new CoinBuilder().withName("COIN SEVEN")
             .withTags(STRING_ONE_STRING, STRING_TWO_STRING, STRING_THREE_STRING).build();
-    //@@author Eldon-Chung
+    //@@author
     /**
      * Folder used for temp files created during testing. Ignored by Git.
      */

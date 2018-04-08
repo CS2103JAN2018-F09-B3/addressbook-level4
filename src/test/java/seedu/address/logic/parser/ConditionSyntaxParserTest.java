@@ -1,4 +1,3 @@
-//@@author Eldon-Chung
 package seedu.address.logic.parser;
 
 import static org.junit.Assert.assertFalse;
@@ -9,6 +8,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+//@@author Eldon-Chung
 public class ConditionSyntaxParserTest {
 
     /*
