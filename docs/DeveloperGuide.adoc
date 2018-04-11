@@ -1,8 +1,9 @@
 = CoinBook - Developer Guide
 :toc:
-:toc-title:
+:toc-title: Contents
 :toc-placement: preamble
 :sectnums:
+:sectnumlevels: 5
 :imagesDir: images
 :stylesDir: stylesheets
 :pdf-stylesdir: stylesheets
@@ -164,27 +165,24 @@ For example, the `Logic` component (see Fig. 2 below) defines its API in the `Lo
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width="800"]
 
-We use event-driven design in order to allow communication between separate components without increasing coupling. The short section below gives a brief introduction to how events are being used in the App.
-
-[discrete]
 [[event-driven-design]]
-==== Event-driven nature of the design
+We use event-driven design in order to allow communication between separate components without increasing coupling. The short section below gives a brief introduction to how events are being used in the App.
 
 The _Sequence Diagram_ below (Fig. 3) shows the interaction between the various components when the user issues the command `delete 1`.
 
-.Component interactions for `delete 1` command (part 1)
+.Component Interactions for `delete 1` Command Part 1
 image::SDforDeleteCoin.png[width="800"]
 
 [NOTE]
-Note how the `Model` simply raises `CoinBookChangedEvent` when the data is changed, instead of asking `Storage` to save the updates to the hard disk.
+Note how `Model` simply raises `CoinBookChangedEvent` when the data is changed, instead of asking `Storage` to save the updates to the hard disk.
 
 Fig. 4 below shows how `EventsCenter` reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.
 
-.Component interactions for `delete 1` command (part 2)
+.Component Interactions for `delete 1` Command Part 2
 image::SDforDeletePersonEventHandling.png[]
 
 [NOTE]
-The event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having to be [gloss]#<<coupling,coupled>># to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+The event is propagated through `EventsCenter` to `Storage` and `UI` without `Model` having to be [gloss]#<<coupling,coupled>># to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 
 The following sections give more details about each component.
 
@@ -193,18 +191,20 @@ The following sections give more details about each component.
 
 *API* : [exref]#link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]#
 
+*Responsibilities* +
 The `UI` component:
 
 * Executes user commands using the `Logic` component
-* Binds itself to data in the `Model` so that the UI can update itself automatically when data in the `Model` changes
+* Binds itself to data in `Model` so that the UI can update itself automatically when data in `Model` changes
 * Responds to events raised from various parts of the App and updates the UI accordingly
 
+*Internals* +
 The following diagram (Fig. 5) illustrates the structure of this component:
 
 .Structure of the UI Component
 image::UiClassDiagram.png[width="800"]
 
-The user interface (UI) consists of a `MainWindow` that is made up of several parts, e.g. `CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The user interface (UI) consists of a `MainWindow` that is made up of several parts, e.g. `CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `BrowserPanel` etc. All these, including `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses the JavaFx UI framework. The layout of the UI parts are defined in matching `.fxml` files located in the `src/main/resources/view` folder. For example, the layout of the
 [exref]#link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`]# is specified in
@@ -216,11 +216,13 @@ The `UI` component uses the JavaFx UI framework. The layout of the UI parts are 
 *API* :
 [exref]#link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]#
 
+*Responsibilities* +
 The `Logic` component:
 
 * Parses and executes user commands
 * Manages command history and undo/redo information
 
+*Internals* +
 The following diagrams (Fig. 6, 7) illustrate the structure of this component:
 
 [[fig-LogicClassDiagram]]
@@ -232,12 +234,12 @@ image::LogicCommandClassDiagram.png[width="800"]
 
 When a user issues a command, the following steps are performed by `Logic` through `LogicManager`:
 
-.  Use the `CoinBookParser` class to parse the user command.
+. Parse the user command using the `CoinBookParser` class.
 . Run the `execute` method on the resulting `Command` object.
 .  Encapsulate the result of the execution as a `CommandResult` object which is then passed back to the UI.
 
 [NOTE]
- The command execution can affect the `Model` (e.g. adding a coin) and/or raise events.
+ The command execution can affect `Model` (e.g. adding a coin) and/or raise events.
 
 Given below is the Sequence Diagram (Fig. 8) for interactions within the `Logic` component for the `execute("delete{nbsp}1")` API call.
 
@@ -250,6 +252,7 @@ image::DeletePersonSdForLogic.png[width="800"]
 *API* :
 [exref]#link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]#
 
+*Responsibilities* +
 The `Model` component:
 
 * Stores a `UserPref` object that represents the user's preferences
@@ -259,6 +262,7 @@ The `Model` component:
 [NOTE]
  `Model` does not depend on any of the other three components
 
+*Internals* +
 The following diagram (Fig. 9) illustrates the structure of this component:
 
 .Structure of the Model Component
@@ -271,11 +275,13 @@ image::ModelClassDiagram.png[width="800"]
 *API* :
 [exref]#link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]#
 
+*Responsibilities* +
 The `Storage` component:
 
 * Saves `UserPref` objects in JSON format or reads it back into the App
 * Saves the CoinBook data in XML format or reads it back into the App
 
+*Internals* +
 The following diagram (Fig. 10) illustrates the structure of this component:
 
 .Structure of the Storage Component
@@ -288,8 +294,7 @@ This chapter describes some noteworthy details on how certain features and compo
 === Condition Parser Component
 
 ==== Current implementation
-The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely
-the `ArgumentTokenizer`, `SyntaxParser`, `SemanticParser`, and a `ConditionGenerator`, while using classes such as `Condition`,
+The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely `ArgumentTokenizer`, `SyntaxParser`, `SemanticParser`, and a `ConditionGenerator`, while using classes such as `Condition`,
 `Token`, `TokenType`, `TokenStack` to model the data that is to be operated on throughout the process. Their tasks are
 delegated as follows:
 
@@ -309,25 +314,25 @@ For example, `n/BTC AND OR p/>500` is invalid syntatically, whereas `n/BTC or p/
 but not semantically, since it would not make sense to search for `Coin` objects whose price attribute was more than
 "BTC" (prices cannot be compared to names).
 
-The following sequence diagram (Fig. 11) will show how input arguments accompanying the `Find` command are parsed:
+The following sequence diagram (Fig. 11) will show how input arguments accompanying the `find` command are parsed:
 
-.Sequence diagram describing how arguments are parsed
+.Sequence Diagram for Argument Parsing
 image::FindCommandSequence.png[]
 
-The `SyntaxParser`, `SemanticParser` and `ConditionGenerator` reside in a separate module that will be called by the
+The `SyntaxParser`, `SemanticParser` and `ConditionGenerator` classes reside in a separate module that will be called by the
 `ParserUtil` class during the ParseCondition method.
 
 The following activity diagram (Fig. 12) expands on the Parse Sequence block in the previous diagram.
 
-.Activity diagram describing the sequence of parser operations
+.Activity Diagram for Parser Operations
 image::FindActivityDiagram.png[]
 
 The `Condition` object that is generated at the end is actually just a `Predicate` object that evaluates properties of
 the Coin objects and returns a true/false value.
 
 ==== Error handling
-On syntactically and semantically invalid inputs, the `ConditionParser` will retrieve the expected and actual type of
-`Token` that were not a match during the parsing phase from the `TokenStack` and raise a `ParseException` before returning.
+On syntactically and semantically invalid inputs, `ConditionParser` will retrieve the expected and actual type of
+`Token` that were not a match during the parsing phase from `TokenStack` and raise a `ParseException` before returning.
 
 In the event that strings intended to represent tags or numbers are not valid, an `IllegalValueException` instead,
 as per convention from `ParserUtil`.
@@ -369,7 +374,7 @@ the input (i.e. token) has now been grouped with a type.
 
 Below is a sequence diagram (Fig. 13) describing the behaviour of `ArgumentTokenizer` on the input:
 
-.Sequence diagram for the `ArgumentTokenizer` class
+.Sequence Diagram for the `ArgumentTokenizer` Class
 image::Lexer.png[]
 
 ===== Syntax Parser
@@ -431,7 +436,7 @@ boolean expression() {
 
 Visually we can represent sequence of matching with the following parse tree (Fig. 14), which also serves as the recursion tree:
 
-.Parse and recursion tree for the example input
+.Parse and Recursion Tree for the Example Input
 image::parsetree.png[]
 
 ===== Semantic Parser
@@ -457,7 +462,7 @@ For example, consider the following argument:
 p/>100 AND t/fav
 ```
 
-The `p/>100` is a condition on price whereas the `t/fav` is a condition on tags, and they can be composed using the `Predicate`
+`p/>100` is a condition on price whereas `t/fav` is a condition on tags, and they can be composed using the `Predicate`
 method `and()` to return a logical conjunction of the two conditions.
 
 // tag::undoredo[]
@@ -504,47 +509,47 @@ public class DeleteCommand extends UndoableCommand {
 }
 ----
 
-Suppose that the user has just launched the application. The `UndoRedoStack` is empty at the beginning.
+Suppose that the user has just launched the application. `UndoRedoStack` is empty at the beginning.
 
-The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th entry. The current state of the App data is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto the `undoStack` (the current state is saved together with the command). Fig. 16 below illustrates this.
+The user executes a new `UndoableCommand`, `delete 5`, to delete the 5th entry. The current state of the App data is saved before the `delete 5` command executes. The `delete 5` command will then be pushed onto `undoStack` (the current state is saved together with the command). Fig. 16 below illustrates this.
 
 .Undo/Redo Stack Part 1
 image::UndoRedoStartingStackDiagram.png[width="800"]
 
-As the user continues to issue more commands, they are added into the `undoStack`. For example, the user may execute `add n/BTC` to add a new coin, resulting in the below picture (Fig. 17):
+As the user continues to issue more commands, they are added into `undoStack`. For example, the user may execute `add n/BTC` to add a new coin, resulting in the below picture (Fig. 17):
 
 .Undo/Redo Stack Part 2
 image::UndoRedoNewCommand1StackDiagram.png[width="800"]
 
 [NOTE]
-If a command fails its execution, it will not be pushed to the `UndoRedoStack` at all.
+If a command fails its execution, it will not be pushed to `UndoRedoStack` at all.
 
 The user now decides that adding the coin was a mistake, and decides to undo that action using `undo`.
 
-The `Logic` component will pop the most recent command out of the `undoStack` and push it to the `redoStack`. At the same time, the data is restored to the state before the `add` command executed. The figure below (Fig. 18) illustrates the result:
+The `Logic` component will pop the most recent command out of `undoStack` and push it to `redoStack`. At the same time, the data is restored to the state before the `add` command executed. The figure below (Fig. 18) illustrates the result:
 
 .Undo/Redo Stack Part 3
 image::UndoRedoExecuteUndoStackDiagram.png[width="800"]
 
 [NOTE]
-If the `undoStack` is empty, i.e., there are no other commands left to be undone, an `Exception` will be thrown when trying to pop the `undoStack`.
+If `undoStack` is empty, i.e., there are no other commands left to be undone, an `Exception` will be thrown when trying to pop `undoStack`.
 
 The following sequence diagram (Fig. 19) shows how the undo operation works:
 
 .Sequence Diagram for Undo
 image::UndoRedoSequenceDiagram.png[width="800"]
 
-The `redo` command does the exact opposite (pops from `redoStack`, push to `undoStack`, and restores the data to the state after the command is executed).
+The `redo` command does the exact opposite (pops from `redoStack`, pushes to `undoStack`, and restores the data to the state after the command is executed).
 
 [NOTE]
-If the `redoStack` is empty, then there are no other commands left to be redone, and an `Exception` will be thrown when popping the `redoStack`.
+If `redoStack` is empty, then there are no other commands left to be redone, and an `Exception` will be thrown when attempting to pop `redoStack`.
 
-The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into the `undoStack`. However, now the `redoStack` is not empty, and it will be purged as it no longer makes sense to redo the `add n/BTC` command (this is the behavior that most modern desktop applications follow). Refer to Fig. 20 below:
+The user now decides to execute a new command, `clear`. As before, `clear` will be pushed into `undoStack`. However, now that `redoStack` is not empty, it will be purged as it no longer makes sense to redo the `add n/BTC` command (this is the behavior that most modern desktop applications follow). Refer to Fig. 20 below:
 
 .Undo/Redo Stack Part 4
 image::UndoRedoNewCommand2StackDiagram.png[width="800"]
 
-Commands that are not undoable are not added into the `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution (Fig. 21):
+Commands that are not undoable are not added into `undoStack`. For example, `list`, which inherits from `Command` rather than `UndoableCommand`, will not be added after execution (Fig. 21):
 
 .Undo/Redo Stack Part 5
 image::UndoRedoNewCommand3StackDiagram.png[width="800"]
@@ -638,7 +643,7 @@ image::NotificationsSequenceDiagram2.png[width="800"]
 ** Cons: Separation of Concerns and Single Responsibility Principles not adhered to as `Model` then manages both data, and user interaction / platform features.
 
 [TIP]
-The `RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc. +
+`RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc. +
 Later on, the `Notification` component may morph into a general "rules execution" component which manages different types of rules and performs their associated actions.
 
 ===== Aspect: Type of notification to use
@@ -683,7 +688,7 @@ Following are some example sort procedures:
 * Sort by coin value
 
 ** We can use `Comparator.comparingDouble()` for comparing double values. For _CoinBook_, we want to order our list of coins by value, from the highest to the lowest.
-** We can use the `reversed` function on the `Comparator` to invert the default and arrange coins from lowest to highest instead.
+** We can use the `reversed` function on `Comparator` to invert the default and arrange coins from lowest to highest instead.
 ** `Double` is used because coin values have several decimal places and so the `comparingInt()` function would not suffice.
 
 * Sort by string field (e.g. coin code)
@@ -784,18 +789,18 @@ At this point the user has found `BCH`, which is the coin that the user wanted t
 
 === Logging
 
-We are using the `java.util.logging` package for logging. The `LogsCenter` class is used to manage logging levels and logging destinations.
+We are using the `java.util.logging` package for logging. The `LogsCenter` class is used to manage _logging levels_ and logging destinations.
 
-* The logging level can be controlled using the `logLevel` setting in the configuration file (See <<Implementation-Configuration>>)
-* The `Logger` for a class `Class` can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
-* Currently, log messages are output through `Console` and written to a `.log` file
+Log messages are categorized into four logging levels of varying importance:
 
-*Logging Levels*
+* `SEVERE` : Indicates critical problems which may possibly cause the termination of the App
+* `WARNING` : Indicates the App can continue running, but the user should take caution
+* `INFO` : Indicates information regarding noteworthy actions by the App
+* `FINE` : Indicates details that are not usually noteworthy but may be useful in debugging e.g. printing the list contents instead of just its size
 
-* `SEVERE` : Critical problem detected which may possibly cause the termination of the App
-* `WARNING` : Can continue, but with caution
-* `INFO` : Information regarding noteworthy actions by the App
-* `FINE` : Details that are not usually noteworthy but may be useful in debugging e.g. printing the list contents instead of just its size
+The logging level can be controlled using the `logLevel` setting in the configuration file (See <<Implementation-Configuration>>).
+
+The `Logger` for a class `Class` can be obtained using `LogsCenter.getLogger(Class)`, which will log messages according to the specified logging level. Currently, log messages are output through `Console` as well as written to a `.log` file.
 
 [[Implementation-Configuration]]
 === Configuration
@@ -1025,7 +1030,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `CoinBook` and the *Actor* is the `User`, unless specified otherwise)
+(For all use cases below, the *System* is `CoinBook` and the *Actor* is the `User`, unless specified otherwise)
 
 === Use case: Delete coin listings
 
