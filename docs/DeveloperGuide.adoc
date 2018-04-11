@@ -342,20 +342,20 @@ as per convention from `ParserUtil`.
 ===== Aspect: Specification of syntax
 
 * **Alternative 1 (current choice):** Have the structure of the methods reflect exactly the syntax.
-** Pros: Since the syntax is apparent, any subsequent changes can be easily done by having the code reflect the new syntax.
-** Cons: Cumbersome to have to alter the code every time there is a change in syntax.
+** Pros: Any subsequent changes can be easily made by having the code reflect the new syntax, since the syntax is apparent.
+** Cons: It is more cumbersome to have to alter the code every time there is a change in syntax.
 * **Alternative 2:** Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.
-** Pros: Requires 0 code change whenever the syntax has to be modified.
-** Cons: The code to support this would be very complicated and not apparent to developers immediately.
+** Pros: This requires no code change whenever the syntax has to be modified.
+** Cons: The code to support this would be more complicated and not apparent to developers immediately.
 
 ===== Aspect: Implementation of `SyntaxParser`, `SemanticParser`, `ConditionGenerator`
 
 * **Alternative 1 (current choice):** Have separate classes that have the same structure but with different return values.
-** Pros: Maintains SRP.
-** Cons: A change in syntax requires change across 3 classes. It is also very redundant having similar code.
+** Pros: This approach maintains SRP.
+** Cons: A change in syntax will require changes across 3 classes. It is also very redundant to have similar code.
 * **Alternative 2:** Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.
-** Pros: Removal of redundant code.
-** Cons: Clearly violates SRP.
+** Pros: There will be less redundant code.
+** Cons: This approach clearly violates SRP.
 
 ==== Advanced details
 
@@ -566,43 +566,42 @@ image::UndoRedoActivityDiagram.png[width="650"]
 * **Alternative 1 (current choice):** Add a new abstract method `executeUndoableCommand()`
 ** Pros: No undo/redo functionality is lost as it is now part of the default behaviour. +
 Classes that deal with `Command` do not have to know that `executeUndoableCommand()` exist.
-** Cons: Harder for new developers to understand the template pattern.
+** Cons: It may be harder for new developers to understand the template pattern.
 * **Alternative 2:** Override `execute()`
-** Pros: Easier for new developers to understand as it does not involve the template pattern.
+** Pros: It is easier for new developers to understand as it does not involve the template pattern.
 ** Cons: Classes that inherit from `UndoableCommand` must remember to call `super.execute()`, or lose the ability to undo/redo.
 
 ===== Aspect: Execution of undo & redo
 
 * **Alternative 1 (current choice):** Save the entire state
-** Pros: Easy to implement.
-** Cons: May bring about performance issues in terms of memory usage.
+** Pros: It is much easier to implement.
+** Cons: This may bring about performance issues in terms of memory usage.
 * **Alternative 2:** Make each command implement specific undo/redo operations
-** Pros: Will use less memory (e.g. for `delete`, just save the coin being deleted).
-** Cons: Have to ensure that the implementation of each individual command are correct.
+** Pros: This will use less memory (e.g. for `delete`, just save the coin being deleted).
+** Cons: It is crucial that the implementation of each individual command is correct.
 
 
 ===== Aspect: Type of commands that can be undone/redone
 
-* **Alternative 1 (current choice):** Include commands that modify the App data (e.g. `add`, `clear`, `edit`) only
+* **Alternative 1 (current choice):** Include only commands that modify the App data (e.g. `add`, `clear`, `edit`)
 ** Pros: Only changes that are hard to do manually can be reverted like this. +
 e.g. The view can easily be re-modified as no data is lost, so not undoable with `undo`.
-** Cons: User might think that undo also applies when the list is modified (filtering for example), only to realize otherwise after executing `undo`.
+** Cons: The user might think that undo also applies when the list is modified (filtering for example), only to realize otherwise after executing `undo`.
 * **Alternative 2:** Include all commands
-** Pros: Might be more intuitive for the user.
-** Cons: User has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view. +
+** Pros: This might be more intuitive for the user.
+** Cons: The user has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view. +
 **Additional Info:** See the discussion  [ext]#https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672[here]#.
 
 
 ===== Aspect: Data structure to support the undo/redo commands
 
 * **Alternative 1 (current choice):** Use separate stack for undo and redo
-** Pros: Easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.
-** Cons: Duplicated logic. When a new command is executed, both `HistoryManager` and `UndoRedoStack` must be updated separately.
+** Pros: This implementation will be easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.
+** Cons: It introduces duplicated logic. Whenever a new command is executed, both `HistoryManager` and `UndoRedoStack` must be updated separately.
 * **Alternative 2:** Use `HistoryManager` for both undo/redo
-** Pros: No need to maintain a separate stack. +
-Can just reuse what is already in the codebase.
-** Cons: Must remember to skip already undone commands. +
-This approach violates the Single Responsibility Principle and the Separation of Concerns Principle as `HistoryManager` now needs to do two different things.
+** Pros: There will be no need to maintain a separate stack, by just reusing what is already in the codebase.
+** Cons: We must remember to skip already undone commands. +
+This approach also violates the Single Responsibility Principle and the Separation of Concerns Principle as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
 // tag::notifications[]
@@ -630,17 +629,6 @@ image::NotificationsSequenceDiagram2.png[width="800"]
 
 ===== Aspect: Module to put notification handling in
 
-* **Alternative 1 (current choice):** Make a new package for notifications
-** Pros: All the notification handling can be encapsulated in its own component.
-** Cons: Notification handling alone seems too narrow a scope for a top-level component.
-
-* **Alternative 2:** Put it in `Commons`
-** Pros: No need to make a new module.
-** Cons: Notifications is not an integral component and no other classes depend on it directly so it is not very appropriate to place it here.
-
-* **Alternative 3:** Put it in `Model` along with the implementation of `RuleBook` itself
-** Pros: Rules management and notifications management in the same place which has better code readability.
-** Cons: Separation of Concerns and Single Responsibility Principles not adhered to as `Model` then manages both data, and user interaction / platform features.
 
 [TIP]
 `RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc. +
@@ -649,24 +637,24 @@ Later on, the `Notification` component may morph into a general "rules execution
 ===== Aspect: Type of notification to use
 
 * **Alternative 1:** Use platform-side notifications, e.g. system tray
-** Pros: User can integrate these into their own workflow, such as setting other programs to listen in on system notifications and forward them to their other device, generate emails, take actions, etc. User has some control over how notifications look and behave.
-** Cons: May not work on every platform; heavily dependent on implementation of Java features. For example, some distributions of Linux may not include system trays.
+** Pros: The user can integrate these into their own workflow, such as setting other programs to listen in on system notifications and forward them to their other device, generate emails, take actions, etc. The user has some control over how notifications look and behave.
+** Cons: They may not work on every platform; they are heavily dependent on implementation of Java features. For example, some distributions of Linux may not include system trays.
 
 * **Alternative 2 (current choice):** Use application-side notifications.
-** Pros: Only uses the same framework which displays the App window itself, so is guaranteed to work alongside the App.
-** Cons: Less flexibility in customisation and availability of integration into user's preferred workflow.
+** Pros: This will only require the same framework which displays the App window itself, so is guaranteed to work alongside the App.
+** Cons: There will be less flexibility in customisation and availability of integration into user's preferred workflow.
 
 ===== Aspect: Undo-ability of `NotifyCommand`
 
 * **Alternative 1 (current choice):** Leave it non-undoable
-** Pros: Can keep notification rule data separate from coin data. The basic functionality of `RuleBook` is implemented inside `Model` which deals with data, but the rules are instantiated only in the `Notifications` component itself. A rule manager window will be available for editing or deleting existing notifications.
-** Cons: Not as intuitive as users have to manage coins and rules slightly differently.
+** Pros: Notification rule data can be kept separate from coin data. +
+The basic functionality of `RuleBook` is implemented inside `Model` which deals with data, but the rules are instantiated only in the `Notifications` component itself. A rule manager window will be available for editing or deleting existing notifications.
+** Cons: The UI will be less intuitive as users have to manage coins and rules in slightly different manners.
 
 * **Alternative 2:** Make it an `UndoableCommand` just like `add`, `edit`, etc.
-** Pros: Intuitive, single interface for similar operations.
-** Cons: Since the current implementation of `UndoableCommand` requires saving
-the state of `Model`, which is a wrapper for just the coin data, this would
-increase the coupling between the coin data and the rule data parts of `Model`. We want to keep `Model` as an interface for just the coin data itself.
+** Pros: This offers an intuitive, single interface for similar operations.
+** Cons: This would increase the coupling between the coin data and the rule data parts of `Model`, since the current implementation of `UndoableCommand` requires saving the state of `Model`, which is a wrapper for just the coin data. +
+We want to keep `Model` as an interface for just the coin data itself.
 
 // end::notifications[]
 
@@ -708,29 +696,29 @@ By default, elements with the same key are inserted into a `List<T>`, although t
 
 ==== Design Considerations
 
-===== Aspect: Implementation of Sort
+===== Aspect: Implementation of Sort function
 
 * **Alternative 1 (current choice):** Use `Collections.sort`
 
-** Pros: `String` implements `Comparable` interface so there is no need to pass any comparator for the coin list.
-** Cons: Developer needs to understand the relationship between array lists and collections.
+** Pros: There is no need to pass any comparator for the coin list since `String` already implements the `Comparable` interface.
+** Cons: The developer needs to understand the relationship between array lists and collections.
 
 * **Alternative 2:** Add a new sorting function (e.g. Selection Sort)
 
-** Pros: Possibly allows us to reduce the time required to execute the sorting command.
-** Cons: Need more time to incorporate it into the App since we are not using Java’s in-built sorting method.
+** Pros: This possibly allows us to reduce the time required to execute the sorting command.
+** Cons: This takes more time to incorporate into the App since we are not using Java’s in-built sorting method.
 
-===== Aspect: Implementation of Groups
+===== Aspect: Implementation of Groups function
 
 * **Alternative 1 (current choice):** Use `GroupingBy` method
 
-** Pros: User has an additional option where he can view coins based on a specified attribute.
-** Cons: Developer needs to understand the relationship between `Stream`, `ArrayList` and `Collector` classes.
+** Pros: The user has an additional option where he can view coins based on a specified attribute.
+** Cons: The developer needs to understand the relationship between `Stream`, `ArrayList` and `Collector` classes.
 
 * **Alternative 2:** Add additional tags in lieu of grouping
 
-** Pros: Codebase already has support for tags and so not a lot of changes will be required.
-** Cons: Unable to execute commands at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.
+** Pros: The codebase already has support for tags and so not a lot of changes will be required.
+** Cons: Commands will not be executable at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.
 
 // end::organisation[]
 
@@ -770,20 +758,20 @@ At this point the user has found `BCH`, which is the coin that the user wanted t
 ===== Aspect: The fields which autocomplete works on
 
 * **Alternative 1 (current choice):** Apply only for command parameters.
-** Pros: Less to implement.
-** Cons: May not satisfy every user.
+** Pros: This reduces the implementation cost.
+** Cons: The reduced functionality may not satisfy every user.
 * **Alternative 2:** Apply for both command word and command parameters.
-** Pros: Slightly better user experience.
-** Cons: Lower value to effort ratio to implement given that aliases are already implemented.
+** Pros: User experience will be slightly improved over the alternative.
+** Cons: This has a lower value to effort ratio to implement given that aliases are already implemented.
 
 ===== Aspect: Data structure to support the autocomplete feature
 
 * **Alternative 1 (current choice):** Use a Radix Tree
-** Pros: Easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to our project.
-** Cons: Implementation could be non-trivial.
+** Pros: This is easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.
+** Cons: The implementation could be non-trivial.
 * **Alternative 2:** Use a linear data structure
-** Pros: Easy to implement.
-** Cons: Inefficient, higher time complexity incurred.
+** Pros: This is much easier to implement.
+** Cons: The solution will be inefficient, with a higher time complexity incurred.
 
 // end::autocomplete[]
 
