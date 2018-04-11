@@ -13,6 +13,7 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.CommandTarget;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -79,10 +80,10 @@ public class CoinBookParserTest {
         EditCoinDescriptor descriptor = new EditCoinDescriptorBuilder(coin).build();
         TagCommand command = (TagCommand) parser.parseCommand(TagCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_COIN.getOneBased() + " " + CoinUtil.getCoinTags(coin));
-        assertEquals(new TagCommand(INDEX_FIRST_COIN, descriptor), command);
+        assertEquals(new TagCommand(new CommandTarget(INDEX_FIRST_COIN), descriptor), command);
         TagCommand aliasedCommand = (TagCommand) parser.parseCommand(TagCommand.COMMAND_ALIAS + " "
                 + INDEX_FIRST_COIN.getOneBased() + " " + CoinUtil.getCoinTags(coin));
-        assertEquals(new TagCommand(INDEX_FIRST_COIN, descriptor), aliasedCommand);
+        assertEquals(new TagCommand(new CommandTarget(INDEX_FIRST_COIN), descriptor), aliasedCommand);
     }
 
     @Test
