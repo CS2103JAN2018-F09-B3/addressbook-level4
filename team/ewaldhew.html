@@ -152,7 +152,7 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-previous-command-code-undo-code-code-z-code"><a class="link" href="#undo-previous-command-code-undo-code-code-z-code">Undo previous command <code>undo</code> / <code>z</code></a></h3>
+<h3 id="undo-previous-command-code-undo-code-code-z-code"><a class="link" href="#undo-previous-command-code-undo-code-code-z-code">Undo previous command <code>undo</code> | <code>z</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
@@ -160,7 +160,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.</p>
+<p>Restores the data to the state before the previous <em>undoable</em> command was executed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -179,13 +179,13 @@
 <div class="listingblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>buy BTC 10
+<pre>buy BTC a/10 <i class="conum" data-value="1"></i><b>(1)</b>
 list
-undo</pre>
+undo <i class="conum" data-value="1"></i><b>(1)</b></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This reverses the <code>buy BTC 10</code> command.</p>
+<p>This reverses the <code>buy BTC a/10</code> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -199,18 +199,18 @@ undo</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>sell BTC 10
-clear
-undo
-undo</pre>
+<pre>sell BTC a/10 <i class="conum" data-value="2"></i><b>(2)</b>
+clear <i class="conum" data-value="1"></i><b>(1)</b>
+undo <i class="conum" data-value="1"></i><b>(1)</b>
+undo <i class="conum" data-value="2"></i><b>(2)</b></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first <code>undo</code> reverses the <code>clear</code> command, the second reverses the <code>sell BTC 10</code> command.</p>
+<p>The first <code>undo</code> reverses the <code>clear</code> command, the second reverses the <code>sell BTC a/10</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-undone-command-code-redo-code-code-y-code"><a class="link" href="#redo-undone-command-code-redo-code-code-y-code">Redo undone command <code>redo</code> / <code>y</code></a></h3>
+<h3 id="redo-undone-command-code-redo-code-code-y-code"><a class="link" href="#redo-undone-command-code-redo-code-code-y-code">Redo undone command <code>redo</code> | <code>y</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
@@ -223,13 +223,25 @@ undo</pre>
 <div class="listingblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>buy BTC 10
-undo
-redo</pre>
+<pre>buy BTC a/10 <i class="conum" data-value="1"></i><b>(1)</b>
+undo <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="2"></i><b>(2)</b>
+redo <i class="conum" data-value="2"></i><b>(2)</b></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Reverses the <code>buy BTC a/10</code> command, and</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Reapplies it</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Reverses the <code>buy BTC 10</code> command and reapplies it. The result is as if only the first line was typed in.</p>
+<p>The result is as if only the first line was executed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -242,16 +254,39 @@ redo</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>sell BTC 10
-clear
-undo
-undo
-redo
-redo</pre>
+<pre>sell BTC a/10 <i class="conum" data-value="2"></i><b>(2)</b>
+clear <i class="conum" data-value="1"></i><b>(1)</b>
+undo <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="4"></i><b>(4)</b>
+undo <i class="conum" data-value="2"></i><b>(2)</b><i class="conum" data-value="3"></i><b>(3)</b>
+redo <i class="conum" data-value="3"></i><b>(3)</b>
+redo <i class="conum" data-value="4"></i><b>(4)</b></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This sequence of <code>undo</code> and <code>redo</code> first reverses the <code>clear</code> command, then reverses the <code>sell BTC 10</code> command, then reapplies the <code>sell BTC 10</code> command, then reapplies the <code>clear</code> command.</p>
+<p>This sequence of commands:</p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Reverses the <code>clear</code> command</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Reverses the <code>sell BTC a/10</code> command</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Reapplies the <code>sell BTC a/10</code> command, and finally</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Reapplies the <code>clear</code> command</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The result is as if only the first two lines were executed. Notice how the order of redoing is opposite from the undoing.</p>
 </div>
 </div>
 </div>
@@ -277,7 +312,7 @@ redo</pre>
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports the undoing and redoing of commands that modify the stored data (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Here is the inheritance diagram for commands (Fig. 11):</p>
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Here is the inheritance diagram for commands (Fig. 15):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -324,10 +359,10 @@ redo</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> is empty at the beginning.</p>
+<p>Suppose that the user has just launched the application. <code>UndoRedoStack</code> is empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th entry. The current state of the App data is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command). Fig. 12 below illustrates this.</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th entry. The current state of the App data is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto <code>undoStack</code> (the current state is saved together with the command). Fig. 16 below illustrates this.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -336,7 +371,7 @@ redo</pre>
 <div class="title">Figure 2. Undo/Redo Stack Part 1</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to issue more commands, they are added into the <code>undoStack</code>. For example, the user may execute <code>add BTC &#8230;&#8203;</code> to add a new coin, resulting in the below picture (Fig. 13):</p>
+<p>As the user continues to issue more commands, they are added into <code>undoStack</code>. For example, the user may execute <code>add n/BTC</code> to add a new coin, resulting in the below picture (Fig. 17):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -351,7 +386,7 @@ redo</pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not be pushed to the <code>UndoRedoStack</code> at all.
+If a command fails its execution, it will not be pushed to <code>UndoRedoStack</code> at all.
 </td>
 </tr>
 </table>
@@ -360,7 +395,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the coin was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it to the <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 14) illustrates the result:</p>
+<p>The <code>Logic</code> component will pop the most recent command out of <code>undoStack</code> and push it to <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 18) illustrates the result:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -375,13 +410,13 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>undoStack</code> is empty, i.e., there are no other commands left to be undone, an <code>Exception</code> will be thrown when trying to pop the <code>undoStack</code>.
+If <code>undoStack</code> is empty, i.e., there are no other commands left to be undone, an <code>Exception</code> will be thrown when trying to pop <code>undoStack</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The following sequence diagram (Fig. 19) shows how the undo operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -390,7 +425,7 @@ If the <code>undoStack</code> is empty, i.e., there are no other commands left t
 <div class="title">Figure 5. Sequence Diagram for Undo</div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the data to the state after the command is executed).</p>
+<p>The <code>redo</code> command does the exact opposite (pops from <code>redoStack</code>, pushes to <code>undoStack</code>, and restores the data to the state after the command is executed).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -399,13 +434,13 @@ If the <code>undoStack</code> is empty, i.e., there are no other commands left t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
+If <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when attempting to pop <code>redoStack</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. However, now the <code>redoStack</code> is not empty, and it will be purged as it no longer makes sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow). Refer to Fig. 16 below:</p>
+<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into <code>undoStack</code>. However, now that <code>redoStack</code> is not empty, it will be purged as it no longer makes sense to redo the <code>add n/BTC</code> command (this is the behavior that most modern desktop applications follow). Refer to Fig. 20 below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -414,7 +449,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="title">Figure 6. Undo/Redo Stack Part 4</div>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution (Fig. 17):</p>
+<p>Commands that are not undoable are not added into <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution (Fig. 21):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -423,7 +458,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="title">Figure 7. Undo/Redo Stack Part 5</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes the logic for <code>UndoRedoStack</code> when a user executes a new command:</p>
+<p>The following activity diagram (Fig. 22) summarizes the logic for <code>UndoRedoStack</code> when a user executes a new command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -443,20 +478,21 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We will not lose any undo/redo functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
+<p>Pros: No undo/redo functionality is lost as it is now part of the default behaviour.<br>
+Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
 </li>
 <li>
-<p>Cons: Hard for new developers to understand the template pattern.</p>
+<p>Cons: It may be harder for new developers to understand the template pattern.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Just override <code>execute()</code></p>
+<p><strong>Alternative 2:</strong> Override <code>execute()</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not involve the template pattern, easier for new developers to understand.</p>
+<p>Pros: It is easier for new developers to understand as it does not involve the template pattern.</p>
 </li>
 <li>
 <p>Cons: Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
@@ -468,31 +504,31 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">Aspect: Execution of undo &amp; redo</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire state.</p>
+<p><strong>Alternative 1 (current choice):</strong> Save the entire state</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: It is much easier to implement.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: This may bring about performance issues in terms of memory usage.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual commands know how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Make each command implement specific undo/redo operations</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
+<p>Pros: This will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: It is crucial that the implementation of each individual command is correct.</p>
 </li>
 </ul>
 </div>
@@ -505,27 +541,28 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only include commands that modify the App data (e.g. <code>add</code>, <code>clear</code>, <code>edit</code>).</p>
+<p><strong>Alternative 1 (current choice):</strong> Include only commands that modify the App data (e.g. <code>add</code>, <code>clear</code>, <code>edit</code>)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We only revert changes that are hard to do manually (the view can easily be re-modified as no data is lost).</p>
+<p>Pros: Only changes that are hard to do manually can be reverted like this.<br>
+e.g. The view can easily be re-modified as no data is lost, so not undoable with <code>undo</code>.</p>
 </li>
 <li>
-<p>Cons: User might think that undo also applies when the list is modified (undoing filtering for example), only to realize otherwise after executing <code>undo</code>.</p>
+<p>Cons: The user might think that undo also applies when the list is modified (filtering for example), only to realize otherwise after executing <code>undo</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Include all commands.</p>
+<p><strong>Alternative 2:</strong> Include all commands</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Might be more intuitive for the user.</p>
+<p>Pros: This might be more intuitive for the user.</p>
 </li>
 <li>
-<p>Cons: User has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view.
+<p>Cons: The user has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view.<br>
 <strong>Additional Info:</strong> See the discussion  <span class="ext"><a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a></span>.</p>
 </li>
 </ul>
@@ -543,23 +580,24 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to our project.</p>
+<p>Pros: This implementation will be easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.</p>
+<p>Cons: It introduces duplicated logic. Whenever a new command is executed, both <code>HistoryManager</code> and <code>UndoRedoStack</code> must be updated separately.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for both undo/redo</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate stack, and just reuse what is already in the codebase.</p>
+<p>Pros: There will be no need to maintain a separate stack, by just reusing what is already in the codebase.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone; we must remember to skip these commands. This approach violates the Single Responsibility Principle and the Separation of Concerns Principle as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: We must remember to skip already undone commands.<br>
+This approach also violates the Single Responsibility Principle and the Separation of Concerns Principle as <code>HistoryManager</code> now needs to do two different things.</p>
 </li>
 </ul>
 </div>
@@ -583,7 +621,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 18:18:01 UTC
+Last updated 2018-04-12 19:07:20 UTC
 </div>
 </div>
 </body>

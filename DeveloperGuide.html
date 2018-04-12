@@ -22,58 +22,59 @@
 </div>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle"></div>
+<div id="toctitle">Contents</div>
 <ul class="sectlevel1">
-<li><a href="#getting-started-with-coinbook">1. Getting Started with CoinBook</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#getting-started-with-coinbook">2. Getting Started with CoinBook</a>
 <ul class="sectlevel2">
-<li><a href="#obtaining-prerequisites">1.1. Obtaining Prerequisites</a></li>
-<li><a href="#setting-up">1.2. Setting Up</a></li>
-<li><a href="#verifying-the-setup">1.3. Verifying the Setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations To Do Before Writing Code</a></li>
+<li><a href="#prereq">2.1. Obtaining Prerequisites</a></li>
+<li><a href="#setting-up">2.2. Setting Up</a></li>
+<li><a href="#verifying-the-setup">2.3. Verifying the Setup</a></li>
+<li><a href="#config">2.4. Configuring the Environment</a></li>
 </ul>
 </li>
-<li><a href="#design">2. Design</a>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI Component</a></li>
-<li><a href="#Design-Logic">2.3. Logic Component</a></li>
-<li><a href="#Design-Model">2.4. Model Component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI Component</a></li>
+<li><a href="#Design-Logic">3.3. Logic Component</a></li>
+<li><a href="#Design-Model">3.4. Model Component</a></li>
+<li><a href="#Design-Storage">3.5. Storage Component</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#condition-parser-component">3.1. Condition Parser Component</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo Feature</a></li>
-<li><a href="#user-set-notifications">3.3. User-Set Notifications</a></li>
-<li><a href="#Implementation-Organisation">3.4. Organisation Features</a></li>
-<li><a href="#proposed-autocomplete-feature">3.5. [Proposed] Autocomplete Feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#condition-parser-component">4.1. Condition Parser Component</a></li>
+<li><a href="#undo-redo-feature">4.2. Undo/Redo Feature</a></li>
+<li><a href="#user-set-notifications">4.3. User-Set Notifications</a></li>
+<li><a href="#Implementation-Organisation">4.4. Organisation Features</a></li>
+<li><a href="#autocomplete-feature">4.5. Autocomplete Feature</a></li>
+<li><a href="#logging">4.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a>
+<li><a href="#documentation">5. Documentation</a>
 <ul class="sectlevel2">
-<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
+<li><a href="#editing-documentation">5.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">5.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></li>
 </ul>
 </li>
-<li><a href="#Testing">5. Testing</a>
+<li><a href="#Testing">6. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#types-of-tests">5.1. Types of tests</a></li>
-<li><a href="#running-tests">5.2. Running Tests</a></li>
-<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
+<li><a href="#types-of-tests">6.1. Types of Tests</a></li>
+<li><a href="#running-tests">6.2. Running Tests</a></li>
+<li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
 </ul>
 </li>
-<li><a href="#devops">6. DevOps</a>
+<li><a href="#devops">7. DevOps</a>
 <ul class="sectlevel2">
-<li><a href="#build-automation">6.1. Build Automation</a></li>
-<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
-<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
-<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
-<li><a href="#making-a-release">6.5. Making a Release</a></li>
-<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
+<li><a href="#build-automation">7.1. Build Automation</a></li>
+<li><a href="#continuous-integration">7.2. Continuous Integration</a></li>
+<li><a href="#coverage-reporting">7.3. Coverage Reporting</a></li>
+<li><a href="#documentation-previews">7.4. Documentation Previews</a></li>
+<li><a href="#release-procedure">7.5. Release Procedure</a></li>
+<li><a href="#dependency-management">7.6. Dependency Management</a></li>
 </ul>
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a>
@@ -85,16 +86,17 @@
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#use-case-export-storage-data">C.1. Use case: Export storage data</a></li>
-<li><a href="#use-case-set-notifications">C.2. Use case: Set notifications</a></li>
-<li><a href="#use-case-tag-items-for-group-commands">C.3. Use case: Tag items for group commands</a></li>
+<li><a href="#use-case-delete-coin-listings">C.1. Use case: Delete coin listings</a></li>
+<li><a href="#use-case-export-storage-data">C.2. Use case: Export storage data</a></li>
+<li><a href="#use-case-set-notifications">C.3. Use case: Set notifications</a></li>
+<li><a href="#use-case-tag-items-for-group-commands">C.4. Use case: Tag items for group commands</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#launching-and-shutting-down">F.1. Launching and Shutting Down</a></li>
 <li><a href="#deleting-a-coin">F.2. Deleting a coin</a></li>
 <li><a href="#saving-data">F.3. Saving data</a></li>
 </ul>
@@ -103,7 +105,35 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="getting-started-with-coinbook"><a class="link" href="#getting-started-with-coinbook">1. Getting Started with CoinBook</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>CoinBook</em> is a desktop application written in Java with JavaFX. You may refer to the <span class="exref"><a href="UserGuide.html">User Guide</a></span> for more information regarding the application itself.</p>
+</div>
+<div class="paragraph">
+<p>This guide is for developers interested in contributing to the current project, forking their own project,
+or those who are just interested in the internal design and implementation details of <em>CoinBook</em>.</p>
+</div>
+<div class="paragraph">
+<p>To set up the project and work environment, read the next section, <a href="#getting-started-with-coinbook">Section 2, &#8220;Getting Started with CoinBook&#8221;</a>. New developers should also read about the overall <a href="#design">Section 3, &#8220;Design&#8221;</a> to apprise
+themselves of the architecture in this software. Existing developers may also find it useful as a reference.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to extend the key features in <em>CoinBook</em>, the chapter on <a href="#implementation">Section 4, &#8220;Implementation&#8221;</a> delves into non-trivial details involving these features.</p>
+</div>
+<div class="paragraph">
+<p>New developers should also read the <a href="#documentation">Section 5, &#8220;Documentation&#8221;</a>, <a href="#Testing">Section 6, &#8220;Testing&#8221;</a>, and <a href="#devops">Section 7, &#8220;DevOps&#8221;</a>
+sections to learn more about the workflow, tools and frameworks currently being used in the project.
+You must follow the existing workflow if you are keen on contributing to the project.</p>
+</div>
+<div class="paragraph">
+<p>The appendices serve as a useful reference for both new and existing developers alike. Any new feature contribution
+under consideration should be aligned with the design philosophies and product direction, to be considered for inclusion.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-with-coinbook"><a class="link" href="#getting-started-with-coinbook">2. Getting Started with CoinBook</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Follow the instructions given in this section to get up and running with <em>CoinBook</em>. To summarise:</p>
@@ -111,13 +141,13 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Make sure you have the prerequisites installed. See <a href="#obtaining-prerequisites">Section 1.1, &#8220;Obtaining Prerequisites&#8221;</a> for details.</p>
+<p>Make sure you have the prerequisites installed. See <a href="#prereq">Section 2.1, &#8220;Obtaining Prerequisites&#8221;</a> for details.</p>
 </li>
 <li>
-<p>Clone and import the project. See <a href="#setting-up">Section 1.2, &#8220;Setting Up&#8221;</a> for details.</p>
+<p>Clone and import the project. See <a href="#setting-up">Section 2.2, &#8220;Setting Up&#8221;</a> for details.</p>
 </li>
 <li>
-<p>Set up additional requirements before writing your code. See <a href="#configurations-to-do-before-writing-code">Section 1.4, &#8220;Configurations To Do Before Writing Code&#8221;</a> for details.</p>
+<p>Set up additional requirements before writing your code. See <a href="#config">Section 2.4, &#8220;Configuring the Environment&#8221;</a> for details.</p>
 </li>
 </ol>
 </div>
@@ -125,7 +155,7 @@
 <p>For the full details, continue reading.</p>
 </div>
 <div class="sect2">
-<h3 id="obtaining-prerequisites"><a class="link" href="#obtaining-prerequisites">1.1. Obtaining Prerequisites</a></h3>
+<h3 id="prereq"><a class="link" href="#prereq">2.1. Obtaining Prerequisites</a></h3>
 <div class="paragraph">
 <p>The following are required to ensure that <em>CoinBook</em> works well.</p>
 </div>
@@ -167,7 +197,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &#8594; 
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up"><a class="link" href="#setting-up">1.2. Setting Up</a></h3>
+<h3 id="setting-up"><a class="link" href="#setting-up">2.2. Setting Up</a></h3>
 <div class="paragraph">
 <p>Follow the steps below to set up the project in your computer.</p>
 </div>
@@ -205,14 +235,14 @@ Do not disable them. If you have disabled them, go to <code>File</code> &#8594; 
 <p>Click <code>OK</code> to accept the default settings.</p>
 </li>
 <li>
-<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message. Otherwise, check that you have all the <a href="#prereq">system requirements</a> and try again.<br>
 This will generate all resources required by the application and tests.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the Setup</a></h3>
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the Setup</a></h3>
 <div class="paragraph">
 <p>After setting up the project by following the steps in the previous part, do the below to make sure you have everything set up nicely.</p>
 </div>
@@ -228,12 +258,12 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations To Do Before Writing Code</a></h3>
+<h3 id="config"><a class="link" href="#config">2.4. Configuring the Environment</a></h3>
 <div class="paragraph">
 <p>Before embarking on your modifications to <em>CoinBook</em>, you should set up the following things to facilitate a smooth development experience.</p>
 </div>
 <div class="sect3">
-<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the Coding Style</a></h4>
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the Coding Style</a></h4>
 <div class="paragraph">
 <p>This project follows <span class="ext"><a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a></span>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify this:</p>
 </div>
@@ -265,13 +295,13 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating Documentation to Match Your Fork</a></h4>
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.2. Updating Documentation to Match Your Fork</a></h4>
 <div class="paragraph">
 <p>After forking the repo, links in the documentation will still point to the <code>CS2103JAN2018-F09-B3/main</code> repo. If you plan to develop this as a separate product (instead of contributing to <code>CS2103JAN2018-F09-B3/main</code>), you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-up-continuous-integration"><a class="link" href="#setting-up-continuous-integration">1.4.3. Setting Up Continuous Integration</a></h4>
+<h4 id="setting-up-continuous-integration"><a class="link" href="#setting-up-continuous-integration">2.4.3. Setting Up Continuous Integration</a></h4>
 <div class="paragraph">
 <p>See <span class="exref"><a href="UsingTravis.html">UsingTravis.adoc</a></span> to learn how to set up Travis to perform Continuous Integration (CI) for your fork.</p>
 </div>
@@ -307,22 +337,22 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 </div>
 </div>
 <div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting Started With Coding</a></h4>
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.4.4. Getting Started With Coding</a></h4>
 <div class="paragraph">
-<p>When you are ready to start coding, get some sense of the overall design by reading the next section on <em>CoinBook</em>'s <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
+<p>When you are ready to start coding, get some sense of the overall design by reading the next section on <em>CoinBook</em>'s <a href="#design">Section 3, &#8220;Design&#8221;</a>.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter offers a high-level overview of the components in <em>CoinBook</em> and how they interact with one another. You should read this first to get some idea of which parts you might want to modify to suit your needs.</p>
 </div>
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> below (Fig. 1) explains the high-level design of the App.</p>
 </div>
@@ -351,7 +381,7 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 </div>
 </li>
 <li>
-<p><code><strong>Commons</strong></code> represents a collection of classes used by multiple other components. Two of these classes play important roles at the architectural level.</p>
+<p><code><strong>Commons</strong></code> represents a collection of classes (the <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/commons"><code>seedu.address.commons</code></a></span> package) used by multiple other components. Two of these classes play important roles at the architectural level.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -359,9 +389,6 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 </li>
 <li>
 <p><code>LogsCenter</code> is used by classes to write log messages to the App&#8217;s log file</p>
-</li>
-<li>
-<p>These classes are located in the <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/commons"><code>seedu.address.commons</code></a></span> package</p>
 </li>
 </ul>
 </div>
@@ -371,56 +398,34 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#Design-Ui"><strong><code>UI</code></strong></a> which has the UI components of the App.<br></p>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a> which holds the UI components of the App<br></p>
 </li>
 <li>
-<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a> which processes and executes commands.<br></p>
+<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a> which processes and executes commands<br></p>
 </li>
 <li>
-<p><a href="#Design-Model"><strong><code>Model</code></strong></a> which holds the data of the App in memory.<br></p>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a> which holds the data of the App in memory<br></p>
 </li>
 <li>
-<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a> which reads data from and writes data to the hard disk.</p>
+<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a> which reads data from and writes data to the hard disk</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Each of these four components:</p>
+<p>Each of the above four components:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Defines its <span class="gloss"><a href="#API"><em>API</em></a></span> in an interface with the same name as the component.</p>
+<p>Defines its <span class="gloss"><a href="#API"><em>API</em></a></span> in an interface with the same name as the component</p>
 </li>
 <li>
-<p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>For example, the <code>Logic</code> component (see Fig. 2 below) defines its API in the <code>Logic.java</code> interface and exposes its functionality via the <code>LogicManager.java</code> class.</p>
+<p>Exposes its functionality using a <code>{Component Name}Manager</code> class</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
-</div>
-<div class="title">Figure 2. Class Diagram of the Logic Component</div>
-</div>
-<div class="paragraph">
-<p>We use event-driven design in order to allow communication between separate components without increasing coupling. The short section below gives a brief introduction to how events are being used in the App.</p>
-</div>
-<h4 id="event-driven-design" class="discrete">Event-driven nature of the design</h4>
-<div class="paragraph">
-<p>The <em>Sequence Diagram</em> below (Fig. 3) shows the interaction between the various components when the user issues the command <code>delete 1</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/SDforDeleteCoin.png" alt="SDforDeleteCoin" width="800">
-</div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command (part 1)</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -429,7 +434,37 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises <code>CoinBookChangedEvent</code> when the data is changed, instead of asking <code>Storage</code> to save the updates to the hard disk.
+For example, the <code>Logic</code> component (see Fig. 2 below) defines its API in the <code>Logic.java</code> interface and exposes its functionality via the <code>LogicManager.java</code> class.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+</div>
+<div class="title">Figure 2. Class Diagram of the Logic Component</div>
+</div>
+<div id="event-driven-design" class="paragraph">
+<p>We use event-driven design in order to allow communication between separate components without increasing coupling. The short section below gives a brief introduction to how events are being used in the App.</p>
+</div>
+<div class="paragraph">
+<p>The <em>Sequence Diagram</em> below (Fig. 3) shows the interaction between the various components when the user issues the command <code>delete 1</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SDforDeleteCoin.png" alt="SDforDeleteCoin" width="800">
+</div>
+<div class="title">Figure 3. Component Interactions for <code>delete 1</code> Command Part 1</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note how <code>Model</code> simply raises <code>CoinBookChangedEvent</code> when the data is changed, instead of asking <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -439,9 +474,9 @@ Note how the <code>Model</code> simply raises <code>CoinBookChangedEvent</code> 
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
+<img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling">
 </div>
-<div class="title">Figure 4. Component interactions for <code>delete 1</code> command (part 2)</div>
+<div class="title">Figure 4. Component Interactions for <code>delete 1</code> Command Part 2</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -450,7 +485,7 @@ Note how the <code>Model</code> simply raises <code>CoinBookChangedEvent</code> 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be <span class="gloss"><a href="#coupling">coupled</a></span> to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+The event is propagated through <code>EventsCenter</code> to <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be <span class="gloss"><a href="#coupling">coupled</a></span> to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 </td>
 </tr>
 </table>
@@ -460,12 +495,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI Component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI Component</a></h3>
 <div class="paragraph">
 <p><strong>API</strong> : <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></span></p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component:</p>
+<p><strong>Responsibilities</strong><br>
+The <code>UI</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -473,7 +509,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>Executes user commands using the <code>Logic</code> component</p>
 </li>
 <li>
-<p>Binds itself to data in the <code>Model</code> so that the UI can update itself automatically when data in the <code>Model</code> changes</p>
+<p>Binds itself to data in <code>Model</code> so that the UI can update itself automatically when data in <code>Model</code> changes</p>
 </li>
 <li>
 <p>Responds to events raised from various parts of the App and updates the UI accordingly</p>
@@ -481,7 +517,8 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </ul>
 </div>
 <div class="paragraph">
-<p>The following diagram (Fig. 5) illustrates the structure of this component:</p>
+<p><strong>Internals</strong><br>
+The following diagram (Fig. 5) illustrates the structure of this component:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -490,22 +527,23 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p>The user interface (UI) consists of a <code>MainWindow</code> that is made up of several parts, e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The user interface (UI) consists of a <code>MainWindow</code> that is made up of several parts, e.g. <code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of the UI parts are defined in matching <code>.fxml</code> files located in the <code>src/main/resources/view</code> folder. For example, the layout of the
+<p>The <code>UI</code> component uses the JavaFx UI framework. The layout of the UI parts are defined in matching <code>.fxml</code> files located in the <code>src/main/resources/view</code> folder. For example, the layout of the
 <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a></span> is specified in
-<span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></span></p>
+<span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></span>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic Component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic Component</a></h3>
 <div class="paragraph">
 <p><strong>API</strong> :
 <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></span></p>
 </div>
 <div class="paragraph">
-<p>The <code>Logic</code> component:</p>
+<p><strong>Responsibilities</strong><br>
+The <code>Logic</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -518,7 +556,8 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </ul>
 </div>
 <div class="paragraph">
-<p>The following diagrams (Fig. 6, 7) illustrate the structure of this component:</p>
+<p><strong>Internals</strong><br>
+The following diagrams (Fig. 6, 7) illustrate the structure of this component:</p>
 </div>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
@@ -533,23 +572,32 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 7. Structure of Commands in the Logic Component. Example of <code>XYZCommand</code> and <code>Command</code> in <a href="#fig-LogicClassDiagram">Fig. 6</a></div>
 </div>
 <div class="paragraph">
-<p>When a user issues a command, the following steps are performed:</p>
+<p>When a user issues a command, the following steps are performed by <code>Logic</code> through <code>LogicManager</code>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p>Parse the user command using the <code>CoinBookParser</code> class.</p>
 </li>
 <li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+<p>Run the <code>execute</code> method on the resulting <code>Command</code> object.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a coin) and/or raise events.</p>
-</li>
-<li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is then passed back to the UI.</p>
+<p>Encapsulate the result of the execution as a <code>CommandResult</code> object which is then passed back to the UI.</p>
 </li>
 </ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+ The command execution can affect <code>Model</code> (e.g. adding a coin) and/or raise events.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Given below is the Sequence Diagram (Fig. 8) for interactions within the <code>Logic</code> component for the <code>execute("delete&#160;1")</code> API call.</p>
@@ -562,13 +610,14 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model Component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model Component</a></h3>
 <div class="paragraph">
 <p><strong>API</strong> :
 <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></span></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code> component:</p>
+<p><strong>Responsibilities</strong><br>
+The <code>Model</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -581,13 +630,23 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <li>
 <p>Exposes an unmodifiable <code>ObservableList&lt;Coin&gt;</code> that can be <em>observed</em> e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes</p>
 </li>
-<li>
-<p>Does not depend on any of the other three components</p>
-</li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+ <code>Model</code> does not depend on any of the other three components
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>The following diagram (Fig. 9) illustrates the structure of this component:</p>
+<p><strong>Internals</strong><br>
+The following diagram (Fig. 9) illustrates the structure of this component:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -597,26 +656,28 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage Component</a></h3>
 <div class="paragraph">
 <p><strong>API</strong> :
 <span class="exref"><a href="https://github.com/CS2103JAN2018-F09-B3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></span></p>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component:</p>
+<p><strong>Responsibilities</strong><br>
+The <code>Storage</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Can save <code>UserPref</code> objects in JSON format and read it back</p>
+<p>Saves <code>UserPref</code> objects in JSON format or reads it back into the App</p>
 </li>
 <li>
-<p>Can save the CoinBook data in XML format and read it back</p>
+<p>Saves the CoinBook data in XML format or reads it back into the App</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following diagram (Fig. 10) illustrates the structure of this component:</p>
+<p><strong>Internals</strong><br>
+The following diagram (Fig. 10) illustrates the structure of this component:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -628,35 +689,40 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter describes some noteworthy details on how certain features are implemented. It is highly recommended to read the previous chapter on <a href="#design">Section 2, &#8220;Design&#8221;</a> first so that you have some picture of where these features fit in.</p>
+<p>This chapter describes some noteworthy details on how certain features and components have been implemented. It is highly recommended to read the previous chapter on <a href="#design">Section 3, &#8220;Design&#8221;</a> first so that you have some picture of where these features fit in.</p>
 </div>
 <div class="sect2">
-<h3 id="condition-parser-component"><a class="link" href="#condition-parser-component">3.1. Condition Parser Component</a></h3>
+<h3 id="condition-parser-component"><a class="link" href="#condition-parser-component">4.1. Condition Parser Component</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current implementation</a></h4>
 <div class="paragraph">
-<p>The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely
-the <code>ArgumentTokenizer</code>, <code>SyntaxParser</code>, <code>SemanticParser</code>, and a <code>ConditionGenerator</code>, while using classes such as <code>Condition</code>,
+<p>The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely <code>ArgumentTokenizer</code>, <code>SyntaxParser</code>, <code>SemanticParser</code>, and a <code>ConditionGenerator</code>, while using classes such as <code>Condition</code>,
 <code>Token</code>, <code>TokenType</code>, <code>TokenStack</code> to model the data that is to be operated on throughout the process. Their tasks are
 delegated as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ArgumentTokenizer</code> : Lexically analyzes the input string, then creates a list of tokens.</p>
+<p><code>ArgumentTokenizer</code> : Lexically analyzes the input string, then creates a list of tokens</p>
 </li>
 <li>
 <p><code>SyntaxParser</code> : Parses the input by matching the tokens versus a list of rules to ensure they fit the desired
-structure.</p>
+structure</p>
 </li>
 <li>
 <p><code>SemanticParser</code> : Parses the input by matching the tokens versus a list of rules to ensure their meaning is semantically valid</p>
 </li>
 <li>
 <p><code>ConditionGenerator</code> : Uses the list of tokens to create the equivalent lambda function to evaluate <code>Coin</code> objects against.</p>
+</li>
+<li>
+<p><code>Condition</code> : Serves as a wrapper/container for the boolean lambdas used to evaluate coins for filtering purposes.</p>
+</li>
+<li>
+<p><code>Token</code> : Serves as a container for the sectioned input strings.</p>
 </li>
 </ul>
 </div>
@@ -667,45 +733,129 @@ structure.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The distinction between the SyntaxParser and the Semantic Parser is that the syntax parser is oblivious as to what the
-input actually means, and only cares whether the structure is correct, whereas the semantic parser verifies the meaning behind the
-input. For example, <code>n/BTC AND OR p/&gt;500</code> would not even be valid syntatically, whereas <code>n/BTC or p/&gt;BTC</code> would be valid syntatically
+The distinction between the Syntax Parser and the Semantic Parser is that the former is oblivious as to what the
+input actually means, and only cares whether the structure is correct, whereas the latter verifies the meaning behind the
+input.<br>
+For example, <code>n/BTC AND OR p/&gt;500</code> is invalid syntatically, whereas <code>n/BTC or p/&gt;BTC</code> is valid syntatically
 but not semantically, since it would not make sense to search for <code>Coin</code> objects whose price attribute was more than
-"BTC" since a price cannot be compared to a name.
+"BTC" (prices cannot be compared to names).
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram will show how input arguments accompanying the <code>Find</code> command are parsed:</p>
+<p>The following sequence diagram (Fig. 11) will show how input arguments accompanying the <code>find</code> command are parsed:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/FindCommandSequence.png" alt="FindCommandSequence">
 </div>
-<div class="title">Figure 11. Sequence diagram describing how arguments are parsed</div>
+<div class="title">Figure 11. Sequence Diagram for Argument Parsing</div>
 </div>
 <div class="paragraph">
-<p>The <code>SyntaxParser</code>, <code>SemanticParser</code> and <code>ConditionGenerator</code> reside in a separate module that will be called by the
+<p>The <code>SyntaxParser</code>, <code>SemanticParser</code> and <code>ConditionGenerator</code> classes reside in a separate module that will be called by the
 <code>ParserUtil</code> class during the ParseCondition method.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram expands on the Parse Sequence block in the previous diagram.</p>
+<p>The following activity diagram (Fig. 12) expands on the Parse Sequence block in the previous diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ParserUtilSequence.png" alt="ParserUtilSequence">
+<img src="images/FindActivityDiagram.png" alt="FindActivityDiagram">
 </div>
-<div class="title">Figure 12. Sequence diagram describing the sequence of parser operations</div>
+<div class="title">Figure 12. Activity Diagram for Parser Operations</div>
 </div>
 <div class="paragraph">
 <p>The <code>Condition</code> object that is generated at the end is actually just a <code>Predicate</code> object that evaluates properties of
 the Coin objects and returns a true/false value.</p>
 </div>
-<div class="sect4">
-<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">Argument Tokenizing</a></h5>
+</div>
+<div class="sect3">
+<h4 id="error-handling"><a class="link" href="#error-handling">4.1.2. Error handling</a></h4>
 <div class="paragraph">
-<p>We will illustrate the flow of the tokenizing an example input:</p>
+<p>On syntactically and semantically invalid inputs, <code>ConditionParser</code> will retrieve the expected and actual type of
+<code>Token</code> that were not a match during the parsing phase from <code>TokenStack</code> and raise a <code>ParseException</code> before returning.</p>
+</div>
+<div class="paragraph">
+<p>In the event that strings intended to represent tags or numbers are not valid, an <code>IllegalValueException</code> instead,
+as per convention from <code>ParserUtil</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.1.3.1. Aspect: Specification of syntax</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have the structure of the methods reflect exactly the syntax.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Any subsequent changes can be easily made by having the code reflect the new syntax, since the syntax is apparent.</p>
+</li>
+<li>
+<p>Cons: It is more cumbersome to have to alter the code every time there is a change in syntax.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This requires no code change whenever the syntax has to be modified.</p>
+</li>
+<li>
+<p>Cons: The code to support this would be more complicated and not apparent to developers immediately.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.1.3.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have separate classes that have the same structure but with different return values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This approach maintains SRP.</p>
+</li>
+<li>
+<p>Cons: A change in syntax will require changes across 3 classes. It is also very redundant to have similar code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There will be less redundant code.</p>
+</li>
+<li>
+<p>Cons: This approach clearly violates SRP.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced-details"><a class="link" href="#advanced-details">4.1.4. Advanced details</a></h4>
+<div class="sect4">
+<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.1.4.1. Argument Tokenizing</a></h5>
+<div class="paragraph">
+<p>We will illustrate the flow of tokenizing an example input:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -717,28 +867,28 @@ the Coin objects and returns a true/false value.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>&gt; [n/,OPTION][BTC,STRING][ OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][&gt;,COMPARATOR][100,NUMBER][),RIGHTPAREN]</code></pre>
+<pre class="CodeRay highlight"><code>&gt; [n/,OPTION][BTC,STRING][OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][&gt;,COMPARATOR][100,NUMBER][),RIGHTPAREN]</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Notice how the whitespace has now been discarded, since it is not used for the purposes of parsing. Also each section of
-the input has now been grouped with a type.</p>
+the input (i.e. token) has now been grouped with a type.</p>
 </div>
 <div class="paragraph">
-<p>Below is a sequence diagram describing the behaviour of <code>ArgumentTokenizer</code> on the input:</p>
+<p>Below is a sequence diagram (Fig. 13) describing the behaviour of <code>ArgumentTokenizer</code> on the input:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Lexer.png" alt="Lexer">
 </div>
-<div class="title">Figure 13. Sequence diagram for the <code>ArgumentTokenizer</code> class</div>
+<div class="title">Figure 13. Sequence Diagram for the <code>ArgumentTokenizer</code> Class</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="syntax-parser"><a class="link" href="#syntax-parser">Syntax Parser</a></h5>
+<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.1.4.2. Syntax Parser</a></h5>
 <div class="paragraph">
 <p>Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
-This is done by matching the tokens off based on the following rules, expressed in Backus Naur form:</p>
+This is done by matching the tokens off based on the following rules, expressed in Backus-Naur form:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -753,123 +903,6 @@ This is done by matching the tokens off based on the following rules, expressed 
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Further details on how this is performed is delved into in the later <a href="#concept-of-parsing">section</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="semantic-parser"><a class="link" href="#semantic-parser">Semantic Parser</a></h5>
-<div class="paragraph">
-<p>Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
-type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
-This can be done by checking the corresponding option class versus the type of token that follows.</p>
-</div>
-<div class="paragraph">
-<p>Thus, the checks that are made are just to ensure every string type option is followed by a string and every number type
-option is followed by a number.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="condition-generator"><a class="link" href="#condition-generator">Condition Generator</a></h5>
-<div class="paragraph">
-<p>Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
-condition based on the binary operators encounters up the recursion tree.</p>
-</div>
-<div class="paragraph">
-<p>Further details on how this is performed is delved into at the later <a href="#generating-the-conditions">section</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="error-handling"><a class="link" href="#error-handling">3.1.2. Error handling</a></h4>
-<div class="paragraph">
-<p>On syntactically invalid inputs, the <code>ConditionParser</code> will retrieve the expected and actual type of Token that were not a math
-during the parsing phase from the <code>TokenStack</code> and raise an exception before returning.</p>
-</div>
-<div class="paragraph">
-<p>Below is the sequence diagram depicting the <code>ConditionParser</code> control flow when the <code>SyntaxParser</code> has identified an error in the input.
-Since the <code>SemanticParser</code> has similar structure, the sequence diagram would look very similar the the one below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/failSequence.png" alt="failSequence">
-</div>
-<div class="title">Figure 14. Sequence diagram for the <code>ConditionParser</code> class on erroneous inputs</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.3. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">Aspect: Specification of syntax</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Have the structure of the methods reflect exactly the syntax.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Since the syntax is apparent, any subsequent changes can be easily done by having the code reflect the new syntax.</p>
-</li>
-<li>
-<p>Cons: Cumbersome to have to alter the code every time there is a change in syntax.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Requires 0 code change whenever the syntax has to be modified.</p>
-</li>
-<li>
-<p>Cons: The code to support this would be very complicated and not apparent to developers immediately.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Have separate classes that have the same structure but with different return values.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Maintains SRP.</p>
-</li>
-<li>
-<p>Cons: A change in syntax requires change across 3 classes. It is also very redundant having similar code.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Removal of redundant code.</p>
-</li>
-<li>
-<p>Cons: Clearly violates SRP.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="advanced-details"><a class="link" href="#advanced-details">3.1.4. Advanced details</a></h4>
-<div class="sect4">
-<h5 id="concept-of-parsing"><a class="link" href="#concept-of-parsing">Concept of parsing</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>&gt; [n/,OPTION][BTC,STRING][ OR ,BINARYOP][(,LEFTPAREN][t/,OPTION][fav,STRING][AND,BINRARYOP][p/,OPTION][&gt;,COMPARATOR][100,NUMBER][),RIGHTPAREN]</code></pre>
@@ -966,17 +999,33 @@ For example, here is the implementation for <code>EXPRESSION</code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Visually we can represent it with the following parse tree, which also serves as the recursion tree:</p>
+<p>Visually we can represent sequence of matching with the following parse tree (Fig. 14), which also serves as the recursion tree:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/parsetree.png" alt="parsetree">
 </div>
-<div class="title">Figure 15. Parse and recursion tree for the example input</div>
+<div class="title">Figure 14. Parse and Recursion Tree for the Example Input</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="generating-the-conditions"><a class="link" href="#generating-the-conditions">Generating the Conditions</a></h5>
+<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.1.4.3. Semantic Parser</a></h5>
+<div class="paragraph">
+<p>Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
+type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
+This can be done by checking the corresponding option class versus the type of token that follows.</p>
+</div>
+<div class="paragraph">
+<p>Thus, the checks that are made are just to ensure every string type option is followed by a string and every number type
+option is followed by a number.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="condition-generator"><a class="link" href="#condition-generator">4.1.4.4. Condition Generator</a></h5>
+<div class="paragraph">
+<p>Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
+condition based on the binary operators encounters up the recursion tree.</p>
+</div>
 <div class="paragraph">
 <p>The final <code>Condition</code> object is actually just a composition of many individual <code>Condition</code> objects. This can be done
 as a back call at the end of each recursion tree.</p>
@@ -990,27 +1039,27 @@ as a back call at the end of each recursion tree.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>p/&gt;100</code> is a condition on price whereas the <code>t/fav</code> is a condition on tags, and they can be composed using the <code>Predicate</code>
+<p><code>p/&gt;100</code> is a condition on price whereas <code>t/fav</code> is a condition on tags, and they can be composed using the <code>Predicate</code>
 method <code>and()</code> to return a logical conjunction of the two conditions.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo Feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports the undoing and redoing of commands that modify the stored data (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Here is the inheritance diagram for commands (Fig. 11):</p>
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Here is the inheritance diagram for commands (Fig. 15):</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 16. Class Diagram for Logic</div>
+<div class="title">Figure 15. Class Diagram for Logic</div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the App data before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks, while the child classes implement the details for executing the specific command. This technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <span class="ext"><a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a></span>.</p>
@@ -1051,25 +1100,25 @@ method <code>and()</code> to return a logical conjunction of the two conditions.
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> is empty at the beginning.</p>
+<p>Suppose that the user has just launched the application. <code>UndoRedoStack</code> is empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th entry. The current state of the App data is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command). Fig. 12 below illustrates this.</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th entry. The current state of the App data is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto <code>undoStack</code> (the current state is saved together with the command). Fig. 16 below illustrates this.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
-<div class="title">Figure 17. Undo/Redo Stack Part 1</div>
+<div class="title">Figure 16. Undo/Redo Stack Part 1</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to issue more commands, they are added into the <code>undoStack</code>. For example, the user may execute <code>add BTC &#8230;&#8203;</code> to add a new coin, resulting in the below picture (Fig. 13):</p>
+<p>As the user continues to issue more commands, they are added into <code>undoStack</code>. For example, the user may execute <code>add n/BTC</code> to add a new coin, resulting in the below picture (Fig. 17):</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
-<div class="title">Figure 18. Undo/Redo Stack Part 2</div>
+<div class="title">Figure 17. Undo/Redo Stack Part 2</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1078,7 +1127,7 @@ method <code>and()</code> to return a logical conjunction of the two conditions.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not be pushed to the <code>UndoRedoStack</code> at all.
+If a command fails its execution, it will not be pushed to <code>UndoRedoStack</code> at all.
 </td>
 </tr>
 </table>
@@ -1087,13 +1136,13 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the coin was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it to the <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 14) illustrates the result:</p>
+<p>The <code>Logic</code> component will pop the most recent command out of <code>undoStack</code> and push it to <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 18) illustrates the result:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
-<div class="title">Figure 19. Undo/Redo Stack Part 3</div>
+<div class="title">Figure 18. Undo/Redo Stack Part 3</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1102,22 +1151,22 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>undoStack</code> is empty, i.e., there are no other commands left to be undone, an <code>Exception</code> will be thrown when trying to pop the <code>undoStack</code>.
+If <code>undoStack</code> is empty, i.e., there are no other commands left to be undone, an <code>Exception</code> will be thrown when trying to pop <code>undoStack</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The following sequence diagram (Fig. 19) shows how the undo operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 20. Sequence Diagram for Undo</div>
+<div class="title">Figure 19. Sequence Diagram for Undo</div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the data to the state after the command is executed).</p>
+<p>The <code>redo</code> command does the exact opposite (pops from <code>redoStack</code>, pushes to <code>undoStack</code>, and restores the data to the state after the command is executed).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1126,43 +1175,43 @@ If the <code>undoStack</code> is empty, i.e., there are no other commands left t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
+If <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when attempting to pop <code>redoStack</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. However, now the <code>redoStack</code> is not empty, and it will be purged as it no longer makes sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow). Refer to Fig. 16 below:</p>
+<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into <code>undoStack</code>. However, now that <code>redoStack</code> is not empty, it will be purged as it no longer makes sense to redo the <code>add n/BTC</code> command (this is the behavior that most modern desktop applications follow). Refer to Fig. 20 below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
-<div class="title">Figure 21. Undo/Redo Stack Part 4</div>
+<div class="title">Figure 20. Undo/Redo Stack Part 4</div>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution (Fig. 17):</p>
+<p>Commands that are not undoable are not added into <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution (Fig. 21):</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
 </div>
-<div class="title">Figure 22. Undo/Redo Stack Part 5</div>
+<div class="title">Figure 21. Undo/Redo Stack Part 5</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes the logic for <code>UndoRedoStack</code> when a user executes a new command:</p>
+<p>The following activity diagram (Fig. 22) summarizes the logic for <code>UndoRedoStack</code> when a user executes a new command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
-<div class="title">Figure 23. Activity Diagram for Undo/Redo</div>
+<div class="title">Figure 22. Activity Diagram for Undo/Redo</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
+<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">4.2.2.1. Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1170,20 +1219,21 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We will not lose any undo/redo functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
+<p>Pros: No undo/redo functionality is lost as it is now part of the default behaviour.<br>
+Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
 </li>
 <li>
-<p>Cons: Hard for new developers to understand the template pattern.</p>
+<p>Cons: It may be harder for new developers to understand the template pattern.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Just override <code>execute()</code></p>
+<p><strong>Alternative 2:</strong> Override <code>execute()</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Does not involve the template pattern, easier for new developers to understand.</p>
+<p>Pros: It is easier for new developers to understand as it does not involve the template pattern.</p>
 </li>
 <li>
 <p>Cons: Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
@@ -1195,31 +1245,31 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">4.2.2.2. Aspect: Execution of undo &amp; redo</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire state.</p>
+<p><strong>Alternative 1 (current choice):</strong> Save the entire state</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: It is much easier to implement.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: This may bring about performance issues in terms of memory usage.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual commands know how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Make each command implement specific undo/redo operations</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
+<p>Pros: This will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: It is crucial that the implementation of each individual command is correct.</p>
 </li>
 </ul>
 </div>
@@ -1228,31 +1278,32 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">Aspect: Type of commands that can be undone/redone</a></h5>
+<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">4.2.2.3. Aspect: Type of commands that can be undone/redone</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only include commands that modify the App data (e.g. <code>add</code>, <code>clear</code>, <code>edit</code>).</p>
+<p><strong>Alternative 1 (current choice):</strong> Include only commands that modify the App data (e.g. <code>add</code>, <code>clear</code>, <code>edit</code>)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We only revert changes that are hard to do manually (the view can easily be re-modified as no data is lost).</p>
+<p>Pros: Only changes that are hard to do manually can be reverted like this.<br>
+e.g. The view can easily be re-modified as no data is lost, so not undoable with <code>undo</code>.</p>
 </li>
 <li>
-<p>Cons: User might think that undo also applies when the list is modified (undoing filtering for example), only to realize otherwise after executing <code>undo</code>.</p>
+<p>Cons: The user might think that undo also applies when the list is modified (filtering for example), only to realize otherwise after executing <code>undo</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Include all commands.</p>
+<p><strong>Alternative 2:</strong> Include all commands</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Might be more intuitive for the user.</p>
+<p>Pros: This might be more intuitive for the user.</p>
 </li>
 <li>
-<p>Cons: User has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view.
+<p>Cons: The user has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view.<br>
 <strong>Additional Info:</strong> See the discussion  <span class="ext"><a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a></span>.</p>
 </li>
 </ul>
@@ -1262,7 +1313,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">4.2.2.4. Aspect: Data structure to support the undo/redo commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1270,23 +1321,24 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to our project.</p>
+<p>Pros: This implementation will be easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.</p>
+<p>Cons: It introduces duplicated logic. Whenever a new command is executed, both <code>HistoryManager</code> and <code>UndoRedoStack</code> must be updated separately.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for both undo/redo</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate stack, and just reuse what is already in the codebase.</p>
+<p>Pros: There will be no need to maintain a separate stack, by just reusing what is already in the codebase.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone; we must remember to skip these commands. This approach violates the Single Responsibility Principle and the Separation of Concerns Principle as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: We must remember to skip already undone commands.<br>
+This approach also violates the Single Responsibility Principle and the Separation of Concerns Principle as <code>HistoryManager</code> now needs to do two different things.</p>
 </li>
 </ul>
 </div>
@@ -1297,26 +1349,26 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-set-notifications"><a class="link" href="#user-set-notifications">3.3. User-Set Notifications</a></h3>
+<h3 id="user-set-notifications"><a class="link" href="#user-set-notifications">4.3. User-Set Notifications</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define, in this case, conditions to trigger notifications on. A <code>NotificationManager</code> also does the work of checking and generating notifications.</p>
+<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define, in this case, conditions to trigger notifications on. A <code>RuleChecker</code> in <code>Logic</code> also does the work of checking rules and executing the associated actions.</p>
 </div>
 <div class="paragraph">
 <p>Let us walk through the implementation of notifications by considering a typical scenario involving this feature. Suppose the user wants to keep track of a certain coin&#8217;s price, say <code>BTC</code>.</p>
 </div>
 <div class="paragraph">
-<p>The user adds a new notification using <code>NotifyCommand</code>, e.g. <code>notify BTC p/15000</code>, which sets a new notification to be triggered for when the price of <code>BTC</code> crosses $15000 (from either direction). The corresponding rule is added to the notification <code>RuleBook</code>.</p>
+<p>The user adds a new notification using <code>NotifyCommand</code>, e.g. <code>notify c/BTC p/&gt;15000</code>, which sets a new notification to be triggered for when the price of <code>BTC</code> crosses $15000. The corresponding rule is added to the <code>RuleBook</code>.</p>
 </div>
 <div class="paragraph">
-<p>Later on, the user may add other notifications. So now, there are a list of different rules stored in <em>CoinBook</em>. When the price data is synced with latest data from the web, whether from the regular update or triggered by the user with the <code>update</code> command, a <code>CoinChangedEvent</code> is sent out for each updated coin.</p>
+<p>Later on, the user may add other notifications. So now, there are a list of different rules stored in <em>CoinBook</em>. When the price data is synced with latest data from the web, whether from the regular update or triggered by the user with the <code>sync</code> command, a <code>CoinChangedEvent</code> is sent out for each updated coin.</p>
 </div>
 <div class="paragraph">
-<p><code>NotificationManager</code> catches these events, and checks against the notifications <code>RuleBook</code>. If any match, a notification pops up to alert the user.</p>
+<p><code>RuleChecker</code> catches these events, and checks against the <code>RuleBook</code>. If any match, the corresponding action is executed. Here, a notification pops up to alert the user.</p>
 </div>
 <div class="paragraph">
-<p>The diagram below (Fig. 20) summarises these interactions:</p>
+<p>The diagram below (Fig. 23a,23b) summarises these interactions:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1327,50 +1379,37 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="content">
 <img src="images/NotificationsSequenceDiagram2.png" alt="NotificationsSequenceDiagram2" width="800">
 </div>
-<div class="title">Figure 24. Sequence Diagram for Notifications</div>
+<div class="title">Figure 23. Sequence Diagram for Notifications</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-module-to-put-notification-handling-in"><a class="link" href="#aspect-module-to-put-notification-handling-in">Aspect: Module to put notification handling in</a></h5>
+<h5 id="aspect-implementation-of-rules"><a class="link" href="#aspect-implementation-of-rules">4.3.2.1. Aspect: Implementation of rules</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): Make a new package for notifications.</p>
+<p><strong>Alternative 1 (current choice):</strong> Make them generalized trigger-action pairs</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: All the notification handling can be encapsulated in its own component.</p>
+<p>Pros: Later extension is easy to make by simply defining new condition and command parsers along with associated input.</p>
 </li>
 <li>
-<p>Cons: Notification handling alone seems too narrow a scope for a top-level component.</p>
+<p>Cons: This design pattern (Strategy pattern) is more advanced and may be hard for new developers to understand. Code readability may also suffer.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2: Put it in <code>Commons</code>.</p>
+<p><strong>Alternative 2:</strong> Make only a single <code>NotificationRule</code> type</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No need to make a new module.</p>
+<p>Pros: This is quicker to implement as the behavious is hard-coded.</p>
 </li>
 <li>
-<p>Cons: Notifications is not an integral component and no other classes depend on it directly so it is not very appropriate to place it here.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 3: Put it in <code>Model</code> along with the implementation of <code>RuleBook</code> itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Rules management and notifications management in the same place which has better code readability.</p>
-</li>
-<li>
-<p>Cons: Violates Separation of Concerns and Single Responsibility Principles as <code>Model</code> then manages both data, and user interaction / platform features.</p>
+<p>Cons: It will be more difficult to extend rules to handle other events in the future.</p>
 </li>
 </ul>
 </div>
@@ -1384,39 +1423,38 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>RuleBook</code> is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc.<br>
-Later on, the <code>Notification</code> component may morph into a general "rules execution" component which manages different types of rules and performs their associated actions.
+<code>RuleBook</code> is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-which-kind-of-notification-to-use"><a class="link" href="#aspect-which-kind-of-notification-to-use">Aspect: Which kind of notification to use</a></h5>
+<h5 id="aspect-type-of-notification-to-use"><a class="link" href="#aspect-type-of-notification-to-use">4.3.2.2. Aspect: Type of notification to use</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1: Platform-side notifications, e.g. system tray.</p>
+<p><strong>Alternative 1:</strong> Use platform-side notifications, e.g. system tray</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User can integrate these into their own workflow, such as setting other programs to listen in on system notifications and forward them to their other device, generate emails, take actions, etc. User has some control over how notifications look and behave.</p>
+<p>Pros: The user can integrate these into their own workflow, such as setting other programs to listen in on system notifications and forward them to their other device, generate emails, take actions, etc. The user has some control over how notifications look and behave.</p>
 </li>
 <li>
-<p>Cons: May not work on every platform; heavily dependent on implementation of Java features. For example, some distributions of Linux may not include system trays.</p>
+<p>Cons: They may not work on every platform; they are heavily dependent on implementation of Java features. For example, some distributions of Linux may not include system trays.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2 (current choice): Application-side notifications.</p>
+<p><strong>Alternative 2 (current choice):</strong> Use application-side notifications.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Uses the same framework which displays the App window itself, so is guaranteed to work alongside the App.</p>
+<p>Pros: This will only require the same framework which displays the App window itself, so is guaranteed to work alongside the App.</p>
 </li>
 <li>
-<p>Cons: Less flexibility in customisation and availability of integration into user&#8217;s preferred workflow.</p>
+<p>Cons: There will be less flexibility in customisation and availability of integration into user&#8217;s preferred workflow.</p>
 </li>
 </ul>
 </div>
@@ -1425,33 +1463,33 @@ Later on, the <code>Notification</code> component may morph into a general "rule
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-undo-ability-of-code-notifycommand-code"><a class="link" href="#aspect-undo-ability-of-code-notifycommand-code">Aspect: Undo-ability of <code>NotifyCommand</code></a></h5>
+<h5 id="aspect-undo-ability-of-code-notifycommand-code"><a class="link" href="#aspect-undo-ability-of-code-notifycommand-code">4.3.2.3. Aspect: Undo-ability of <code>NotifyCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): Not an <code>UndoableCommand</code>.</p>
+<p><strong>Alternative 1 (current choice):</strong> Leave it non-undoable</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We can keep notification rule data separate from coin data. The basic functionality of <code>RuleBook</code> is implemented inside <code>Model</code> which deals with data, but the rules are instantiated only in the <code>Notifications</code> component itself. A rule manager window will be available for editing or deleting existing notifications.</p>
+<p>Pros: Notification rule data can be kept separate from coin data.<br>
+The basic functionality of <code>RuleBook</code> is implemented inside <code>Model</code> which deals with data, but the rules are instantiated only in the <code>Notifications</code> component itself. A rule manager window will be available for editing or deleting existing notifications.</p>
 </li>
 <li>
-<p>Cons: Not as intuitive as users have to manage coins and rules slightly differently.</p>
+<p>Cons: The UI will be less intuitive as users have to manage coins and rules in slightly different manners.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2: Undoable just like <code>add</code>, <code>edit</code>, etc.</p>
+<p><strong>Alternative 2:</strong> Make it an <code>UndoableCommand</code> just like <code>add</code>, <code>edit</code>, etc.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Intuitive, single interface for similar operations.</p>
+<p>Pros: This offers an intuitive, single interface for similar operations.</p>
 </li>
 <li>
-<p>Cons: Since the current implementation of <code>UndoableCommand</code> requires saving
-the state of <code>Model</code>, which is a wrapper for just the coin data, this would
-increase the coupling between the coin data and the rule data parts of <code>Model</code>. We want to keep <code>Model</code> as an interface for just the coin data itself.</p>
+<p>Cons: This would increase the coupling between the coin data and the rule data parts of <code>Model</code>, since the current implementation of <code>UndoableCommand</code> requires saving the state of <code>Model</code>, which is a wrapper for just the coin data.<br>
+We want to keep <code>Model</code> as an interface for just the coin data itself.</p>
 </li>
 </ul>
 </div>
@@ -1462,17 +1500,20 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Organisation"><a class="link" href="#Implementation-Organisation">3.4. Organisation Features</a></h3>
+<h3 id="Implementation-Organisation"><a class="link" href="#Implementation-Organisation">4.4. Organisation Features</a></h3>
 <div class="sect3">
-<h4 id="sorting"><a class="link" href="#sorting">3.4.1. Sorting</a></h4>
+<h4 id="sorting"><a class="link" href="#sorting">4.4.1. Sorting</a></h4>
 <div class="paragraph">
-<p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting of the coins when the unsorted coin list is passed into the sort method to arrange the coins in a manner that the user chooses.</p>
+<p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.</p>
 </div>
 <div class="paragraph">
 <p>The way <code>Collections.sort</code> works is that it takes the collection&#8217;s underlying array and calls its sort method to sort the actual elements. The sorting algorithm used by Java is Timsort.</p>
 </div>
 <div class="paragraph">
-<p>The method returns void because it sorts the collection in-place and thus it modifies the collection you give it as a parameter by sorting its elements. As a result, a sorted copy need not be returned, thus saving resources.</p>
+<p>This sorts the collection in-place, i.e., it modifies the given collection by sorting its elements directly. As a result, a sorted copy need not be made, saving resources.</p>
+</div>
+<div class="paragraph">
+<p>Following are some example sort procedures:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1484,23 +1525,23 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 <p>We can use <code>Comparator.comparingDouble()</code> for comparing double values. For <em>CoinBook</em>, we want to order our list of coins by value, from the highest to the lowest.</p>
 </li>
 <li>
-<p>We can use the <code>reversed</code> function on the <code>Comparator</code> to invert default, to arrange coins from lowest to highest instead.</p>
+<p>We can use the <code>reversed</code> function on <code>Comparator</code> to invert the default and arrange coins from lowest to highest instead.</p>
 </li>
 <li>
-<p><code>Double</code> is used because coin values have several decimal places and so using <code>comparingInt()</code> would not suffice.</p>
+<p><code>Double</code> is used because coin values have several decimal places and so the <code>comparingInt()</code> function would not suffice.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Sort by string field (coin code)</p>
+<p>Sort by string field (e.g. coin code)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If we want to sort our <code>CoinList</code> by coin code we can use <code>Comparator.comparing()</code> and pass a function that extracts the 3 letter coin code.</p>
+<p>If we want to sort our <code>CoinList</code> by coin code, we can use <code>Comparator.comparing()</code> and pass a function that extracts the 3 letter coin code.</p>
 </li>
 <li>
-<p>One does not have to pass any comparator for the list to be correctly sorted because the 3-letter coin code is a string and <code>String</code> implements the <code>Comparable</code> <em>interface</em>.</p>
+<p>We do not have to pass in any comparator for the list to be correctly sorted because the 3-letter coin code is a <code>String</code> which implements the <code>Comparable</code> <em>interface</em>, and hence guarantees its own implementation of the sort comparator.</p>
 </li>
 </ul>
 </div>
@@ -1509,48 +1550,48 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect3">
-<h4 id="grouping"><a class="link" href="#grouping">3.4.2. Grouping</a></h4>
+<h4 id="grouping"><a class="link" href="#grouping">4.4.2. Grouping</a></h4>
 <div class="paragraph">
-<p>We can use the <code>Collectors</code> class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.</p>
+<p>The group feature can use the <code>Collectors</code> class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.</p>
 </div>
 <div class="paragraph">
 <p>The <code>GroupingBy</code> method from the <code>Collectors</code> class is responsible for organising the coin data into groups. In this case the group is defined by the value of the coin. The <code>Collect</code> method from the <code>Stream</code> class accepts the <code>GroupingBy</code> method as its argument and returns a map containing the results. The results are then displayed.</p>
 </div>
 <div class="paragraph">
-<p>Using the <code>GroupingBy</code> collector from the <code>Collector</code> class, it takes a single parameter (classifier) that assigns a grouping key to every stream element.</p>
+<p>Using the <code>GroupingBy</code> collector from the <code>Collector</code> class, it takes a single parameter (or classifier) that assigns a grouping key to every stream element.</p>
 </div>
 <div class="paragraph">
-<p>By default, elements with the same key are inserted into <code>List&lt;T&gt;</code>, although this can be changed by specifying a second parameter to <code>GroupingBy</code>.</p>
+<p>By default, elements with the same key are inserted into a <code>List&lt;T&gt;</code>, although this can be changed by specifying a second parameter to <code>GroupingBy</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-sort"><a class="link" href="#aspect-implementation-of-sort">Aspect: Implementation of Sort</a></h5>
+<h5 id="aspect-implementation-of-sort-function"><a class="link" href="#aspect-implementation-of-sort-function">4.4.3.1. Aspect: Implementation of Sort function</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): Make use of <code>Collections.sort</code></p>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>Collections.sort</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: <code>String</code> implements <code>Comparable</code> interface so there is no need to pass any comparator for the coin list.</p>
+<p>Pros: There is no need to pass any comparator for the coin list since <code>String</code> already implements the <code>Comparable</code> interface.</p>
 </li>
 <li>
-<p>Cons: Developer needs to understand the relationship between array lists and collections.</p>
+<p>Cons: The developer needs to understand the relationship between array lists and collections.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2: Add a new sorting function (e.g. Selection Sort)</p>
+<p><strong>Alternative 2:</strong> Add a new sorting function (e.g. Selection Sort)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Possibly allows us to reduce the time required to execute the sorting command.</p>
+<p>Pros: This possibly allows us to reduce the time required to execute the sorting command.</p>
 </li>
 <li>
-<p>Cons: Need more time to incorporate it into the address book since we are not using Java’s in-built sorting method.</p>
+<p>Cons: This takes more time to incorporate into the App since we are not using Java’s in-built sorting method.</p>
 </li>
 </ul>
 </div>
@@ -1559,31 +1600,31 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-groups"><a class="link" href="#aspect-implementation-of-groups">Aspect: Implementation of Groups</a></h5>
+<h5 id="aspect-implementation-of-groups-function"><a class="link" href="#aspect-implementation-of-groups-function">4.4.3.2. Aspect: Implementation of Groups function</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): Make use of GroupingBy method</p>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>GroupingBy</code> method</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User has an additional option where he can view coins based on a specified attribute.</p>
+<p>Pros: The user has an additional option where he can view coins based on a specified attribute.</p>
 </li>
 <li>
-<p>Cons: Developer needs to understand the relationship between <code>Stream</code>, <code>ArrayList</code> and <code>Collector</code> classes.</p>
+<p>Cons: The developer needs to understand the relationship between <code>Stream</code>, <code>ArrayList</code> and <code>Collector</code> classes.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Alternative 2: Adding additional tags in lieu of grouping</p>
+<p><strong>Alternative 2:</strong> Add additional tags in lieu of grouping</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Codebase already has support for tags and so not a lot of changes will be required.</p>
+<p>Pros: The codebase already has support for tags and so not a lot of changes will be required.</p>
 </li>
 <li>
-<p>Cons: Unable to execute commands at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.</p>
+<p>Cons: Commands will not be executable at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.</p>
 </li>
 </ul>
 </div>
@@ -1594,7 +1635,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-autocomplete-feature"><a class="link" href="#proposed-autocomplete-feature">3.5. [Proposed] Autocomplete Feature</a></h3>
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.5. Autocomplete Feature</a></h3>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by a <code>RadixTree</code>, which resides inside <code>LogicManager</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
@@ -1609,7 +1650,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>find B</code></pre>
+<pre class="CodeRay highlight"><code>find c/B</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1617,7 +1658,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>find BTC</code></pre>
+<pre class="CodeRay highlight"><code>find c/BTC</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1625,7 +1666,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>find BCG</code></pre>
+<pre class="CodeRay highlight"><code>find c/BCG</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1633,40 +1674,40 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>find BCH</code></pre>
+<pre class="CodeRay highlight"><code>find c/BCH</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>At this point the user has found <code>BCH</code>, which is the coin that the user wanted to look up and can now <kbd>Enter</kbd> his command.</p>
+<p>At this point the user has found <code>BCH</code>, which is the coin that the user wanted to look up. The user can now press <kbd>Enter</kbd> to execute his command.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-which-fields-autocomplete-work-on"><a class="link" href="#aspect-which-fields-autocomplete-work-on">Aspect: Which fields autocomplete work on</a></h5>
+<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.5.1.1. Aspect: The fields which autocomplete works on</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only applicable for command parameters.</p>
+<p><strong>Alternative 1 (current choice):</strong> Apply only for command parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Less to implement.</p>
+<p>Pros: This reduces the implementation cost.</p>
 </li>
 <li>
-<p>Cons: May not satisfy every user.</p>
+<p>Cons: The reduced functionality may not satisfy every user.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Applicable for both command word and command parameters.</p>
+<p><strong>Alternative 2:</strong> Apply for both command word and command parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Slightly better user experience.</p>
+<p>Pros: User experience will be slightly improved over the alternative.</p>
 </li>
 <li>
-<p>Cons: Lower value to effort ratio to implement given that aliases are already implemented.</p>
+<p>Cons: This has a lower value to effort ratio to implement given that aliases are already implemented.</p>
 </li>
 </ul>
 </div>
@@ -1675,7 +1716,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">Aspect: Data structure to support the autocomplete feature</a></h5>
+<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">4.5.1.2. Aspect: Data structure to support the autocomplete feature</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1683,10 +1724,10 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to our project.</p>
+<p>Pros: This is easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.</p>
 </li>
 <li>
-<p>Cons: Implementation could be non-trivial.</p>
+<p>Cons: The implementation could be non-trivial.</p>
 </li>
 </ul>
 </div>
@@ -1696,10 +1737,10 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: This is much easier to implement.</p>
 </li>
 <li>
-<p>Cons: Inefficient, higher time complexity incurred.</p>
+<p>Cons: The solution will be inefficient, with a higher time complexity incurred.</p>
 </li>
 </ul>
 </div>
@@ -1710,45 +1751,38 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
 <div class="paragraph">
-<p>We are using the <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage logging levels and logging destinations.</p>
+<p>We are using the <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage <em>logging levels</em> and logging destinations.</p>
+</div>
+<div class="paragraph">
+<p>Log messages are categorized into four logging levels of varying importance:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p><code>SEVERE</code> : Indicates critical problems which may possibly cause the termination of the App</p>
 </li>
 <li>
-<p>The <code>Logger</code> for a class <code>Class</code> can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+<p><code>WARNING</code> : Indicates the App can continue running, but the user should take caution</p>
 </li>
 <li>
-<p>Currently, log messages are output through <code>Console</code> and written to a <code>.log</code> file</p>
+<p><code>INFO</code> : Indicates information regarding noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Indicates details that are not usually noteworthy but may be useful in debugging e.g. printing the list contents instead of just its size</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Logging Levels</strong></p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.7, &#8220;Configuration&#8221;</a>).</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the App</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information regarding noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that are not usually noteworthy but may be useful in debugging e.g. printing the list contents instead of just its size</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The <code>Logger</code> for a class <code>Class</code> can be obtained using <code>LogsCenter.getLogger(Class)</code>, which will log messages according to the specified logging level. Currently, log messages are output through <code>Console</code> as well as written to a <code>.log</code> file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file. By default, this is <code>config.json</code>.</p>
 </div>
@@ -1756,7 +1790,7 @@ increase the coupling between the coin data and the rule data parts of <code>Mod
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We use AsciiDoc for writing documentation.</p>
@@ -1774,20 +1808,20 @@ We chose AsciiDoc over Markdown because AsciiDoc, although a bit more complex th
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">5.1. Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <span class="exref"><a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a></span> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">5.2. Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <span class="exref"><a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a></span> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></h3>
 <div class="paragraph">
 <p>We use <span class="ext"><a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a></span> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1806,7 +1840,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>In Chrome&#8217;s menu, click on the <code>Print</code> option.</p>
 </li>
 <li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 25) below.</p>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 24) below.</p>
 </li>
 </ol>
 </div>
@@ -1814,26 +1848,25 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 25. Options for Saving Documentation as PDF Files in Chrome</div>
+<div class="title">Figure 24. Options for Saving Documentation as PDF Files in Chrome</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
+<h2 id="Testing"><a class="link" href="#Testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When developing new features it is always important to write tests so that you can verify whether the features are working as intended, alone or with one another. This chapter introduces the basics of testing.</p>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.1. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.1. Types of Tests</a></h3>
 <div class="paragraph">
 <p>We use two types of tests in <em>Coinbook</em>:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
+<div class="paragraph">
+<p><strong>Type 1: GUI Tests</strong> - These are tests involving the GUI. They include:</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1844,9 +1877,9 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </li>
 </ol>
 </div>
-</li>
-<li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
+<div class="paragraph">
+<p><strong>Type 2: Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1863,12 +1896,9 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ol>
 </div>
-</li>
-</ol>
-</div>
 </div>
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">5.2. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">6.2. Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests on your computer before sharing your changes to source control.</p>
 </div>
@@ -1881,9 +1911,15 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
 </li>
 <li>
-<p>To run a subset of tests, right-click on a test package, test class, or a test, e.g. <code>ABC</code>, and choose <code>Run 'ABC'</code></p>
+<p>To run a subset of tests, right-click on a test package, test class, or a test, e.g. <code>ABC</code>, and choose <code>Run 'ABC'</code> (see Fig. 25)</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RunningTests.png" alt="RunningTests">
+</div>
+<div class="title">Figure 25. Running Tests</div>
 </div>
 <div class="paragraph">
 <p><strong>Method 2: Using Gradle</strong></p>
@@ -1963,14 +1999,14 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<a href="#continuous-integration">Section 6.2, &#8220;Continuous Integration&#8221;</a> also automatically runs the tests specified with Gradle, but it is a good habit to test things on your own machine first.
+<a href="#continuous-integration">Section 7.2, &#8220;Continuous Integration&#8221;</a> also automatically runs the tests specified with Gradle, but it is a good habit to test things on your own machine first.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p>Here are some common problems you may face when trying to run tests locally.</p>
 </div>
@@ -1991,37 +2027,37 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect1">
-<h2 id="devops"><a class="link" href="#devops">6. DevOps</a></h2>
+<h2 id="devops"><a class="link" href="#devops">7. DevOps</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter introduces various systems we can put in place to unify the tasks of <em>development</em> and <em>operations</em>, or <em>DevOps</em> in short. We are mostly concerned with ways to reduce turnaround time through simple automation, and ways to manage the distribution of the completed App.</p>
 </div>
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>See <span class="exref"><a href="UsingGradle.html">UsingGradle.adoc</a></span> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <span class="ext"><a href="https://travis-ci.org/">Travis CI</a></span> and <span class="ext"><a href="https://www.appveyor.com/">AppVeyor</a></span> to perform <em>Continuous Integration</em> on our projects. See <span class="exref"><a href="UsingTravis.html">UsingTravis.adoc</a></span> and <span class="exref"><a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a></span> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">7.3. Coverage Reporting</a></h3>
 <div class="paragraph">
 <p>We use <span class="ext"><a href="https://coveralls.io/">Coveralls</a></span> to track the code coverage of our projects. See <span class="exref"><a href="UsingCoveralls.html">UsingCoveralls.adoc</a></span> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">7.4. Documentation Previews</a></h3>
 <div class="paragraph">
-<p>When a pull request has changes to AsciiDoc files, you can use <span class="ext"><a href="https://www.netlify.com/">Netlify</a></span> to see a preview of the HTML version of those AsciiDoc files when the pull request is merged. See <span class="exref"><a href="UsingNetlify.html">UsingNetlify.adoc</a></span> for more details.</p>
+<p>When a pull request contains changes to AsciiDoc files, you can use <span class="ext"><a href="https://www.netlify.com/">Netlify</a></span> to see a preview of the HTML version of those AsciiDoc files when the pull request is merged. See <span class="exref"><a href="UsingNetlify.html">UsingNetlify.adoc</a></span> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
+<h3 id="release-procedure"><a class="link" href="#release-procedure">7.5. Release Procedure</a></h3>
 <div class="paragraph">
 <p>Here are the steps to creating a new release.</p>
 </div>
@@ -2044,7 +2080,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
+<h3 id="dependency-management"><a class="link" href="#dependency-management">7.6. Dependency Management</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, <em>CoinBook</em> depends on the <span class="ext"><a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a></span> for XML parsing. Gradle can manage these <em>dependencies</em> for you by downloading the them automatically, instead of having to:<br></p>
 </div>
@@ -2075,7 +2111,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <p>has a need to manage a significant number of cryptocurrencies</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>prefers desktop apps over other types</p>
 </li>
 <li>
 <p>can type fast</p>
@@ -2143,9 +2179,6 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <ul>
 <li>
 <p>Major: Organization options. Sorting options and groups. This lets users switch between different contexts to fit in with their objectives at the moment, and helps them focus on only what is relevant.</p>
-</li>
-<li>
-<p>Minor: Various refactoring work.</p>
 </li>
 </ul>
 </div>
@@ -2255,47 +2288,47 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to import/export my data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">transfer it to other computers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have different color themes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">customise my program.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have multilingual support</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">understand the program better.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be able to import/export my data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">transfer it to other computers.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have a fixed interval backups, that can also be manually set</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ensure my data will not be lost.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">macro and write custom aliasing for commands</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">customize my experience.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">track price, market cap, and circulating supply from coinmarket</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get all my information in one place.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see <a href="#RSI">RSI</a>/<a href="#MACD">MACD</a> graphs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see <a href="#RSI">RSI</a> or <a href="#MACD">MACD</a> graphs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">analyse price trends for decision-making.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see Overbought/Oversold lines</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">do as above.</p></td>
@@ -2338,9 +2371,10 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>CoinBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is <code>CoinBook</code> and the <strong>Actor</strong> is the <code>User</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-coin-listings" class="discrete">Use case: Delete coin listings</h3>
+<div class="sect2">
+<h3 id="use-case-delete-coin-listings"><a class="link" href="#use-case-delete-coin-listings">C.1. Use case: Delete coin listings</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2377,8 +2411,9 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </li>
 </ul>
 </div>
+</div>
 <div class="sect2">
-<h3 id="use-case-export-storage-data"><a class="link" href="#use-case-export-storage-data">C.1. Use case: Export storage data</a></h3>
+<h3 id="use-case-export-storage-data"><a class="link" href="#use-case-export-storage-data">C.2. Use case: Export storage data</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2429,7 +2464,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-set-notifications"><a class="link" href="#use-case-set-notifications">C.2. Use case: Set notifications</a></h3>
+<h3 id="use-case-set-notifications"><a class="link" href="#use-case-set-notifications">C.3. Use case: Set notifications</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2447,14 +2482,14 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extension</strong></p>
+<p><strong>Extensions</strong></p>
 </div>
 <div class="ulist none">
 <ul class="none">
 <li>
 <p>2a. The condition argument was invalid.</p>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>2a1. CoinBook shows an error message.</p>
 <div class="paragraph">
@@ -2468,7 +2503,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-tag-items-for-group-commands"><a class="link" href="#use-case-tag-items-for-group-commands">C.3. Use case: Tag items for group commands</a></h3>
+<h3 id="use-case-tag-items-for-group-commands"><a class="link" href="#use-case-tag-items-for-group-commands">C.4. Use case: Tag items for group commands</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2484,25 +2519,25 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <p>User tags all the found using the <code>TagAll</code> command.</p>
 </li>
 <li>
-<p>The tags appear on all the coins in the CoinBook.</p>
+<p>CoinBook updates the tags on the coins and the list view.</p>
 </li>
 <li>
-<p>User then operates on all coins that were tagged. e.g. buy tag 50</p>
+<p>User then operates on all coins that were tagged. e.g. <code>buy tag 50</code></p>
 </li>
 <li>
-<p>CoinBook shows the changes to the User.</p>
+<p>CoinBook shows the result to the User.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extension</strong></p>
+<p><strong>Extensions</strong></p>
 </div>
 <div class="ulist none">
 <ul class="none">
 <li>
 <p>2a. The tag name was invalid.</p>
-<div class="ulist">
-<ul>
+<div class="ulist none">
+<ul class="none">
 <li>
 <p>2a1. CoinBook shows an error message.</p>
 <div class="paragraph">
@@ -2571,13 +2606,13 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <dd>
 <p>See <a href="#cryptocurrency">Cryptocurrency</a>.</p>
 </dd>
+<dt class="hdlist1"><a id="coupling"></a> Coupling</dt>
+<dd>
+<p>Two classes are coupled if a change in the implementation of one may necessitate a change in the other.</p>
+</dd>
 <dt class="hdlist1"><a id="cryptocurrency"></a> Cryptocurrency</dt>
 <dd>
 <p>Digital currency. Examples are: Bitcoin, Dogecoin, Etherium.</p>
-</dd>
-<dt class="hdlist1"><a id="cryptopanic"></a> Cryptopanic</dt>
-<dd>
-<p>An online news platform for cryptocurrencies.</p>
 </dd>
 <dt class="hdlist1"><a id="exponential-moving-average"></a> Exponential moving average</dt>
 <dd>
@@ -2638,7 +2673,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
+<h3 id="launching-and-shutting-down"><a class="link" href="#launching-and-shutting-down">F.1. Launching and Shutting Down</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2728,7 +2763,7 @@ Expected: The coin is removed from the list. The detail window should return to 
 </li>
 <li>
 <p>Navigate to the location of the data file, <code>data/coinbook.xml</code>, and rename or delete it.<br>
-Expected:</p>
+Expected: The coin list in App memory remains the same, and a new data file is created upon the next command that modifies it.</p>
 </li>
 </ol>
 </div>
@@ -2738,7 +2773,14 @@ Expected:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Copy</p>
+<p>Download <em>CoinBook</em> to the new computer.</p>
+</li>
+<li>
+<p>Copy the <code>data/</code> folder in the old installation to the new installation folder.</p>
+</li>
+<li>
+<p>Launch the App as in F.1.1.<br>
+Expected: All data from the old installation should be preserved and appear in the listing when the App is launched.</p>
 </li>
 </ol>
 </div>
@@ -2751,7 +2793,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 18:18:00 UTC
+Last updated 2018-04-12 19:07:20 UTC
 </div>
 </div>
 </body>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Untitled</title>
+<link rel="stylesheet" href="./gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="openblock uml">
+<div class="title">Sequence Diagram for Notifications</div>
+<div class="content">
+<div class="paragraph">
+<p>hide footbox</p>
+</div>
+<div class="paragraph">
+<p>skinparam shadowing false
+skinparam sequence {
+  ActorBackgroundColor #DDDDDD
+  ActorBorderColor black
+  ArrowColor black
+  ParticipantFontColor white
+  ParticipantFontSize 16
+  ParticipantFontStyle bold
+  ParticipantBorderThickness 0
+  LifeLineBorderColor black
+  defaultFontName Calibri
+}</p>
+</div>
+<div class="paragraph">
+<p>participant ":LogicManager" as LM #0070C0
+participant "s:SyncCommand" as U #0070C0
+participant ":ModelManager" as M #7030A0
+participant ":EventsCenter" as E #31859C
+participant ":RuleChecker" as N #0070C0</p>
+</div>
+<div class="paragraph">
+<p>[&#8594; LM : execute("sync")
+activate LM #0070C0
+LM -[#0070C0]&gt;] : parseCommand("sync")
+LM &#8592;[#0070C0]-] : s</p>
+</div>
+<div class="paragraph">
+<p>LM -[#0070C0]&gt; U : execute()
+activate U #0070C0
+U -[#0070C0]&gt;] : fetch data
+U &#8592;-] : data</p>
+</div>
+<div class="paragraph">
+<p>U -[#0070C0]&gt; M : updateAll(data)
+activate M #7030A0
+M -[#7030A0]&gt; E : post(CoinChangedEvent)
+activate E #31859C
+E -[#31859C]&gt; N : handleCoinChangedEvent()
+activate N #0070C0
+N -[#0070C0]&gt; N : Check &amp; trigger\nnotifications
+activate N #0070C0
+N -[#0070C0]&#8594; N
+deactivate N
+E &#8592;[#0070C0]- N
+deactivate N
+M &#8592;[#31859C]- E
+deactivate E
+U &#8592;[#7030A0]- M
+deactivate M</p>
+</div>
+<div class="paragraph">
+<p>LM &#8592;[#0070C0]- U : result
+deactivate U
+[&#8592;[#0070C0]- LM : result
+deactivate LM
+destroy U</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 19:07:20 UTC
+</div>
+</div>
+</body>
+</html>
