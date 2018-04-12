@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
 import static seedu.address.storage.XmlAdaptedCoin.MISSING_FIELD_MESSAGE_FORMAT;
-import static seedu.address.testutil.TypicalCoins.BENSON;
+import static seedu.address.testutil.TypicalCoins.BTC;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ public class XmlAdaptedCoinTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_NAME = BENSON.getCode().toString();
-    private static final List<XmlAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
+    private static final String VALID_NAME = BTC.getCode().toString();
+    private static final List<XmlAdaptedTag> VALID_TAGS = BTC.getTags().stream()
             .map(XmlAdaptedTag::new)
             .collect(Collectors.toList());
 
     @Test
     public void toModelType_validCoinDetails_returnsCoin() throws Exception {
-        XmlAdaptedCoin coin = new XmlAdaptedCoin(BENSON);
-        assertEquals(BENSON, coin.toModelType());
+        XmlAdaptedCoin coin = new XmlAdaptedCoin(BTC);
+        assertEquals(BTC, coin.toModelType());
     }
 
     @Test
