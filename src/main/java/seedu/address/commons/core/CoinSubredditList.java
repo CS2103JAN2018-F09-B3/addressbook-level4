@@ -3,6 +3,9 @@ package seedu.address.commons.core;
 import static seedu.address.commons.util.FetchUtil.parseFileToJsonObj;
 
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +13,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import seedu.address.MainApp;
 import seedu.address.model.coin.Coin;
 
 /**
@@ -19,7 +23,7 @@ import seedu.address.model.coin.Coin;
 public class CoinSubredditList {
 
     private static final Map<String, String> COIN_CODE_TO_SUBREDDIT_MAP = new HashMap<>();
-    private static final String COIN_CODE_TO_SUBREDDIT_FILEPATH = "data/CoinCodeToSubreddit.json";
+    private static final String COIN_CODE_TO_SUBREDDIT_FILEPATH = "/coins/CoinCodeToSubreddit.json";
     private static final String REDDIT_URL = "https://www.reddit.com/r/";
 
     public static boolean isRecognized(Coin coin) {
@@ -39,8 +43,9 @@ public class CoinSubredditList {
      * Initialises the CoinToSubredditList to store existing Coin subreddits
      * @throws FileNotFoundException if the file missing
      */
-    public static void initialize() throws FileNotFoundException {
-        JsonArray jsonArray = parseFileToJsonObj(COIN_CODE_TO_SUBREDDIT_FILEPATH);
+    public static void initialize() throws FileNotFoundException, URISyntaxException {
+        InputStreamReader fileReader = new InputStreamReader(getCoinCodeToSubredditFilepath());
+        JsonArray jsonArray = parseFileToJsonObj(fileReader);
         JsonElement codeString;
         JsonElement subredditName;
 
@@ -53,5 +58,9 @@ public class CoinSubredditList {
             }
             COIN_CODE_TO_SUBREDDIT_MAP.put(codeString.getAsString(), subredditName.getAsString());
         }
+    }
+
+    private static InputStream getCoinCodeToSubredditFilepath() throws URISyntaxException {
+        return MainApp.class.getResourceAsStream(COIN_CODE_TO_SUBREDDIT_FILEPATH);
     }
 }

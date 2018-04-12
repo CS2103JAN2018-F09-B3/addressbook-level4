@@ -4,9 +4,8 @@ package seedu.address.commons.util;
 
 import static org.asynchttpclient.Dsl.asyncHttpClient;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -108,17 +107,17 @@ public class FetchUtil {
 
     /**
      * Parses a file at {@code filepath} as an array of JsonObjects
-     * @param filepath cannot be null
+     * @param fw cannot be null
      * @return JsonArray that is contained in the file at {@code filepath}
      */
-    public static JsonArray parseFileToJsonObj(String filepath) throws FileNotFoundException {
-        FileReader fw = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(fw);
+    public static JsonArray parseFileToJsonObj(InputStreamReader fw) throws FileNotFoundException {
+        //FileReader fw = new FileReader(filepath);
+        //BufferedReader br = new BufferedReader(fw);
 
         JsonObject jsonObject;
 
         JsonParser parser = new JsonParser();
-        JsonElement jsonElement = parser.parse(br);
+        JsonElement jsonElement = parser.parse(fw);
         return jsonElement.getAsJsonArray();
     }
 }
