@@ -15,8 +15,8 @@ import seedu.address.model.coin.Code;
 import seedu.address.testutil.Assert;
 
 public class XmlAdaptedCoinTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_NAME = "B@TC";
+    private static final String INVALID_TAG = "#fav";
 
     private static final String VALID_NAME = BTC.getCode().toString();
     private static final List<XmlAdaptedTag> VALID_TAGS = BTC.getTags().stream()
