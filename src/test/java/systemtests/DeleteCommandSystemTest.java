@@ -59,13 +59,13 @@ public class DeleteCommandSystemTest extends CoinBookSystemTest {
 
         /* ------------------ Performing delete operation while a filtered list is being shown ---------------------- */
 
-        /* Case: filtered person list, delete index within bounds of address book and person list -> deleted */
+        /* Case: filtered person list, delete index within bounds of coin book and person list -> deleted */
         showCoinsWithName(KEYWORD_MATCHING_BTC);
         Index index = INDEX_FIRST_COIN;
         assertTrue(index.getZeroBased() < getModel().getFilteredCoinList().size());
         assertCommandSuccess(index);
 
-        /* Case: filtered person list, delete index within bounds of address book but out of bounds of person list
+        /* Case: filtered person list, delete index within bounds of coin book but out of bounds of person list
          * -> rejected
          */
         showCoinsWithName(KEYWORD_MATCHING_BTC);

@@ -26,7 +26,7 @@ public class FindCommandSystemTest extends CoinBookSystemTest {
 
     @Test
     public void find() {
-        /* Case: find multiple persons in address book, command with leading spaces and trailing spaces
+        /* Case: find multiple persons in coin book, command with leading spaces and trailing spaces
          * -> 2 persons found
          */
         String command = "   " + FindCommand.COMMAND_WORD + " " + PREFIX_CODE + "LI";
@@ -48,26 +48,26 @@ public class FindCommandSystemTest extends CoinBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find multiple persons in address book, 2 keywords -> 2 persons found */
+        /* Case: find multiple persons in coin book, 2 keywords -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + BTCZ.getCode() + " OR "
                 + PREFIX_CODE + DADI.getCode();
         ModelHelper.setFilteredList(expectedModel, BTCZ, DADI);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find multiple persons in address book, 2 keywords in reversed order -> 2 persons found */
+        /* Case: find multiple persons in coin book, 2 keywords in reversed order -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + DADI.getCode() + " OR "
                 + PREFIX_CODE + BTCZ.getCode();
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find multiple persons in address book, 2 keywords with 1 repeat -> 2 persons found */
+        /* Case: find multiple persons in coin book, 2 keywords with 1 repeat -> 2 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + DADI.getCode() + " OR "
                 + PREFIX_CODE + BTCZ.getCode();
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find multiple persons in address book, 2 matching keywords and 1 non-matching keyword
+        /* Case: find multiple persons in coin book, 2 matching keywords and 1 non-matching keyword
          * -> 2 persons found
          */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + DADI.getCode() + " OR "
@@ -85,7 +85,7 @@ public class FindCommandSystemTest extends CoinBookSystemTest {
         expectedResultMessage = RedoCommand.MESSAGE_FAILURE;
         assertCommandFailure(command, expectedResultMessage);
 
-        /* Case: find same persons in address book after deleting 1 of them -> 1 person found */
+        /* Case: find same persons in coin book after deleting 1 of them -> 1 person found */
         executeCommand(DeleteCommand.COMMAND_WORD + " 1");
         assertFalse(getModel().getCoinBook().getCoinList().contains(BTCZ));
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + DADI.getCode() + " OR "
@@ -95,24 +95,24 @@ public class FindCommandSystemTest extends CoinBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person in address book, keyword is same as name but of different case -> 1 person found */
+        /* Case: find person in coin book, keyword is same as name but of different case -> 1 person found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + " daDI";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person in address book, keyword is substring of name -> 1 persons found */
+        /* Case: find person in coin book, keyword is substring of name -> 1 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + " da";
         ModelHelper.setFilteredList(expectedModel, DADI);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person not in address book -> 0 persons found */
+        /* Case: find person not in coin book -> 0 persons found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE  + " NONEXISTENTCODE";
         ModelHelper.setFilteredList(expectedModel);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find tags of person in address book -> 0 persons found */
+        /* Case: find tags of person in coin book -> 0 persons found */
         List<Tag> tags = new ArrayList<>(BTCZ.getTags());
         command = FindCommand.COMMAND_WORD + " " + PREFIX_TAG + tags.get(tags.size() - 1).tagName;
         ModelHelper.setFilteredList(expectedModel, BTCZ);
@@ -128,7 +128,7 @@ public class FindCommandSystemTest extends CoinBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardDeselected();
 
-        /* Case: find person in empty address book -> 0 persons found */
+        /* Case: find person in empty coin book -> 0 persons found */
         deleteAllCoins();
         command = FindCommand.COMMAND_WORD + " " + PREFIX_CODE + KEYWORD_MATCHING_BTC;
         expectedModel = getModel();
