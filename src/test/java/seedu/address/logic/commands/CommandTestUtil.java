@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.google.gson.JsonObject;
-
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
