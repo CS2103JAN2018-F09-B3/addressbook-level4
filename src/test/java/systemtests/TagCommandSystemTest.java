@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.TokenType.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_COINS;
 import static seedu.address.testutil.TypicalCoins.ALIS;
 import static seedu.address.testutil.TypicalCoins.BOS;
+import static seedu.address.testutil.TypicalCoins.KEYWORD_MATCHING_BTC;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COIN;
 
 import org.junit.Test;
@@ -72,9 +73,9 @@ public class TagCommandSystemTest extends CoinBookSystemTest {
         editedCoin = new CoinBuilder(coinToEdit).withTags().build();
         assertCommandSuccess(command, index, editedCoin);
 
-        /* ------------------ Performing edit operation while a filtered list is being shown ------------------------
+        /* ------------------ Performing edit operation while a filtered list is being shown ------------------------ */
 
-        /* Case: filtered coin list, edit index within bounds of address book and coin list -> edited
+        /* Case: filtered coin list, edit index within bounds of coin book and coin list -> edited */
         showCoinsWithName(KEYWORD_MATCHING_BTC);
         index = INDEX_FIRST_COIN;
         assertTrue(index.getZeroBased() < getModel().getFilteredCoinList().size());
@@ -83,8 +84,9 @@ public class TagCommandSystemTest extends CoinBookSystemTest {
         editedCoin = new CoinBuilder(coinToEdit).withTags(VALID_TAG_FAV).build();
         assertCommandSuccess(command, index, editedCoin);
 
-        /* Case: filtered coin list, edit index within bounds of address book but out of bounds of coin list
+        /* Case: filtered coin list, edit index within bounds of coin book but out of bounds of coin list
          * -> rejected
+         */
 
         showCoinsWithName(KEYWORD_MATCHING_BTC);
         int invalidIndex = getModel().getCoinBook().getCoinList().size();
@@ -115,7 +117,7 @@ public class TagCommandSystemTest extends CoinBookSystemTest {
                 String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, TagCommand.MESSAGE_USAGE));
 
         /* Case: invalid index (size + 1) -> rejected */
-        int invalidIndex = getModel().getFilteredCoinList().size() + 1;
+        invalidIndex = getModel().getFilteredCoinList().size() + 1;
         assertCommandFailure(TagCommand.COMMAND_WORD + " " + invalidIndex + TAG_DESC_FAV,
                 Messages.MESSAGE_INVALID_COMMAND_TARGET);
 
