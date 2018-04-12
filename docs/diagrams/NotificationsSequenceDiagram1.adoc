@@ -22,12 +22,12 @@ skinparam sequence {
 participant ":LogicManager" as LM
 participant ":CoinBookParser" as A
 participant "n:NotifyCommand" as N
-participant ":NotificationManager" as M #31859C
+participant ":RuleChecker" as M
 
-[-> LM : execute("notify BTC p/15000")
+[-> LM : execute("notify c/BTC p/=15000")
 activate LM
 
-LM -> A : parseCommand("notify BTC p/15000")
+LM -> A : parseCommand("notify c/BTC p/=15000")
 activate A
 
 ref over A : parse command
@@ -37,8 +37,8 @@ deactivate A
 LM -> N : execute()
 activate N
 N -> M : addNotificationRule
-activate M #31859C
-N <-[#31859C]- M
+activate M
+N <-- M
 deactivate M
 
 LM <-- N : result

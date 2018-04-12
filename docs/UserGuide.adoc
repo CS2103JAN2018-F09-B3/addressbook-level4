@@ -319,9 +319,10 @@ Updates the listing to show only coin accounts whose details satisfy the given c
 ** `s/AMOUNT`: Total amount, in dollars, ever sold from the account
 ** `m/MADE`: Total profit, in dollars, made from this account so far
 ** `w/WORTH`: How much, in dollars, the current amount held is worth at the current price
-* You can put `>` or `<` to specify amounts greater or less than, for example:
-** `p/>500`: Current price exceeding 500
-** `s/<20`: Total amount sold less than 20
+* To specify amounts, put '=', `>`, or `<` to specify amounts equal to, greater, or less than; for example:
+** `m/=90` : Profit made is exactly $90
+** `p/>500`: Current price exceeding $500
+** `s/<20`: Total amount sold less than $20
 * Possible logical operators include:
 ** `AND`: The conditions on both sides need to be matched
 ** `OR`: Only one of the conditions on either side need to be matched
@@ -347,14 +348,13 @@ Finds accounts either with current price more than $500 and tagged `fav`, or wit
 
 .Format
 ----
-notify [TARGET] CONDITION
+notify CONDITION
 ----
 
 Sets a condition that triggers a popup notification whenever the condition matches the new data for a coin after a price update. The condition query mostly follows the same format as that used in <<find,find>>, with the following additional options:
 
 .Notification Options Format
 ****
-* If no target is specified, all accounts will be checked for the given condition
 * You can put `+` or `-` before specifying an amount to indicate a change in the property specified instead of its absolute value, for example:
 ** `p/+1000`: Current price rose $1000
 ** `p/pass:[-]>500`: Current price fell more than $500
@@ -367,19 +367,14 @@ notify h/>0
 Notify when the amount held in an account is more than 0 after the update. This always triggers and hence is useless on its own, but can be combined with other conditions to restrict notifications to a smaller set of accounts
 
 ----
-notify 1 w/>50
+notify c/BTC w/=50
 ----
-Notify when the amount worth in dollars of the first entry exceeds $50
+Notify when the amount worth in dollars of the `BTC` account is $50
 
 ----
-notify 3 w/+>1000
+notify w/+>1000 c/ETH
 ----
-Notify when the amount worth in dollars of the third entry rises by more than $1000
-
-----
-notify p/->10%
-----
-Notify when any coin's price falls more than 10%
+Notify when the amount worth in dollars of the `ETH` account rises by more than $1000
 
 === Change listing order `order` | `o` `[Coming in v1.5]`
 
@@ -546,7 +541,7 @@ Subsequent kbd:[Tab] key presses will cycle through the list of suggestions.
 | *Help* | `help` | Displays the help page.
 | *History* | `history` | Shows the user a history of previously input commands.
 | *List* | `list` | Lists all coin accounts.
-| *Notify* | `notify [TARGET] CONDITION` | Sets a notification for when the CONDITION has been met.
+| *Notify* | `notify CONDITION` | Sets a notification for when the CONDITION has been met.
 | *Order* | `order OPTION/{a,d}...` | Sorts the coin accounts based on their OPTION.
 | *Redo* | `redo` | Reapplies the previously un-done command.
 | *Sell* | `sell TARGET a/AMOUNT` | Subtracts AMOUNT of coin from the targeted account.

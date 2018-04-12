@@ -18,16 +18,16 @@ skinparam sequence {
 }
 
 participant ":LogicManager" as LM #0070C0
-participant "u:UpdateCommand" as U #0070C0
+participant "s:SyncCommand" as U #0070C0
 participant ":ModelManager" as M #7030A0
 participant ":EventsCenter" as E #31859C
-participant ":NotificationManager" as N #31859C
+participant ":RuleChecker" as N #0070C0
 
 
-[-> LM : execute("update")
+[-> LM : execute("sync")
 activate LM #0070C0
-LM -[#0070C0]>] : parseCommand("update")
-LM <-[#0070C0]-] : u
+LM -[#0070C0]>] : parseCommand("sync")
+LM <-[#0070C0]-] : s
 
 LM -[#0070C0]> U : execute()
 activate U #0070C0
@@ -39,12 +39,12 @@ activate M #7030A0
 M -[#7030A0]> E : post(CoinChangedEvent)
 activate E #31859C
 E -[#31859C]> N : handleCoinChangedEvent()
-activate N #31859C
-N -[#31859C]> N : Check & trigger\nnotifications
-activate N #31859C
-N -[#31859C]-> N
+activate N #0070C0
+N -[#0070C0]> N : Check & trigger\nnotifications
+activate N #0070C0
+N -[#0070C0]-> N
 deactivate N
-E <-[#31859C]- N
+E <-[#0070C0]- N
 deactivate N
 M <-[#31859C]- E
 deactivate E

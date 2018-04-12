@@ -606,15 +606,15 @@ This approach also violates the Single Responsibility Principle and the Separati
 
 ==== Current Implementation
 
-The notification system is facilitated by a `RuleBook`, which is located with the `Model` component as part of the App data. `RuleBook` holds a set of rules which define, in this case, conditions to trigger notifications on. A `NotificationManager` also does the work of checking and generating notifications.
+The notification system is facilitated by a `RuleBook`, which is located with the `Model` component as part of the App data. `RuleBook` holds a set of rules which define, in this case, conditions to trigger notifications on. A `RuleChecker` in `Logic` also does the work of checking rules and executing the associated actions.
 
 Let us walk through the implementation of notifications by considering a typical scenario involving this feature. Suppose the user wants to keep track of a certain coin's price, say `BTC`.
 
-The user adds a new notification using `NotifyCommand`, e.g. `notify BTC p/15000`, which sets a new notification to be triggered for when the price of `BTC` crosses $15000 (from either direction). The corresponding rule is added to the notification `RuleBook`.
+The user adds a new notification using `NotifyCommand`, e.g. `notify c/BTC p/>15000`, which sets a new notification to be triggered for when the price of `BTC` crosses $15000. The corresponding rule is added to the `RuleBook`.
 
-Later on, the user may add other notifications. So now, there are a list of different rules stored in _CoinBook_. When the price data is synced with latest data from the web, whether from the regular update or triggered by the user with the `update` command, a `CoinChangedEvent` is sent out for each updated coin.
+Later on, the user may add other notifications. So now, there are a list of different rules stored in _CoinBook_. When the price data is synced with latest data from the web, whether from the regular update or triggered by the user with the `sync` command, a `CoinChangedEvent` is sent out for each updated coin.
 
-`NotificationManager` catches these events, and checks against the notifications `RuleBook`. If any match, a notification pops up to alert the user.
+`RuleChecker` catches these events, and checks against the `RuleBook`. If any match, the corresponding action is executed. Here, a notification pops up to alert the user.
 
 The diagram below (Fig. 23a,23b) summarises these interactions:
 
@@ -624,12 +624,18 @@ image::NotificationsSequenceDiagram2.png[width="800"]
 
 ==== Design Considerations
 
-===== Aspect: Module to put notification handling in
+===== Aspect: Implementation of rules
 
+* **Alternative 1 (current choice):** Make them generalized trigger-action pairs
+** Pros: Later extension is easy to make by simply defining new condition and command parsers along with associated input.
+** Cons: This design pattern (Strategy pattern) is more advanced and may be hard for new developers to understand. Code readability may also suffer.
+
+* **Alternative 2:** Make only a single `NotificationRule` type
+** Pros: This is quicker to implement as the behavious is hard-coded.
+** Cons: It will be more difficult to extend rules to handle other events in the future.
 
 [TIP]
-`RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc. +
-Later on, the `Notification` component may morph into a general "rules execution" component which manages different types of rules and performs their associated actions.
+`RuleBook` is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc.
 
 ===== Aspect: Type of notification to use
 
@@ -974,7 +980,6 @@ A project often depends on third-party libraries. For example, _CoinBook_ depend
 *Neil Mehta*
 
 * Major: Organization options. Sorting options and groups. This lets users switch between different contexts to fit in with their objectives at the moment, and helps them focus on only what is relevant.
-* Minor: Various refactoring work.
 
 [appendix]
 == User Stories
