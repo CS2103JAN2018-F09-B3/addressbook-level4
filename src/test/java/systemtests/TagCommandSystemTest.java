@@ -75,7 +75,7 @@ public class TagCommandSystemTest extends CoinBookSystemTest {
         /* ------------------ Performing edit operation while a filtered list is being shown ------------------------
 
         /* Case: filtered coin list, edit index within bounds of address book and coin list -> edited
-        showCoinsWithName(KEYWORD_MATCHING_MEIER);
+        showCoinsWithName(KEYWORD_MATCHING_BTC);
         index = INDEX_FIRST_COIN;
         assertTrue(index.getZeroBased() < getModel().getFilteredCoinList().size());
         command = TagCommand.COMMAND_WORD + " " + index.getOneBased() + " " + TAG_DESC_FAV;
@@ -86,7 +86,7 @@ public class TagCommandSystemTest extends CoinBookSystemTest {
         /* Case: filtered coin list, edit index within bounds of address book but out of bounds of coin list
          * -> rejected
 
-        showCoinsWithName(KEYWORD_MATCHING_MEIER);
+        showCoinsWithName(KEYWORD_MATCHING_BTC);
         int invalidIndex = getModel().getCoinBook().getCoinList().size();
         assertCommandFailure(TagCommand.COMMAND_WORD + " " + invalidIndex + TAG_DESC_FAV,
                 Messages.MESSAGE_INVALID_COMMAND_TARGET);

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_COINS;
 import static seedu.address.testutil.TypicalCoins.ALIS;
-import static seedu.address.testutil.TypicalCoins.BTC;
+import static seedu.address.testutil.TypicalCoins.BTCZ;
 
 import java.util.Arrays;
 
@@ -28,7 +28,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        CoinBook addressBook = new CoinBookBuilder().withCoin(ALIS).withCoin(BTC).build();
+        CoinBook addressBook = new CoinBookBuilder().withCoin(ALIS).withCoin(BTCZ).build();
         CoinBook differentCoinBook = new CoinBook();
         UserPrefs userPrefs = new UserPrefs();
 

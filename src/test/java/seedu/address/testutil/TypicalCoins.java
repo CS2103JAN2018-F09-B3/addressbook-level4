@@ -20,7 +20,7 @@ public class TypicalCoins {
 
     public static final Coin ALIS = new CoinBuilder().withName("ALIS")
             .withTags("favs").build();
-    public static final Coin BTC = new CoinBuilder().withName("BTC")
+    public static final Coin BTCZ = new CoinBuilder().withName("BTCZ")
             .withTags("common", "fav").build();
     public static final Coin CAS = new CoinBuilder().withName("CAS").build();
     public static final Coin DADI = new CoinBuilder().withName("DADI").build();
@@ -39,7 +39,7 @@ public class TypicalCoins {
             .withTags(VALID_TAG_HOT, VALID_TAG_FAV)
             .build();
 
-    public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
+    public static final String KEYWORD_MATCHING_BTC = "BT"; // A keyword that matches MEIER
 
     private TypicalCoins() {} // prevents instantiation
 
@@ -59,6 +59,6 @@ public class TypicalCoins {
     }
 
     public static List<Coin> getTypicalCoins() {
-        return new ArrayList<>(Arrays.asList(ALIS, BTC, CAS, DADI, ELIX, FIRE, GEO));
+        return new ArrayList<>(Arrays.asList(ALIS, BTCZ, CAS, DADI, ELIX, FIRE, GEO));
     }
 }
