@@ -1,6 +1,5 @@
 package systemtests;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FAV;
@@ -10,7 +9,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HOT;
 import static seedu.address.logic.parser.TokenType.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_COINS;
 import static seedu.address.testutil.TypicalCoins.ALIS;
-import static seedu.address.testutil.TypicalCoins.BOS;
 import static seedu.address.testutil.TypicalCoins.KEYWORD_MATCHING_BTC;
 import static seedu.address.testutil.TypicalTargets.INDEX_FIRST_COIN;
 
@@ -27,7 +25,6 @@ import seedu.address.model.coin.exceptions.CoinNotFoundException;
 import seedu.address.model.coin.exceptions.DuplicateCoinException;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.CoinBuilder;
-import seedu.address.testutil.CoinUtil;
 
 public class TagCommandSystemTest extends CoinBookSystemTest {
 
@@ -133,11 +130,6 @@ public class TagCommandSystemTest extends CoinBookSystemTest {
         assertCommandFailure(TagCommand.COMMAND_WORD + " " + INDEX_FIRST_COIN.getOneBased() + INVALID_TAG_DESC,
                 Tag.MESSAGE_TAG_CONSTRAINTS);
 
-        /* Case: edit a coin with new values same as another coin's values -> rejected */
-        executeCommand(CoinUtil.getAddCommand(BOS));
-        assertTrue(getModel().getCoinBook().getCoinList().contains(BOS));
-        index = INDEX_FIRST_COIN;
-        assertFalse(getModel().getFilteredCoinList().get(index.getZeroBased()).equals(BOS));
     }
 
     /**
