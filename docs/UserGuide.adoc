@@ -311,7 +311,7 @@ Updates the listing to show only coin accounts whose details satisfy the given c
 ****
 * Possible query options are: +
 ** `n/NAME`:  Name of the coin [Coming in v2.0]
-** `c/CODE`: Trading code of the coin
+** `c/CODE`: Trading code of the coin (can be a substring, and is case insensitive)
 ** `t/TAG...`: Tags attached to the coin
 ** `p/PRICE`: Current price, in dollars, of the coin
 ** `h/AMOUNT`: Current amount, in coin units, held in an account
@@ -340,7 +340,7 @@ Finds accounts with `BT` in their code
 
 Finds accounts with the `fav` tag
 
- find (p/>500 t/fav) OR h/<20
+ find (p/>500 AND t/fav) OR h/<20
 
 Finds accounts either with current price more than $500 and tagged `fav`, or with less than 20 coins left
 
