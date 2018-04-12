@@ -4,30 +4,53 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COIN;
+import static seedu.address.testutil.TestUtil.AND_TOKEN;
+import static seedu.address.testutil.TestUtil.COIN_0;
+import static seedu.address.testutil.TestUtil.COIN_1;
+import static seedu.address.testutil.TestUtil.COIN_2;
+import static seedu.address.testutil.TestUtil.COIN_3;
+import static seedu.address.testutil.TestUtil.COIN_4;
+import static seedu.address.testutil.TestUtil.COIN_5;
+import static seedu.address.testutil.TestUtil.COIN_6;
+import static seedu.address.testutil.TestUtil.COIN_7;
+import static seedu.address.testutil.TestUtil.EOF_TOKEN;
+import static seedu.address.testutil.TestUtil.LEFT_PAREN_TOKEN;
+import static seedu.address.testutil.TestUtil.NOT_TOKEN;
+import static seedu.address.testutil.TestUtil.NUM_TOKEN;
+import static seedu.address.testutil.TestUtil.OR_TOKEN;
+import static seedu.address.testutil.TestUtil.PREFIX_TAG_TOKEN;
+import static seedu.address.testutil.TestUtil.RIGHT_PAREN_TOKEN;
+import static seedu.address.testutil.TestUtil.STRING_ONE_TOKEN;
+import static seedu.address.testutil.TestUtil.STRING_THREE_TOKEN;
+import static seedu.address.testutil.TestUtil.STRING_TWO_TOKEN;
+import static seedu.address.testutil.TypicalTargets.INDEX_FIRST_COIN;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.coin.Code;
+import seedu.address.model.coin.Coin;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.Assert;
 
 public class ParserUtilTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_NAME = "B@TC";
+    private static final String INVALID_TAG = "#fav";
 
-    private static final String VALID_NAME = "Rachel Walker";
-    private static final String VALID_TAG_1 = "friend";
-    private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_NAME = "BTC";
+    private static final String VALID_TAG_1 = "fav";
+    private static final String VALID_TAG_2 = "hot";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -57,25 +80,18 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseDouble_invalidInput_throwsIllegalValueException() throws Exception {
+    public void parseAmount_invalidInput_throwsIllegalValueException() throws Exception {
         thrown.expect(IllegalValueException.class);
-        ParserUtil.parseDouble("1.1a");
+        ParserUtil.parseAmount("1.1a");
     }
 
     @Test
-    public void parseDouble_outOfRangeInput_throwsIllegalValueException() throws Exception {
-        thrown.expect(IllegalValueException.class);
-        thrown.expectMessage(MESSAGE_INVALID_INDEX);
-        ParserUtil.parseDouble("-0.0001");
-    }
-
-    @Test
-    public void parseDouble_validInput_success() throws Exception {
+    public void parseAmount_validInput_success() throws Exception {
         // No whitespaces
-        assertEquals(1.2345, ParserUtil.parseDouble("1.2345"), 0.001);
+        assertEquals("1.23450000", ParserUtil.parseAmount("1.2345").getValue());
 
         // Leading and trailing whitespaces
-        assertEquals(1.2345, ParserUtil.parseDouble("  1.2345  "), 0.001);
+        assertEquals("1.23450000", ParserUtil.parseAmount("  1.2345  ").getValue());
     }
 
     @Test
@@ -159,4 +175,47 @@ public class ParserUtilTest {
 
         assertEquals(expectedTagSet, actualTagSet);
     }
+
+    //@@author Eldon-Chung
+    @Test
+    public void parseCommand_validArgument_returnsPredicate() throws Exception {
+        TokenStack tokenStack = initTokenStack(PREFIX_TAG_TOKEN, STRING_ONE_TOKEN, AND_TOKEN, NOT_TOKEN,
+                LEFT_PAREN_TOKEN, PREFIX_TAG_TOKEN, STRING_TWO_TOKEN, OR_TOKEN, PREFIX_TAG_TOKEN,
+                STRING_THREE_TOKEN, RIGHT_PAREN_TOKEN, EOF_TOKEN);
+        Predicate<Coin> condition = ParserUtil.parseCondition(tokenStack);
+
+        assertFalse(condition.test(COIN_0));
+        assertFalse(condition.test(COIN_1));
+        assertFalse(condition.test(COIN_2));
+        assertFalse(condition.test(COIN_3));
+        assertTrue(condition.test(COIN_4));
+        assertFalse(condition.test(COIN_5));
+        assertFalse(condition.test(COIN_6));
+        assertFalse(condition.test(COIN_7));
+    }
+
+    @Test
+    public void parseCondition_null_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        ParserUtil.parseCondition(null);
+    }
+
+    @Test
+    public void parseCondition_invalidArgumentSyntax_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        TokenStack tokenStack = initTokenStack(LEFT_PAREN_TOKEN, PREFIX_TAG_TOKEN, STRING_ONE_TOKEN, EOF_TOKEN);
+        ParserUtil.parseCondition(tokenStack);
+    }
+
+    @Test
+    public void parseCondition_invalidArgumentSemantics_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        TokenStack tokenStack = initTokenStack(LEFT_PAREN_TOKEN, PREFIX_TAG_TOKEN, NUM_TOKEN, EOF_TOKEN);
+        ParserUtil.parseCondition(tokenStack);
+    }
+
+    private static TokenStack initTokenStack(Token... tokens) {
+        return new TokenStack(new ArrayList<Token>(Arrays.asList(tokens)));
+    }
+    //@@author
 }
