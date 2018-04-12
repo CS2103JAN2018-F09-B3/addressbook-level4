@@ -107,6 +107,10 @@ public class ModelManager extends ComponentManager implements Model {
         coinBook.updateCoin(target, editedCoin);
         indicateCoinBookChanged();
     }
+    @Override
+    public void sortCoinList(boolean isSort) {
+        coinBook.sortCoinBook(isSort);
+    }
 
     //@@author laichengyu
     @Override
@@ -142,7 +146,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredCoins.setPredicate(predicate);
     }
 
-
+    //@@author
     //=========== Rule Book =============================================================
 
     /** Raises an event to indicate the model has changed */

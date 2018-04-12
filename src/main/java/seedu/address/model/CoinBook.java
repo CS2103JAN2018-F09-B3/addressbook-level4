@@ -117,6 +117,12 @@ public class CoinBook implements ReadOnlyCoinBook {
         // in the coin list.
         coins.setCoin(target, syncedEditedCoin);
     }
+    //@@author Neil
+
+    public void sortCoinBook(boolean isSort){
+        coins.sort(isSort);
+    }
+    //@@ author
 
     //@@author laichengyu
     /**
