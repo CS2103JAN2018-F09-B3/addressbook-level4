@@ -25,6 +25,8 @@ public class CoinSubredditList {
     private static final Map<String, String> COIN_CODE_TO_SUBREDDIT_MAP = new HashMap<>();
     private static final String COIN_CODE_TO_SUBREDDIT_FILEPATH = "/coins/CoinCodeToSubreddit.json";
     private static final String REDDIT_URL = "https://www.reddit.com/r/";
+    private static final String CODE_ATTRIBUTE_NAME = "code";
+    private static final String SUBREDDIT_ATTRIBUTE_NAME = "subreddit";
 
     public static boolean isRecognized(Coin coin) {
         return COIN_CODE_TO_SUBREDDIT_MAP.containsKey(coin.getCode().toString());
@@ -51,8 +53,8 @@ public class CoinSubredditList {
 
         for (JsonElement jsonElement : jsonArray) {
             JsonObject jsonObject = jsonElement.getAsJsonObject();
-            codeString = jsonObject.get("code");
-            subredditName = jsonObject.get("subreddit");
+            codeString = jsonObject.get(CODE_ATTRIBUTE_NAME);
+            subredditName = jsonObject.get(SUBREDDIT_ATTRIBUTE_NAME);
             if (subredditName == null || subredditName.toString().equals("null")) {
                 continue;
             }
