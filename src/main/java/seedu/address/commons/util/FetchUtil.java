@@ -111,9 +111,6 @@ public class FetchUtil {
      * @return JsonArray that is contained in the file at {@code filepath}
      */
     public static JsonArray parseFileToJsonObj(InputStreamReader fw) throws FileNotFoundException {
-        //FileReader fw = new FileReader(filepath);
-        //BufferedReader br = new BufferedReader(fw);
-
         JsonObject jsonObject;
 
         JsonParser parser = new JsonParser();
