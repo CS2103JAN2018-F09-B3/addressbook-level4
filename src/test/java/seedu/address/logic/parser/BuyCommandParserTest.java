@@ -5,6 +5,9 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.TokenType.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.TokenType.PREFIX_NAME;
+import static seedu.address.testutil.TestUtil.DECIMAL_STRING;
+import static seedu.address.testutil.TestUtil.NUM_STRING;
+import static seedu.address.testutil.TestUtil.STRING_ONE_STRING;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,9 +22,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 //@@author Eldon-Chung
 public class BuyCommandParserTest {
     private static final String INDEX_AS_STRING = "1";
-    private static final String INT_AS_STRING = "50";
-    private static final String FLOAT_AS_STRING = "50.01";
-    private static final String INVALID_VALUE_AS_STRING = "asd";
     private static final String INVALID_INDEX_STRING = "0";
 
     @Rule
@@ -47,11 +47,13 @@ public class BuyCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() throws Exception {
-        String commandString = buildCommandString(INDEX_AS_STRING, PREFIX_AMOUNT.toString(), INT_AS_STRING);
-        Command command = constructBuyCommand(INDEX_AS_STRING, INT_AS_STRING);
+        String commandString = buildCommandString(INDEX_AS_STRING, PREFIX_AMOUNT.toString(), NUM_STRING);
+        Command command = constructBuyCommand(INDEX_AS_STRING, NUM_STRING);
+        System.out.println(parser.parse(commandString));
+        System.out.println(command);
         assertParseSuccess(parser, commandString, command);
-        commandString = buildCommandString(INDEX_AS_STRING, PREFIX_AMOUNT.toString(), FLOAT_AS_STRING);
-        command = constructBuyCommand(INDEX_AS_STRING, FLOAT_AS_STRING);
+        commandString = buildCommandString(INDEX_AS_STRING, PREFIX_AMOUNT.toString(), DECIMAL_STRING);
+        command = constructBuyCommand(INDEX_AS_STRING, DECIMAL_STRING);
         assertParseSuccess(parser, commandString, command);
     }
 
@@ -60,7 +62,7 @@ public class BuyCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, BuyCommand.MESSAGE_USAGE);
 
         //missing amount prefix
-        String commandString = buildCommandString(INDEX_AS_STRING, INT_AS_STRING);
+        String commandString = buildCommandString(INDEX_AS_STRING, NUM_STRING);
         assertParseFailure(parser, commandString, expectedMessage);
 
         //missing actual amount after prefix
@@ -77,18 +79,18 @@ public class BuyCommandParserTest {
         assertParseFailure(parser, commandString, expectedMessage);
 
         // invalid value
-        commandString = buildCommandString(INDEX_AS_STRING, PREFIX_NAME.toString(), INVALID_VALUE_AS_STRING);
+        commandString = buildCommandString(INDEX_AS_STRING, PREFIX_NAME.toString(), STRING_ONE_STRING);
         assertParseFailure(parser, commandString, expectedMessage);
 
         // empty preamble
-        commandString = buildCommandString(PREFIX_NAME.toString(), INT_AS_STRING);
+        commandString = buildCommandString(PREFIX_NAME.toString(), NUM_STRING);
         assertParseFailure(parser, commandString, expectedMessage);
     }
 
     @Test
     public void parse_zeroIndex_throwsIndexOutOfBoundsException() throws Exception {
         thrown.expect(ParseException.class);
-        String commandString = buildCommandString(INVALID_INDEX_STRING, PREFIX_NAME.toString(), INT_AS_STRING);
+        String commandString = buildCommandString(INVALID_INDEX_STRING, PREFIX_NAME.toString(), NUM_STRING);
         parser.parse(commandString);
     }
 }
