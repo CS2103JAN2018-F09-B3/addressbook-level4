@@ -6,12 +6,15 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.logic.parser.TokenType.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.TokenType.PREFIX_NAME;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.BuyCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandTarget;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 //@@author Eldon-Chung
 public class BuyCommandParserTest {
@@ -19,6 +22,10 @@ public class BuyCommandParserTest {
     private static final String INT_AS_STRING = "50";
     private static final String FLOAT_AS_STRING = "50.01";
     private static final String INVALID_VALUE_AS_STRING = "asd";
+    private static final String INVALID_INDEX_STRING = "0";
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     private BuyCommandParser parser = new BuyCommandParser();
 
@@ -76,5 +83,12 @@ public class BuyCommandParserTest {
         // empty preamble
         commandString = buildCommandString(PREFIX_NAME.toString(), INT_AS_STRING);
         assertParseFailure(parser, commandString, expectedMessage);
+    }
+
+    @Test
+    public void parse_zeroIndex_throwsIndexOutOfBoundsException() throws Exception {
+        thrown.expect(ParseException.class);
+        String commandString = buildCommandString(INVALID_INDEX_STRING, PREFIX_NAME.toString(), INT_AS_STRING);
+        parser.parse(commandString);
     }
 }
