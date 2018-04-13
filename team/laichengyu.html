@@ -5,18 +5,18 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>John Doe - Project Portfolio</title>
+<title>Lai Cheng Yu - Project Portfolio</title>
 <link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>John Doe - Project Portfolio</h1>
+<h1>Lai Cheng Yu - Project Portfolio</h1>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<h2 id="project-coinbook"><a class="link" href="#project-coinbook">PROJECT: CoinBook</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -25,7 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>CoinBook is a desktop accounting application written in Java. It is targeted at cryptocurrency traders and enthusiasts, and allows them to keep track of the coins they hold, obtain price data and analytics, and read the latest news relevant to them in the same place. Primary interaction is through a CLI, and a GUI built with JavaFX.</p>
 </div>
 </div>
 </div>
@@ -35,29 +35,29 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added a sync command that <strong>updates all price-related metrics of cryptocurrencies with latest, live data</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to keep up to date with the latest price movements of cryptocurrencies invested.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature improves the product significantly because the volatile market that cryptocurrencies operate in necessitates that a user is frequently kept up to date with all changes in cryptocurrency prices.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This enhancement demonstrates live updating of data from external web APIs. It required analysis of design alternatives between synchronous and asynchronous data fetching. The implementation too was challenging as it required many utilities to be built such as UrlBuilderUtil to adhere to HTTP request formats and FetchUtil to perform API calls.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: External libraries used include: [<a href="http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/overview-summary.html">Apache HttpClient</a>], [<a href="https://github.com/google/gson/">GSON</a>] and [<a href="https://github.com/AsyncHttpClient/async-http-client">AsyncHttpClient</a>]</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: added a autocomplete feature that allows users to quickly enter in command.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B3/main/blob/master/collated/functional/laichengyu.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F09-B3/main/blob/master/collated/test/laichengyu.md">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -68,7 +68,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> (1 release) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -78,10 +78,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Add API for backup storage (Pull requests <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/17">#17</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Refactored existing tests for existing features to suit new code base (Pull requests <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/110">#110</a>)</p>
 </li>
 </ul>
 </div>
@@ -91,7 +91,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Enable experimental attributes such as keyboard macros for the Developer Guide: <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/124">#124</a></p>
 </li>
 </ul>
 </div>
@@ -101,16 +101,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed: <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/15">#15</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/29">#29</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/35">#35</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/112">#112</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/118">#118</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/208">208</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+<p>Contributed to forum discussions, reported bugs and raised issues (examples:  <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/50">50</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/51">51</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/69">69</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/123">123</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/125">125</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/127">127</a>)</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/52">52</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/55">55</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/60">60</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/65">65</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/68">68</a>)</p>
 </li>
 </ul>
 </div>
@@ -120,10 +117,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated a third party library (GSON) to the project (<a href="https://github.com">#42</a>)</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated a third party library (Apache HttpClient) to the project (<a href="https://github.com">#42</a>)</p>
+</li>
+<li>
+<p>Integrated a third party library (AsyncHttpClient) to the project (<a href="https://github.com">#42</a>)</p>
 </li>
 </ul>
 </div>
@@ -132,9 +132,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -152,141 +149,22 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-previous-command-code-undo-code-code-z-code"><a class="link" href="#undo-previous-command-code-undo-code-code-z-code">Undo previous command <code>undo</code> | <code>z</code></a></h3>
+<h3 id="sync-with-price-server-code-sync-code-code-sy-code-code-coming-in-v1-5-code"><a class="link" href="#sync-with-price-server-code-sync-code-code-sy-code-code-coming-in-v1-5-code">Sync with price server <code>sync</code> | <code>sy</code> <code>[Coming in v1.5]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>undo</pre>
+<pre>sync</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Restores the data to the state before the previous <em>undoable</em> command was executed.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: Commands that modify the data (<code>buy</code>, <code>sell</code>, <code>tag</code> and <code>clear</code>)</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="title">Examples</div>
-<div class="content">
-<pre>buy BTC a/10 <i class="conum" data-value="1"></i><b>(1)</b>
-list
-undo <i class="conum" data-value="1"></i><b>(1)</b></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This reverses the <code>buy BTC a/10</code> command.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>view 1
-list
-undo</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>sell BTC a/10 <i class="conum" data-value="2"></i><b>(2)</b>
-clear <i class="conum" data-value="1"></i><b>(1)</b>
-undo <i class="conum" data-value="1"></i><b>(1)</b>
-undo <i class="conum" data-value="2"></i><b>(2)</b></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The first <code>undo</code> reverses the <code>clear</code> command, the second reverses the <code>sell BTC a/10</code> command.</p>
+<p>Obtains the latest prices and refreshes the news feed from the Internet to update your coin data.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-undone-command-code-redo-code-code-y-code"><a class="link" href="#redo-undone-command-code-redo-code-code-y-code">Redo undone command <code>redo</code> | <code>y</code></a></h3>
-<div class="listingblock">
-<div class="title">Format</div>
-<div class="content">
-<pre>redo</pre>
-</div>
-</div>
+<h3 id="autocomplete-code-coming-in-v1-5-code"><a class="link" href="#autocomplete-code-coming-in-v1-5-code">Autocomplete <code>[Coming in v1.5]</code></a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.</p>
-</div>
-<div class="listingblock">
-<div class="title">Examples</div>
-<div class="content">
-<pre>buy BTC a/10 <i class="conum" data-value="1"></i><b>(1)</b>
-undo <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="2"></i><b>(2)</b>
-redo <i class="conum" data-value="2"></i><b>(2)</b></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Reverses the <code>buy BTC a/10</code> command, and</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Reapplies it</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The result is as if only the first line was executed.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>list
-redo</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The command fails as there are no <code>undo</code> commands executed previously.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>sell BTC a/10 <i class="conum" data-value="2"></i><b>(2)</b>
-clear <i class="conum" data-value="1"></i><b>(1)</b>
-undo <i class="conum" data-value="1"></i><b>(1)</b><i class="conum" data-value="4"></i><b>(4)</b>
-undo <i class="conum" data-value="2"></i><b>(2)</b><i class="conum" data-value="3"></i><b>(3)</b>
-redo <i class="conum" data-value="3"></i><b>(3)</b>
-redo <i class="conum" data-value="4"></i><b>(4)</b></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This sequence of commands:</p>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Reverses the <code>clear</code> command</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Reverses the <code>sell BTC a/10</code> command</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Reapplies the <code>sell BTC a/10</code> command, and finally</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Reapplies the <code>clear</code> command</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The result is as if only the first two lines were executed. Notice how the order of redoing is opposite from the undoing.</p>
+<p>Pressing <kbd>Tab</kbd> will autocomplete the field where the cursor is at with a matching suggestion.
+Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions.</p>
 </div>
 </div>
 </div>
@@ -305,230 +183,79 @@ redo <i class="conum" data-value="4"></i><b>(4)</b></pre>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo Feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">Autocomplete Feature</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports the undoing and redoing of commands that modify the stored data (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>The autocomplete mechanism is facilitated by a <code>RadixTree</code>, which resides inside <code>LogicManager</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. Here is the inheritance diagram for commands (Fig. 15):</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
-</div>
-<div class="title">Figure 1. Class Diagram for Logic</div>
+<p>Suppose the user has 3 coins added to his account currently, namely <code>BTC</code>, <code>ETH</code>, <code>BCG</code> and <code>BCH</code> in that order.</p>
 </div>
 <div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the App data before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks, while the child classes implement the details for executing the specific command. This technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <span class="ext"><a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a></span>.</p>
+<p>Say the user is trying to use the <code>find</code> command to look up <code>BCH</code>.</p>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are implemented in this way:</p>
+<p>The user will first type <code>find</code> into the command line followed by a whitespace and <code>B</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
-}</code></pre>
+<pre class="CodeRay highlight"><code>find c/B</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With the extra layer, the commands that are undoable are implemented in this way:</p>
+<p>Now, when the user presses <kbd>Tab</kbd>, the autocomplete feature will then complete the query by suggesting the first matching item it finds.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">UndoableCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... undo logic ...</span>
-
-        executeUndoableCommand();
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        <span class="comment">// ... delete logic ...</span>
-    }
-}</code></pre>
+<pre class="CodeRay highlight"><code>find c/BTC</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. <code>UndoRedoStack</code> is empty at the beginning.</p>
+<p>When the user then presses <kbd>C</kbd> to complete his query, the autocomplete feature will suggest the next matching item of the input <code>BC</code> so far.</p>
 </div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th entry. The current state of the App data is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto <code>undoStack</code> (the current state is saved together with the command). Fig. 16 below illustrates this.</p>
-</div>
-<div class="imageblock">
+<div class="listingblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
+<pre class="CodeRay highlight"><code>find c/BCG</code></pre>
 </div>
-<div class="title">Figure 2. Undo/Redo Stack Part 1</div>
 </div>
 <div class="paragraph">
-<p>As the user continues to issue more commands, they are added into <code>undoStack</code>. For example, the user may execute <code>add n/BTC</code> to add a new coin, resulting in the below picture (Fig. 17):</p>
+<p>The user can then press <kbd>Tab</kbd> again to cycle through the other items that match the current input <code>BC</code>.</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
+<pre class="CodeRay highlight"><code>find c/BCH</code></pre>
 </div>
-<div class="title">Figure 3. Undo/Redo Stack Part 2</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not be pushed to <code>UndoRedoStack</code> at all.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
-<p>The user now decides that adding the coin was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>Logic</code> component will pop the most recent command out of <code>undoStack</code> and push it to <code>redoStack</code>. At the same time, the data is restored to the state before the <code>add</code> command executed. The figure below (Fig. 18) illustrates the result:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
-</div>
-<div class="title">Figure 4. Undo/Redo Stack Part 3</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If <code>undoStack</code> is empty, i.e., there are no other commands left to be undone, an <code>Exception</code> will be thrown when trying to pop <code>undoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram (Fig. 19) shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 5. Sequence Diagram for Undo</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the exact opposite (pops from <code>redoStack</code>, pushes to <code>undoStack</code>, and restores the data to the state after the command is executed).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when attempting to pop <code>redoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into <code>undoStack</code>. However, now that <code>redoStack</code> is not empty, it will be purged as it no longer makes sense to redo the <code>add n/BTC</code> command (this is the behavior that most modern desktop applications follow). Refer to Fig. 20 below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
-</div>
-<div class="title">Figure 6. Undo/Redo Stack Part 4</div>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution (Fig. 21):</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
-</div>
-<div class="title">Figure 7. Undo/Redo Stack Part 5</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram (Fig. 22) summarizes the logic for <code>UndoRedoStack</code> when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-<div class="title">Figure 8. Activity Diagram for Undo/Redo</div>
-</div>
+<p>At this point the user has found <code>BCH</code>, which is the coin that the user wanted to look up. The user can now press <kbd>Enter</kbd> to execute his command.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
+<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">Aspect: The fields which autocomplete works on</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code></p>
+<p><strong>Alternative 1 (current choice):</strong> Apply only for command parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No undo/redo functionality is lost as it is now part of the default behaviour.<br>
-Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.</p>
+<p>Pros: This reduces the implementation cost.</p>
 </li>
 <li>
-<p>Cons: It may be harder for new developers to understand the template pattern.</p>
+<p>Cons: The reduced functionality may not satisfy every user.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Override <code>execute()</code></p>
+<p><strong>Alternative 2:</strong> Apply for both command word and command parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: It is easier for new developers to understand as it does not involve the template pattern.</p>
+<p>Pros: User experience will be slightly improved over the alternative.</p>
 </li>
 <li>
-<p>Cons: Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">Aspect: Execution of undo &amp; redo</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Save the entire state</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: It is much easier to implement.</p>
-</li>
-<li>
-<p>Cons: This may bring about performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Make each command implement specific undo/redo operations</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This will use less memory (e.g. for <code>delete</code>, just save the coin being deleted).</p>
-</li>
-<li>
-<p>Cons: It is crucial that the implementation of each individual command is correct.</p>
+<p>Cons: This has a lower value to effort ratio to implement given that aliases are already implemented.</p>
 </li>
 </ul>
 </div>
@@ -537,67 +264,31 @@ Classes that deal with <code>Command</code> do not have to know that <code>execu
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">Aspect: Type of commands that can be undone/redone</a></h5>
+<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">Aspect: Data structure to support the autocomplete feature</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Include only commands that modify the App data (e.g. <code>add</code>, <code>clear</code>, <code>edit</code>)</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a Radix Tree</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Only changes that are hard to do manually can be reverted like this.<br>
-e.g. The view can easily be re-modified as no data is lost, so not undoable with <code>undo</code>.</p>
+<p>Pros: This is easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.</p>
 </li>
 <li>
-<p>Cons: The user might think that undo also applies when the list is modified (filtering for example), only to realize otherwise after executing <code>undo</code>.</p>
+<p>Cons: The implementation could be non-trivial.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Include all commands</p>
+<p><strong>Alternative 2:</strong> Use a linear data structure</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This might be more intuitive for the user.</p>
+<p>Pros: This is much easier to implement.</p>
 </li>
 <li>
-<p>Cons: The user has no way of skipping such commands if he or she just wants to reset changes made to the data and not the view.<br>
-<strong>Additional Info:</strong> See the discussion  <span class="ext"><a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a></span>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This implementation will be easier to understand for new Computer Science undergraduates, who represent the majority of incoming developers to the project.</p>
-</li>
-<li>
-<p>Cons: It introduces duplicated logic. Whenever a new command is executed, both <code>HistoryManager</code> and <code>UndoRedoStack</code> must be updated separately.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for both undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: There will be no need to maintain a separate stack, by just reusing what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: We must remember to skip already undone commands.<br>
-This approach also violates the Single Responsibility Principle and the Separation of Concerns Principle as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: The solution will be inefficient, with a higher time complexity incurred.</p>
 </li>
 </ul>
 </div>
@@ -606,22 +297,13 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 00:59:42 UTC
+Last updated 2018-04-13 01:00:14 UTC
 </div>
 </div>
 </body>
