@@ -6,7 +6,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-//@@author Neil
+//@@author neilish3re
 
 /** SortCommand Parser is implemented from Parser
  *
@@ -27,6 +27,3 @@ public class SortCommandParser implements Parser<SortCommand> {
     }
 }
 
-
-
-//@@author

@@ -62,7 +62,7 @@ public interface Model {
      */
     void updateFilteredCoinList(Predicate<Coin> predicate);
 
-    //@@author Neil
+    //@@author neilish3re
     void sortCoinList(boolean isSort);
 
     //@@author

@@ -103,9 +103,13 @@ public class UniqueCoinList implements Iterable<Coin> {
         return FXCollections.unmodifiableObservableList(internalList);
     }
 
-    //@@author Neil
+    //@@author neilish3re
 
-    public void sort(boolean isSort){
+    /**
+     * Sorts the coins using compareTo
+     * @param isSort
+     */
+    public void sort(boolean isSort) {
         if (isSort) {
             internalList.sort((coin1, coin2) -> (coin2.getCode().fullName.compareTo(coin1.getCode().fullName)));
         } else {

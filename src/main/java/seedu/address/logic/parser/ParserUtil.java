@@ -130,21 +130,21 @@ public class ParserUtil {
         }
         return tagSet;
     }
-    //@@author Neil
+    //@@author neilish3re
     /**
      * Parses sortOrder and returns it
      * Throws IllegalValueException if index that is specified is invalid
      */
     public static boolean parseSort(String sortOrder) throws IllegalValueException {
         sortOrder = sortOrder.trim();
-        switch (sortOrder){
-            case "":
-            case "a":
-                return false;
-            case "d":
-                return true;
-            default:
-                throw new IllegalValueException(MESSAGE_INVALID_ARG);
+        switch (sortOrder) {
+        case "":
+        case "a":                       //ascending alphabetical order
+            return false;
+        case "z":
+            return true;                //descending alphabetical order
+        default:
+            throw new IllegalValueException(MESSAGE_INVALID_ARG);
         }
     }
     //@@author
