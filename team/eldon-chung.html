@@ -201,7 +201,7 @@ the user when the coin added does not exist.</p>
 <p><code>n/NAME</code>:  Name of the coin [Coming in v2.0]</p>
 </li>
 <li>
-<p><code>c/CODE</code>: Trading code of the coin</p>
+<p><code>c/CODE</code>: Trading code of the coin (can be a substring, and is case insensitive)</p>
 </li>
 <li>
 <p><code>t/TAG&#8230;&#8203;</code>: Tags attached to the coin</p>
@@ -285,7 +285,7 @@ the user when the coin added does not exist.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>find (p/&gt;500 t/fav) OR h/&lt;20</pre>
+<pre>find (p/&gt;500 AND t/fav) OR h/&lt;20</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -669,7 +669,7 @@ method <code>and()</code> to return a logical conjunction of the two conditions.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 00:39:50 UTC
+Last updated 2018-04-13 00:52:01 UTC
 </div>
 </div>
 </body>
