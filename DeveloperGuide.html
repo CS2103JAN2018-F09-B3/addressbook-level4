@@ -43,14 +43,17 @@
 </ul>
 </li>
 <li><a href="#implementation">4. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#condition-parser-component">4.1. Condition Parser Component</a></li>
-<li><a href="#undo-redo-feature">4.2. Undo/Redo Feature</a></li>
-<li><a href="#user-set-notifications">4.3. User-Set Notifications</a></li>
-<li><a href="#Implementation-Organisation">4.4. Organisation Features</a></li>
-<li><a href="#autocomplete-feature">4.5. Autocomplete Feature</a></li>
-<li><a href="#logging">4.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
+<ul class="sectlevel3">
+<li><a href="#current-implementation">4.1. Current implementation</a></li>
+<li><a href="#error-handling">4.2. Error handling</a></li>
+<li><a href="#design-considerations">4.3. Design Considerations</a></li>
+<li><a href="#advanced-details">4.4. Advanced details</a></li>
+<li><a href="#design-considerations-2">4.5. Design Considerations</a></li>
+<li><a href="#user-set-notifications">4.6. User-Set Notifications</a></li>
+<li><a href="#Implementation-Organisation">4.7. Organisation Features</a></li>
+<li><a href="#autocomplete-feature">4.8. Autocomplete Feature</a></li>
+<li><a href="#logging">4.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -692,12 +695,11 @@ The following diagram (Fig. 10) illustrates the structure of this component:</p>
 <h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter describes some noteworthy details on how certain features and components have been implemented. It is highly recommended to read the previous chapter on <a href="#design">Section 3, &#8220;Design&#8221;</a> first so that you have some picture of where these features fit in.</p>
+<p>This chapter describes some noteworthy details on how certain features and components have been implemented. It is highly recommended to read the previous chapter on <a href="#design">Section 3, &#8220;Design&#8221;</a> first so that you have some picture of where these features fit in.
+=== Condition Parser Component</p>
 </div>
-<div class="sect2">
-<h3 id="condition-parser-component"><a class="link" href="#condition-parser-component">4.1. Condition Parser Component</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely <code>ArgumentTokenizer</code>, <code>SyntaxParser</code>, <code>SemanticParser</code>, and a <code>ConditionGenerator</code>, while using classes such as <code>Condition</code>,
 <code>Token</code>, <code>TokenType</code>, <code>TokenStack</code> to model the data that is to be operated on throughout the process. Their tasks are
@@ -771,7 +773,7 @@ the Coin objects and returns a true/false value.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="error-handling"><a class="link" href="#error-handling">4.1.2. Error handling</a></h4>
+<h4 id="error-handling"><a class="link" href="#error-handling">4.2. Error handling</a></h4>
 <div class="paragraph">
 <p>On syntactically and semantically invalid inputs, <code>ConditionParser</code> will retrieve the expected and actual type of
 <code>Token</code> that were not a match during the parsing phase from <code>TokenStack</code> and raise a <code>ParseException</code> before returning.</p>
@@ -782,9 +784,9 @@ as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.3. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.1.3.1. Aspect: Specification of syntax</a></h5>
+<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.3.1. Aspect: Specification of syntax</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -817,7 +819,7 @@ as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.1.3.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
+<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.3.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -851,9 +853,9 @@ as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="advanced-details"><a class="link" href="#advanced-details">4.1.4. Advanced details</a></h4>
+<h4 id="advanced-details"><a class="link" href="#advanced-details">4.4. Advanced details</a></h4>
 <div class="sect4">
-<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.1.4.1. Argument Tokenizing</a></h5>
+<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.4.1. Argument Tokenizing</a></h5>
 <div class="paragraph">
 <p>We will illustrate the flow of tokenizing an example input:</p>
 </div>
@@ -885,7 +887,7 @@ the input (i.e. token) has now been grouped with a type.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.1.4.2. Syntax Parser</a></h5>
+<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.4.2. Syntax Parser</a></h5>
 <div class="paragraph">
 <p>Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
 This is done by matching the tokens off based on the following rules, expressed in Backus-Naur form:</p>
@@ -1009,7 +1011,7 @@ For example, here is the implementation for <code>EXPRESSION</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.1.4.3. Semantic Parser</a></h5>
+<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.4.3. Semantic Parser</a></h5>
 <div class="paragraph">
 <p>Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
 type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
@@ -1021,7 +1023,7 @@ option is followed by a number.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="condition-generator"><a class="link" href="#condition-generator">4.1.4.4. Condition Generator</a></h5>
+<h5 id="condition-generator"><a class="link" href="#condition-generator">4.4.4. Condition Generator</a></h5>
 <div class="paragraph">
 <p>Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
 condition based on the binary operators encounters up the recursion tree.</p>
@@ -1040,15 +1042,10 @@ as a back call at the end of each recursion tree.</p>
 </div>
 <div class="paragraph">
 <p><code>p/&gt;100</code> is a condition on price whereas <code>t/fav</code> is a condition on tags, and they can be composed using the <code>Predicate</code>
-method <code>and()</code> to return a logical conjunction of the two conditions.</p>
+method <code>and()</code> to return a logical conjunction of the two conditions.
+=== Undo/Redo Feature
+==== Current Implementation</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo Feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports the undoing and redoing of commands that modify the stored data (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1208,10 +1205,11 @@ If <code>redoStack</code> is empty, then there are no other commands left to be 
 <div class="title">Figure 22. Activity Diagram for Undo/Redo</div>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.5. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">4.2.2.1. Aspect: Implementation of <code>UndoableCommand</code></a></h5>
+<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">4.5.1. Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1245,7 +1243,7 @@ Classes that deal with <code>Command</code> do not have to know that <code>execu
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">4.2.2.2. Aspect: Execution of undo &amp; redo</a></h5>
+<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">4.5.2. Aspect: Execution of undo &amp; redo</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1278,7 +1276,7 @@ Classes that deal with <code>Command</code> do not have to know that <code>execu
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">4.2.2.3. Aspect: Type of commands that can be undone/redone</a></h5>
+<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">4.5.3. Aspect: Type of commands that can be undone/redone</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1313,7 +1311,7 @@ e.g. The view can easily be re-modified as no data is lost, so not undoable with
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">4.2.2.4. Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">4.5.4. Aspect: Data structure to support the undo/redo commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1347,11 +1345,10 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="user-set-notifications"><a class="link" href="#user-set-notifications">4.3. User-Set Notifications</a></h3>
+<h3 id="user-set-notifications"><a class="link" href="#user-set-notifications">4.6. User-Set Notifications</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define, in this case, conditions to trigger notifications on. A <code>RuleChecker</code> in <code>Logic</code> also does the work of checking rules and executing the associated actions.</p>
 </div>
@@ -1383,9 +1380,9 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-rules"><a class="link" href="#aspect-implementation-of-rules">4.3.2.1. Aspect: Implementation of rules</a></h5>
+<h5 id="aspect-implementation-of-rules"><a class="link" href="#aspect-implementation-of-rules">4.6.2.1. Aspect: Implementation of rules</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1430,7 +1427,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-notification-to-use"><a class="link" href="#aspect-type-of-notification-to-use">4.3.2.2. Aspect: Type of notification to use</a></h5>
+<h5 id="aspect-type-of-notification-to-use"><a class="link" href="#aspect-type-of-notification-to-use">4.6.2.2. Aspect: Type of notification to use</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1463,7 +1460,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-undo-ability-of-code-notifycommand-code"><a class="link" href="#aspect-undo-ability-of-code-notifycommand-code">4.3.2.3. Aspect: Undo-ability of <code>NotifyCommand</code></a></h5>
+<h5 id="aspect-undo-ability-of-code-notifycommand-code"><a class="link" href="#aspect-undo-ability-of-code-notifycommand-code">4.6.2.3. Aspect: Undo-ability of <code>NotifyCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1500,9 +1497,9 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Organisation"><a class="link" href="#Implementation-Organisation">4.4. Organisation Features</a></h3>
+<h3 id="Implementation-Organisation"><a class="link" href="#Implementation-Organisation">4.7. Organisation Features</a></h3>
 <div class="sect3">
-<h4 id="sorting"><a class="link" href="#sorting">4.4.1. Sorting</a></h4>
+<h4 id="sorting"><a class="link" href="#sorting">4.7.1. Sorting</a></h4>
 <div class="paragraph">
 <p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.</p>
 </div>
@@ -1550,7 +1547,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect3">
-<h4 id="grouping"><a class="link" href="#grouping">4.4.2. Grouping</a></h4>
+<h4 id="grouping"><a class="link" href="#grouping">4.7.2. Grouping</a></h4>
 <div class="paragraph">
 <p>The group feature can use the <code>Collectors</code> class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.</p>
 </div>
@@ -1565,9 +1562,9 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-sort-function"><a class="link" href="#aspect-implementation-of-sort-function">4.4.3.1. Aspect: Implementation of Sort function</a></h5>
+<h5 id="aspect-implementation-of-sort-function"><a class="link" href="#aspect-implementation-of-sort-function">4.7.3.1. Aspect: Implementation of Sort function</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1600,7 +1597,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-groups-function"><a class="link" href="#aspect-implementation-of-groups-function">4.4.3.2. Aspect: Implementation of Groups function</a></h5>
+<h5 id="aspect-implementation-of-groups-function"><a class="link" href="#aspect-implementation-of-groups-function">4.7.3.2. Aspect: Implementation of Groups function</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1635,7 +1632,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.5. Autocomplete Feature</a></h3>
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.8. Autocomplete Feature</a></h3>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by a <code>RadixTree</code>, which resides inside <code>LogicManager</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
@@ -1681,9 +1678,9 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 <p>At this point the user has found <code>BCH</code>, which is the coin that the user wanted to look up. The user can now press <kbd>Enter</kbd> to execute his command.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.8.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.5.1.1. Aspect: The fields which autocomplete works on</a></h5>
+<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.8.1.1. Aspect: The fields which autocomplete works on</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1716,7 +1713,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">4.5.1.2. Aspect: Data structure to support the autocomplete feature</a></h5>
+<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">4.8.1.2. Aspect: Data structure to support the autocomplete feature</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1751,7 +1748,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using the <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage <em>logging levels</em> and logging destinations.</p>
 </div>
@@ -1775,14 +1772,14 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </ul>
 </div>
 <div class="paragraph">
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.7, &#8220;Configuration&#8221;</a>).</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.10, &#8220;Configuration&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p>The <code>Logger</code> for a class <code>Class</code> can be obtained using <code>LogsCenter.getLogger(Class)</code>, which will log messages according to the specified logging level. Currently, log messages are output through <code>Console</code> as well as written to a <code>.log</code> file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file. By default, this is <code>config.json</code>.</p>
 </div>
@@ -2793,7 +2790,7 @@ Expected: All data from the old installation should be preserved and appear in t
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 23:05:13 UTC
+Last updated 2018-04-13 00:39:50 UTC
 </div>
 </div>
 </body>
