@@ -2,7 +2,10 @@ package seedu.address.commons.util;
 
 import static org.junit.Assert.assertEquals;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -13,19 +16,23 @@ import org.junit.rules.ExpectedException;
 
 public class UrlBuilderUtilTest {
     private static final String TEST_BASE_URL = "https://min-api.cryptocompare.com/data/pricemulti";
+    private static final List<NameValuePair> params = new ArrayList<>(Arrays.asList(
+            new BasicNameValuePair("fsyms", "BTC,ETH"),
+            new BasicNameValuePair("tsyms", "USD,EUR")));
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void buildUrl() {
-        List<NameValuePair> params = new ArrayList<>();
-        params.add(new BasicNameValuePair("fsyms", "BTC,ETH"));
-        params.add(new BasicNameValuePair("tsyms", "USD,EUR"));
+    public void buildUrl_noExceptionThrown() {
 
         // valid case
         assertEquals(TEST_BASE_URL + "?fsyms=BTC%2CETH&tsyms=USD%2CEUR",
                 UrlBuilderUtil.buildUrl(TEST_BASE_URL, params));
+    }
+
+    @Test
+    public void buildUrl_nullExceptionThrown() {
 
         // null url parameter -> throws NullPointerException
         thrown.expect(NullPointerException.class);
