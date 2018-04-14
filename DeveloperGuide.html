@@ -1501,41 +1501,40 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 <div class="sect3">
 <h4 id="sorting"><a class="link" href="#sorting">4.7.1. Sorting</a></h4>
 <div class="paragraph">
-<p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.</p>
+<p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.
+The way <code>Collections.sort</code> works is that it takes the collection&#8217;s underlying array and calls its sort method to sort the actual elements. The sorting algorithm used by Java is Timsort.
+This sorts the collection in-place, i.e., it modifies the given collection by sorting its elements directly. As a result, a sorted copy need not be made, saving resources.</p>
 </div>
 <div class="paragraph">
-<p>The way <code>Collections.sort</code> works is that it takes the collection&#8217;s underlying array and calls its sort method to sort the actual elements. The sorting algorithm used by Java is Timsort.</p>
+<p>The diagram (Fig. 24) below is the Sequence Diagram for interactions that occur from when the sort command is first called by the user to when the Coin List is sorted.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortCommand_SequenceDiagram.png" alt="SortCommand SequenceDiagram" width="800">
+</div>
+<div class="title">Figure 24. Sequence Diagram for SortCommand</div>
 </div>
 <div class="paragraph">
-<p>This sorts the collection in-place, i.e., it modifies the given collection by sorting its elements directly. As a result, a sorted copy need not be made, saving resources.</p>
+<p>The order mechanism is facilitated by the SortCommand which is also an UndoableCommand.
+The SortCommandParser checks for the sort order (a or z parameter) to decide the relevant SortCommand to call.
+The internalList is then sorted using Java&#8217;s sort method.</p>
 </div>
 <div class="paragraph">
-<p>Following are some example sort procedures:</p>
+<p>How the sort procedure works:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Sort by coin value</p>
+<p>Sort by lexicographical order</p>
 <div class="ulist">
 <ul>
 <li>
-<p>We can use <code>Comparator.comparingDouble()</code> for comparing double values. For <em>CoinBook</em>, we want to order our list of coins by value, from the highest to the lowest.</p>
+<p>We can use compareTo() for comparing coin code names. For <em>CoinBook</em>, we want to order our list of coins lexicographically, based on the alphabetical order of their component letters.
+This is done by passing the internalList into the sort function which then uses getCode() to compare each of the component letters of the coin code, which will then arrange coins based on the lexicographical value of the code string.
+The coin code strings with the lowest lexicographical value will appear first followed by coin code strings with higher lexicographical values as you go further down the list.</p>
 </li>
 <li>
-<p>We can use the <code>reversed</code> function on <code>Comparator</code> to invert the default and arrange coins from lowest to highest instead.</p>
-</li>
-<li>
-<p><code>Double</code> is used because coin values have several decimal places and so the <code>comparingInt()</code> function would not suffice.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Sort by string field (e.g. coin code)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If we want to sort our <code>CoinList</code> by coin code, we can use <code>Comparator.comparing()</code> and pass a function that extracts the 3 letter coin code.</p>
+<p>We can either use the <code>reversed</code> function on <code>Comparator</code> or change the compare condition of compareTo() to invert the default setting and arrange the coins from highest to lowest lexicographical value instead.</p>
 </li>
 <li>
 <p>We do not have to pass in any comparator for the list to be correctly sorted because the 3-letter coin code is a <code>String</code> which implements the <code>Comparable</code> <em>interface</em>, and hence guarantees its own implementation of the sort comparator.</p>
@@ -1547,7 +1546,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect3">
-<h4 id="grouping"><a class="link" href="#grouping">4.7.2. Grouping</a></h4>
+<h4 id="grouping-code-coming-in-v2-0-code"><a class="link" href="#grouping-code-coming-in-v2-0-code">4.7.2. Grouping <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>The group feature can use the <code>Collectors</code> class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.</p>
 </div>
@@ -1588,7 +1587,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 <p>Pros: This possibly allows us to reduce the time required to execute the sorting command.</p>
 </li>
 <li>
-<p>Cons: This takes more time to incorporate into the App since we are not using Java’s in-built sorting method.</p>
+<p>Cons: This would take more time and a considerable amount of effort to incorporate into our CoinBook since we would not be using Java’s in-built sorting method.</p>
 </li>
 </ul>
 </div>
@@ -1597,7 +1596,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-groups-function"><a class="link" href="#aspect-implementation-of-groups-function">4.7.3.2. Aspect: Implementation of Groups function</a></h5>
+<h5 id="aspect-implementation-of-groups-function-code-coming-in-v2-0-code"><a class="link" href="#aspect-implementation-of-groups-function-code-coming-in-v2-0-code">4.7.3.2. Aspect: Implementation of Groups function <code>[Coming in v2.0]</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1621,7 +1620,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 <p>Pros: The codebase already has support for tags and so not a lot of changes will be required.</p>
 </li>
 <li>
-<p>Cons: Commands will not be executable at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.</p>
+<p>Cons: Commands will not be executable at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time. I.e.: Grouping would add more functionality to the CoinBook for mass coin management.</p>
 </li>
 </ul>
 </div>
@@ -1845,7 +1844,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 24. Options for Saving Documentation as PDF Files in Chrome</div>
+<div class="title">Figure 25. Options for Saving Documentation as PDF Files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1916,7 +1915,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="content">
 <img src="images/RunningTests.png" alt="RunningTests">
 </div>
-<div class="title">Figure 25. Running Tests</div>
+<div class="title">Figure 26. Running Tests</div>
 </div>
 <div class="paragraph">
 <p><strong>Method 2: Using Gradle</strong></p>
@@ -2790,7 +2789,7 @@ Expected: All data from the old installation should be preserved and appear in t
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:30:32 UTC
+Last updated 2018-04-14 16:49:45 UTC
 </div>
 </div>
 </body>

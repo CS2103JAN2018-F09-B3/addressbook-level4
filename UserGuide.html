@@ -41,7 +41,7 @@
 <li><a href="#view-details-of-an-account-code-view-code-code-v-code-code-coming-in-v1-5-code">5.9. View details of an account <code>view</code> | <code>v</code> <code>[Coming in v1.5]</code></a></li>
 <li><a href="#search-through-accounts-code-find-code-code-f-code-code-coming-in-v1-5-code">5.10. Search through accounts <code>find</code> | <code>f</code> <code>[Coming in v1.5]</code></a></li>
 <li><a href="#set-up-notifications-code-notify-code-code-n-code-code-coming-in-v1-5-code">5.11. Set up notifications <code>notify</code> | <code>n</code> <code>[Coming in v1.5]</code></a></li>
-<li><a href="#change-listing-order-code-order-code-code-o-code-code-coming-in-v1-5-code">5.12. Change listing order <code>order</code> | <code>o</code> <code>[Coming in v1.5]</code></a></li>
+<li><a href="#change-listing-order-code-order-code-code-o-code">5.12. Change listing order <code>order</code> | <code>o</code></a></li>
 <li><a href="#list-past-commands-code-history-code-code-h-code">5.13. List past commands <code>history</code> | <code>h</code></a></li>
 <li><a href="#undo-previous-command-code-undo-code-code-z-code">5.14. Undo previous command <code>undo</code> | <code>z</code></a></li>
 <li><a href="#redo-undone-command-code-redo-code-code-y-code">5.15. Redo undone command <code>redo</code> | <code>y</code></a></li>
@@ -901,35 +901,35 @@ A coin account can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="change-listing-order-code-order-code-code-o-code-code-coming-in-v1-5-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code-code-coming-in-v1-5-code">5.12. Change listing order <code>order</code> | <code>o</code> <code>[Coming in v1.5]</code></a></h3>
+<h3 id="change-listing-order-code-order-code-code-o-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code">5.12. Change listing order <code>order</code> | <code>o</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
-<pre>order OPTION/{a,d}...</pre>
+<pre>order {a,z}</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Orders the coin listing based on the specified details such as name, price, amount held, etc. Use the same letters in <a href="#find">condition queries</a>.</p>
+<p>Orders the coin listing in lexicographical order (default option if sort order is not specified).</p>
 </div>
 <div class="paragraph">
-<p>Put <code>a</code> after the option to sort it in ascending order, and <code>d</code> to sort in descending order. The listing is sorted by the leftmost entered option first, then equal values are sorted by the next one, and so on. The default order is alphabetical order of the coin names.</p>
+<p>Put <code>a</code> after the command word to sort it in lexicographical order, and <code>z</code> to sort in reverse lexicographical order. The listing is sorted by the leftmost entered option first, then equal values are sorted by the next one, and so on. The default order is lexicographical order of the coin names.</p>
 </div>
 <div class="literalblock">
 <div class="title">Examples</div>
 <div class="content">
-<pre>order p/a</pre>
+<pre>order a</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Sort the listing in ascending order based on current prices</p>
+<p>Sort the listing in lexicographical order (default option, whether "a" is added after the command word or not).</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>order p/d n/d</pre>
+<pre>order z</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Sort the listing in descending order based on the current prices first, then, if two coins have the same price, sort them by name in reverse alphabetical (i.e. descending) order</p>
+<p>Sort the listing in reverse lexicographical order.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1226,7 +1226,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Order</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order OPTION/{a,d}&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order OPTION/{a,z}&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sorts the coin accounts based on their OPTION.</p></td>
 </tr>
 <tr>
@@ -1283,7 +1283,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:30:32 UTC
+Last updated 2018-04-14 16:49:45 UTC
 </div>
 </div>
 </body>

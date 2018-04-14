@@ -5,14 +5,14 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>John Doe - Project Portfolio</title>
+<title>Neil Mehta - Project Portfolio</title>
 <link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>John Doe - Project Portfolio</h1>
+<h1>Neil Mehta - Project Portfolio</h1>
 </div>
 <div id="content">
 <div class="sect1">
@@ -43,7 +43,7 @@ with managing their cryptocurrency portfolio.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to sort list of coins by alphabetical order.</p>
+<p>What it does: allows the user to sort list of coins by lexicographical order.</p>
 </li>
 <li>
 <p>Justification: This feature improves the product significantly because a user can make arrange his coins in such a way that is easier for him to view and find the desired coin he wants to interact with, especially if said user has a diverse and big portfolio to deal with.</p>
@@ -61,7 +61,7 @@ with managing their cryptocurrency portfolio.</p>
 <p><strong>Minor enhancement</strong>: added an additional option that allows for sorting by reverse alphabetical order by adding another case.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B3/main/tree/master/collated/functional/neilish3re.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F09-B3/main/tree/master/collated/test/neilish3re.md">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -73,6 +73,26 @@ with managing their cryptocurrency portfolio.</p>
 <ul>
 <li>
 <p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Used PlantUML for generating diagrams for the Developer Guide</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Helping to note down minutes for group meetings</p>
 </li>
 </ul>
 </div>
@@ -97,11 +117,37 @@ with managing their cryptocurrency portfolio.</p>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>include::../UserGuide.adoc[tag=undoredo] //haven&#8217;t added in my tag yet</p>
+<div class="sect2">
+<h3 id="change-listing-order-code-order-code-code-o-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code">Change listing order <code>order</code> | <code>o</code></a></h3>
+<div class="listingblock">
+<div class="title">Format</div>
+<div class="content">
+<pre>order {a,z}</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>include::../UserGuide.adoc[tag=dataencryption] //haven&#8217;t added in my tag yet</p>
+<p>Orders the coin listing in lexicographical order (default option if sort order is not specified).</p>
+</div>
+<div class="paragraph">
+<p>Put <code>a</code> after the command word to sort it in lexicographical order, and <code>z</code> to sort in reverse lexicographical order. The listing is sorted by the leftmost entered option first, then equal values are sorted by the next one, and so on. The default order is lexicographical order of the coin names.</p>
+</div>
+<div class="literalblock">
+<div class="title">Examples</div>
+<div class="content">
+<pre>order a</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sort the listing in lexicographical order (default option, whether "a" is added after the command word or not).</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>order z</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sort the listing in reverse lexicographical order.</p>
+</div>
 </div>
 </div>
 </div>
@@ -123,41 +169,40 @@ with managing their cryptocurrency portfolio.</p>
 <div class="sect3">
 <h4 id="sorting"><a class="link" href="#sorting">Sorting</a></h4>
 <div class="paragraph">
-<p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.</p>
+<p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.
+The way <code>Collections.sort</code> works is that it takes the collection&#8217;s underlying array and calls its sort method to sort the actual elements. The sorting algorithm used by Java is Timsort.
+This sorts the collection in-place, i.e., it modifies the given collection by sorting its elements directly. As a result, a sorted copy need not be made, saving resources.</p>
 </div>
 <div class="paragraph">
-<p>The way <code>Collections.sort</code> works is that it takes the collection&#8217;s underlying array and calls its sort method to sort the actual elements. The sorting algorithm used by Java is Timsort.</p>
+<p>The diagram (Fig. 24) below is the Sequence Diagram for interactions that occur from when the sort command is first called by the user to when the Coin List is sorted.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortCommand_SequenceDiagram.png" alt="SortCommand SequenceDiagram" width="800">
+</div>
+<div class="title">Figure 1. Sequence Diagram for SortCommand</div>
 </div>
 <div class="paragraph">
-<p>This sorts the collection in-place, i.e., it modifies the given collection by sorting its elements directly. As a result, a sorted copy need not be made, saving resources.</p>
+<p>The order mechanism is facilitated by the SortCommand which is also an UndoableCommand.
+The SortCommandParser checks for the sort order (a or z parameter) to decide the relevant SortCommand to call.
+The internalList is then sorted using Java&#8217;s sort method.</p>
 </div>
 <div class="paragraph">
-<p>Following are some example sort procedures:</p>
+<p>How the sort procedure works:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Sort by coin value</p>
+<p>Sort by lexicographical order</p>
 <div class="ulist">
 <ul>
 <li>
-<p>We can use <code>Comparator.comparingDouble()</code> for comparing double values. For <em>CoinBook</em>, we want to order our list of coins by value, from the highest to the lowest.</p>
+<p>We can use compareTo() for comparing coin code names. For <em>CoinBook</em>, we want to order our list of coins lexicographically, based on the alphabetical order of their component letters.
+This is done by passing the internalList into the sort function which then uses getCode() to compare each of the component letters of the coin code, which will then arrange coins based on the lexicographical value of the code string.
+The coin code strings with the lowest lexicographical value will appear first followed by coin code strings with higher lexicographical values as you go further down the list.</p>
 </li>
 <li>
-<p>We can use the <code>reversed</code> function on <code>Comparator</code> to invert the default and arrange coins from lowest to highest instead.</p>
-</li>
-<li>
-<p><code>Double</code> is used because coin values have several decimal places and so the <code>comparingInt()</code> function would not suffice.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Sort by string field (e.g. coin code)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If we want to sort our <code>CoinList</code> by coin code, we can use <code>Comparator.comparing()</code> and pass a function that extracts the 3 letter coin code.</p>
+<p>We can either use the <code>reversed</code> function on <code>Comparator</code> or change the compare condition of compareTo() to invert the default setting and arrange the coins from highest to lowest lexicographical value instead.</p>
 </li>
 <li>
 <p>We do not have to pass in any comparator for the list to be correctly sorted because the 3-letter coin code is a <code>String</code> which implements the <code>Comparable</code> <em>interface</em>, and hence guarantees its own implementation of the sort comparator.</p>
@@ -169,7 +214,7 @@ with managing their cryptocurrency portfolio.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="grouping"><a class="link" href="#grouping">Grouping</a></h4>
+<h4 id="grouping-code-coming-in-v2-0-code"><a class="link" href="#grouping-code-coming-in-v2-0-code">Grouping <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>The group feature can use the <code>Collectors</code> class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.</p>
 </div>
@@ -210,7 +255,7 @@ with managing their cryptocurrency portfolio.</p>
 <p>Pros: This possibly allows us to reduce the time required to execute the sorting command.</p>
 </li>
 <li>
-<p>Cons: This takes more time to incorporate into the App since we are not using Java’s in-built sorting method.</p>
+<p>Cons: This would take more time and a considerable amount of effort to incorporate into our CoinBook since we would not be using Java’s in-built sorting method.</p>
 </li>
 </ul>
 </div>
@@ -219,7 +264,7 @@ with managing their cryptocurrency portfolio.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-groups-function"><a class="link" href="#aspect-implementation-of-groups-function">Aspect: Implementation of Groups function</a></h5>
+<h5 id="aspect-implementation-of-groups-function-code-coming-in-v2-0-code"><a class="link" href="#aspect-implementation-of-groups-function-code-coming-in-v2-0-code">Aspect: Implementation of Groups function <code>[Coming in v2.0]</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -243,7 +288,7 @@ with managing their cryptocurrency portfolio.</p>
 <p>Pros: The codebase already has support for tags and so not a lot of changes will be required.</p>
 </li>
 <li>
-<p>Cons: Commands will not be executable at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time.</p>
+<p>Cons: Commands will not be executable at a group level because tags merely depict the attribute of the coins, but groups act as a tool to manage several coins at the same time. I.e.: Grouping would add more functionality to the CoinBook for mass coin management.</p>
 </li>
 </ul>
 </div>
@@ -258,7 +303,7 @@ with managing their cryptocurrency portfolio.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:30:32 UTC
+Last updated 2018-04-14 16:49:45 UTC
 </div>
 </div>
 </body>
