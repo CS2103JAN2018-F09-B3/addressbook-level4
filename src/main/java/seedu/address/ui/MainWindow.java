@@ -264,13 +264,18 @@ public class MainWindow extends UiPart<Stage> {
         toggleLoadingAnimation(isLoading);
     }
 
+    /**
+     * Adds or remove the loading animation from {@code coinListPanelPlaceholder}
+     * depending on the loading status
+     * @param isLoading the loading status of the application
+     */
     private void toggleLoadingAnimation(boolean isLoading) {
         Platform.runLater(() -> {
-           if (isLoading) {
-               activateLoadingAnimation();
-           } else {
-               deactivateLoadingAnimation();
-           }
+            if (isLoading) {
+                activateLoadingAnimation();
+            } else {
+                deactivateLoadingAnimation();
+            }
         });
     }
 
