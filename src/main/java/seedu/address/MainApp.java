@@ -21,6 +21,7 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.logic.commands.SyncCommand;
 import seedu.address.model.CoinBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -78,6 +79,8 @@ public class MainApp extends Application {
         ui = new UiManager(logic, config, userPrefs);
 
         initEventsCenter();
+
+        logic.execute(SyncCommand.COMMAND_WORD);
 
         CoinSubredditList.initialize();
     }
