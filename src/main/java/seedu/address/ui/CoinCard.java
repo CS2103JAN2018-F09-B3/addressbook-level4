@@ -2,9 +2,12 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.util.AppUtil;
 import seedu.address.model.coin.Coin;
 import seedu.address.model.tag.Tag;
 
@@ -17,6 +20,8 @@ public class CoinCard extends UiPart<Region> {
     private static final String[] TAG_STYLE_CLASSES = {
         "red", "blue", "yellow", "grey", "burlywood", "plum"
     };
+
+    private static final String ICON_BASE_FILE_PATH = "/coins/icons/";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -40,15 +45,19 @@ public class CoinCard extends UiPart<Region> {
     private Label amount;
     @FXML
     private Label price;
+    @FXML
+    private ImageView icon;
 
     public CoinCard(Coin coin, int displayedIndex) {
         super(FXML);
         this.coin = coin;
-        id.setText(displayedIndex + ". ");
+        String coinCode = coin.getCode().fullName;
 
-        code.setText(coin.getCode().fullName);
+        id.setText(displayedIndex + ". ");
+        code.setText(coinCode);
         amount.setText(coin.getCurrentAmountHeld().toString());
         price.setText(coin.getPrice().toString());
+        icon.setImage(getCoinIcon(coinCode));
         coin.getTags().forEach(tag -> newTag(tag));
     }
 
@@ -70,6 +79,18 @@ public class CoinCard extends UiPart<Region> {
     private String getLabelColor(Tag tag) {
         int choice = Math.abs(tag.tagName.hashCode());
         return TAG_STYLE_CLASSES[choice % TAG_STYLE_CLASSES.length];
+    }
+
+    private String getCoinFilePath(String code) {
+        return ICON_BASE_FILE_PATH + code + ".png";
+    }
+
+    private Image getCoinIcon(String coinCode) {
+        try {
+            return AppUtil.getImage(getCoinFilePath(coinCode));
+        } catch (NullPointerException e) {
+            return AppUtil.getImage(getCoinFilePath("empty"));
+        }
     }
 
     @Override
