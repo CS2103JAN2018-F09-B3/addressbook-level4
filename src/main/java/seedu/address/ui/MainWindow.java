@@ -261,19 +261,29 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleLoading(boolean isLoading) {
-        if (isLoading) {
-            Platform.runLater(() -> {
-                setTitle("Syncing...");
-                loadingAnimation.setVisible(true);
-                coinListPanelPlaceholder.getChildren().add(loadingAnimation);
-            });
-        } else {
-            Platform.runLater(() -> {
-                setTitle(config.getAppTitle());
-                loadingAnimation.setVisible(false);
-                coinListPanelPlaceholder.getChildren().remove(loadingAnimation);
-            });
-        }
+        toggleLoadingAnimation(isLoading);
+    }
+
+    private void toggleLoadingAnimation(boolean isLoading) {
+        Platform.runLater(() -> {
+           if (isLoading) {
+               activateLoadingAnimation();
+           } else {
+               deactivateLoadingAnimation();
+           }
+        });
+    }
+
+    private void activateLoadingAnimation() {
+        loadingAnimation.setVisible(true);
+        coinListPanelPlaceholder.getChildren().add(loadingAnimation);
+        setTitle("Syncing...");
+    }
+
+    private void deactivateLoadingAnimation() {
+        loadingAnimation.setVisible(false);
+        coinListPanelPlaceholder.getChildren().remove(loadingAnimation);
+        setTitle(config.getAppTitle());
     }
 
     @Subscribe
