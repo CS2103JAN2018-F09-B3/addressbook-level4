@@ -6,6 +6,7 @@ import org.controlsfx.control.Notifications;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -261,11 +262,17 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleLoading(boolean isLoading) {
         if (isLoading) {
-            //Scene scene = new Scene(loadingAnimation, Color.TRANSPARENT);
-            //primaryStage.initStyle(StageStyle.TRANSPARENT);
-            //primaryStage.setScene(scene);
+            Platform.runLater(() -> {
+                setTitle("Syncing...");
+                loadingAnimation.setVisible(true);
+                coinListPanelPlaceholder.getChildren().add(loadingAnimation);
+            });
         } else {
-            //primaryStage.setScene(new Scene(null));
+            Platform.runLater(() -> {
+                setTitle(config.getAppTitle());
+                loadingAnimation.setVisible(false);
+                coinListPanelPlaceholder.getChildren().remove(loadingAnimation);
+            });
         }
     }
 
