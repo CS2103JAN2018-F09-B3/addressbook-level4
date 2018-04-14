@@ -21,7 +21,9 @@ public class CoinCard extends UiPart<Region> {
         "red", "blue", "yellow", "grey", "burlywood", "plum"
     };
 
+    //@@author laichengyu
     private static final String ICON_BASE_FILE_PATH = "/coins/icons/";
+    //@@author
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -45,8 +47,10 @@ public class CoinCard extends UiPart<Region> {
     private Label amount;
     @FXML
     private Label price;
+    //@@author laichengyu
     @FXML
     private ImageView icon;
+    //@@author
 
     public CoinCard(Coin coin, int displayedIndex) {
         super(FXML);
@@ -57,7 +61,9 @@ public class CoinCard extends UiPart<Region> {
         code.setText(coinCode);
         amount.setText(coin.getCurrentAmountHeld().toString());
         price.setText(coin.getPrice().toString());
+        //@@author laichengyu
         icon.setImage(getCoinIcon(coinCode));
+        //@@author
         coin.getTags().forEach(tag -> newTag(tag));
     }
 
@@ -81,6 +87,7 @@ public class CoinCard extends UiPart<Region> {
         return TAG_STYLE_CLASSES[choice % TAG_STYLE_CLASSES.length];
     }
 
+    //@@author laichengyu
     private String getCoinFilePath(String code) {
         return ICON_BASE_FILE_PATH + code + ".png";
     }
@@ -92,6 +99,7 @@ public class CoinCard extends UiPart<Region> {
             return AppUtil.getImage(getCoinFilePath("empty"));
         }
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {
