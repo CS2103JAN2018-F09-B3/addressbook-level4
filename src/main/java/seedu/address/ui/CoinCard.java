@@ -22,7 +22,7 @@ public class CoinCard extends UiPart<Region> {
     };
 
     //@@author laichengyu
-    private static final String ICON_BASE_FILE_PATH = "/coins/icons/";
+    private static final String ICON_BASE_FILE_PATH = "/images/coin_icons/";
     //@@author
 
     /**

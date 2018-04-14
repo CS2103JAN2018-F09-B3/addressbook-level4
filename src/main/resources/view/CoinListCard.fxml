@@ -30,7 +30,7 @@
         </Label>
         <!-- @@author laichengyu -->
         <ImageView fx:id="icon" fitHeight="16.0" fitWidth="16.0">
-          <Image url="@/coins/icons/empty.png" />
+          <Image url="@/images/coin_icons/empty.png" />
         </ImageView>
         <!-- @author -->
         <Label fx:id="code" styleClass="cell_big_label" text="\$first" />
