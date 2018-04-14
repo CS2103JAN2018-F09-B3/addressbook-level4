@@ -26,7 +26,7 @@ U -[#0070C0]> L : parse()
 activate L #0070C0
 
 create M
-L -[#0070C0]> M 
+L -[#0070C0]> M
 activate M #0070C0
 L <-[#0070C0]- M
 deactivate M #0070C0
