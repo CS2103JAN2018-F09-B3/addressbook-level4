@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class UrlBuilderUtilTest {
-    private static final String TEST_BASE_URL ="https://min-api.cryptocompare.com/data/pricemulti";
+    private static final String TEST_BASE_URL = "https://min-api.cryptocompare.com/data/pricemulti";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
