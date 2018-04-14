@@ -2,8 +2,6 @@ package seedu.address.commons.util;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
