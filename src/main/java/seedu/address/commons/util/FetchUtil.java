@@ -6,7 +6,6 @@ import static org.asynchttpclient.Dsl.asyncHttpClient;
 
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import org.asynchttpclient.AsyncHandler;
@@ -22,8 +21,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import io.netty.handler.codec.http.HttpHeaders;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.LoadingEvent;
 
 /**
  * Retrieves data in JSON format from a specified URL

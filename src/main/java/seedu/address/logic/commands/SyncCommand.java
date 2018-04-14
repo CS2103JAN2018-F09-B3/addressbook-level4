@@ -161,6 +161,13 @@ public class SyncCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
+    /**
+     * Dispatches a {@code LoadingEvent} while waiting for the Response object from the Future object
+     * @param promise that returns the desired data
+     * @return Response object retrieved from the Future
+     * @throws InterruptedException
+     * @throws ExecutionException
+     */
     private Response waitForResponse(Future<Response> promise) throws InterruptedException, ExecutionException {
         //Set loading UI
         EventsCenter.getInstance().post(new LoadingEvent(true));
