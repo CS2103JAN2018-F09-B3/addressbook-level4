@@ -32,15 +32,23 @@ public class UrlBuilderUtilTest {
     }
 
     @Test
-    public void buildUrl_nullExceptionThrown() {
+    public void buildUrl_nullUrl_throwsNullPointerException() {
 
         // null url parameter -> throws NullPointerException
         thrown.expect(NullPointerException.class);
         UrlBuilderUtil.buildUrl(null, params);
+    }
+
+    @Test
+    public void buildUrl_nullParams_throwsNullPointerException() {
 
         // null params parameter -> throws NullPointerException
         thrown.expect(NullPointerException.class);
         UrlBuilderUtil.buildUrl(TEST_BASE_URL, null);
+    }
+
+    @Test
+    public void buildUrl_nullBoth_throwsNullPointerException() {
 
         // null both parameters -> throws NullPointerException
         thrown.expect(NullPointerException.class);
