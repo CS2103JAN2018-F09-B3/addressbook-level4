@@ -763,7 +763,7 @@ image::SyncCommandSequenceDiagram.png[width="800"]
 // tag::autocomplete[]
 === Autocomplete Feature
 
-The autocomplete mechanism is facilitated by `LogicManager`, which exposes `COMMAND_LIST` from `CommandList` for `CommandBox` to use. It supports the predicting of a word or phrase that the user may type based on a partial text query.
+The autocomplete mechanism is facilitated by `CommandBox`, which uses `COMMAND_LIST` from `CommandList`. It supports the predicting of a word or phrase that the user may type based on a partial text query.
 
 Suppose the user is trying to use the `sell` command.
 
