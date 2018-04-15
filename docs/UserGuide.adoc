@@ -90,7 +90,7 @@ You can obtain the latest version [ext]#http://www.oracle.com/technetwork/java/j
 +
 .  Download the latest `coinbook.jar` [exref]#link:{repoURL}/releases[here]#.
 .  Copy the file to the folder you want to use as the home folder for your _CoinBook_.
-.  Double-click the file to start the app. The GUI should appear in a few seconds (Fig. 1).
+.  Double-click the file to start the app. The GUI should appear in a few seconds (Fig. 2).
 +
 .Startup Window
 image::Ui.png[width="790"]
