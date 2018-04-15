@@ -170,7 +170,20 @@
 <div class="ulist">
 <ul>
 <li>
-<p>You can put <code>+</code> or <code>-</code> before specifying an amount to indicate a change in the property specified instead of its absolute value, for example:</p>
+<p>You can put <code>+</code> or <code>-</code> before specifying any of the following amounts to test its change instead of its absolute value:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>p/PRICE</code>: Current price, in dollars, of the coin</p>
+</li>
+<li>
+<p><code>w/WORTH</code>: How much, in dollars, the current amount held is worth at the current price</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For example:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -219,7 +232,7 @@
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define, in this case, conditions to trigger notifications on. A <code>RuleChecker</code> in <code>Logic</code> also does the work of checking rules and executing the associated actions.</p>
+<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define conditions to trigger some predefined action when met. A <code>RuleChecker</code> in <code>Logic</code> does this work of checking rules and executing the associated actions.</p>
 </div>
 <div class="paragraph">
 <p>Let us walk through the implementation of notifications by considering a typical scenario involving this feature. Suppose the user wants to keep track of a certain coin&#8217;s price, say <code>BTC</code>.</p>
@@ -249,6 +262,255 @@
 </div>
 </div>
 <div class="sect3">
+<h4 id="advanced-details-and-proposed-extensions"><a class="link" href="#advanced-details-and-proposed-extensions">Advanced Details and Proposed Extensions</a></h4>
+<div class="paragraph">
+<p>In order to allow for future extensions, the rule system has been designed to separate, as much as possible, the construction of the rule and its later behaviour.</p>
+</div>
+<div class="sect4">
+<h5 id="structure-of-the-code-rule-code-class"><a class="link" href="#structure-of-the-code-rule-code-class">Structure of the <code>Rule</code> Class</a></h5>
+<div class="paragraph">
+<p>The <code>Rule</code> class looks like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Rule</span>&lt;T&gt; {                    <i class="conum" data-value="5"></i><b>(5)</b>
+
+    <span class="directive">public</span> <span class="directive">final</span> RuleType type;           <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">String</span> description;
+
+    <span class="directive">public</span> <span class="directive">final</span> ActionCommand&lt;T&gt; action; <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Predicate</span>&lt;T&gt; condition;
+
+    <span class="directive">protected</span> Rule(<span class="predefined-type">String</span> description, RuleType type,
+                   ActionParser&lt;T&gt; actionParser,
+                   ConditionParser&lt;T&gt; conditionParser) {     <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="local-variable">this</span>.description = description;
+        <span class="local-variable">this</span>.type = type;
+        <span class="local-variable">this</span>.action = actionParser.parse(description);
+        <span class="local-variable">this</span>.condition = conditionParser.parse(description);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+        <span class="keyword">return</span> <span class="predefined-type">String</span>.format(RULE_FORMAT_STRING, type, description);   <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+    <span class="annotation">@FunctionalInterface</span>
+    <span class="directive">protected</span> <span class="type">interface</span> <span class="class">ActionParser</span>&lt;T&gt; {
+        ActionCommand&lt;T&gt; parse(<span class="predefined-type">String</span> args);
+    }
+
+    <span class="annotation">@FunctionalInterface</span>
+    <span class="directive">protected</span> <span class="type">interface</span> <span class="class">ConditionParser</span>&lt;T&gt; {
+        <span class="predefined-type">Predicate</span>&lt;T&gt; parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> IllegalValueException;
+    }
+
+    [...]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A few things to note from this:</p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each <code>Rule</code> object is a condition-action pair</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>It is completely described by its <code>type</code> and <code>description</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>By storing the above two values as strings, the exact object can be reconstructed on startup</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The constructor has been made <code>protected</code> so that new rule types must be defined by extending this base <code>Rule</code> class to be constructed and accessed from outside</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The class is generic, and parameterized by the type of the object it is a condition upon, e.g. notification rules test against <code>Coin</code> objects</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This structure follows very closely the <span class="ext"><a href="https://sourcemaking.com/design_patterns/strategy">Strategy design pattern</a></span> as described in the "Gang of Four" book. It leads to the following class structure, as used above (see Fig. 24):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/NotificationClassDiagram.png" alt="NotificationClassDiagram" width=""800">
+</div>
+<div class="title">Figure 2. Class Diagram for Rule System</div>
+</div>
+<div class="paragraph">
+<p>An example concrete implementation is the <code>NotificationRule</code> class used for notifications:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">NotificationRule</span> <span class="directive">extends</span> Rule&lt;Coin&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> ActionParser&lt;Coin&gt;
+    parseAction = SpawnNotificationCommand::<span class="keyword">new</span>;
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> ConditionParser&lt;Coin&gt;
+    parseCondition = NotifyCommandParser::parseNotifyCondition;
+
+    <span class="directive">public</span> NotificationRule(<span class="predefined-type">String</span> value) {
+        <span class="local-variable">super</span>(value, RuleType.NOTIFICATION, parseAction, parseCondition);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The notification command fills in the abstract <code>actionParser</code> and <code>conditionParser</code> with functions implemented in various places, but which follow the template <code>FunctionalInterface</code> shown above.</p>
+</div>
+<div class="paragraph">
+<p><code>conditionParser</code> takes in the description string and returns a <code>Predicate&lt;T&gt;</code> object, which can be tested against with an object of type <code>T</code>. This results in a <code>true</code> or <code>false</code> output depending on whether that object satisfies the condition. <code>NotificationRule</code> uses the same <code>ConditionParser</code> as in the <code>find</code> command, explained in the previous <a href="#condition">section</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>actionParser</code> takes in the same description string and returns an <code>ActionCommand</code>, which is just:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">ActionCommand</span>&lt;T&gt; <span class="directive">extends</span> Command {
+    <span class="directive">public</span> <span class="directive">abstract</span> <span class="type">void</span> setExtraData(T data, BaseEvent event);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It adds a method atop <a href="#fig-LogicClassDiagram"><code>Command</code></a> objects, to receive extra data which is only known after matching the rule. An easy example is the object that triggered the rule itself, which cannot be known until it is actually tested, and that only happens after the <code>Rule</code> has been constructed. This is the first extra data. You shall see the reason for the second one (<code>event</code>) later.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="rule-checking-system"><a class="link" href="#rule-checking-system">Rule Checking System</a></h5>
+<div class="paragraph">
+<p>The rule checker is implemented via the <a href="#event-driven-design">event-driven approach</a> described in the previous chapter. The rule checker looks something like the below (simplified from actual):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">RuleChecker</span> {
+
+    <span class="directive">private</span> <span class="directive">final</span> RuleBook rules;
+
+    <span class="annotation">@Subscribe</span>
+    <span class="directive">public</span> <span class="type">void</span> handleCoinChangedEvent(CoinChangedEvent cce) {
+        <span class="keyword">for</span> (Rule r : rules.getRuleList()) {
+            r.action.setExtraData(cce.data, cce);
+
+            <span class="keyword">switch</span> (r.type) {
+            <span class="keyword">case</span> NOTIFICATION:
+                checkAndFire(r, cce.data);
+                <span class="keyword">break</span>;
+            [...more types in the future]
+            }
+        }
+    }
+
+    <span class="directive">private</span> <span class="directive">static</span> &lt;T&gt; <span class="type">void</span> checkAndFire(Rule&lt;T&gt; rule, T data) {
+        <span class="keyword">if</span> (rule.condition.test(data)) {
+            rule.action.execute();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An instance of <code>RuleChecker</code> lives inside <code>LogicManager</code>, at the same level of architecture as the <code>UndoRedoStack</code> or the <code>CommandHistory</code> (<a href="#fig-LogicClassDiagram">see above</a>).
+The rule testing procedure is initiated by an event, usually capturing information about a change in the state of some objects of interest.</p>
+</div>
+<div class="paragraph">
+<p><code>RuleChecker</code>, upon capturing this event, begins looping through the list of rules, testing each one&#8217;s condition against the event data and performing the custom action defined with it.
+The extra data as above is also set with the potentially matching object, as well as the event itself, as alluded to above, which should contain all other necessary context for the action&#8217;s execution.</p>
+</div>
+<div class="paragraph">
+<p>A concrete example from <code>NotificationRule</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SpawnNotificationCommand</span> <span class="directive">extends</span> ActionCommand&lt;Coin&gt; {
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> message;
+    <span class="directive">private</span> Coin jumpTo;
+    <span class="directive">private</span> Index index;
+
+    <span class="directive">public</span> SpawnNotificationCommand(<span class="predefined-type">String</span> message) {
+        <span class="local-variable">this</span>.message = message;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> setExtraData(Coin data, BaseEvent event) {
+        jumpTo = data;
+        index = ((CoinChangedEvent) event).index;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowNotificationRequestEvent(
+            message, index, jumpTo.getCode().toString()));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
+    }
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This sends yet another event <code>ShowNotificationRequestEvent</code>, which is captured by the <code>UI</code> component that then creates a pop-up notification to show to the user.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="proposed-extensions"><a class="link" href="#proposed-extensions">Proposed Extensions</a></h5>
+<div class="paragraph">
+<p>With the above in mind, you should be able to see that it is relatively easy to add other kinds of rules to <em>CoinBook</em>. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Scheduled tasks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Condition: Time-based</p>
+</li>
+<li>
+<p>Action: User-set, e.g. run the <code>sync</code> command, export data to file and mail, etc.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Webhook rules</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Condition: Similar to notifications</p>
+</li>
+<li>
+<p>Action: Instead of just popping-up a notification, post some preformatted data to a URL</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Associated actions</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Condition: Action made upon some coin account</p>
+</li>
+<li>
+<p>Action: The same action is done on a specified target</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-rules"><a class="link" href="#aspect-implementation-of-rules">Aspect: Implementation of rules</a></h5>
@@ -259,7 +521,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Later extension is easy to make by simply defining new condition and command parsers along with associated input.</p>
+<p>Pros: Later extension is easy to make by simply defining new condition and action parsers along with associated input.</p>
 </li>
 <li>
 <p>Cons: This design pattern (Strategy pattern) is more advanced and may be hard for new developers to understand. Code readability may also suffer.</p>
@@ -272,7 +534,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This is quicker to implement as the behavious is hard-coded.</p>
+<p>Pros: This is quicker to implement as the behaviour is hard-coded.</p>
 </li>
 <li>
 <p>Cons: It will be more difficult to extend rules to handle other events in the future.</p>
@@ -370,7 +632,7 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:24:44 UTC
+Last updated 2018-04-15 12:27:22 UTC
 </div>
 </div>
 </body>

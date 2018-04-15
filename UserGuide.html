@@ -38,10 +38,10 @@
 <li><a href="#clear-all-entries-code-clear-code-code-c-code">5.6. Clear all entries <code>clear</code> | <code>c</code></a></li>
 <li><a href="#tag-an-account-code-tag-code-code-t-code">5.7. Tag an account <code>tag</code> | <code>t</code></a></li>
 <li><a href="#list-all-accounts-code-list-code-code-l-code">5.8. List all accounts <code>list</code> | <code>l</code></a></li>
-<li><a href="#view-details-of-an-account-code-view-code-code-v-code-code-coming-in-v1-5-code">5.9. View details of an account <code>view</code> | <code>v</code> <code>[Coming in v1.5]</code></a></li>
+<li><a href="#view">5.9. View details of an account <code>view</code> | <code>v</code> <code>[Coming in v1.5]</code></a></li>
 <li><a href="#search-through-accounts-code-find-code-code-f-code-code-coming-in-v1-5-code">5.10. Search through accounts <code>find</code> | <code>f</code> <code>[Coming in v1.5]</code></a></li>
 <li><a href="#set-up-notifications-code-notify-code-code-n-code-code-coming-in-v1-5-code">5.11. Set up notifications <code>notify</code> | <code>n</code> <code>[Coming in v1.5]</code></a></li>
-<li><a href="#change-listing-order-code-order-code-code-o-code">5.12. Change listing order <code>order</code> | <code>o</code></a></li>
+<li><a href="#change-listing-order-code-order-code-code-o-code-code-since-v1-5-code">5.12. Change listing order <code>order</code> | <code>o</code> <code>[Since v1.5]</code></a></li>
 <li><a href="#list-past-commands-code-history-code-code-h-code">5.13. List past commands <code>history</code> | <code>h</code></a></li>
 <li><a href="#undo-previous-command-code-undo-code-code-z-code">5.14. Undo previous command <code>undo</code> | <code>z</code></a></li>
 <li><a href="#redo-undone-command-code-redo-code-code-y-code">5.15. Redo undone command <code>redo</code> | <code>y</code></a></li>
@@ -61,11 +61,14 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>CoinBook</em> is a desktop application that is made for users who prefer to work on a mouse-free, command line platform with minimal <span class="gloss"><a href="#gui">graphical user interface (GUI)</a></span> dependence.</p>
+<p><em>CoinBook</em> is a desktop application that is made for users who prefer to work on a mouse-free environment where everything can be done through commands typed in with the keyboard. There is no need to click on visual components of the App to perform tasks. In other words, <em>CoinBook</em> offers a command line interface with minimal <span class="gloss"><a href="#gui">graphical user interface (GUI)</a></span> dependence.</p>
 </div>
 <div class="paragraph">
 <p><em>Coinbook</em> allows you to store a portfolio of your cryptocurrency purchases as well as track the latest price trends and news, in addition to providing various
 tools to simplify and expedite your management process such as profit calculation.</p>
+</div>
+<div class="paragraph">
+<p>This guide will help you set up <em>CoinBook</em>, as well as introduce its various features.</p>
 </div>
 </div>
 </div>
@@ -73,7 +76,7 @@ tools to simplify and expedite your management process such as profit calculatio
 <h2 id="how-the-program-looks-like"><a class="link" href="#how-the-program-looks-like">2. How the program looks like</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The figure below (fig. 1) describes each section of the interface.</p>
+<p>The figure below (Fig. 1) describes each section of the interface.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -431,7 +434,8 @@ If a non-existent trading code is added, its price will not be updated with the 
 </tbody>
 </table>
 <div class="paragraph">
-<p>Adds a new coin account into the list, with the given trading code, and the given tags.</p>
+<p>Adds a new coin account into the list, with the given trading code, and the given tags.
+You will be notified in the result pane if the added coin is not known to have a subreddit, for the viewing of news updates. See <a href="#view"><code>view</code> command</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example</div>
@@ -656,7 +660,7 @@ A coin account can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-details-of-an-account-code-view-code-code-v-code-code-coming-in-v1-5-code"><a class="link" href="#view-details-of-an-account-code-view-code-code-v-code-code-coming-in-v1-5-code">5.9. View details of an account <code>view</code> | <code>v</code> <code>[Coming in v1.5]</code></a></h3>
+<h3 id="view"><a class="link" href="#view">5.9. View details of an account <code>view</code> | <code>v</code> <code>[Coming in v1.5]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
@@ -681,6 +685,9 @@ A coin account can have any number of tags (including 0)
 <p>Chart of the price history</p>
 </li>
 <li>
+<p>Subreddit of this coin, if there is one</p>
+</li>
+<li>
 <p>etc&#8230;&#8203; [More analytics coming in v2.0]</p>
 </li>
 </ul>
@@ -693,14 +700,6 @@ A coin account can have any number of tags (including 0)
 </div>
 <div class="paragraph">
 <p>See details for the <code>BTC</code> account</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>view Bitcoin</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>See details for the <code>Bitcoin</code> account</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -855,7 +854,20 @@ A coin account can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p>You can put <code>+</code> or <code>-</code> before specifying an amount to indicate a change in the property specified instead of its absolute value, for example:</p>
+<p>You can put <code>+</code> or <code>-</code> before specifying any of the following amounts to test its change instead of its absolute value:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>p/PRICE</code>: Current price, in dollars, of the coin</p>
+</li>
+<li>
+<p><code>w/WORTH</code>: How much, in dollars, the current amount held is worth at the current price</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For example:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -901,13 +913,19 @@ A coin account can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="change-listing-order-code-order-code-code-o-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code">5.12. Change listing order <code>order</code> | <code>o</code></a></h3>
+<h3 id="change-listing-order-code-order-code-code-o-code-code-since-v1-5-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code-code-since-v1-5-code">5.12. Change listing order <code>order</code> | <code>o</code> <code>[Since v1.5]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
 <pre>order {a,z}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Orders the coin listing in lexicographical order.<br>
+This is also the default option if {a,z} is not specified after the command.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
 <p>Orders the coin listing in lexicographical order (default option if sort order is not specified).</p>
 </div>
@@ -930,6 +948,15 @@ A coin account can have any number of tags (including 0)
 </div>
 <div class="paragraph">
 <p>Sort the listing in reverse lexicographical order.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This command can be reversed with <code>undo</code>, but only in the same session. The effect is permanent once <em>CoinBook</em> is closed.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1228,6 +1255,11 @@ There is no need to save manually.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Order</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order {a,z}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sorts the coin accounts based on their OPTION.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Order</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>order OPTION/{a,z}&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sorts the coin accounts based on their OPTION.</p></td>
 </tr>
@@ -1285,7 +1317,7 @@ There is no need to save manually.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:24:44 UTC
+Last updated 2018-04-15 12:27:22 UTC
 </div>
 </div>
 </body>

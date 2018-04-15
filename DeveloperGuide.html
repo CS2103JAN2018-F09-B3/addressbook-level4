@@ -43,18 +43,15 @@
 </ul>
 </li>
 <li><a href="#implementation">4. Implementation</a>
-<ul class="sectlevel3">
-<li><a href="#current-implementation">4.1. Current implementation</a></li>
-<li><a href="#error-handling">4.2. Error handling</a></li>
-<li><a href="#design-considerations">4.3. Design Considerations</a></li>
-<li><a href="#advanced-details">4.4. Advanced details</a></li>
-<li><a href="#design-considerations-2">4.5. Design Considerations</a></li>
-<li><a href="#user-set-notifications">4.6. User-Set Notifications</a></li>
-<li><a href="#Implementation-Organisation">4.7. Organisation Features</a></li>
-<li><a href="#sync-feature">4.8. Sync Feature</a></li>
-<li><a href="#autocomplete-feature">4.9. Autocomplete Feature</a></li>
-<li><a href="#logging">4.10. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.11. Configuration</a></li>
+<ul class="sectlevel2">
+<li><a href="#condition">4.1. Condition Parser Component</a></li>
+<li><a href="#undo-redo-feature">4.2. Undo/Redo Feature</a></li>
+<li><a href="#user-set-notifications">4.3. User-Set Notifications</a></li>
+<li><a href="#Implementation-Organisation">4.4. Organisation Features</a></li>
+<li><a href="#sync-feature">4.5. Sync Feature</a></li>
+<li><a href="#autocomplete-feature">4.6. Autocomplete Feature</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -101,8 +98,10 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launching-and-shutting-down">F.1. Launching and Shutting Down</a></li>
-<li><a href="#deleting-a-coin">F.2. Deleting a coin</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#deleting-a-coin">F.2. Deleting a Coin</a></li>
+<li><a href="#saving-data">F.3. Saving Data</a></li>
+<li><a href="#finding-coins">F.4. Finding Coins</a></li>
+<li><a href="#setting-notifications">F.5. Setting Notifications</a></li>
 </ul>
 </li>
 </ul>
@@ -119,14 +118,14 @@
 or those who are just interested in the internal design and implementation details of <em>CoinBook</em>.</p>
 </div>
 <div class="paragraph">
-<p>To set up the project and work environment, read the next section, <a href="#getting-started-with-coinbook">Section 2, &#8220;Getting Started with CoinBook&#8221;</a>. New developers should also read about the overall <a href="#design">Section 3, &#8220;Design&#8221;</a> to apprise
+<p>To set up the project and work environment, read the next section, <a href="#getting-started-with-coinbook">Getting Started with CoinBook</a>. New developers should also read about the overall <a href="#design">Design</a> to apprise
 themselves of the architecture in this software. Existing developers may also find it useful as a reference.</p>
 </div>
 <div class="paragraph">
-<p>If you wish to extend the key features in <em>CoinBook</em>, the chapter on <a href="#implementation">Section 4, &#8220;Implementation&#8221;</a> delves into non-trivial details involving these features.</p>
+<p>If you wish to extend the key features in <em>CoinBook</em>, the chapter on <a href="#implementation">Implementation</a> delves into non-trivial details involving these features.</p>
 </div>
 <div class="paragraph">
-<p>New developers should also read the <a href="#documentation">Section 5, &#8220;Documentation&#8221;</a>, <a href="#Testing">Section 6, &#8220;Testing&#8221;</a>, and <a href="#devops">Section 7, &#8220;DevOps&#8221;</a>
+<p>New developers should also read the <a href="#documentation">Documentation</a>, <a href="#Testing">Testing</a>, and <a href="#devops">DevOps</a>
 sections to learn more about the workflow, tools and frameworks currently being used in the project.
 You must follow the existing workflow if you are keen on contributing to the project.</p>
 </div>
@@ -145,13 +144,13 @@ under consideration should be aligned with the design philosophies and product d
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Make sure you have the prerequisites installed. See <a href="#prereq">Section 2.1, &#8220;Obtaining Prerequisites&#8221;</a> for details.</p>
+<p>Make sure you have the prerequisites installed. See <a href="#prereq">Obtaining Prerequisites</a> for details.</p>
 </li>
 <li>
-<p>Clone and import the project. See <a href="#setting-up">Section 2.2, &#8220;Setting Up&#8221;</a> for details.</p>
+<p>Clone and import the project. See <a href="#setting-up">Setting Up</a> for details.</p>
 </li>
 <li>
-<p>Set up additional requirements before writing your code. See <a href="#config">Section 2.4, &#8220;Configuring the Environment&#8221;</a> for details.</p>
+<p>Set up additional requirements before writing your code. See <a href="#config">Configuring the Environment</a> for details.</p>
 </li>
 </ol>
 </div>
@@ -343,7 +342,7 @@ Having both Travis and AppVeyor ensures that your app works on both Unix-based p
 <div class="sect3">
 <h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.4.4. Getting Started With Coding</a></h4>
 <div class="paragraph">
-<p>When you are ready to start coding, get some sense of the overall design by reading the next section on <em>CoinBook</em>'s <a href="#design">Section 3, &#8220;Design&#8221;</a>.</p>
+<p>When you are ready to start coding, get some sense of the overall design by reading the next section on <em>CoinBook</em>'s <a href="#design">Design</a>.</p>
 </div>
 </div>
 </div>
@@ -531,7 +530,7 @@ The following diagram (Fig. 5) illustrates the structure of this component:</p>
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p>The user interface (UI) consists of a <code>MainWindow</code> that is made up of several parts, e.g. <code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The user interface (UI) consists of a <code>MainWindow</code> that is made up of several parts, e.g. <code>CommandBox</code>, <code>ResultDisplay</code>, <code>CoinListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses the JavaFx UI framework. The layout of the UI parts are defined in matching <code>.fxml</code> files located in the <code>src/main/resources/view</code> folder. For example, the layout of the
@@ -696,11 +695,12 @@ The following diagram (Fig. 10) illustrates the structure of this component:</p>
 <h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter describes some noteworthy details on how certain features and components have been implemented. It is highly recommended to read the previous chapter on <a href="#design">Section 3, &#8220;Design&#8221;</a> first so that you have some picture of where these features fit in.
-=== Condition Parser Component</p>
+<p>This chapter describes some noteworthy details on how certain features and components have been implemented. It is highly recommended to read the previous chapter on <a href="#design">Design</a> first so that you have some picture of where these features fit in.</p>
 </div>
+<div class="sect2">
+<h3 id="condition"><a class="link" href="#condition">4.1. Condition Parser Component</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1. Current implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The general parser for the SQL-like arguments for the find command can be broken down into a few sub-components, namely <code>ArgumentTokenizer</code>, <code>SyntaxParser</code>, <code>SemanticParser</code>, and a <code>ConditionGenerator</code>, while using classes such as <code>Condition</code>,
 <code>Token</code>, <code>TokenType</code>, <code>TokenStack</code> to model the data that is to be operated on throughout the process. Their tasks are
@@ -774,7 +774,7 @@ the Coin objects and returns a true/false value.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="error-handling"><a class="link" href="#error-handling">4.2. Error handling</a></h4>
+<h4 id="error-handling"><a class="link" href="#error-handling">4.1.2. Error handling</a></h4>
 <div class="paragraph">
 <p>On syntactically and semantically invalid inputs, <code>ConditionParser</code> will retrieve the expected and actual type of
 <code>Token</code> that were not a match during the parsing phase from <code>TokenStack</code> and raise a <code>ParseException</code> before returning.</p>
@@ -785,9 +785,9 @@ as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.3. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.3.1. Aspect: Specification of syntax</a></h5>
+<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.1.3.1. Aspect: Specification of syntax</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -820,7 +820,7 @@ as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.3.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
+<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.1.3.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -854,9 +854,9 @@ as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="advanced-details"><a class="link" href="#advanced-details">4.4. Advanced details</a></h4>
+<h4 id="advanced-details"><a class="link" href="#advanced-details">4.1.4. Advanced Details</a></h4>
 <div class="sect4">
-<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.4.1. Argument Tokenizing</a></h5>
+<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.1.4.1. Argument Tokenizing</a></h5>
 <div class="paragraph">
 <p>We will illustrate the flow of tokenizing an example input:</p>
 </div>
@@ -888,7 +888,7 @@ the input (i.e. token) has now been grouped with a type.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.4.2. Syntax Parser</a></h5>
+<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.1.4.2. Syntax Parser</a></h5>
 <div class="paragraph">
 <p>Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
 This is done by matching the tokens off based on the following rules, expressed in Backus-Naur form:</p>
@@ -1012,7 +1012,7 @@ For example, here is the implementation for <code>EXPRESSION</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.4.3. Semantic Parser</a></h5>
+<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.1.4.3. Semantic Parser</a></h5>
 <div class="paragraph">
 <p>Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
 type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
@@ -1024,7 +1024,7 @@ option is followed by a number.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="condition-generator"><a class="link" href="#condition-generator">4.4.4. Condition Generator</a></h5>
+<h5 id="condition-generator"><a class="link" href="#condition-generator">4.1.4.4. Condition Generator</a></h5>
 <div class="paragraph">
 <p>Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
 condition based on the binary operators encounters up the recursion tree.</p>
@@ -1043,10 +1043,15 @@ as a back call at the end of each recursion tree.</p>
 </div>
 <div class="paragraph">
 <p><code>p/&gt;100</code> is a condition on price whereas <code>t/fav</code> is a condition on tags, and they can be composed using the <code>Predicate</code>
-method <code>and()</code> to return a logical conjunction of the two conditions.
-=== Undo/Redo Feature
-==== Current Implementation</p>
+method <code>and()</code> to return a logical conjunction of the two conditions.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports the undoing and redoing of commands that modify the stored data (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1206,11 +1211,10 @@ If <code>redoStack</code> is empty, then there are no other commands left to be 
 <div class="title">Figure 22. Activity Diagram for Undo/Redo</div>
 </div>
 </div>
-</div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.5. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">4.5.1. Aspect: Implementation of <code>UndoableCommand</code></a></h5>
+<h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">4.2.2.1. Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1244,7 +1248,7 @@ Classes that deal with <code>Command</code> do not have to know that <code>execu
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">4.5.2. Aspect: Execution of undo &amp; redo</a></h5>
+<h5 id="aspect-execution-of-undo-redo"><a class="link" href="#aspect-execution-of-undo-redo">4.2.2.2. Aspect: Execution of undo &amp; redo</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1277,7 +1281,7 @@ Classes that deal with <code>Command</code> do not have to know that <code>execu
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">4.5.3. Aspect: Type of commands that can be undone/redone</a></h5>
+<h5 id="aspect-type-of-commands-that-can-be-undone-redone"><a class="link" href="#aspect-type-of-commands-that-can-be-undone-redone">4.2.2.3. Aspect: Type of commands that can be undone/redone</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1312,7 +1316,7 @@ e.g. The view can easily be re-modified as no data is lost, so not undoable with
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">4.5.4. Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">4.2.2.4. Aspect: Data structure to support the undo/redo commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1346,12 +1350,13 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="user-set-notifications"><a class="link" href="#user-set-notifications">4.6. User-Set Notifications</a></h3>
+<h3 id="user-set-notifications"><a class="link" href="#user-set-notifications">4.3. User-Set Notifications</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define, in this case, conditions to trigger notifications on. A <code>RuleChecker</code> in <code>Logic</code> also does the work of checking rules and executing the associated actions.</p>
+<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define conditions to trigger some predefined action when met. A <code>RuleChecker</code> in <code>Logic</code> does this work of checking rules and executing the associated actions.</p>
 </div>
 <div class="paragraph">
 <p>Let us walk through the implementation of notifications by considering a typical scenario involving this feature. Suppose the user wants to keep track of a certain coin&#8217;s price, say <code>BTC</code>.</p>
@@ -1381,9 +1386,258 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.6.2. Design Considerations</a></h4>
+<h4 id="advanced-details-and-proposed-extensions"><a class="link" href="#advanced-details-and-proposed-extensions">4.3.2. Advanced Details and Proposed Extensions</a></h4>
+<div class="paragraph">
+<p>In order to allow for future extensions, the rule system has been designed to separate, as much as possible, the construction of the rule and its later behaviour.</p>
+</div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-rules"><a class="link" href="#aspect-implementation-of-rules">4.6.2.1. Aspect: Implementation of rules</a></h5>
+<h5 id="structure-of-the-code-rule-code-class"><a class="link" href="#structure-of-the-code-rule-code-class">4.3.2.1. Structure of the <code>Rule</code> Class</a></h5>
+<div class="paragraph">
+<p>The <code>Rule</code> class looks like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Rule</span>&lt;T&gt; {                    <i class="conum" data-value="5"></i><b>(5)</b>
+
+    <span class="directive">public</span> <span class="directive">final</span> RuleType type;           <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">String</span> description;
+
+    <span class="directive">public</span> <span class="directive">final</span> ActionCommand&lt;T&gt; action; <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Predicate</span>&lt;T&gt; condition;
+
+    <span class="directive">protected</span> Rule(<span class="predefined-type">String</span> description, RuleType type,
+                   ActionParser&lt;T&gt; actionParser,
+                   ConditionParser&lt;T&gt; conditionParser) {     <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="local-variable">this</span>.description = description;
+        <span class="local-variable">this</span>.type = type;
+        <span class="local-variable">this</span>.action = actionParser.parse(description);
+        <span class="local-variable">this</span>.condition = conditionParser.parse(description);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+        <span class="keyword">return</span> <span class="predefined-type">String</span>.format(RULE_FORMAT_STRING, type, description);   <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+    <span class="annotation">@FunctionalInterface</span>
+    <span class="directive">protected</span> <span class="type">interface</span> <span class="class">ActionParser</span>&lt;T&gt; {
+        ActionCommand&lt;T&gt; parse(<span class="predefined-type">String</span> args);
+    }
+
+    <span class="annotation">@FunctionalInterface</span>
+    <span class="directive">protected</span> <span class="type">interface</span> <span class="class">ConditionParser</span>&lt;T&gt; {
+        <span class="predefined-type">Predicate</span>&lt;T&gt; parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> IllegalValueException;
+    }
+
+    [...]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A few things to note from this:</p>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each <code>Rule</code> object is a condition-action pair</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>It is completely described by its <code>type</code> and <code>description</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>By storing the above two values as strings, the exact object can be reconstructed on startup</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The constructor has been made <code>protected</code> so that new rule types must be defined by extending this base <code>Rule</code> class to be constructed and accessed from outside</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The class is generic, and parameterized by the type of the object it is a condition upon, e.g. notification rules test against <code>Coin</code> objects</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This structure follows very closely the <span class="ext"><a href="https://sourcemaking.com/design_patterns/strategy">Strategy design pattern</a></span> as described in the "Gang of Four" book. It leads to the following class structure, as used above (see Fig. 24):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NotificationClassDiagram.png" alt="NotificationClassDiagram" width=""800">
+</div>
+<div class="title">Figure 24. Class Diagram for Rule System</div>
+</div>
+<div class="paragraph">
+<p>An example concrete implementation is the <code>NotificationRule</code> class used for notifications:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">NotificationRule</span> <span class="directive">extends</span> Rule&lt;Coin&gt; {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> ActionParser&lt;Coin&gt;
+    parseAction = SpawnNotificationCommand::<span class="keyword">new</span>;
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> ConditionParser&lt;Coin&gt;
+    parseCondition = NotifyCommandParser::parseNotifyCondition;
+
+    <span class="directive">public</span> NotificationRule(<span class="predefined-type">String</span> value) {
+        <span class="local-variable">super</span>(value, RuleType.NOTIFICATION, parseAction, parseCondition);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The notification command fills in the abstract <code>actionParser</code> and <code>conditionParser</code> with functions implemented in various places, but which follow the template <code>FunctionalInterface</code> shown above.</p>
+</div>
+<div class="paragraph">
+<p><code>conditionParser</code> takes in the description string and returns a <code>Predicate&lt;T&gt;</code> object, which can be tested against with an object of type <code>T</code>. This results in a <code>true</code> or <code>false</code> output depending on whether that object satisfies the condition. <code>NotificationRule</code> uses the same <code>ConditionParser</code> as in the <code>find</code> command, explained in the previous <a href="#condition">section</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>actionParser</code> takes in the same description string and returns an <code>ActionCommand</code>, which is just:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">ActionCommand</span>&lt;T&gt; <span class="directive">extends</span> Command {
+    <span class="directive">public</span> <span class="directive">abstract</span> <span class="type">void</span> setExtraData(T data, BaseEvent event);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It adds a method atop <a href="#fig-LogicClassDiagram"><code>Command</code></a> objects, to receive extra data which is only known after matching the rule. An easy example is the object that triggered the rule itself, which cannot be known until it is actually tested, and that only happens after the <code>Rule</code> has been constructed. This is the first extra data. You shall see the reason for the second one (<code>event</code>) later.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="rule-checking-system"><a class="link" href="#rule-checking-system">4.3.2.2. Rule Checking System</a></h5>
+<div class="paragraph">
+<p>The rule checker is implemented via the <a href="#event-driven-design">event-driven approach</a> described in the previous chapter. The rule checker looks something like the below (simplified from actual):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">RuleChecker</span> {
+
+    <span class="directive">private</span> <span class="directive">final</span> RuleBook rules;
+
+    <span class="annotation">@Subscribe</span>
+    <span class="directive">public</span> <span class="type">void</span> handleCoinChangedEvent(CoinChangedEvent cce) {
+        <span class="keyword">for</span> (Rule r : rules.getRuleList()) {
+            r.action.setExtraData(cce.data, cce);
+
+            <span class="keyword">switch</span> (r.type) {
+            <span class="keyword">case</span> NOTIFICATION:
+                checkAndFire(r, cce.data);
+                <span class="keyword">break</span>;
+            [...more types in the future]
+            }
+        }
+    }
+
+    <span class="directive">private</span> <span class="directive">static</span> &lt;T&gt; <span class="type">void</span> checkAndFire(Rule&lt;T&gt; rule, T data) {
+        <span class="keyword">if</span> (rule.condition.test(data)) {
+            rule.action.execute();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An instance of <code>RuleChecker</code> lives inside <code>LogicManager</code>, at the same level of architecture as the <code>UndoRedoStack</code> or the <code>CommandHistory</code> (<a href="#fig-LogicClassDiagram">see above</a>).
+The rule testing procedure is initiated by an event, usually capturing information about a change in the state of some objects of interest.</p>
+</div>
+<div class="paragraph">
+<p><code>RuleChecker</code>, upon capturing this event, begins looping through the list of rules, testing each one&#8217;s condition against the event data and performing the custom action defined with it.
+The extra data as above is also set with the potentially matching object, as well as the event itself, as alluded to above, which should contain all other necessary context for the action&#8217;s execution.</p>
+</div>
+<div class="paragraph">
+<p>A concrete example from <code>NotificationRule</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SpawnNotificationCommand</span> <span class="directive">extends</span> ActionCommand&lt;Coin&gt; {
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> message;
+    <span class="directive">private</span> Coin jumpTo;
+    <span class="directive">private</span> Index index;
+
+    <span class="directive">public</span> SpawnNotificationCommand(<span class="predefined-type">String</span> message) {
+        <span class="local-variable">this</span>.message = message;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> setExtraData(Coin data, BaseEvent event) {
+        jumpTo = data;
+        index = ((CoinChangedEvent) event).index;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowNotificationRequestEvent(
+            message, index, jumpTo.getCode().toString()));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
+    }
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This sends yet another event <code>ShowNotificationRequestEvent</code>, which is captured by the <code>UI</code> component that then creates a pop-up notification to show to the user.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="proposed-extensions"><a class="link" href="#proposed-extensions">4.3.2.3. Proposed Extensions</a></h5>
+<div class="paragraph">
+<p>With the above in mind, you should be able to see that it is relatively easy to add other kinds of rules to <em>CoinBook</em>. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Scheduled tasks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Condition: Time-based</p>
+</li>
+<li>
+<p>Action: User-set, e.g. run the <code>sync</code> command, export data to file and mail, etc.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Webhook rules</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Condition: Similar to notifications</p>
+</li>
+<li>
+<p>Action: Instead of just popping-up a notification, post some preformatted data to a URL</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Associated actions</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Condition: Action made upon some coin account</p>
+</li>
+<li>
+<p>Action: The same action is done on a specified target</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-rules"><a class="link" href="#aspect-implementation-of-rules">4.3.3.1. Aspect: Implementation of rules</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1391,7 +1645,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Later extension is easy to make by simply defining new condition and command parsers along with associated input.</p>
+<p>Pros: Later extension is easy to make by simply defining new condition and action parsers along with associated input.</p>
 </li>
 <li>
 <p>Cons: This design pattern (Strategy pattern) is more advanced and may be hard for new developers to understand. Code readability may also suffer.</p>
@@ -1404,7 +1658,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This is quicker to implement as the behavious is hard-coded.</p>
+<p>Pros: This is quicker to implement as the behaviour is hard-coded.</p>
 </li>
 <li>
 <p>Cons: It will be more difficult to extend rules to handle other events in the future.</p>
@@ -1428,7 +1682,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-type-of-notification-to-use"><a class="link" href="#aspect-type-of-notification-to-use">4.6.2.2. Aspect: Type of notification to use</a></h5>
+<h5 id="aspect-type-of-notification-to-use"><a class="link" href="#aspect-type-of-notification-to-use">4.3.3.2. Aspect: Type of notification to use</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1461,7 +1715,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-undo-ability-of-code-notifycommand-code"><a class="link" href="#aspect-undo-ability-of-code-notifycommand-code">4.6.2.3. Aspect: Undo-ability of <code>NotifyCommand</code></a></h5>
+<h5 id="aspect-undo-ability-of-code-notifycommand-code"><a class="link" href="#aspect-undo-ability-of-code-notifycommand-code">4.3.3.3. Aspect: Undo-ability of <code>NotifyCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1498,27 +1752,27 @@ We want to keep <code>Model</code> as an interface for just the coin data itself
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Organisation"><a class="link" href="#Implementation-Organisation">4.7. Organisation Features</a></h3>
+<h3 id="Implementation-Organisation"><a class="link" href="#Implementation-Organisation">4.4. Organisation Features</a></h3>
 <div class="sect3">
-<h4 id="sorting"><a class="link" href="#sorting">4.7.1. Sorting</a></h4>
+<h4 id="sorting"><a class="link" href="#sorting">4.4.1. Sorting</a></h4>
 <div class="paragraph">
 <p>The sorting mechanism is facilitated by <code>Collections.sort</code>. It supports sorting the coin list passed into the sort method to arrange the coins in a manner that the user chooses.
 The way <code>Collections.sort</code> works is that it takes the collection&#8217;s underlying array and calls its sort method to sort the actual elements. The sorting algorithm used by Java is Timsort.
 This sorts the collection in-place, i.e., it modifies the given collection by sorting its elements directly. As a result, a sorted copy need not be made, saving resources.</p>
 </div>
 <div class="paragraph">
-<p>The diagram (Fig. 24) below is the Sequence Diagram for interactions that occur from when the sort command is first called by the user to when the Coin List is sorted.</p>
+<p>The diagram (Fig. 25) below is the Sequence Diagram for interactions that occur from when the sort command is first called by the user to when the Coin List is sorted.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SortCommand_SequenceDiagram.png" alt="SortCommand SequenceDiagram" width="800">
 </div>
-<div class="title">Figure 24. Sequence Diagram for SortCommand</div>
+<div class="title">Figure 25. Sequence Diagram for SortCommand</div>
 </div>
 <div class="paragraph">
-<p>The order mechanism is facilitated by the SortCommand which is also an UndoableCommand.
-The SortCommandParser checks for the sort order (a or z parameter) to decide the relevant SortCommand to call.
-The internalList is then sorted using Java&#8217;s sort method.</p>
+<p>The order mechanism is facilitated by <code>SortCommand</code> which is also an <code>UndoableCommand</code>.
+<code>SortCommandParser</code> checks for the sort order (a or z parameter) to decide the relevant <code>SortCommand</code> to call.
+The <code>internalList</code> object is then sorted using Java&#8217;s sort method.</p>
 </div>
 <div class="paragraph">
 <p>How the sort procedure works:</p>
@@ -1530,12 +1784,12 @@ The internalList is then sorted using Java&#8217;s sort method.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>We can use compareTo() for comparing coin code names. For <em>CoinBook</em>, we want to order our list of coins lexicographically, based on the alphabetical order of their component letters.
-This is done by passing the internalList into the sort function which then uses getCode() to compare each of the component letters of the coin code, which will then arrange coins based on the lexicographical value of the code string.
+<p>We can use <code>compareTo()</code> for comparing coin code names. For <em>CoinBook</em>, we want to order our list of coins lexicographically, based on the alphabetical order of their component letters.
+This is done by passing <code>internalList</code> into the sort function which then uses <code>getCode()</code> to compare each of the component letters of the coin code, which will then arrange coins based on the lexicographical value of the code string.
 The coin code strings with the lowest lexicographical value will appear first followed by coin code strings with higher lexicographical values as you go further down the list.</p>
 </li>
 <li>
-<p>We can either use the <code>reversed</code> function on <code>Comparator</code> or change the compare condition of compareTo() to invert the default setting and arrange the coins from highest to lowest lexicographical value instead.</p>
+<p>We can either use the <code>reversed</code> function on <code>Comparator</code> or change the compare condition of <code>compareTo()</code> to invert the default setting and arrange the coins from highest to lowest lexicographical value instead.</p>
 </li>
 <li>
 <p>We do not have to pass in any comparator for the list to be correctly sorted because the 3-letter coin code is a <code>String</code> which implements the <code>Comparable</code> <em>interface</em>, and hence guarantees its own implementation of the sort comparator.</p>
@@ -1547,7 +1801,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect3">
-<h4 id="grouping-code-coming-in-v2-0-code"><a class="link" href="#grouping-code-coming-in-v2-0-code">4.7.2. Grouping <code>[Coming in v2.0]</code></a></h4>
+<h4 id="grouping-code-coming-in-v2-0-code"><a class="link" href="#grouping-code-coming-in-v2-0-code">4.4.2. Grouping <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>The group feature can use the <code>Collectors</code> class, which provides methods for grouping data stored in collections. Grouping would permit the user to organise coin data based on a common field, e.g coins prices equal to or over 1000 dollars per coin.</p>
 </div>
@@ -1562,9 +1816,9 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-sort-function"><a class="link" href="#aspect-implementation-of-sort-function">4.7.3.1. Aspect: Implementation of Sort function</a></h5>
+<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">4.4.3.1. Aspect: Implementation of <code>SortCommand</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1597,7 +1851,43 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-groups-function-code-coming-in-v2-0-code"><a class="link" href="#aspect-implementation-of-groups-function-code-coming-in-v2-0-code">4.7.3.2. Aspect: Implementation of Groups function <code>[Coming in v2.0]</code></a></h5>
+<h5 id="aspect-undo-ability-of-code-sortcommand-code"><a class="link" href="#aspect-undo-ability-of-code-sortcommand-code">4.4.3.2. Aspect: Undo-ability of <code>SortCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Make it an <code>UndoableCommand</code> just like <code>add</code>, <code>clear</code>, <code>edit</code> etc.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This offers an intuitive, single interface for similar operations.</p>
+</li>
+<li>
+<p>Cons: This would increase the coupling between the coin data and the rule data parts of <code>Model</code>, since the current implementation of <code>UndoableCommand</code> requires saving the state of <code>Model</code>, which is a wrapper for just the coin data.<br>
+We want to keep <code>Model</code> as an interface for just the coin data itself.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Leave it non-undoable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Sort Command data can be kept separate from coin data.<br></p>
+</li>
+<li>
+<p>Cons: The UI will be less intuitive as users would have to change how they manage coins and rules.<br>
+The user would not be able to undo the sort order once it is applied, and this might be inconvenient if the user wanted the sort function for a temporary means only or the user accidentally triggered the sort.<br>
+Sometimes a user might want their own customised way of arranging coins and so the non-undoable nature might compromise this.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-groups-function-code-coming-in-v2-0-code"><a class="link" href="#aspect-implementation-of-groups-function-code-coming-in-v2-0-code">4.4.3.3. Aspect: Implementation of Groups function <code>[Coming in v2.0]</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1632,7 +1922,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect2">
-<h3 id="sync-feature"><a class="link" href="#sync-feature">4.8. Sync Feature</a></h3>
+<h3 id="sync-feature"><a class="link" href="#sync-feature">4.5. Sync Feature</a></h3>
 <div class="paragraph">
 <p>The sync mechanism is facilitated by <code>FetchUtil</code>, which uses a 3rd party library <code>AsyncHttpClient</code> that supports asynchronous dispatching of HTTP requests.</p>
 </div>
@@ -1655,12 +1945,12 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="content">
 <img src="images/SyncCommandSequenceDiagram.png" alt="SyncCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 25. Sequence Diagram for Sync</div>
+<div class="title">Figure 26. Sequence Diagram for Sync</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.8.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-asynchronous-vs-synchronous-fetching"><a class="link" href="#aspect-asynchronous-vs-synchronous-fetching">4.8.1.1. Aspect: Asynchronous vs synchronous fetching</a></h5>
+<h5 id="aspect-asynchronous-vs-synchronous-fetching"><a class="link" href="#aspect-asynchronous-vs-synchronous-fetching">4.5.1.1. Aspect: Asynchronous vs synchronous fetching</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1695,7 +1985,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.9. Autocomplete Feature</a></h3>
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.6. Autocomplete Feature</a></h3>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by <code>CommandBox</code>, which uses <code>COMMAND_LIST</code> from <code>CommandList</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
@@ -1717,7 +2007,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="content">
 <img src="images/AutocompleteBefore.png" alt="AutocompleteBefore" width="200">
 </div>
-<div class="title">Figure 26. Auto-suggestions Display</div>
+<div class="title">Figure 27. Auto-suggestions Display</div>
 </div>
 <div class="paragraph">
 <p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.</p>
@@ -1726,7 +2016,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="content">
 <img src="images/AutocompleteNav.png" alt="AutocompleteNav" width="200">
 </div>
-<div class="title">Figure 27. Command Selection</div>
+<div class="title">Figure 28. Command Selection</div>
 </div>
 <div class="paragraph">
 <p>The user can then press <kbd>Enter</kbd> to confirm his selection of the <code>sell</code> command.</p>
@@ -1737,9 +2027,9 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.9.1. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.9.1.1. Aspect: The fields which autocomplete works on</a></h5>
+<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.6.1.1. Aspect: The fields which autocomplete works on</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1772,7 +2062,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">4.9.1.2. Aspect: Data structure to store the list of commands</a></h5>
+<h5 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">4.6.1.2. Aspect: Data structure to store the list of commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1807,7 +2097,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.10. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using the <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage <em>logging levels</em> and logging destinations.</p>
 </div>
@@ -1831,14 +2121,14 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </ul>
 </div>
 <div class="paragraph">
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.11, &#8220;Configuration&#8221;</a>).</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>).</p>
 </div>
 <div class="paragraph">
 <p>The <code>Logger</code> for a class <code>Class</code> can be obtained using <code>LogsCenter.getLogger(Class)</code>, which will log messages according to the specified logging level. Currently, log messages are output through <code>Console</code> as well as written to a <code>.log</code> file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.11. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file. By default, this is <code>config.json</code>.</p>
 </div>
@@ -1896,7 +2186,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>In Chrome&#8217;s menu, click on the <code>Print</code> option.</p>
 </li>
 <li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 24) below.</p>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 26) below.</p>
 </li>
 </ol>
 </div>
@@ -1904,7 +2194,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 28. Options for Saving Documentation as PDF Files in Chrome</div>
+<div class="title">Figure 29. Options for Saving Documentation as PDF Files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1967,7 +2257,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
 </li>
 <li>
-<p>To run a subset of tests, right-click on a test package, test class, or a test, e.g. <code>ABC</code>, and choose <code>Run 'ABC'</code> (see Fig. 25)</p>
+<p>To run a subset of tests, right-click on a test package, test class, or a test, e.g. <code>ABC</code>, and choose <code>Run 'ABC'</code> (see Fig. 27)</p>
 </li>
 </ul>
 </div>
@@ -1975,7 +2265,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="content">
 <img src="images/RunningTests.png" alt="RunningTests">
 </div>
-<div class="title">Figure 29. Running Tests</div>
+<div class="title">Figure 30. Running Tests</div>
 </div>
 <div class="paragraph">
 <p><strong>Method 2: Using Gradle</strong></p>
@@ -2055,7 +2345,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<a href="#continuous-integration">Section 7.2, &#8220;Continuous Integration&#8221;</a> also automatically runs the tests specified with Gradle, but it is a good habit to test things on your own machine first.
+<a href="#continuous-integration">Continuous Integration</a> also automatically runs the tests specified with Gradle, but it is a good habit to test things on your own machine first.
 </td>
 </tr>
 </table>
@@ -2208,7 +2498,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <div class="ulist">
 <ul>
 <li>
-<p>Major: Sync and notifications. Updates price data periodically and make notifications based on user-set rules. This helps users stay on top of what&#8217;s happening and obtain important information at the right time.</p>
+<p>Major: Notifications and rule system. Make notifications based on user-set rules, checked when coin data updates. This helps users stay on top of what&#8217;s happening and obtain important information at the right time.</p>
 </li>
 <li>
 <p>Minor: Charts panel for data visualization. This lets users analyse price trends for decision making.</p>
@@ -2764,7 +3054,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-coin"><a class="link" href="#deleting-a-coin">F.2. Deleting a coin</a></h3>
+<h3 id="deleting-a-coin"><a class="link" href="#deleting-a-coin">F.2. Deleting a Coin</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2807,7 +3097,7 @@ Expected: The coin is removed from the list. The detail window should return to 
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving Data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2844,12 +3134,85 @@ Expected: All data from the old installation should be preserved and appear in t
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="finding-coins"><a class="link" href="#finding-coins">F.4. Finding Coins</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding a coin from a long list of coins</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all coins using the <code>list</code> command. Multiple coins in the list. Some coins are tagged with <code>fav</code>.<br>
+Run the command <code>tag 1 t/fav</code> to tag the first coin in the list.</p>
+</li>
+<li>
+<p>Test case: <code>find c/e</code><br>
+Expected: The list only shows coins with the letter <code>e</code> in their trading code.</p>
+</li>
+<li>
+<p>Test case: <code>find p/&gt;1</code><br>
+Expected: The list only shows coins with a price greater than $1.</p>
+</li>
+<li>
+<p>Test case: <code>find t/fav OR ( p/&gt;1000 AND h/&gt;2000)</code><br>
+Expected: The list only shows coins with either the <code>fav</code> tag or with price greater than $1000 and amount held greater than 2000 coins simultaneously.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-notifications"><a class="link" href="#setting-notifications">F.5. Setting Notifications</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creating a new notification</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Have known coins added to the list that can receive price updates, e.g. BTC.<br>
+Otherwise, run the command <code>add c/BTC</code></p>
+</li>
+<li>
+<p>Test case: <code>notify c/BTC AND p/&gt;1000</code>, <code>sync</code><br>
+Expected: The latest price of Bitcoin is fetched, and, assuming the price has not completely crashed, a notification
+should pop up in the bottom-right corner of the screen.<br>
+If price is below 1000, use a smaller value after <code>p/</code> and try again</p>
+</li>
+<li>
+<p>Test case: <code>listnotifs</code><br>
+Expected: The notification list window should open, and any added notification rules are listed.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using notifications to jump to view coin</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Have multiple known coins added to the list that can receive price updates, e.g. BTC, ETH, XRP, DOGE&#8230;&#8203;</p>
+</li>
+<li>
+<p>Test case: <code>notify p/&gt;1</code>, <code>sync</code><br>
+Click on any notification.
+Expected: The coin stated on the notification is opened in the detail window, and its price history chart and subreddit page can be seen.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:24:44 UTC
+Last updated 2018-04-15 12:27:22 UTC
 </div>
 </div>
 </body>
