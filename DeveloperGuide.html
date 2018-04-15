@@ -1648,6 +1648,15 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="paragraph">
 <p>Once the <code>ModelManager</code> receives the new <code>Price</code> objects, it passes them to the <code>CoinBook</code> to carry out price updates for each coin via <code>CoinChangedEvent</code>.</p>
 </div>
+<div class="paragraph">
+<p>The following sequence diagram (Fig. 25) is a visual representation of the above described process.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SyncCommandSequenceDiagram.png" alt="SyncCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 25. Sequence Diagram for Sync</div>
+</div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.8.1. Design Considerations</a></h4>
 <div class="sect4">
@@ -1688,7 +1697,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="sect2">
 <h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.9. Autocomplete Feature</a></h3>
 <div class="paragraph">
-<p>The autocomplete mechanism is facilitated by <code>LogicManager</code>, which exposes <code>COMMAND_LIST</code> from <code>CommandList</code> for <code>CommandBox</code> to use. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
+<p>The autocomplete mechanism is facilitated by <code>CommandBox</code>, which uses <code>COMMAND_LIST</code> from <code>CommandList</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
 <div class="paragraph">
 <p>Suppose the user is trying to use the <code>sell</code> command.</p>
@@ -1702,12 +1711,22 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="paragraph">
-<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.
-image::AutocompleteBefore.png[width="100"]</p>
+<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteBefore.png" alt="AutocompleteBefore" width="200">
+</div>
+<div class="title">Figure 26. Auto-suggestions Display</div>
 </div>
 <div class="paragraph">
-<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.
-image::AutocompleteNav.png[width="100"]</p>
+<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteNav.png" alt="AutocompleteNav" width="200">
+</div>
+<div class="title">Figure 27. Command Selection</div>
 </div>
 <div class="paragraph">
 <p>The user can then press <kbd>Enter</kbd> to confirm his selection of the <code>sell</code> command.</p>
@@ -1885,7 +1904,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 25. Options for Saving Documentation as PDF Files in Chrome</div>
+<div class="title">Figure 28. Options for Saving Documentation as PDF Files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1956,7 +1975,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="content">
 <img src="images/RunningTests.png" alt="RunningTests">
 </div>
-<div class="title">Figure 26. Running Tests</div>
+<div class="title">Figure 29. Running Tests</div>
 </div>
 <div class="paragraph">
 <p><strong>Method 2: Using Gradle</strong></p>
@@ -2830,7 +2849,7 @@ Expected: All data from the old installation should be preserved and appear in t
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:21:24 UTC
+Last updated 2018-04-15 12:24:44 UTC
 </div>
 </div>
 </body>

@@ -193,7 +193,7 @@
 <div class="sect2">
 <h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">Autocomplete Feature</a></h3>
 <div class="paragraph">
-<p>The autocomplete mechanism is facilitated by <code>LogicManager</code>, which exposes <code>COMMAND_LIST</code> from <code>CommandList</code> for <code>CommandBox</code> to use. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
+<p>The autocomplete mechanism is facilitated by <code>CommandBox</code>, which uses <code>COMMAND_LIST</code> from <code>CommandList</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
 <div class="paragraph">
 <p>Suppose the user is trying to use the <code>sell</code> command.</p>
@@ -207,12 +207,22 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.
-image::AutocompleteBefore.png[width="100"]</p>
+<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutocompleteBefore.png" alt="AutocompleteBefore" width="200">
+</div>
+<div class="title">Figure 1. Auto-suggestions Display</div>
 </div>
 <div class="paragraph">
-<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.
-image::AutocompleteNav.png[width="100"]</p>
+<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutocompleteNav.png" alt="AutocompleteNav" width="200">
+</div>
+<div class="title">Figure 2. Command Selection</div>
 </div>
 <div class="paragraph">
 <p>The user can then press <kbd>Enter</kbd> to confirm his selection of the <code>sell</code> command.</p>
@@ -297,7 +307,7 @@ image::AutocompleteNav.png[width="100"]</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:21:24 UTC
+Last updated 2018-04-15 12:24:44 UTC
 </div>
 </div>
 </body>
