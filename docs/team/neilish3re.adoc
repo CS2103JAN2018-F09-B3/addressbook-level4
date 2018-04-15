@@ -3,7 +3,7 @@
 :stylesDir: ../stylesheets
 :repoLinkBase: https://github.com/CS2103JAN2018-F09-B3/main
 
-== PROJECT: AddressBook - Level 4
+== PROJECT: CoinBook
 
 ---
 
