@@ -732,33 +732,25 @@ By default, elements with the same key are inserted into a `List<T>`, although t
 // tag::autocomplete[]
 === Autocomplete Feature
 
-The autocomplete mechanism is facilitated by a `RadixTree`, which resides inside `LogicManager`. It supports the predicting of a word or phrase that the user may type based on a partial text query.
+The autocomplete mechanism is facilitated by `TextFields`, which is part of the ControlsFX library. It supports the predicting of a word or phrase that the user may type based on a partial text query.
 
-Suppose the user has 3 coins added to his account currently, namely `BTC`, `ETH`, `BCG` and `BCH` in that order.
+Suppose the user is trying to use the `sell` command.
 
-Say the user is trying to use the `find` command to look up `BCH`.
-
-The user will first type `find` into the command line followed by a whitespace and `B`.
+The user will first type `s` into the command line.
 ```
-find c/B
+s
 ```
 
-Now, when the user presses kbd:[Tab], the autocomplete feature will then complete the query by suggesting the first matching item it finds.
-```
-find c/BTC
-```
+Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter `s`.
+image::AutocompleteBefore.png[width="100"]
 
-When the user then presses kbd:[C] to complete his query, the autocomplete feature will suggest the next matching item of the input `BC` so far.
-```
-find c/BCG
-```
+When the user then presses kbd:[DOWN] twice to reach his desired `sell` command, the selected suggestion will be highlighted light grey.
+image::AutocompleteNav.png[width="100"]
 
-The user can then press kbd:[Tab] again to cycle through the other items that match the current input `BC`.
+The user can then press kbd:[Enter] to confirm his selection of the `sell` command.
 ```
-find c/BCH
+sell
 ```
-
-At this point the user has found `BCH`, which is the coin that the user wanted to look up. The user can now press kbd:[Enter] to execute his command.
 
 ==== Design Considerations
 
