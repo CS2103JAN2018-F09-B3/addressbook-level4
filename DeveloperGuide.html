@@ -1818,7 +1818,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.3. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">4.4.3.1. Aspect: Implementation of <code>SortCommand</code></a></h5>
+<h5 id="aspect-implementation-of-sort-function"><a class="link" href="#aspect-implementation-of-sort-function">4.4.3.1. Aspect: Implementation of Sort function</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1851,43 +1851,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-undo-ability-of-code-sortcommand-code"><a class="link" href="#aspect-undo-ability-of-code-sortcommand-code">4.4.3.2. Aspect: Undo-ability of <code>SortCommand</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Make it an <code>UndoableCommand</code> just like <code>add</code>, <code>clear</code>, <code>edit</code> etc.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This offers an intuitive, single interface for similar operations.</p>
-</li>
-<li>
-<p>Cons: This would increase the coupling between the coin data and the rule data parts of <code>Model</code>, since the current implementation of <code>UndoableCommand</code> requires saving the state of <code>Model</code>, which is a wrapper for just the coin data.<br>
-We want to keep <code>Model</code> as an interface for just the coin data itself.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Leave it non-undoable</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Sort Command data can be kept separate from coin data.<br></p>
-</li>
-<li>
-<p>Cons: The UI will be less intuitive as users would have to change how they manage coins and rules.<br>
-The user would not be able to undo the sort order once it is applied, and this might be inconvenient if the user wanted the sort function for a temporary means only or the user accidentally triggered the sort.<br>
-Sometimes a user might want their own customised way of arranging coins and so the non-undoable nature might compromise this.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-implementation-of-groups-function-code-coming-in-v2-0-code"><a class="link" href="#aspect-implementation-of-groups-function-code-coming-in-v2-0-code">4.4.3.3. Aspect: Implementation of Groups function <code>[Coming in v2.0]</code></a></h5>
+<h5 id="aspect-implementation-of-groups-function-code-coming-in-v2-0-code"><a class="link" href="#aspect-implementation-of-groups-function-code-coming-in-v2-0-code">4.4.3.2. Aspect: Implementation of Groups function <code>[Coming in v2.0]</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -3212,7 +3176,7 @@ Expected: The coin stated on the notification is opened in the detail window, an
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:27:22 UTC
+Last updated 2018-04-15 12:27:07 UTC
 </div>
 </div>
 </body>

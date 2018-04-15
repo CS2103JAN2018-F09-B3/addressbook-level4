@@ -82,7 +82,7 @@ with managing their cryptocurrency portfolio.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Used PlantUML for generating diagrams for the Developer Guide <a href="https://github.com">#92</a></p>
+<p>Used PlantUML for generating diagrams for the Developer Guide</p>
 </li>
 </ul>
 </div>
@@ -92,10 +92,7 @@ with managing their cryptocurrency portfolio.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Note down minutes for group meetings</p>
-</li>
-<li>
-<p>Did acceptance testing to discover bugs in the application</p>
+<p>Helping to note down minutes for group meetings</p>
 </li>
 </ul>
 </div>
@@ -121,19 +118,13 @@ with managing their cryptocurrency portfolio.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="change-listing-order-code-order-code-code-o-code-code-since-v1-5-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code-code-since-v1-5-code">Change listing order <code>order</code> | <code>o</code> <code>[Since v1.5]</code></a></h3>
+<h3 id="change-listing-order-code-order-code-code-o-code"><a class="link" href="#change-listing-order-code-order-code-code-o-code">Change listing order <code>order</code> | <code>o</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
 <pre>order {a,z}</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Orders the coin listing in lexicographical order.<br>
-This is also the default option if {a,z} is not specified after the command.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
 <p>Orders the coin listing in lexicographical order (default option if sort order is not specified).</p>
 </div>
@@ -156,15 +147,6 @@ This is also the default option if {a,z} is not specified after the command.</p>
 </div>
 <div class="paragraph">
 <p>Sort the listing in reverse lexicographical order.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>This command can be reversed with <code>undo</code>, but only in the same session. The effect is permanent once <em>CoinBook</em> is closed.</p>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -249,7 +231,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect: Implementation of <code>SortCommand</code></a></h5>
+<h5 id="aspect-implementation-of-sort-function"><a class="link" href="#aspect-implementation-of-sort-function">Aspect: Implementation of Sort function</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -274,42 +256,6 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </li>
 <li>
 <p>Cons: This would take more time and a considerable amount of effort to incorporate into our CoinBook since we would not be using Java’s in-built sorting method.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-undo-ability-of-code-sortcommand-code"><a class="link" href="#aspect-undo-ability-of-code-sortcommand-code">Aspect: Undo-ability of <code>SortCommand</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Make it an <code>UndoableCommand</code> just like <code>add</code>, <code>clear</code>, <code>edit</code> etc.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This offers an intuitive, single interface for similar operations.</p>
-</li>
-<li>
-<p>Cons: This would increase the coupling between the coin data and the rule data parts of <code>Model</code>, since the current implementation of <code>UndoableCommand</code> requires saving the state of <code>Model</code>, which is a wrapper for just the coin data.<br>
-We want to keep <code>Model</code> as an interface for just the coin data itself.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Leave it non-undoable</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Sort Command data can be kept separate from coin data.<br></p>
-</li>
-<li>
-<p>Cons: The UI will be less intuitive as users would have to change how they manage coins and rules.<br>
-The user would not be able to undo the sort order once it is applied, and this might be inconvenient if the user wanted the sort function for a temporary means only or the user accidentally triggered the sort.<br>
-Sometimes a user might want their own customised way of arranging coins and so the non-undoable nature might compromise this.</p>
 </li>
 </ul>
 </div>
@@ -357,7 +303,7 @@ Sometimes a user might want their own customised way of arranging coins and so t
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:27:22 UTC
+Last updated 2018-04-15 12:27:07 UTC
 </div>
 </div>
 </body>
