@@ -194,6 +194,69 @@
 </tbody>
 </table>
 <div class="sect2">
+<h3 id="sync-feature"><a class="link" href="#sync-feature">Sync Feature</a></h3>
+<div class="paragraph">
+<p>The sync mechanism is facilitated by <code>FetchUtil</code>, which uses a 3rd party library <code>AsyncHttpClient</code> that supports asynchronous dispatching of HTTP requests.</p>
+</div>
+<div class="paragraph">
+<p>Suppose the user wants to update the prices of all coins owned with the latest data.</p>
+</div>
+<div class="paragraph">
+<p>The user executes the sync command using <code>SyncCommand</code>, i.e. <code>sync</code>, which first builds the API URL. The API URL is built using <code>UrlBuilderUtil</code>, which first retrieves the coin code of every coin account that the user has, then concatenates to CryptoCompare API URL as HTTP parameters.</p>
+</div>
+<div class="paragraph">
+<p><code>FetchUtil</code> is then used to send a HTTP GET request to CryptoCompare using this built URL via <code>AsyncHTTPClient</code> and returns a <code>Future&lt;Response&gt;</code> to <code>SyncCommand</code>. When the response data from the <code>Future&lt;Response&gt;</code> object is received, this data is then deserialized into <code>Price</code> objects to be passed to the <code>ModelManager</code> for updating.</p>
+</div>
+<div class="paragraph">
+<p>Once the <code>ModelManager</code> receives the new <code>Price</code> objects, it passes them to the <code>CoinBook</code> to carry out price updates for each coin via <code>CoinChangedEvent</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram (Fig. 26) is a visual representation of the above described process.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SyncCommandSequenceDiagram.png" alt="SyncCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 1. Sequence Diagram for Sync</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-asynchronous-vs-synchronous-fetching"><a class="link" href="#aspect-asynchronous-vs-synchronous-fetching">Aspect: Asynchronous vs synchronous fetching</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Asynchronous fetching</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This allows background processes to still continue, such as a loading animation to provide visual feedback to the user that data fetching is in progress and the application has not hanged.</p>
+</li>
+<li>
+<p>Cons: This is more tedious to implement and requires the use of 3rd party libraries that may have bugs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Synchronous fetching.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This is easier to implement and only uses Java API which is much more robust and less susceptible to unforeseen bugs.</p>
+</li>
+<li>
+<p>Cons: This leads to a worse user experience as the user may not know if the sync command is actually running or the application has hanged.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">Autocomplete Feature</a></h3>
 <div class="paragraph">
 <p>The autocomplete mechanism is facilitated by <code>CommandBox</code>, which uses <code>COMMAND_LIST</code> from <code>CommandList</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
@@ -216,7 +279,7 @@
 <div class="content">
 <img src="../images/AutocompleteBefore.png" alt="AutocompleteBefore" width="200">
 </div>
-<div class="title">Figure 1. Auto-suggestions Display</div>
+<div class="title">Figure 2. Auto-suggestions Display</div>
 </div>
 <div class="paragraph">
 <p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.</p>
@@ -225,7 +288,7 @@
 <div class="content">
 <img src="../images/AutocompleteNav.png" alt="AutocompleteNav" width="200">
 </div>
-<div class="title">Figure 2. Command Selection</div>
+<div class="title">Figure 3. Command Selection</div>
 </div>
 <div class="paragraph">
 <p>The user can then press <kbd>Enter</kbd> to confirm his selection of the <code>sell</code> command.</p>
@@ -236,7 +299,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">Aspect: The fields which autocomplete works on</a></h5>
 <div class="ulist">
@@ -310,7 +373,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:59:42 UTC
+Last updated 2018-04-15 15:08:10 UTC
 </div>
 </div>
 </body>
