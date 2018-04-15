@@ -102,6 +102,8 @@
 <li><a href="#saving-data">F.3. Saving Data</a></li>
 <li><a href="#finding-coins">F.4. Finding Coins</a></li>
 <li><a href="#setting-notifications">F.5. Setting Notifications</a></li>
+<li><a href="#syncing-coin-data">F.6. Syncing Coin Data</a></li>
+<li><a href="#sorting-coin-list">F.7. Sorting Coin List</a></li>
 </ul>
 </li>
 </ul>
@@ -3205,12 +3207,55 @@ Expected: The coin stated on the notification is opened in the detail window, an
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="syncing-coin-data"><a class="link" href="#syncing-coin-data">F.6. Syncing Coin Data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Running the sync</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>sync</code><br>
+Expected: The latest prices are fetched, as mentioned in the previous section F.5.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-coin-list"><a class="link" href="#sorting-coin-list">F.7. Sorting Coin List</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting in Lexicographical Order</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Multiple coins in the list</p>
+</li>
+<li>
+<p>Test case: <code>order</code><br>
+Expected: The coins should be sorted by their trading codes alphabetically.</p>
+</li>
+<li>
+<p>Test case: <code>order z</code><br>
+Expected: The coins should be sorted in reverse order, again by trading codes.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:45:14 UTC
+Last updated 2018-04-15 15:50:13 UTC
 </div>
 </div>
 </body>
