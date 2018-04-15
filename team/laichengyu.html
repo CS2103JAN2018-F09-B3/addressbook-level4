@@ -54,7 +54,7 @@
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a autocomplete feature that allows users to quickly enter in command.</p>
+<p><strong>Minor enhancement</strong>: added a autocomplete feature that allows users to quickly enter in commands.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-F09-B3/main/blob/master/collated/functional/laichengyu.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-F09-B3/main/blob/master/collated/test/laichengyu.md">Test code</a>]</p>
@@ -77,6 +77,12 @@
 <p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Improve GUI by adding coin icons to each coin panel (Pull requests <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/233">#233</a>)</p>
+</li>
+<li>
+<p>Improve UX by overlaying a loading animation when asynchronous operations are carried out (Pull requests <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/241">#241</a>)</p>
+</li>
 <li>
 <p>Add API for backup storage (Pull requests <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/17">#17</a>)</p>
 </li>
@@ -104,7 +110,7 @@
 <p>PRs reviewed: <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/15">#15</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/29">#29</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/35">#35</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/112">#112</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/118">#118</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/pull/208">208</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions, reported bugs and raised issues (examples:  <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/50">50</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/51">51</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/69">69</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/123">123</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/125">125</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/127">127</a>)</p>
+<p>Contributed to forum discussions, reported bugs and raised issues (examples:  <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/50">50</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/51">51</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/69">69</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/123">123</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/125">125</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/127">127</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/225">225</a>, <a href="https://github.com/CS2103JAN2018-F09-B3/main/issues/226">226</a>)</p>
 </li>
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/52">52</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/55">55</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/60">60</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/65">65</a>, <a href="https://github.com/CS2103JAN2018-T15-B1/main/issues/68">68</a>)</p>
@@ -149,7 +155,7 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="sync-with-price-server-code-sync-code-code-sy-code-code-coming-in-v1-5-code"><a class="link" href="#sync-with-price-server-code-sync-code-code-sy-code-code-coming-in-v1-5-code">Sync with price server <code>sync</code> | <code>sy</code> <code>[Coming in v1.5]</code></a></h3>
+<h3 id="sync-with-price-server-code-sync-code-code-sy-code-code-since-v1-5-code"><a class="link" href="#sync-with-price-server-code-sync-code-code-sy-code-code-since-v1-5-code">Sync with price server <code>sync</code> | <code>sy</code> <code>[Since v1.5]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
@@ -157,14 +163,16 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Obtains the latest prices and refreshes the news feed from the Internet to update your coin data.</p>
+<p>Obtains the latest price data to update price metrics of all owned coins.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-code-coming-in-v1-5-code"><a class="link" href="#autocomplete-code-coming-in-v1-5-code">Autocomplete <code>[Coming in v1.5]</code></a></h3>
+<h3 id="autocomplete-code-since-v1-5-code"><a class="link" href="#autocomplete-code-since-v1-5-code">Autocomplete <code>[Since v1.5]</code></a></h3>
 <div class="paragraph">
-<p>Pressing <kbd>Tab</kbd> will autocomplete the field where the cursor is at with a matching suggestion.
-Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions.</p>
+<p>Pressing any key will auto-suggest the field with all possible matching inputs.</p>
+</div>
+<div class="paragraph">
+<p>Pressing the UP and DOWN arrow keys will allow navigation the input suggestions.</p>
 </div>
 </div>
 </div>
@@ -185,48 +193,34 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 <div class="sect2">
 <h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">Autocomplete Feature</a></h3>
 <div class="paragraph">
-<p>The autocomplete mechanism is facilitated by a <code>RadixTree</code>, which resides inside <code>LogicManager</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
+<p>The autocomplete mechanism is facilitated by <code>LogicManager</code>, which exposes <code>COMMAND_LIST</code> from <code>CommandList</code> for <code>CommandBox</code> to use. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
 </div>
 <div class="paragraph">
-<p>Suppose the user has 3 coins added to his account currently, namely <code>BTC</code>, <code>ETH</code>, <code>BCG</code> and <code>BCH</code> in that order.</p>
+<p>Suppose the user is trying to use the <code>sell</code> command.</p>
 </div>
 <div class="paragraph">
-<p>Say the user is trying to use the <code>find</code> command to look up <code>BCH</code>.</p>
-</div>
-<div class="paragraph">
-<p>The user will first type <code>find</code> into the command line followed by a whitespace and <code>B</code>.</p>
+<p>The user will first type <code>s</code> into the command line.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>find c/B</code></pre>
+<pre class="CodeRay highlight"><code>s</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now, when the user presses <kbd>Tab</kbd>, the autocomplete feature will then complete the query by suggesting the first matching item it finds.</p>
+<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.
+image::AutocompleteBefore.png[width="100"]</p>
+</div>
+<div class="paragraph">
+<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.
+image::AutocompleteNav.png[width="100"]</p>
+</div>
+<div class="paragraph">
+<p>The user can then press <kbd>Enter</kbd> to confirm his selection of the <code>sell</code> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>find c/BTC</code></pre>
+<pre class="CodeRay highlight"><code>sell</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>When the user then presses <kbd>C</kbd> to complete his query, the autocomplete feature will suggest the next matching item of the input <code>BC</code> so far.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>find c/BCG</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The user can then press <kbd>Tab</kbd> again to cycle through the other items that match the current input <code>BC</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>find c/BCH</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>At this point the user has found <code>BCH</code>, which is the coin that the user wanted to look up. The user can now press <kbd>Enter</kbd> to execute his command.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -235,7 +229,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Apply only for command parameters.</p>
+<p><strong>Alternative 1 (current choice):</strong> Apply only for command word</p>
 <div class="ulist">
 <ul>
 <li>
@@ -255,7 +249,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 <p>Pros: User experience will be slightly improved over the alternative.</p>
 </li>
 <li>
-<p>Cons: This has a lower value to effort ratio to implement given that aliases are already implemented.</p>
+<p>Cons: This has a lower value to effort ratio to implement due to restrictions of the ControlsFX and JavaFX libraries.</p>
 </li>
 </ul>
 </div>
@@ -264,11 +258,11 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">Aspect: Data structure to support the autocomplete feature</a></h5>
+<h5 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">Aspect: Data structure to store the list of commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a Radix Tree</p>
+<p><strong>Alternative 1 :</strong> Use a Radix Tree</p>
 <div class="ulist">
 <ul>
 <li>
@@ -281,11 +275,11 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use a linear data structure</p>
+<p><strong>Alternative 2 (current choice):</strong> Use a linear data structure</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This is much easier to implement.</p>
+<p>Pros: This is much easier to implement and integrates nicely with ControlsFX.</p>
 </li>
 <li>
 <p>Cons: The solution will be inefficient, with a higher time complexity incurred.</p>
@@ -303,7 +297,7 @@ Subsequent <kbd>Tab</kbd> key presses will cycle through the list of suggestions
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:25:24 UTC
+Last updated 2018-04-15 11:21:24 UTC
 </div>
 </div>
 </body>

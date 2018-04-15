@@ -51,9 +51,10 @@
 <li><a href="#design-considerations-2">4.5. Design Considerations</a></li>
 <li><a href="#user-set-notifications">4.6. User-Set Notifications</a></li>
 <li><a href="#Implementation-Organisation">4.7. Organisation Features</a></li>
-<li><a href="#autocomplete-feature">4.8. Autocomplete Feature</a></li>
-<li><a href="#logging">4.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.10. Configuration</a></li>
+<li><a href="#sync-feature">4.8. Sync Feature</a></li>
+<li><a href="#autocomplete-feature">4.9. Autocomplete Feature</a></li>
+<li><a href="#logging">4.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.11. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1631,59 +1632,99 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.8. Autocomplete Feature</a></h3>
+<h3 id="sync-feature"><a class="link" href="#sync-feature">4.8. Sync Feature</a></h3>
 <div class="paragraph">
-<p>The autocomplete mechanism is facilitated by a <code>RadixTree</code>, which resides inside <code>LogicManager</code>. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
-</div>
-<div class="paragraph">
-<p>Suppose the user has 3 coins added to his account currently, namely <code>BTC</code>, <code>ETH</code>, <code>BCG</code> and <code>BCH</code> in that order.</p>
+<p>The sync mechanism is facilitated by <code>FetchUtil</code>, which uses a 3rd party library <code>AsyncHttpClient</code> that supports asynchronous dispatching of HTTP requests.</p>
 </div>
 <div class="paragraph">
-<p>Say the user is trying to use the <code>find</code> command to look up <code>BCH</code>.</p>
+<p>Suppose the user wants to update the prices of all coins owned with the latest data.</p>
 </div>
 <div class="paragraph">
-<p>The user will first type <code>find</code> into the command line followed by a whitespace and <code>B</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>find c/B</code></pre>
-</div>
+<p>The user executes the sync command using <code>SyncCommand</code>, i.e. <code>sync</code>, which first builds the API URL. The API URL is built using <code>UrlBuilderUtil</code>, which first retrieves the coin code of every coin account that the user has, then concatenates to CryptoCompare API URL as HTTP parameters.</p>
 </div>
 <div class="paragraph">
-<p>Now, when the user presses <kbd>Tab</kbd>, the autocomplete feature will then complete the query by suggesting the first matching item it finds.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>find c/BTC</code></pre>
-</div>
+<p><code>FetchUtil</code> is then used to send a HTTP GET request to CryptoCompare using this built URL via <code>AsyncHTTPClient</code> and returns a <code>Future&lt;Response&gt;</code> to <code>SyncCommand</code>. When the response data from the <code>Future&lt;Response&gt;</code> object is received, this data is then deserialized into <code>Price</code> objects to be passed to the <code>ModelManager</code> for updating.</p>
 </div>
 <div class="paragraph">
-<p>When the user then presses <kbd>C</kbd> to complete his query, the autocomplete feature will suggest the next matching item of the input <code>BC</code> so far.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>find c/BCG</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The user can then press <kbd>Tab</kbd> again to cycle through the other items that match the current input <code>BC</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>find c/BCH</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>At this point the user has found <code>BCH</code>, which is the coin that the user wanted to look up. The user can now press <kbd>Enter</kbd> to execute his command.</p>
+<p>Once the <code>ModelManager</code> receives the new <code>Price</code> objects, it passes them to the <code>CoinBook</code> to carry out price updates for each coin via <code>CoinChangedEvent</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.8.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.8.1.1. Aspect: The fields which autocomplete works on</a></h5>
+<h5 id="aspect-asynchronous-vs-synchronous-fetching"><a class="link" href="#aspect-asynchronous-vs-synchronous-fetching">4.8.1.1. Aspect: Asynchronous vs synchronous fetching</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Apply only for command parameters.</p>
+<p><strong>Alternative 1 (current choice):</strong> Asynchronous fetching</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This allows background processes to still continue, such as a loading animation to provide visual feedback to the user that data fetching is in progress and the application has not hanged.</p>
+</li>
+<li>
+<p>Cons: This is more tedious to implement and requires the use of 3rd party libraries that may have bugs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Synchronous fetching.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This is easier to implement and only uses Java API which is much more robust and less susceptible to unforeseen bugs.</p>
+</li>
+<li>
+<p>Cons: This leads to a worse user experience as the user may not know if the sync command is actually running or the application has hanged.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-feature"><a class="link" href="#autocomplete-feature">4.9. Autocomplete Feature</a></h3>
+<div class="paragraph">
+<p>The autocomplete mechanism is facilitated by <code>LogicManager</code>, which exposes <code>COMMAND_LIST</code> from <code>CommandList</code> for <code>CommandBox</code> to use. It supports the predicting of a word or phrase that the user may type based on a partial text query.</p>
+</div>
+<div class="paragraph">
+<p>Suppose the user is trying to use the <code>sell</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The user will first type <code>s</code> into the command line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>s</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.
+image::AutocompleteBefore.png[width="100"]</p>
+</div>
+<div class="paragraph">
+<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.
+image::AutocompleteNav.png[width="100"]</p>
+</div>
+<div class="paragraph">
+<p>The user can then press <kbd>Enter</kbd> to confirm his selection of the <code>sell</code> command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>sell</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.9.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-the-fields-which-autocomplete-works-on"><a class="link" href="#aspect-the-fields-which-autocomplete-works-on">4.9.1.1. Aspect: The fields which autocomplete works on</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Apply only for command word</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1703,7 +1744,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 <p>Pros: User experience will be slightly improved over the alternative.</p>
 </li>
 <li>
-<p>Cons: This has a lower value to effort ratio to implement given that aliases are already implemented.</p>
+<p>Cons: This has a lower value to effort ratio to implement due to restrictions of the ControlsFX and JavaFX libraries.</p>
 </li>
 </ul>
 </div>
@@ -1712,11 +1753,11 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-autocomplete-feature"><a class="link" href="#aspect-data-structure-to-support-the-autocomplete-feature">4.8.1.2. Aspect: Data structure to support the autocomplete feature</a></h5>
+<h5 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">4.9.1.2. Aspect: Data structure to store the list of commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a Radix Tree</p>
+<p><strong>Alternative 1 :</strong> Use a Radix Tree</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1729,11 +1770,11 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use a linear data structure</p>
+<p><strong>Alternative 2 (current choice):</strong> Use a linear data structure</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This is much easier to implement.</p>
+<p>Pros: This is much easier to implement and integrates nicely with ControlsFX.</p>
 </li>
 <li>
 <p>Cons: The solution will be inefficient, with a higher time complexity incurred.</p>
@@ -1747,7 +1788,7 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using the <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage <em>logging levels</em> and logging destinations.</p>
 </div>
@@ -1771,14 +1812,14 @@ The coin code strings with the lowest lexicographical value will appear first fo
 </ul>
 </div>
 <div class="paragraph">
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.10, &#8220;Configuration&#8221;</a>).</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.11, &#8220;Configuration&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p>The <code>Logger</code> for a class <code>Class</code> can be obtained using <code>LogsCenter.getLogger(Class)</code>, which will log messages according to the specified logging level. Currently, log messages are output through <code>Console</code> as well as written to a <code>.log</code> file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file. By default, this is <code>config.json</code>.</p>
 </div>
@@ -2161,10 +2202,10 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <div class="ulist">
 <ul>
 <li>
-<p>Major: User experience. Create smoother workflow via GUI hints, view modes, command autocompletion, and data visualization. This helps users manage their portfolio quickly and efficiently, and lets them focus on the more important tasks.</p>
+<p>Major: Data fetching system. Syncs and updates the price data, etc., in the model from a source. This lets users keep up to date on latest developments.</p>
 </li>
 <li>
-<p>Minor: Data fetching system. Updates the price data, etc., in the model from a source. This lets users keep up to date on latest developments.</p>
+<p>Minor: User experience and user interface. Create smoother workflow via GUI hints, autocompletion and vibrant GUI with coin icons. This helps users manage their portfolio quickly and efficiently, lets them focus on the more important tasks and attracts/keeps users.</p>
 </li>
 </ul>
 </div>
@@ -2789,7 +2830,7 @@ Expected: All data from the old installation should be preserved and appear in t
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:25:24 UTC
+Last updated 2018-04-15 11:21:24 UTC
 </div>
 </div>
 </body>
