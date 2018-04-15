@@ -165,6 +165,19 @@
 <div class="paragraph">
 <p>Obtains the latest price data to update price metrics of all owned coins.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+ You may notice some coins disappearing from the list view after syncing. This is most likely because the relevant coins no longer satisfy the currently applied list filter.<br>
+ Run the <code>list</code> command if you wish to see all coins.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="autocomplete-code-since-v1-5-code"><a class="link" href="#autocomplete-code-since-v1-5-code">Autocomplete <code>[Since v1.5]</code></a></h3>
@@ -202,7 +215,7 @@
 <p>Suppose the user wants to update the prices of all coins owned with the latest data.</p>
 </div>
 <div class="paragraph">
-<p>The user executes the sync command using <code>SyncCommand</code>, i.e. <code>sync</code>, which first builds the API URL. The API URL is built using <code>UrlBuilderUtil</code>, which first retrieves the coin code of every coin account that the user has, then concatenates to CryptoCompare API URL as HTTP parameters.</p>
+<p>The user executes the sync command using <code>SyncCommand</code>, i.e. <code>sync</code>, which first builds the API URL. The API URL is built using <code>UrlBuilderUtil</code>, which first retrieves the coin code of every coin account that the user has, then concatenates to <span class="gloss"><a href="#ccmp">CryptoCompare</a></span> API URL as HTTP parameters.</p>
 </div>
 <div class="paragraph">
 <p><code>FetchUtil</code> is then used to send a HTTP GET request to CryptoCompare using this built URL via <code>AsyncHTTPClient</code> and returns a <code>Future&lt;Response&gt;</code> to <code>SyncCommand</code>. When the response data from the <code>Future&lt;Response&gt;</code> object is received, this data is then deserialized into <code>Price</code> objects to be passed to the <code>ModelManager</code> for updating.</p>
@@ -273,7 +286,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.</p>
+<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code> (See Fig. 27).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -282,7 +295,7 @@
 <div class="title">Figure 2. Auto-suggestions Display</div>
 </div>
 <div class="paragraph">
-<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.</p>
+<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey (See Fig. 28).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -373,7 +386,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:08:10 UTC
+Last updated 2018-04-15 15:32:23 UTC
 </div>
 </div>
 </body>

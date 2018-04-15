@@ -166,7 +166,7 @@ the user when the coin added does not exist.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="search-through-accounts-code-find-code-code-f-code-code-coming-in-v1-5-code"><a class="link" href="#search-through-accounts-code-find-code-code-f-code-code-coming-in-v1-5-code">Search through accounts <code>find</code> | <code>f</code> <code>[Coming in v1.5]</code></a></h3>
+<h3 id="search-through-accounts-code-find-code-code-f-code-code-since-v1-4-code"><a class="link" href="#search-through-accounts-code-find-code-code-f-code-code-since-v1-4-code">Search through accounts <code>find</code> | <code>f</code> <code>[Since v1.4]</code></a></h3>
 <div class="listingblock">
 <div class="title">Format</div>
 <div class="content">
@@ -390,77 +390,8 @@ the Coin objects and returns a true/false value.</p>
 <code>Token</code> that were not a match during the parsing phase from <code>TokenStack</code> and raise a <code>ParseException</code> before returning.</p>
 </div>
 <div class="paragraph">
-<p>In the event that strings intended to represent tags or numbers are not valid, an <code>IllegalValueException</code> instead,
+<p>In the event that strings intended to represent tags or numbers are not valid, an <code>IllegalValueException</code> is raised instead,
 as per convention from <code>ParserUtil</code>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">Aspect: Specification of syntax</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Have the structure of the methods reflect exactly the syntax.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Any subsequent changes can be easily made by having the code reflect the new syntax, since the syntax is apparent.</p>
-</li>
-<li>
-<p>Cons: It is more cumbersome to have to alter the code every time there is a change in syntax.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This requires no code change whenever the syntax has to be modified.</p>
-</li>
-<li>
-<p>Cons: The code to support this would be more complicated and not apparent to developers immediately.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Have separate classes that have the same structure but with different return values.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This approach maintains SRP.</p>
-</li>
-<li>
-<p>Cons: A change in syntax will require changes across 3 classes. It is also very redundant to have similar code.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: There will be less redundant code.</p>
-</li>
-<li>
-<p>Cons: This approach clearly violates SRP.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -657,6 +588,75 @@ method <code>and()</code> to return a logical conjunction of the two conditions.
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">Aspect: Specification of syntax</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have the structure of the methods reflect exactly the syntax.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Any subsequent changes can be easily made by having the code reflect the new syntax, since the syntax is apparent.</p>
+</li>
+<li>
+<p>Cons: It is more cumbersome to have to alter the code every time there is a change in syntax.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This requires no code change whenever the syntax has to be modified.</p>
+</li>
+<li>
+<p>Cons: The code to support this would be more complicated and not apparent to developers immediately.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have separate classes that have the same structure but with different return values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This approach maintains SRP.</p>
+</li>
+<li>
+<p>Cons: A change in syntax will require changes across 3 classes. It is also very redundant to have similar code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There will be less redundant code.</p>
+</li>
+<li>
+<p>Cons: This approach clearly violates SRP.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -669,7 +669,7 @@ method <code>and()</code> to return a logical conjunction of the two conditions.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:08:10 UTC
+Last updated 2018-04-15 15:32:23 UTC
 </div>
 </div>
 </body>

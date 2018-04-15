@@ -81,16 +81,16 @@
 <li><a href="#product-scope">Appendix A: Product Scope</a>
 <ul class="sectlevel2">
 <li><a href="#goals">A.1. Goals</a></li>
-<li><a href="#feature-contribution">A.2. Feature contribution</a></li>
+<li><a href="#feature-contribution">A.2. Feature Contribution</a></li>
 </ul>
 </li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#use-case-delete-coin-listings">C.1. Use case: Delete coin listings</a></li>
-<li><a href="#use-case-export-storage-data">C.2. Use case: Export storage data</a></li>
-<li><a href="#use-case-set-notifications">C.3. Use case: Set notifications</a></li>
-<li><a href="#use-case-tag-items-for-group-commands">C.4. Use case: Tag items for group commands</a></li>
+<li><a href="#use-case-delete-coin-listings">C.1. Use Case: Delete Coin Listings</a></li>
+<li><a href="#use-case-export-storage-data">C.2. Use Case: Export Storage Data</a></li>
+<li><a href="#use-case-set-notifications">C.3. Use Case: Set Notifications</a></li>
+<li><a href="#use-case-tag-items-for-group-commands">C.4. Use Case: Tag Items for Group Commands</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -780,83 +780,14 @@ the Coin objects and returns a true/false value.</p>
 <code>Token</code> that were not a match during the parsing phase from <code>TokenStack</code> and raise a <code>ParseException</code> before returning.</p>
 </div>
 <div class="paragraph">
-<p>In the event that strings intended to represent tags or numbers are not valid, an <code>IllegalValueException</code> instead,
+<p>In the event that strings intended to represent tags or numbers are not valid, an <code>IllegalValueException</code> is raised instead,
 as per convention from <code>ParserUtil</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.3. Design Considerations</a></h4>
+<h4 id="advanced-details"><a class="link" href="#advanced-details">4.1.3. Advanced Details</a></h4>
 <div class="sect4">
-<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.1.3.1. Aspect: Specification of syntax</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Have the structure of the methods reflect exactly the syntax.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Any subsequent changes can be easily made by having the code reflect the new syntax, since the syntax is apparent.</p>
-</li>
-<li>
-<p>Cons: It is more cumbersome to have to alter the code every time there is a change in syntax.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This requires no code change whenever the syntax has to be modified.</p>
-</li>
-<li>
-<p>Cons: The code to support this would be more complicated and not apparent to developers immediately.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.1.3.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Have separate classes that have the same structure but with different return values.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This approach maintains SRP.</p>
-</li>
-<li>
-<p>Cons: A change in syntax will require changes across 3 classes. It is also very redundant to have similar code.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: There will be less redundant code.</p>
-</li>
-<li>
-<p>Cons: This approach clearly violates SRP.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="advanced-details"><a class="link" href="#advanced-details">4.1.4. Advanced Details</a></h4>
-<div class="sect4">
-<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.1.4.1. Argument Tokenizing</a></h5>
+<h5 id="argument-tokenizing"><a class="link" href="#argument-tokenizing">4.1.3.1. Argument Tokenizing</a></h5>
 <div class="paragraph">
 <p>We will illustrate the flow of tokenizing an example input:</p>
 </div>
@@ -888,7 +819,7 @@ the input (i.e. token) has now been grouped with a type.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.1.4.2. Syntax Parser</a></h5>
+<h5 id="syntax-parser"><a class="link" href="#syntax-parser">4.1.3.2. Syntax Parser</a></h5>
 <div class="paragraph">
 <p>Next, the syntax parser has to ensure that the sequence of tokens is actually structurally valid.
 This is done by matching the tokens off based on the following rules, expressed in Backus-Naur form:</p>
@@ -1012,7 +943,7 @@ For example, here is the implementation for <code>EXPRESSION</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.1.4.3. Semantic Parser</a></h5>
+<h5 id="semantic-parser"><a class="link" href="#semantic-parser">4.1.3.3. Semantic Parser</a></h5>
 <div class="paragraph">
 <p>Following up, the Semantic Parser has to verify that the conditions are correct. This can be done by verifying the
 type of the condition versus the parameters that follow. For example, a name condition should only be followed by a string.
@@ -1024,7 +955,7 @@ option is followed by a number.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="condition-generator"><a class="link" href="#condition-generator">4.1.4.4. Condition Generator</a></h5>
+<h5 id="condition-generator"><a class="link" href="#condition-generator">4.1.3.4. Condition Generator</a></h5>
 <div class="paragraph">
 <p>Lastly, the condition generator creates lambdas based on the type of conditions found, and then recursively composes each
 condition based on the binary operators encounters up the recursion tree.</p>
@@ -1044,6 +975,75 @@ as a back call at the end of each recursion tree.</p>
 <div class="paragraph">
 <p><code>p/&gt;100</code> is a condition on price whereas <code>t/fav</code> is a condition on tags, and they can be composed using the <code>Predicate</code>
 method <code>and()</code> to return a logical conjunction of the two conditions.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.4. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-specification-of-syntax"><a class="link" href="#aspect-specification-of-syntax">4.1.4.1. Aspect: Specification of syntax</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have the structure of the methods reflect exactly the syntax.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Any subsequent changes can be easily made by having the code reflect the new syntax, since the syntax is apparent.</p>
+</li>
+<li>
+<p>Cons: It is more cumbersome to have to alter the code every time there is a change in syntax.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Specify the syntax in a separate file (e.g. EBNF file), and metaprogram the parser based on the file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This requires no code change whenever the syntax has to be modified.</p>
+</li>
+<li>
+<p>Cons: The code to support this would be more complicated and not apparent to developers immediately.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code"><a class="link" href="#aspect-implementation-of-code-syntaxparser-code-code-semanticparser-code-code-conditiongenerator-code">4.1.4.2. Aspect: Implementation of <code>SyntaxParser</code>, <code>SemanticParser</code>, <code>ConditionGenerator</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have separate classes that have the same structure but with different return values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This approach maintains SRP.</p>
+</li>
+<li>
+<p>Cons: A change in syntax will require changes across 3 classes. It is also very redundant to have similar code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have a single implementation that performs syntax parsing, semantic parsing and the condition generation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There will be less redundant code.</p>
+</li>
+<li>
+<p>Cons: This approach clearly violates SRP.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1356,7 +1356,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The notification system is facilitated by a <code>RuleBook</code>, which is located with the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define conditions to trigger some predefined action when met. A <code>RuleChecker</code> in <code>Logic</code> does this work of checking rules and executing the associated actions.</p>
+<p>The notification system is facilitated by a <code>RuleBook</code>, which is located within the <code>Model</code> component as part of the App data. <code>RuleBook</code> holds a set of rules which define conditions to trigger some predefined action when met. A <code>RuleChecker</code> in <code>Logic</code> does this work of checking rules and executing the associated actions.</p>
 </div>
 <div class="paragraph">
 <p>Let us walk through the implementation of notifications by considering a typical scenario involving this feature. Suppose the user wants to keep track of a certain coin&#8217;s price, say <code>BTC</code>.</p>
@@ -1399,11 +1399,11 @@ This approach also violates the Single Responsibility Principle and the Separati
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Rule</span>&lt;T&gt; {                    <i class="conum" data-value="5"></i><b>(5)</b>
 
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Predicate</span>&lt;T&gt; condition;
+    <span class="directive">public</span> <span class="directive">final</span> ActionCommand&lt;T&gt; action; <i class="conum" data-value="1"></i><b>(1)</b>
+
     <span class="directive">public</span> <span class="directive">final</span> RuleType type;           <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">String</span> description;
-
-    <span class="directive">public</span> <span class="directive">final</span> ActionCommand&lt;T&gt; action; <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Predicate</span>&lt;T&gt; condition;
 
     <span class="directive">protected</span> Rule(<span class="predefined-type">String</span> description, RuleType type,
                    ActionParser&lt;T&gt; actionParser,
@@ -1434,7 +1434,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="paragraph">
-<p>A few things to note from this:</p>
+<p>The above snippet demonstrates several noteworthy points:</p>
 </div>
 <div class="colist arabic">
 <table>
@@ -1448,11 +1448,11 @@ This approach also violates the Single Responsibility Principle and the Separati
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>By storing the above two values as strings, the exact object can be reconstructed on startup</td>
+<td>By storing the above two values as strings, the exact object can be fully reconstructed after restarting</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The constructor has been made <code>protected</code> so that new rule types must be defined by extending this base <code>Rule</code> class to be constructed and accessed from outside</td>
+<td>The constructor has <code>protected</code> access so that this base <code>Rule</code> class must be extended as new rule types to be used from outside</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
@@ -1465,7 +1465,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/NotificationClassDiagram.png" alt="NotificationClassDiagram" width=""800">
+<img src="images/NotificationClassDiagram.png" alt="NotificationClassDiagram" width="800">
 </div>
 <div class="title">Figure 24. Class Diagram for Rule System</div>
 </div>
@@ -1492,7 +1492,7 @@ This approach also violates the Single Responsibility Principle and the Separati
 <p>The notification command fills in the abstract <code>actionParser</code> and <code>conditionParser</code> with functions implemented in various places, but which follow the template <code>FunctionalInterface</code> shown above.</p>
 </div>
 <div class="paragraph">
-<p><code>conditionParser</code> takes in the description string and returns a <code>Predicate&lt;T&gt;</code> object, which can be tested against with an object of type <code>T</code>. This results in a <code>true</code> or <code>false</code> output depending on whether that object satisfies the condition. <code>NotificationRule</code> uses the same <code>ConditionParser</code> as in the <code>find</code> command, explained in the previous <a href="#condition">section</a>.</p>
+<p><code>conditionParser</code> takes in the description string and returns a <code>Predicate&lt;T&gt;</code> object, which can be tested against an object of type <code>T</code>. This results in a <code>true</code> or <code>false</code> output depending on whether that object satisfies the condition. <code>NotificationRule</code> uses the same <code>ConditionParser</code> as in the <code>find</code> command, explained in the previous <a href="#condition">section</a>.</p>
 </div>
 <div class="paragraph">
 <p><code>actionParser</code> takes in the same description string and returns an <code>ActionCommand</code>, which is just:</p>
@@ -1542,12 +1542,12 @@ This approach also violates the Single Responsibility Principle and the Separati
 </div>
 </div>
 <div class="paragraph">
-<p>An instance of <code>RuleChecker</code> lives inside <code>LogicManager</code>, at the same level of architecture as the <code>UndoRedoStack</code> or the <code>CommandHistory</code> (<a href="#fig-LogicClassDiagram">see above</a>).
+<p>An instance of <code>RuleChecker</code> lives inside <code>LogicManager</code>, at the same level of architecture as the <code>UndoRedoStack</code> or the <code>CommandHistory</code> (<a href="#fig-LogicClassDiagram">see here</a>).
 The rule testing procedure is initiated by an event, usually capturing information about a change in the state of some objects of interest.</p>
 </div>
 <div class="paragraph">
-<p><code>RuleChecker</code>, upon capturing this event, begins looping through the list of rules, testing each one&#8217;s condition against the event data and performing the custom action defined with it.
-The extra data as above is also set with the potentially matching object, as well as the event itself, as alluded to above, which should contain all other necessary context for the action&#8217;s execution.</p>
+<p><code>RuleChecker</code>, upon capturing this event, begins looping through the list of rules, testing each one&#8217;s condition against the event data, executing the attached action if necessary.
+The extra data is set with the potentially matching object, as well as the event itself as alluded to above. These should consist of all necessary context for the action&#8217;s execution.</p>
 </div>
 <div class="paragraph">
 <p>A concrete example from <code>NotificationRule</code>:</p>
@@ -1581,7 +1581,8 @@ The extra data as above is also set with the potentially matching object, as wel
 </div>
 </div>
 <div class="paragraph">
-<p>This sends yet another event <code>ShowNotificationRequestEvent</code>, which is captured by the <code>UI</code> component that then creates a pop-up notification to show to the user.</p>
+<p>This sends yet another event, <code>ShowNotificationRequestEvent</code>, along with some data about the coin that matched the notification rule.
+The event is then captured by the <code>UI</code> component, which responds by creating a pop-up notification to show to the user.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1625,7 +1626,7 @@ The extra data as above is also set with the potentially matching object, as wel
 <p>Condition: Action made upon some coin account</p>
 </li>
 <li>
-<p>Action: The same action is done on a specified target</p>
+<p>Action: Another action which depends on the first is generated and executed upon predefined targets</p>
 </li>
 </ul>
 </div>
@@ -1675,7 +1676,7 @@ The extra data as above is also set with the potentially matching object, as wel
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>RuleBook</code> is actually made general-purpose in the sense that it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc.
+<code>RuleBook</code> is made general-purpose and it can hold other types of rules for future extensions, e.g. Automated Task Rules, etc.
 </td>
 </tr>
 </table>
@@ -1930,7 +1931,7 @@ Sometimes a user might want their own customised way of arranging coins and so t
 <p>Suppose the user wants to update the prices of all coins owned with the latest data.</p>
 </div>
 <div class="paragraph">
-<p>The user executes the sync command using <code>SyncCommand</code>, i.e. <code>sync</code>, which first builds the API URL. The API URL is built using <code>UrlBuilderUtil</code>, which first retrieves the coin code of every coin account that the user has, then concatenates to CryptoCompare API URL as HTTP parameters.</p>
+<p>The user executes the sync command using <code>SyncCommand</code>, i.e. <code>sync</code>, which first builds the API URL. The API URL is built using <code>UrlBuilderUtil</code>, which first retrieves the coin code of every coin account that the user has, then concatenates to <span class="gloss"><a href="#ccmp">CryptoCompare</a></span> API URL as HTTP parameters.</p>
 </div>
 <div class="paragraph">
 <p><code>FetchUtil</code> is then used to send a HTTP GET request to CryptoCompare using this built URL via <code>AsyncHTTPClient</code> and returns a <code>Future&lt;Response&gt;</code> to <code>SyncCommand</code>. When the response data from the <code>Future&lt;Response&gt;</code> object is received, this data is then deserialized into <code>Price</code> objects to be passed to the <code>ModelManager</code> for updating.</p>
@@ -2001,7 +2002,7 @@ Sometimes a user might want their own customised way of arranging coins and so t
 </div>
 </div>
 <div class="paragraph">
-<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code>.</p>
+<p>Now, the autocomplete feature will then auto-suggest inputs to complete the query by displaying a pop-up of all commands that contain the letter <code>s</code> (See Fig. 27).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2010,7 +2011,7 @@ Sometimes a user might want their own customised way of arranging coins and so t
 <div class="title">Figure 27. Auto-suggestions Display</div>
 </div>
 <div class="paragraph">
-<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey.</p>
+<p>When the user then presses <kbd>DOWN</kbd> twice to reach his desired <code>sell</code> command, the selected suggestion will be highlighted light grey (See Fig. 28).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2186,7 +2187,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>In Chrome&#8217;s menu, click on the <code>Print</code> option.</p>
 </li>
 <li>
-<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 26) below.</p>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot (Fig. 29) below.</p>
 </li>
 </ol>
 </div>
@@ -2257,7 +2258,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
 </li>
 <li>
-<p>To run a subset of tests, right-click on a test package, test class, or a test, e.g. <code>ABC</code>, and choose <code>Run 'ABC'</code> (see Fig. 27)</p>
+<p>To run a subset of tests, right-click on a test package, test class, or a test, e.g. <code>ABC</code>, and choose <code>Run 'ABC'</code> (see Fig. 30)</p>
 </li>
 </ul>
 </div>
@@ -2478,7 +2479,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="feature-contribution"><a class="link" href="#feature-contribution">A.2. Feature contribution</a></h3>
+<h3 id="feature-contribution"><a class="link" href="#feature-contribution">A.2. Feature Contribution</a></h3>
 <div class="paragraph">
 <p><strong>Eldon Chung</strong></p>
 </div>
@@ -2604,7 +2605,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who values privacy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">store my data only on local storage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store my <span class="gloss"><a href="#sensitive-data">sensitive data</a></span> only on local storage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">avoid having my data on potentially insecure servers.</p></td>
 </tr>
 <tr>
@@ -2652,19 +2653,19 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have a fixed interval backups, that can also be manually set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have fixed interval backups, that can be manually set</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ensure my data will not be lost.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">macro and write custom aliasing for commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">write custom <a href="#macros">macros</a> and aliasing for commands</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">customize my experience.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">track price, market cap, and circulating supply from coinmarket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track price, market cap, and circulating supply</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get all my information in one place.</p></td>
 </tr>
 <tr>
@@ -2682,13 +2683,13 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be able to set support and resistance lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to set <span class="gloss"><a href="#support-lines">support</a></span> and <span class="gloss"><a href="#resistance-lines">resistance</a></span> lines</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">do as above.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have candlestick graphs with simple/exponential moving average overlay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have candlestick graphs with <span class="gloss"><a href="#simple-moving-average">simple</a></span> / <span class="gloss"><a href="#exponential-moving-average">exponential</a></span> moving average overlay</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">do as above.</p></td>
 </tr>
 <tr>
@@ -2720,7 +2721,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <p>(For all use cases below, the <strong>System</strong> is <code>CoinBook</code> and the <strong>Actor</strong> is the <code>User</code>, unless specified otherwise)</p>
 </div>
 <div class="sect2">
-<h3 id="use-case-delete-coin-listings"><a class="link" href="#use-case-delete-coin-listings">C.1. Use case: Delete coin listings</a></h3>
+<h3 id="use-case-delete-coin-listings"><a class="link" href="#use-case-delete-coin-listings">C.1. Use Case: Delete Coin Listings</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2759,7 +2760,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-export-storage-data"><a class="link" href="#use-case-export-storage-data">C.2. Use case: Export storage data</a></h3>
+<h3 id="use-case-export-storage-data"><a class="link" href="#use-case-export-storage-data">C.2. Use Case: Export Storage Data</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2810,7 +2811,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-set-notifications"><a class="link" href="#use-case-set-notifications">C.3. Use case: Set notifications</a></h3>
+<h3 id="use-case-set-notifications"><a class="link" href="#use-case-set-notifications">C.3. Use Case: Set Notifications</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2849,7 +2850,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-tag-items-for-group-commands"><a class="link" href="#use-case-tag-items-for-group-commands">C.4. Use case: Tag items for group commands</a></h3>
+<h3 id="use-case-tag-items-for-group-commands"><a class="link" href="#use-case-tag-items-for-group-commands">C.4. Use Case: Tag Items for Group Commands</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2924,9 +2925,6 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <li>
 <p>Should not take more than one minute to generate summary reports.</p>
 </li>
-<li>
-<p>Should update news and charts automatically at the user-specified frequency, with tolerance of 1% (e.g. +/-18s for 30min interval)</p>
-</li>
 </ol>
 </div>
 </div>
@@ -2944,7 +2942,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might c
 <dd>
 <p>Alternative forms of commands that are usually shorter for typing efficiency.</p>
 </dd>
-<dt class="hdlist1"><a id="coinmarketcap"></a> Coinmarketcap</dt>
+<dt class="hdlist1"><a id="ccmp"></a> CryptoCompare</dt>
 <dd>
 <p>A website that hosts <a href="#cryptocurrency">cryptocurrency</a> information, including cap rankings, prices, volumes and circulating supplies.</p>
 </dd>
@@ -3023,7 +3021,7 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Initial launch</p>
+<p>Launching initially</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -3198,7 +3196,7 @@ Expected: The notification list window should open, and any added notification r
 </li>
 <li>
 <p>Test case: <code>notify p/&gt;1</code>, <code>sync</code><br>
-Click on any notification.
+Click on any notification.<br>
 Expected: The coin stated on the notification is opened in the detail window, and its price history chart and subreddit page can be seen.</p>
 </li>
 </ol>
@@ -3212,7 +3210,7 @@ Expected: The coin stated on the notification is opened in the detail window, an
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:08:10 UTC
+Last updated 2018-04-15 15:32:23 UTC
 </div>
 </div>
 </body>
