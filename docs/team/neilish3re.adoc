@@ -31,6 +31,7 @@ with managing their cryptocurrency portfolio.
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
 ** Tools:
+
 *** Used PlantUML for generating diagrams for the Developer Guide https://github.com[#92]
 ** Project management:
 *** Note down minutes for group meetings

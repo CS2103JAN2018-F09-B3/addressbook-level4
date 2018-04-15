@@ -9,8 +9,10 @@ import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.CoinChangedEvent;
 import seedu.address.commons.events.model.RuleBookChangedEvent;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.ReadOnlyRuleBook;
 import seedu.address.model.RuleBook;
+import seedu.address.model.rule.NotificationRule;
 import seedu.address.model.rule.Rule;
 
 /**
@@ -19,7 +21,6 @@ import seedu.address.model.rule.Rule;
 public class RuleChecker {
 
     private static final Logger logger = LogsCenter.getLogger(RuleChecker.class);
-    private static final String MESSAGE_PROCESS_RULE = "Found %1$s";
 
     private final RuleBook rules;
 
@@ -37,9 +38,12 @@ public class RuleChecker {
     @Subscribe
     public void handleCoinChangedEvent(CoinChangedEvent cce) {
         for (Rule r : rules.getRuleList()) {
+            r.action.setExtraData(cce.data, cce);
+
             switch (r.type) {
             case NOTIFICATION:
-                r.checkAndFire(cce.data);
+                assert(r instanceof NotificationRule);
+                checkAndFire(r, cce.data);
                 break;
 
             default:
@@ -48,4 +52,26 @@ public class RuleChecker {
         }
     }
 
+    /**
+     * Checks the trigger condition against the provided object, then
+     * executes the command tied to it if it matches
+     *
+     * @param rule containing condition to check with
+     * @param data to check against
+     * @return Whether the command was successful.
+     */
+    private static <T> boolean checkAndFire(Rule<T> rule, T data) {
+        if (!rule.condition.test(data)) {
+            return false;
+        }
+
+        try {
+            rule.action.execute();
+            logger.info(String.format(Rule.MESSAGE_FIRED, rule, data));
+            return true;
+        } catch (CommandException e) {
+            logger.warning(e.getMessage());
+            return false;
+        }
+    }
 }

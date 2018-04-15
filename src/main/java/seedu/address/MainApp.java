@@ -21,6 +21,9 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.logic.commands.SyncCommand;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.CoinBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -49,6 +52,8 @@ public class MainApp extends Application {
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
+    public final boolean isTest;
+
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
@@ -56,6 +61,13 @@ public class MainApp extends Application {
     protected Config config;
     protected UserPrefs userPrefs;
 
+    public MainApp() {
+        this.isTest = false;
+    }
+
+    public MainApp(boolean isTest) {
+        this.isTest = isTest;
+    }
 
     @Override
     public void init() throws Exception {
@@ -79,7 +91,15 @@ public class MainApp extends Application {
 
         initEventsCenter();
 
+        syncDataOnStartup();
+
         CoinSubredditList.initialize();
+    }
+
+    private void syncDataOnStartup() throws CommandException, ParseException {
+        if (!this.isTest) {
+            logic.execute(SyncCommand.COMMAND_WORD);
+        }
     }
 
     private String getApplicationParameter(String parameterName) {
@@ -116,7 +136,7 @@ public class MainApp extends Application {
             if (!ruleBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with an empty rule book");
             }
-            initialRules = new RuleBook();
+            initialRules = ruleBookOptional.orElseGet(RuleBook::new);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty rule book");
             initialRules = new RuleBook();

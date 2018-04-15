@@ -83,15 +83,6 @@ public class Amount implements Comparable<Amount> {
     }
 
     /**
-     * Subtracts subtractAmount to the current value.
-     *
-     * @param subtractAmount amount to be subtracted.
-     */
-    public void subtractValue(Amount subtractAmount) {
-        value = value.subtract(subtractAmount.value);
-    }
-
-    /**
      * Gets the string representation of the full value.
      * Use {@code toString} instead for display purposes.
      * @see Amount#toString
@@ -118,7 +109,9 @@ public class Amount implements Comparable<Amount> {
                               ? 0
                               : (value.precision() - value.scale()) / 3;
 
-        if (magnitude < MAGNITUDE_CHAR.length) {
+        if (0 < magnitude && magnitude < 2) {
+            return value.setScale(4, RoundingMode.UP).toPlainString();
+        } else if (magnitude < MAGNITUDE_CHAR.length) {
             // Shift the decimal point to keep the string printed at 7 digits max
             return value.movePointLeft(magnitude * 3)
                     .setScale(4, RoundingMode.UP)
